@@ -60,7 +60,7 @@
 	return
 
 /client/verb/hotkeys_help()
-	set name = "Гор&#255;чие клавиши"
+	set name = "Горячие клавиши"
 	set category = "OOC"
 
 	var/adminhotkeys = {"<font color='purple'>
