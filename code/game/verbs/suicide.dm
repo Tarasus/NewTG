@@ -4,7 +4,7 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
 	if(confirm == "Yes")
@@ -51,10 +51,10 @@
 				updatehealth()
 				return
 
-		var/suicide_message = pick("[src] is attempting to bite \his tongue off! It looks like \he's trying to commit suicide.", \
-							"[src] is jamming \his thumbs into \his eye sockets! It looks like \he's trying to commit suicide.", \
-							"[src] is twisting \his own neck! It looks like \he's trying to commit suicide.", \
-							"[src] is holding \his breath! It looks like \he's trying to commit suicide.")
+		var/suicide_message = pick("[src] пытается откусить \себе язык! \Он пытается совершить суицид!.", \
+							"[src] пытается выдавить \себе \глаза! \Он пытается совершить суицид!.", \
+							"[src] пытается свернуть \себе шею. \Он пытается совершить суицид!.", \
+							"[src] задерживает \дыхание! \Он пытается совершить суицид!.")
 
 		visible_message("<span class='danger'>[suicide_message]</span>", "<span class='userdanger'>[suicide_message]</span>")
 
@@ -65,13 +65,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
 	if(confirm == "Yes")
 		suiciding = 1
-		visible_message("<span class='danger'>[src]'s brain is growing dull and lifeless. It looks like it's lost the will to live.</span>", \
-						"<span class='userdanger'>[src]'s brain is growing dull and lifeless. It looks like it's lost the will to live.</span>")
+		visible_message("<span class='danger'>[src]'s мозг выцветает и становится мёртвым!. Оно потеряло волю к жизни.</span>", \
+						"<span class='userdanger'>[src]'s мозг выцветает и становится мёртвым!. Оно потеряло волю к жизни.</span>")
 		spawn(50)
 			death(0)
 			suiciding = 0
@@ -80,14 +80,14 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
 	if(confirm == "Yes")
 		suiciding = 1
 		//instead of killing them instantly, just put them at -175 health and let 'em gasp for a while
-		visible_message("<span class='danger'>[src] is attempting to bite \his tongue. It looks like \he's trying to commit suicide.</span>", \
-				"<span class='userdanger'>[src] is attempting to bite \his tongue. It looks like \he's trying to commit suicide.</span>")
+		visible_message("<span class='danger'>[src] пытается откусить \себе язык. Он пытается совершить суицид.</span>", \
+				"<span class='userdanger'>[src] пытается откусить \себе язык. Он пытается совершить суицид.</span>")
 		adjustOxyLoss(max(175- getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
 
@@ -95,13 +95,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
 	if(confirm == "Yes")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] is powering down. It looks like \he's trying to commit suicide.</span>", \
-				"<span class='userdanger'>[src] is powering down. It looks like \he's trying to commit suicide.</span>")
+		visible_message("<span class='danger'>[src] выключается. Он пытается совершить суицид.</span>", \
+				"<span class='userdanger'>[src] выключается. Он пытается совершить суицид.</span>")
 		//put em at -175
 		adjustOxyLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
@@ -110,7 +110,7 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
 	if(confirm == "Yes")
