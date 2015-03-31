@@ -8,3 +8,6 @@
 # NOTE: syntax was changed to allow hyphenation of ranknames, since spaces are stripped.      #
 ###############################################################################################
 Tarasus = Host
+Freedomix = Admin
+FinnTheTurtle = Admin
+SkifchaDj = Admin
