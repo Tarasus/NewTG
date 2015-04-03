@@ -51,10 +51,10 @@
 				updatehealth()
 				return
 
-		var/suicide_message = pick("[src] пытается откусить себе язык! Он(а) пытается совершить суицид!.", \
-							"[src] пытается выдавить себе глаза! Он(а) пытается совершить суицид!.", \
-							"[src] пытается свернуть себе шею. Он(а) пытается совершить суицид!.", \
-							"[src] задерживает дыхание! Он(а) пытается совершить суицид!.")
+		var/suicide_message = pick("[src] пытаетс&#255; откусить себе &#255;зык! Он(а) пытаетс&#255; совершить суицид!.", \
+							"[src] пытаетс&#255; выдавить себе глаза! Он(а) пытаетс&#255; совершить суицид!.", \
+							"[src] пытаетс&#255; свернуть себе шею. Он(а) пытаетс&#255; совершить суицид!.", \
+							"[src] задерживает дыхание! Он(а) пытаетс&#255; совершить суицид!.")
 
 		visible_message("<span class='danger'>[suicide_message]</span>", "<span class='userdanger'>[suicide_message]</span>")
 
@@ -70,8 +70,8 @@
 		return
 	if(confirm == "Да")
 		suiciding = 1
-		visible_message("<span class='danger'>[src]'s мозг выцветает и погибает!. Оно потеряло волю к жизни.</span>", \
-						"<span class='userdanger'>[src]'s мозг выцветает и погибает!. Оно потеряло волю к жизни.</span>")
+		visible_message("<span class='danger'>[src]'s мозг выцветает и погибает!. Оно потер&#255;ло волю к жизни.</span>", \
+						"<span class='userdanger'>[src]'s мозг выцветает и погибает!. Оно потер&#255;ло волю к жизни.</span>")
 		spawn(50)
 			death(0)
 			suiciding = 0
@@ -86,8 +86,8 @@
 	if(confirm == "Да")
 		suiciding = 1
 		//instead of killing them instantly, just put them at -175 health and let 'em gasp for a while
-		visible_message("<span class='danger'>[src] пытается откусить себе язык. Он(а) пытается совершить суицид.</span>", \
-				"<span class='userdanger'>[src] пытается откусить себе язык. Он(а) пытается совершить суицид.</span>")
+		visible_message("<span class='danger'>[src] пытаетс&#255; откусить себе &#255;зык. Он(а) пытаетс&#255; совершить суицид.</span>", \
+				"<span class='userdanger'>[src] пытаетс&#255; откусить себе &#255;зык. Он(а) пытаетс&#255; совершить суицид.</span>")
 		adjustOxyLoss(max(175- getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
 
@@ -100,8 +100,8 @@
 		return
 	if(confirm == "Да")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] выключается. Он(а) пытается совершить суицид.</span>", \
-				"<span class='userdanger'>[src] выключается. Он(а) пытается совершить суицид.</span>")
+		visible_message("<span class='danger'>[src] выключаетс&#255;. Он(а) пытаетс&#255; совершить суицид.</span>", \
+				"<span class='userdanger'>[src] выключаетс&#255;. Он(а) пытаетс&#255; совершить суицид.</span>")
 		//put em at -175
 		adjustOxyLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
@@ -115,21 +115,21 @@
 		return
 	if(confirm == "Да")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] выключает питание. Он(а) пытается совершить суицид.</span>", \
-				"<span class='userdanger'>[src] выключает питание. Он(а) пытается совершить суицид.</span>")
+		visible_message("<span class='danger'>[src] выключает питание. Он(а) пытаетс&#255; совершить суицид.</span>", \
+				"<span class='userdanger'>[src] выключает питание. Он(а) пытаетс&#255; совершить суицид.</span>")
 		//put em at -175
 		adjustOxyLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
 
 /mob/living/silicon/pai/verb/suicide()
 	set category = "pAI Commands"
-	set desc = "Самоубиться чтобы стать призраком (Будет предложен выбор)"
+	set desc = "Самоубитьс&#255; чтобы стать призраком (Будет предложен выбор)"
 	set name = "pAI Suicide"
-	var/answer = input("РЕАЛЬНО самоубиться? Это действие не отменить!.", "Суицид", "Нет") in list ("Да", "Нет")
+	var/answer = input("РЕАЛЬНО самоубитьс&#255;? Это действие не отменить!.", "Суицид", "Нет") in list ("Да", "Нет")
 	if(answer == "Да")
 		card.removePersonality()
 		var/turf/T = get_turf(src.loc)
-		T.visible_message("<span class='notice'>[src] Выводит сообщение на экран, \"Форматирую ядро. Получите новую личность, чтобы продолжить пользоваться функциями устройства ПИИ.\"</span>", "<span class='notice'>[src] электрически пищит.</span>")
+		T.visible_message("<span class='notice'>[src] Выводит сообщение на экран, \"Форматирую &#255;дро. Получите новую личность, чтобы продолжить пользоватьс&#255; функци&#255;ми устройства ПИИ.\"</span>", "<span class='notice'>[src] электрически пищит.</span>")
 		death(0)
 	else
 		src << "Отмена попытки суицида."
@@ -143,8 +143,8 @@
 		return
 	if(confirm == "Да")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] Молотит сам себя! Он(а) пытается совершить суицид.</span>", \
-				"<span class='userdanger'>[src] Молотит сам себя! Он(а) пытается совершить суицид.</span>", \
+		visible_message("<span class='danger'>[src] Молотит сам себ&#255;! Он(а) пытаетс&#255; совершить суицид.</span>", \
+				"<span class='userdanger'>[src] Молотит сам себ&#255;! Он(а) пытаетс&#255; совершить суицид.</span>", \
 				"<span class='notice'>Ты слышишь хруст!</span>")
 		//put em at -175
 		adjustOxyLoss(max(175 - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
@@ -160,8 +160,8 @@
 		return
 	if(confirm == "Да")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] Обмяк. Похоже он(а) потерял(а) волю к жизни.</span>", \
-						"<span class='userdanger'>[src] Обмяк. Похоже он(а) потерял(а) волю к жизни.</span>")
+		visible_message("<span class='danger'>[src] Обм&#255;к. Похоже он(а) потер&#255;л(а) волю к жизни.</span>", \
+						"<span class='userdanger'>[src] Обм&#255;к. Похоже он(а) потер&#255;л(а) волю к жизни.</span>")
 		setOxyLoss(100)
 		adjustBruteLoss(100 - getBruteLoss())
 		setToxLoss(100)
@@ -178,8 +178,8 @@
 		return
 	if(confirm == "Да")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] сбрасывает листву.Похоже он(а) потерял(а) волю к жизни.</span>", \
-						"<span class='userdanger'>[src] сбрасывает листву.Похоже он(а) потерял(а) волю к жизни.</span>")
+		visible_message("<span class='danger'>[src] сбрасывает листву.Похоже он(а) потер&#255;л(а) волю к жизни.</span>", \
+						"<span class='userdanger'>[src] сбрасывает листву.Похоже он(а) потер&#255;л(а) волю к жизни.</span>")
 		death(0)
 
 
@@ -189,13 +189,13 @@
 	else if(stat == DEAD)
 		src << "Ты уже мертв(а)!"
 	else if(stat == UNCONSCIOUS)
-		src << "Ты должен(а) быть в сознании, чтобы самоубиться."
+		src << "Ты должен(а) быть в сознании, чтобы самоубитьс&#255;."
 	return
 
 /mob/living/carbon/canSuicide()
 	if(!..())
 		return
 	if(!canmove || restrained())	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
-		src << "Ты не можешь самоубиться, будучи связанным!"
+		src << "Ты не можешь самоубитьс&#255;, будучи св&#255;занным!"
 		return
 	return 1
