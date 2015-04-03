@@ -3,30 +3,30 @@
 	set category = "OOC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "<span class='danger'>Speech is currently admin-disabled.</span>"
+		usr << "<span class='danger'>ООС выключен админом.</span>"
 		return
 
 	if(!mob)	return
 	if(IsGuestKey(key))
-		src << "Guests may not use OOC."
+		src << "Гости не могут использовать ООС."
 		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	if(!msg)	return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
-		src << "<span class='danger'>You have OOC muted.</span>"
+		src << "<span class='danger'>Вам запретили использовать ООС.</span>"
 		return
 
 	if(!holder)
 		if(!ooc_allowed)
-			src << "<span class='danger'>OOC is globally muted.</span>"
+			src << "<span class='danger'>ООС заблокирован.</span>"
 			return
 		if(!dooc_allowed && (mob.stat == DEAD))
-			usr << "<span class='danger'>OOC for dead mobs has been turned off.</span>"
+			usr << "<span class='danger'>ООС для мёртвых мобов выключен.</span>"
 			return
 		if(prefs.muted & MUTE_OOC)
-			src << "<span class='danger'>You cannot use OOC (muted).</span>"
+			src << "<span class='danger'>Ты не можешь использовать ООС (muted).</span>"
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
@@ -61,9 +61,9 @@
 /proc/toggle_ooc()
 	ooc_allowed = !( ooc_allowed )
 	if (ooc_allowed)
-		world << "<B>The OOC channel has been globally enabled!</B>"
+		world << "<B>ООС был включен!</B>"
 	else
-		world << "<B>The OOC channel has been globally disabled!</B>"
+		world << "<B>ООС-канал был заблокирован!</B>"
 
 /proc/auto_toggle_ooc(var/on)
 	if(!config.ooc_during_round && ooc_allowed != on)
@@ -72,19 +72,19 @@
 var/global/normal_ooc_colour = "#002eb8"
 
 /client/proc/set_ooc(newColor as color)
-	set name = "Set Player OOC Color"
-	set desc = "Modifies player OOC Color"
-	set category = "Fun"
+	set name = "Назначить игроку цвет ООС"
+	set desc = "Модимицировать игроку цвет ООС"
+	set category = "Веселье"
 	normal_ooc_colour = sanitize_ooccolor(newColor)
 
 /client/verb/colorooc()
-	set name = "Set Your OOC Color"
-	set category = "Preferences"
+	set name = "Выставьте свой цвет ООС"
+	set category = "Предпочтения"
 
 	if(!holder || check_rights_for(src, R_ADMIN))
 		if(!is_content_unlocked())	return
 
-	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color", prefs.ooccolor) as color|null
+	var/new_ooccolor = input(src, "Пожалуйста, выберите свой цвет ООС.", "Цвет ООС", prefs.ooccolor) as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = sanitize_ooccolor(new_ooccolor)
 		prefs.save_preferences()
@@ -93,32 +93,32 @@ var/global/normal_ooc_colour = "#002eb8"
 
 //Checks admin notice
 /client/verb/admin_notice()
-	set name = "Adminnotice"
-	set category = "Admin"
-	set desc ="Check the admin notice if it has been set"
+	set name = "Администраторские заметки"
+	set category = "Админ"
+	set desc ="Посмотрите администраторские заметки, если они были установлены"
 
 	if(admin_notice)
-		src << "<span class='boldnotice'>Admin Notice:</span>\n \t [admin_notice]"
+		src << "<span class='boldnotice'>Админ-заметки:</span>\n \t [admin_notice]"
 	else
-		src << "<span class='notice'>There are no admin notices at the moment.</span>"
+		src << "<span class='notice'>На данный момент заметок нет.</span>"
 
 /client/verb/motd()
 	set name = "MOTD"
-	set category = "OOC"
-	set desc ="Check the Message of the Day"
+	set category = "ООС"
+	set desc ="Проверить Сообщение Дня"
 
 	if(join_motd)
 		src << "<div class=\"motd\">[join_motd]</div>"
 	else
-		src << "<span class='notice'>The Message of the Day has not been set.</span>"
+		src << "<span class='notice'>Сообщение дня не было установлено.</span>"
 
 /client/proc/self_notes()
-	set name = "View Admin Notes"
+	set name = "Посмотреть администраторские заметки"
 	set category = "OOC"
-	set desc = "View the notes that admins have written about you"
+	set desc = "Посмотрите заметки, которые админы оставили в ваш адрес"
 
 	if(!config.see_own_notes)
-		usr << "<span class='notice'>Sorry, that function is not enabled on this server.</span>"
+		usr << "<span class='notice'>Извините, эта функция не работает на этом сервере</span>"
 		return
 
 	see_own_notes()
