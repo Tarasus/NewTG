@@ -3,37 +3,37 @@
 	set category = "OOC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "<span class='danger'>ООС выключен админом.</span>"
+		usr << "<span class='danger'>OOC выключен админом.</span>"
 		return
 
 	if(!mob)	return
 	if(IsGuestKey(key))
-		src << "Гости не могут использовать ООС."
+		src << "Гости не могут использовать OOC."
 		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	if(!msg)	return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
-		src << "<span class='danger'>Вам запретили использовать ООС.</span>"
+		src << "<span class='danger'>Вам запретили использовать OOC.</span>"
 		return
 
 	if(!holder)
 		if(!ooc_allowed)
-			src << "<span class='danger'>ООС заблокирован.</span>"
+			src << "<span class='danger'>OOC заблокирован.</span>"
 			return
 		if(!dooc_allowed && (mob.stat == DEAD))
-			usr << "<span class='danger'>ООС для мёртвых мобов выключен.</span>"
+			usr << "<span class='danger'>OOC дл&#255; мёртвых мобов выключен.</span>"
 			return
 		if(prefs.muted & MUTE_OOC)
-			src << "<span class='danger'>Ты не можешь использовать ООС (muted).</span>"
+			src << "<span class='danger'>Ты не можешь использовать OOC (muted).</span>"
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			src << "<B>Advertising other servers is not allowed.</B>"
-			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
-			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
+			src << "<B>Рекламить другие серверы нехорошо..</B>"
+			log_admin("[key_name(src)] попыталс&#255; прорекламить другой сервер в OOC: [msg]")
+			message_admins("[key_name_admin(src)] попыталс&#255; прорекламить другой сервер в OOC: [msg]")
 			return
 
 	log_ooc("[mob.name]/[key] : [msg]")
@@ -61,9 +61,9 @@
 /proc/toggle_ooc()
 	ooc_allowed = !( ooc_allowed )
 	if (ooc_allowed)
-		world << "<B>ООС был включен!</B>"
+		world << "<B>OOC был включен! </B>"
 	else
-		world << "<B>ООС-канал был заблокирован!</B>"
+		world << "<B>OOC-канал был заблокирован!</B>"
 
 /proc/auto_toggle_ooc(var/on)
 	if(!config.ooc_during_round && ooc_allowed != on)
@@ -72,19 +72,19 @@
 var/global/normal_ooc_colour = "#002eb8"
 
 /client/proc/set_ooc(newColor as color)
-	set name = "Назначить игроку цвет ООС"
-	set desc = "Модимицировать игроку цвет ООС"
+	set name = "Назначить игроку цвет OOC"
+	set desc = "Модифицировать игроку цвет OOC"
 	set category = "Веселье"
 	normal_ooc_colour = sanitize_ooccolor(newColor)
 
 /client/verb/colorooc()
-	set name = "Выставьте свой цвет ООС"
+	set name = "Выставьте свой цвет OOC"
 	set category = "Предпочтения"
 
 	if(!holder || check_rights_for(src, R_ADMIN))
 		if(!is_content_unlocked())	return
 
-	var/new_ooccolor = input(src, "Пожалуйста, выберите свой цвет ООС.", "Цвет ООС", prefs.ooccolor) as color|null
+	var/new_ooccolor = input(src, "Пожалуйста, выберите свой цвет OOC.", "Цвет OOC", prefs.ooccolor) as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = sanitize_ooccolor(new_ooccolor)
 		prefs.save_preferences()
@@ -104,13 +104,13 @@ var/global/normal_ooc_colour = "#002eb8"
 
 /client/verb/motd()
 	set name = "MOTD"
-	set category = "ООС"
+	set category = "OOC"
 	set desc ="Проверить Сообщение Дня"
 
 	if(join_motd)
 		src << "<div class=\"motd\">[join_motd]</div>"
 	else
-		src << "<span class='notice'>Сообщение дня не было установлено.</span>"
+		src << "<span class='notice'>Сообщение дн&#255; не было установлено.</span>"
 
 /client/proc/self_notes()
 	set name = "Посмотреть администраторские заметки"
