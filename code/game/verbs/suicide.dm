@@ -4,10 +4,10 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "Да")
 		suiciding = 1
 		var/obj/item/held_item = get_active_hand()
 		if(held_item)
@@ -51,10 +51,10 @@
 				updatehealth()
 				return
 
-		var/suicide_message = pick("[src] is attempting to bite \his tongue off! It looks like \he's trying to commit suicide.", \
-							"[src] is jamming \his thumbs into \his eye sockets! It looks like \he's trying to commit suicide.", \
-							"[src] is twisting \his own neck! It looks like \he's trying to commit suicide.", \
-							"[src] is holding \his breath! It looks like \he's trying to commit suicide.")
+		var/suicide_message = pick("[src] пытаетс&#255; откусить себе &#255;зык! Он(а) пытаетс&#255; совершить суицид!.", \
+							"[src] пытаетс&#255; выдавить себе глаза! Он(а) пытаетс&#255; совершить суицид!.", \
+							"[src] пытаетс&#255; свернуть себе шею. Он(а) пытаетс&#255; совершить суицид!.", \
+							"[src] задерживает дыхание! Он(а) пытаетс&#255; совершить суицид!.")
 
 		visible_message("<span class='danger'>[suicide_message]</span>", "<span class='userdanger'>[suicide_message]</span>")
 
@@ -65,13 +65,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "Да")
 		suiciding = 1
-		visible_message("<span class='danger'>[src]'s brain is growing dull and lifeless. It looks like it's lost the will to live.</span>", \
-						"<span class='userdanger'>[src]'s brain is growing dull and lifeless. It looks like it's lost the will to live.</span>")
+		visible_message("<span class='danger'>[src]'s мозг выцветает и погибает!. Оно потер&#255;ло волю к жизни.</span>", \
+						"<span class='userdanger'>[src]'s мозг выцветает и погибает!. Оно потер&#255;ло волю к жизни.</span>")
 		spawn(50)
 			death(0)
 			suiciding = 0
@@ -80,14 +80,14 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "Да")
 		suiciding = 1
 		//instead of killing them instantly, just put them at -175 health and let 'em gasp for a while
-		visible_message("<span class='danger'>[src] is attempting to bite \his tongue. It looks like \he's trying to commit suicide.</span>", \
-				"<span class='userdanger'>[src] is attempting to bite \his tongue. It looks like \he's trying to commit suicide.</span>")
+		visible_message("<span class='danger'>[src] пытаетс&#255; откусить себе &#255;зык. Он(а) пытаетс&#255; совершить суицид.</span>", \
+				"<span class='userdanger'>[src] пытаетс&#255; откусить себе &#255;зык. Он(а) пытаетс&#255; совершить суицид.</span>")
 		adjustOxyLoss(max(175- getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
 
@@ -95,13 +95,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "Да")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] is powering down. It looks like \he's trying to commit suicide.</span>", \
-				"<span class='userdanger'>[src] is powering down. It looks like \he's trying to commit suicide.</span>")
+		visible_message("<span class='danger'>[src] выключаетс&#255;. Он(а) пытаетс&#255; совершить суицид.</span>", \
+				"<span class='userdanger'>[src] выключаетс&#255;. Он(а) пытаетс&#255; совершить суицид.</span>")
 		//put em at -175
 		adjustOxyLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
@@ -110,42 +110,42 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "Да")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] is powering down. It looks like \he's trying to commit suicide.</span>", \
-				"<span class='userdanger'>[src] is powering down. It looks like \he's trying to commit suicide.</span>")
+		visible_message("<span class='danger'>[src] выключает питание. Он(а) пытаетс&#255; совершить суицид.</span>", \
+				"<span class='userdanger'>[src] выключает питание. Он(а) пытаетс&#255; совершить суицид.</span>")
 		//put em at -175
 		adjustOxyLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
 
 /mob/living/silicon/pai/verb/suicide()
 	set category = "pAI Commands"
-	set desc = "Kill yourself and become a ghost (You will receive a confirmation prompt)"
+	set desc = "Самоубитьс&#255; чтобы стать призраком (Будет предложен выбор)"
 	set name = "pAI Suicide"
-	var/answer = input("REALLY kill yourself? This action can't be undone.", "Suicide", "No") in list ("Yes", "No")
-	if(answer == "Yes")
+	var/answer = input("РЕАЛЬНО самоубитьс&#255;? Это действие не отменить!.", "Суицид", "Нет") in list ("Да", "Нет")
+	if(answer == "Да")
 		card.removePersonality()
 		var/turf/T = get_turf(src.loc)
-		T.visible_message("<span class='notice'>[src] flashes a message across its screen, \"Wiping core files. Please acquire a new personality to continue using pAI device functions.\"</span>", "<span class='notice'>[src] bleeps electronically.</span>")
+		T.visible_message("<span class='notice'>[src] Выводит сообщение на экран, \"Форматирую &#255;дро. Получите новую личность, чтобы продолжить пользоватьс&#255; функци&#255;ми устройства ПИИ.\"</span>", "<span class='notice'>[src] электрически пищит.</span>")
 		death(0)
 	else
-		src << "Aborting suicide attempt."
+		src << "Отмена попытки суицида."
 
 /mob/living/carbon/alien/humanoid/verb/suicide()
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "Да")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] is thrashing wildly! It looks like \he's trying to commit suicide.</span>", \
-				"<span class='userdanger'>[src] is thrashing wildly! It looks like \he's trying to commit suicide.</span>", \
-				"<span class='notice'>You hear thrashing</span>")
+		visible_message("<span class='danger'>[src] Молотит сам себ&#255;! Он(а) пытаетс&#255; совершить суицид.</span>", \
+				"<span class='userdanger'>[src] Молотит сам себ&#255;! Он(а) пытаетс&#255; совершить суицид.</span>", \
+				"<span class='notice'>Ты слышишь хруст!</span>")
 		//put em at -175
 		adjustOxyLoss(max(175 - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
@@ -155,13 +155,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "Да")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] is growing dull and lifeless. It looks like it's lost the will to live.</span>", \
-						"<span class='userdanger'>[src] is growing dull and lifeless. It looks like it's lost the will to live.</span>")
+		visible_message("<span class='danger'>[src] Обм&#255;к. Похоже он(а) потер&#255;л(а) волю к жизни.</span>", \
+						"<span class='userdanger'>[src] Обм&#255;к. Похоже он(а) потер&#255;л(а) волю к жизни.</span>")
 		setOxyLoss(100)
 		adjustBruteLoss(100 - getBruteLoss())
 		setToxLoss(100)
@@ -173,13 +173,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите совершить суицид?", "Подтвердить суицид", "Да", "Нет")
 	if(!canSuicide())
 		return
-	if(confirm == "Yes")
+	if(confirm == "Да")
 		suiciding = 1
-		visible_message("<span class='danger'>[src] begins to fall down. It looks like \he's lost the will to live.</span>", \
-						"<span class='userdanger'>[src] begins to fall down. It looks like \he's lost the will to live.</span>")
+		visible_message("<span class='danger'>[src] сбрасывает листву.Похоже он(а) потер&#255;л(а) волю к жизни.</span>", \
+						"<span class='userdanger'>[src] сбрасывает листву.Похоже он(а) потер&#255;л(а) волю к жизни.</span>")
 		death(0)
 
 
@@ -187,15 +187,15 @@
 	if(stat == CONSCIOUS)
 		return 1
 	else if(stat == DEAD)
-		src << "You're already dead!"
+		src << "Ты уже мертв(а)!"
 	else if(stat == UNCONSCIOUS)
-		src << "You need to be conscious to suicide"
+		src << "Ты должен(а) быть в сознании, чтобы самоубитьс&#255;."
 	return
 
 /mob/living/carbon/canSuicide()
 	if(!..())
 		return
 	if(!canmove || restrained())	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
-		src << "You can't commit suicide whilst restrained! ((You can type Ghost instead however.))"
+		src << "Ты не можешь самоубитьс&#255;, будучи св&#255;занным!"
 		return
 	return 1
