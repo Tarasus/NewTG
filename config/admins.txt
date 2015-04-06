@@ -11,3 +11,4 @@ Tarasus = Host
 Freedomix = Admin
 FinnTheTurtle = Admin
 SkifchaDj = Admin
+Assassins22 = Bidlocoder

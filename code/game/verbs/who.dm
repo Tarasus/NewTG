@@ -1,6 +1,6 @@
 //мелкий перевод ~QB
 /client/verb/who()
-	set name = "Кто?"
+	set name = "Кто"
 	set category = "OOC"
 
 	var/msg = "<b>Текущие Игроки:</b>\n"
@@ -21,7 +21,7 @@
 						if(isobserver(C.mob))
 							var/mob/dead/observer/O = C.mob
 							if(O.started_as_observer)
-								entry += " - <font color='gray'>Наблюдающий</font>"
+								entry += " - <font color='gray'>Наблюдает</font>"
 							else
 								entry += " - <font color='black'><b>МЕРТВ</b></font>"
 						else
@@ -51,7 +51,7 @@
 
 /client/verb/adminwho()
 	set category = "Админ"
-	set name = "Админинстраторы"
+	set name = "Админинстрация"
 
 	var/msg = "<b>Текущие Админинстраторы:</b>\n"
 	if(holder)
