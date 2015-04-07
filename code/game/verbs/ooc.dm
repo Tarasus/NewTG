@@ -79,7 +79,7 @@ var/global/normal_ooc_colour = "#002eb8"
 
 /client/verb/colorooc()
 	set name = "Выставьте свой цвет OOC"
-	set category = "Предпочтения"
+	set category = "Настройки"
 
 	if(!holder || check_rights_for(src, R_ADMIN))
 		if(!is_content_unlocked())	return

@@ -179,7 +179,7 @@
 	if(!role_flag)	return
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
-	src << "Теперь вы [(prefs.be_special & role_flag) ? "можете " : "больше не можете "]быть рассмотрены как [role] при событии (погда возможно)."
+	src << "Теперь вы [(prefs.be_special & role_flag) ? "можете " : "больше не можете "]быть рассмотрены как [role] при событии (когда возможно)."
 	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/verb/toggle_member_publicity()
