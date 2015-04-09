@@ -354,7 +354,7 @@ var/list/slot_equipment_priority = list( \
 //visible_message will handle invisibility properly
 //overriden here and in /mob/dead/observer for different point span classes and sanity checks
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
-	set name = "Указать на"
+	set name = "Указать на..."
 	set category = "Предмет"
 
 	if(!src || !isturf(src.loc) || !(A in view(src.loc)))

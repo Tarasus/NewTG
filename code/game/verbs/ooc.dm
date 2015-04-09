@@ -74,7 +74,7 @@ var/global/normal_ooc_colour = "#002eb8"
 /client/proc/set_ooc(newColor as color)
 	set name = "Назначить игроку цвет OOC"
 	set desc = "Модифицировать игроку цвет OOC"
-	set category = "Веселье"
+	set category = "OOC"
 	normal_ooc_colour = sanitize_ooccolor(newColor)
 
 /client/verb/colorooc()

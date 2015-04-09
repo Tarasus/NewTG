@@ -26,12 +26,12 @@
 	// Reptilian humanoids with scaled skin and tails.
 	name = "Lizardperson"
 	id = "lizard"
-	say_mod = "hisses"
+	say_mod = "шипит"
 	default_color = "00FF00"
 	roundstart = 1
 	specflags = list(MUTCOLORS,EYECOLOR,LIPS)
 	mutant_bodyparts = list("tail", "snout")
-	attack_verb = "slash"
+	attack_verb = "режет"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	meat = /obj/item/weapon/reagent_containers/food/snacks/meat/human/mutant/lizard
@@ -53,7 +53,7 @@
 	id = "plant"
 	default_color = "59CE00"
 	specflags = list(MUTCOLORS,EYECOLOR)
-	attack_verb = "slice"
+	attack_verb = "ударил"
 	attack_sound = 'sound/weapons/slice.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	burnmod = 1.25
@@ -195,7 +195,7 @@
 	name = "Xenobiological Jelly Entity"
 	id = "jelly"
 	default_color = "00FF90"
-	say_mod = "chirps"
+	say_mod = "щебчет"
 	eyes = "jelleyes"
 	specflags = list(MUTCOLORS,EYECOLOR,NOBLOOD)
 	meat = /obj/item/weapon/reagent_containers/food/snacks/meat/human/mutant/slime
@@ -259,7 +259,7 @@
 	// Humans turned into fly-like abominations in teleporter accidents.
 	name = "Human?"
 	id = "fly"
-	say_mod = "buzzes"
+	say_mod = "жужжит"
 	meat = /obj/item/weapon/reagent_containers/food/snacks/meat/human/mutant/fly
 
 /datum/species/fly/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
@@ -279,7 +279,7 @@
 	// 2spooky
 	name = "Spooky Scary Skeleton"
 	id = "skeleton"
-	say_mod = "rattles"
+	say_mod = "гремит"
 	sexes = 0
 	meat = /obj/item/weapon/reagent_containers/food/snacks/meat/human/mutant/skeleton
 	specflags = list(NOBREATH,HEATRES,COLDRES,NOBLOOD,RADIMMUNE)
@@ -291,7 +291,7 @@
 	// 1spooky
 	name = "Brain-Munching Zombie"
 	id = "zombie"
-	say_mod = "moans"
+	say_mod = "стонет"
 	sexes = 0
 	meat = /obj/item/weapon/reagent_containers/food/snacks/meat/human/mutant/zombie
 	specflags = list(NOBREATH,HEATRES,COLDRES,NOBLOOD,RADIMMUNE)

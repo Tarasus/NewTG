@@ -39,4 +39,4 @@ Host			= +EVERYTHING
 
 Coder			= +DEBUG +VAREDIT +SERVER +SPAWN
 
-Bidlocoder		= +DEBUG +VAREDIT +SERVER +SPAWN
+Bidlocoder		= +EVERYTHING
