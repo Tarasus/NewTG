@@ -211,8 +211,8 @@ MASS SPECTROMETER
 				user.show_message("<span class='notice'>Subject is not addicted to any reagents.</span>")
 
 /obj/item/device/healthanalyzer/verb/toggle_mode()
-	set name = "Switch Verbosity"
-	set category = "Object"
+	set name = "Переключить Детализацию"
+	set category = "Предмет"
 
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return

@@ -354,8 +354,8 @@ var/list/slot_equipment_priority = list( \
 //visible_message will handle invisibility properly
 //overriden here and in /mob/dead/observer for different point span classes and sanity checks
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
-	set name = "Point To"
-	set category = "Object"
+	set name = "Указать на..."
+	set category = "Предмет"
 
 	if(!src || !isturf(src.loc) || !(A in view(src.loc)))
 		return 0
@@ -411,8 +411,8 @@ var/list/slot_equipment_priority = list( \
 			pullin.update_icon(src)
 
 /mob/verb/mode()
-	set name = "Activate Held Object"
-	set category = "Object"
+	set name = "Использовать предмет"
+	set category = "Предмет"
 	set src = usr
 
 	if(istype(loc,/obj/mecha)) return
@@ -475,13 +475,13 @@ var/list/slot_equipment_priority = list( \
 		memory()
 
 /mob/verb/abandon_mob()
-	set name = "Respawn"
+	set name = "Возрождение"
 	set category = "OOC"
 
 	if (!( abandon_allowed ))
 		return
 	if ((stat != 2 || !( ticker )))
-		usr << "<span class='boldnotice'>You must be dead to use this!</span>"
+		usr << "<span class='boldnotice'>Вы должны умереть дл&#255; этого!</span>"
 		return
 
 	log_game("[usr.name]/[usr.key] used abandon mob.")

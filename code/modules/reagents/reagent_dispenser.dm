@@ -40,8 +40,8 @@
 	..()
 
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
-	set name = "Set transfer amount"
-	set category = "Object"
+	set name = "Настроить объем трансфера"
+	set category = "Предмет"
 	set src in view(1)
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return

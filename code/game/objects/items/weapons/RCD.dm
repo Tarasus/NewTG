@@ -31,8 +31,8 @@ RCD
 	var/advanced_airlock_setting = 1 //Set to 1 if you want more paintjobs available
 
 /obj/item/weapon/rcd/verb/change_airlock_setting()
-	set name = "Change Airlock Setting"
-	set category = "Object"
+	set name = "Изменить настройки Airlock"
+	set category = "Предмет"
 	set src in usr
 
 	var airlockcat = input(usr, "Select whether the airlock is solid or glass.") in list("Solid", "Glass")

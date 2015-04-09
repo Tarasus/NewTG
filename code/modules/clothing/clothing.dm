@@ -270,8 +270,8 @@ atom/proc/generate_female_clothing(index,t_color,icon,type)
 	female_clothing_icons[index] = female_clothing_icon
 
 /obj/item/clothing/under/verb/toggle()
-	set name = "Adjust Suit Sensors"
-	set category = "Object"
+	set name = "Переключить датчики"
+	set category = "Предмет"
 	set src in usr
 	var/mob/M = usr
 	if (istype(M, /mob/dead/))
@@ -349,8 +349,8 @@ atom/proc/generate_female_clothing(index,t_color,icon,type)
 		user << "Alt-click on [src] to wear it casually."
 
 /obj/item/clothing/under/verb/removetie()
-	set name = "Remove Accessory"
-	set category = "Object"
+	set name = "Снять аксессуар"
+	set category = "Предмет"
 	set src in usr
 	if(!istype(usr, /mob/living))
 		return

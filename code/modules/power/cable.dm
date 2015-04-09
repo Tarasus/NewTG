@@ -529,8 +529,8 @@ obj/structure/cable/proc/avail()
 		name = "cable coil"
 
 /obj/item/stack/cable_coil/verb/make_restraint()
-	set name = "Make Cable Restraints"
-	set category = "Object"
+	set name = "сделать фиксаторы из кабеля"
+	set category = "Предмет"
 	var/mob/M = usr
 
 	if(ishuman(M) && !M.restrained() && !M.stat && M.canmove)

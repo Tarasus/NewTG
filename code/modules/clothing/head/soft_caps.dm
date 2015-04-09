@@ -12,8 +12,8 @@
 		..()
 
 	verb/flipcap()
-		set category = "Object"
-		set name = "Flip cap"
+		set category = "Предмет"
+		set name = "Повернуть кепку"
 
 		flip(usr)
 

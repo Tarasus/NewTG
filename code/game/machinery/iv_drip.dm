@@ -156,8 +156,8 @@
 		toggle_mode()
 
 /obj/machinery/iv_drip/verb/eject_beaker(mob/user)
-	set category = "Object"
-	set name = "Remove IV Container"
+	set category = "Предмет"
+	set name = "Вытащить контейнер из IV"
 	set src in view(1)
 
 	if(!istype(usr, /mob/living))
@@ -173,8 +173,8 @@
 		update_icon()
 
 /obj/machinery/iv_drip/verb/toggle_mode()
-	set category = "Object"
-	set name = "Toggle Mode"
+	set category = "Предмет"
+	set name = "Переключить режим"
 	set src in view(1)
 
 	if(!istype(usr, /mob/living))

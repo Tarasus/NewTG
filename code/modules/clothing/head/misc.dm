@@ -21,6 +21,12 @@
 	icon_state = "tophat"
 	item_state = "that"
 
+/obj/item/clothing/head/kebab
+	name = "kebab-barret"
+	desc = "It's an amish looking hat."
+	icon_state = "kebab"
+	item_state = "w_suit"
+
 /obj/item/clothing/head/redcoat
 	name = "redcoat's hat"
 	icon_state = "redcoat"

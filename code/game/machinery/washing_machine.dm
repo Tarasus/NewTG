@@ -24,8 +24,8 @@
 	var/obj/crayon
 
 /obj/machinery/washing_machine/verb/start()
-	set name = "Start Washing"
-	set category = "Object"
+	set name = "Начать стирку"
+	set category = "Предмет"
 	set src in oview(1)
 
 	if(usr.stat || usr.restrained() || !usr.canmove)
@@ -166,8 +166,8 @@
 	update_icon()
 
 /obj/machinery/washing_machine/verb/climb_out()
-	set name = "Climb out"
-	set category = "Object"
+	set name = "Выбраться"
+	set category = "Предмет"
 	set src in usr.loc
 
 	sleep(20)

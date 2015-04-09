@@ -152,8 +152,8 @@
 	..()
 
 /obj/item/weapon/defibrillator/proc/toggle_paddles()
-	set name = "Toggle Paddles"
-	set category = "Object"
+	set name = "Переключить поверхность"
+	set category = "Предмет"
 	on = !on
 
 	var/mob/living/carbon/human/user = usr

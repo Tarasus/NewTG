@@ -1,8 +1,8 @@
 //#define AMAP
 
 /obj/machinery/computer/security/verb/station_map()
-	set name = ".map"
-	set category = "Object"
+	set name = ".карта"
+	set category = "Предмет"
 	set src in view(1)
 	usr.set_machine(src)
 	if(!mapping)	return

@@ -148,8 +148,8 @@
 	return
 
 /obj/machinery/implantchair/verb/get_out()
-	set name = "Eject occupant"
-	set category = "Object"
+	set name = "Извлечь находящегося"
+	set category = "Предмет"
 	set src in oview(1)
 	if(usr.stat != 0)
 		return
@@ -159,8 +159,8 @@
 
 
 /obj/machinery/implantchair/verb/move_inside()
-	set name = "Move Inside"
-	set category = "Object"
+	set name = "Поместить внутрь"
+	set category = "Предмет"
 	set src in oview(1)
 	if(usr.stat != 0 || stat & (NOPOWER|BROKEN))
 		return

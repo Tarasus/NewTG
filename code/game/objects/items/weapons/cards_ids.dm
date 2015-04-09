@@ -29,8 +29,8 @@
 	item_state = "card-id"
 
 /obj/item/weapon/card/data/verb/label(t as text)
-	set name = "Label Disk"
-	set category = "Object"
+	set name = "Пометить доску"
+	set category = "Предмет"
 	set src in usr
 
 	if(usr.stat || !usr.canmove || usr.restrained())

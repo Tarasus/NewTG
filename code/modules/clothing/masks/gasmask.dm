@@ -29,8 +29,8 @@
 	toggle()
 
 /obj/item/clothing/mask/gas/welding/verb/toggle()
-	set category = "Object"
-	set name = "Adjust welding mask"
+	set category = "Предмет"
+	set name = "Отрегулировать сварочную маску"
 	set src in usr
 
 	weldingvisortoggle()
@@ -95,16 +95,16 @@
 		..()
 
 /obj/item/clothing/mask/gas/sechailer/verb/adjust()
-	set category = "Object"
-	set name = "Adjust Mask"
+	set category = "Предмет"
+	set name = "Отрегулировать маску"
 	adjustmask(usr)
 
 /obj/item/clothing/mask/gas/sechailer/attack_self()
 	halt()
 
 /obj/item/clothing/mask/gas/sechailer/verb/halt()
-	set category = "Object"
-	set name = "HALT"
+	set category = "Предмет"
+	set name = "ОСТАНОВИТЬ"
 	set src in usr
 	if(!istype(usr, /mob/living))
 		return

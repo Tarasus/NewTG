@@ -59,8 +59,8 @@
 
 
 /obj/item/weapon/paper/verb/rename()
-	set name = "Rename paper"
-	set category = "Object"
+	set name = "Переименовать бумагу"
+	set category = "Предмет"
 	set src in usr
 
 	if(usr.stat || !usr.canmove || usr.restrained())

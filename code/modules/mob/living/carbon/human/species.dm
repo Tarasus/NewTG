@@ -45,7 +45,7 @@
 	var/list/no_equip = list()	// slots the race can't equip stuff to
 	var/nojumpsuit = 0	// this is sorta... weird. it basically lets you equip stuff that usually needs jumpsuits without one, like belts and pockets and ids
 
-	var/say_mod = "says"	// affects the speech message
+	var/say_mod = "говорит"	// affects the speech message
 
 	var/list/mutant_bodyparts = list() 	// Parts of the body that are diferent enough from the standard human model that they cause clipping with some equipment
 
@@ -63,7 +63,7 @@
 	// species flags. these can be found in flags.dm
 	var/list/specflags = list()
 
-	var/attack_verb = "punch"	// punch-specific attack verb
+	var/attack_verb = "ударил кулаком"	// punch-specific attack verb
 	var/sound/attack_sound = 'sound/weapons/punch1.ogg'
 	var/sound/miss_sound = 'sound/weapons/punchmiss.ogg'
 

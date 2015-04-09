@@ -855,8 +855,8 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		usr << "<span class='notice'>You cannot do this while restrained.</span>"
 
 /obj/item/device/pda/verb/verb_remove_id()
-	set category = "Object"
-	set name = "Eject ID"
+	set category = "Предмет"
+	set name = "Извлечь ID"
 	set src in usr
 
 	if(issilicon(usr))
@@ -872,8 +872,8 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 
 /obj/item/device/pda/verb/verb_remove_pen()
-	set category = "Object"
-	set name = "Remove Pen"
+	set category = "Предмет"
+	set name = "Достать ручку"
 	set src in usr
 
 	if(issilicon(usr))
