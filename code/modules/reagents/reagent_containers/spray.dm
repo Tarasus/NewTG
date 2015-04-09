@@ -102,7 +102,7 @@
 /obj/item/weapon/reagent_containers/spray/verb/empty()
 
 	set name = "Опустошить спрей"
-	set category = "Object"
+	set category = "Предмет"
 	set src in usr
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return

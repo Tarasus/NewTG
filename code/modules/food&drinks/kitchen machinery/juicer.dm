@@ -124,8 +124,8 @@
 	return
 
 /obj/machinery/juicer/verb/detach()
-	set category = "Object"
-	set name = "достать контейнер из соковыжималки"
+	set category = "Предмет"
+	set name = "Достать контейнер из соковыжималки"
 	set src in oview(1)
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return

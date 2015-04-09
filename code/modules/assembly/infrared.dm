@@ -124,8 +124,8 @@
 		attack_self(usr)
 
 /obj/item/device/assembly/infra/verb/rotate()//This could likely be better
-	set name = "Rotate Infrared Laser"
-	set category = "Object"
+	set name = "Вращать инфракрасный лазер"
+	set category = "Предмет"
 	set src in usr
 
 	if(usr.stat || !usr.canmove || usr.restrained())

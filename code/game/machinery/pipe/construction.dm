@@ -163,7 +163,7 @@ var/global/list/pipeID2State = list(
 // rotate the pipe item clockwise
 
 /obj/item/pipe/verb/rotate()
-	set category = "Object"
+	set category = "Предмет"
 	set name = "Вращать трубу"
 	set src in view(1)
 
@@ -177,7 +177,7 @@ var/global/list/pipeID2State = list(
 	return
 
 /obj/item/pipe/verb/flip()
-	set category = "Object"
+	set category = "Предмет"
 	set name = "Постучать по трубе"
 	set src in view(1)
 

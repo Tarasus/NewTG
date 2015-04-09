@@ -106,8 +106,8 @@
 
 
 /obj/machinery/gibber/verb/eject()
-	set category = "Object"
-	set name = "מסגמבמהטעü טחלוכüקטעוכü"
+	set category = "ֿנוהלוע"
+	set name = "־סגמבמהטעü טחלוכüקטעוכü"
 	set src in oview(1)
 
 	if(usr.stat || !usr.canmove || usr.restrained())
