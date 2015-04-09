@@ -106,7 +106,7 @@
 	return
 
 /obj/item/verb/move_to_top()
-	set name = "Move To Top"
+	set name = "Переместить на верх"
 	set category = "Object"
 	set src in oview(1)
 
@@ -286,7 +286,7 @@
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
 	set category = "Object"
-	set name = "Pick up"
+	set name = "Подобрать"
 
 	if(!usr.canmove || usr.stat || usr.restrained() || !Adjacent(usr))
 		return

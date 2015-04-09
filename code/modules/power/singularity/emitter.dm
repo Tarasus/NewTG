@@ -23,7 +23,7 @@
 
 
 /obj/machinery/power/emitter/verb/rotate()
-	set name = "Rotate"
+	set name = "Повернуть"
 	set category = "Object"
 	set src in oview(1)
 

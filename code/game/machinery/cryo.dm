@@ -88,7 +88,7 @@
 	return
 
 /obj/machinery/atmospherics/unary/cryo_cell/verb/move_eject()
-	set name = "Eject Cryo Cell"
+	set name = "Вытащить из Крио Камеры"
 	set desc = "Begin the release sequence inside the cryo tube."
 	set category = "Object"
 	set src in oview(1)

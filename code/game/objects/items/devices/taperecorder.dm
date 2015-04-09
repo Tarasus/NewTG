@@ -75,7 +75,7 @@
 
 
 /obj/item/device/taperecorder/verb/ejectverb()
-	set name = "Eject Tape"
+	set name = "Извлечь ленту"
 	set category = "Object"
 
 	if(!can_use(usr))
@@ -103,7 +103,7 @@
 		mytape.storedinfo += "\[[time2text(mytape.used_capacity * 10,"mm:ss")]\] [strip_html_properly(message)]"
 
 /obj/item/device/taperecorder/verb/record()
-	set name = "Start Recording"
+	set name = "Начать запись"
 	set category = "Object"
 
 	if(!can_use(usr))
@@ -140,7 +140,7 @@
 
 
 /obj/item/device/taperecorder/verb/stop()
-	set name = "Stop"
+	set name = "Стоп"
 	set category = "Object"
 
 	if(!can_use(usr))
@@ -160,7 +160,7 @@
 
 
 /obj/item/device/taperecorder/verb/play()
-	set name = "Play Tape"
+	set name = "Воспроизвести ленту"
 	set category = "Object"
 
 	if(!can_use(usr))
@@ -215,7 +215,7 @@
 
 
 /obj/item/device/taperecorder/verb/print_transcript()
-	set name = "Print Transcript"
+	set name = "Распечатать стенограмму"
 	set category = "Object"
 
 	if(!can_use(usr))

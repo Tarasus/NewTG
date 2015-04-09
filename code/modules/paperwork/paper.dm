@@ -59,7 +59,7 @@
 
 
 /obj/item/weapon/paper/verb/rename()
-	set name = "Rename paper"
+	set name = "Переименовать бумагу"
 	set category = "Object"
 	set src in usr
 

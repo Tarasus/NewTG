@@ -152,7 +152,7 @@
 	..()
 
 /obj/item/weapon/defibrillator/proc/toggle_paddles()
-	set name = "Toggle Paddles"
+	set name = "Переключить поверхность"
 	set category = "Object"
 	on = !on
 

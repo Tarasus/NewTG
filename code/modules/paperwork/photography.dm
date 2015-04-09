@@ -67,7 +67,7 @@
 
 
 /obj/item/weapon/photo/verb/rename()
-	set name = "Rename photo"
+	set name = "Переименовать фото"
 	set category = "Object"
 	set src in usr
 

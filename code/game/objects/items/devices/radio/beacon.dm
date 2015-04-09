@@ -14,7 +14,7 @@
 
 
 /obj/item/device/radio/beacon/verb/alter_signal(t as text)
-	set name = "Alter Beacon's Signal"
+	set name = "Изменить сигнал маяка"
 	set category = "Object"
 	set src in usr
 

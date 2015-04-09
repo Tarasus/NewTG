@@ -31,7 +31,7 @@ RCD
 	var/advanced_airlock_setting = 1 //Set to 1 if you want more paintjobs available
 
 /obj/item/weapon/rcd/verb/change_airlock_setting()
-	set name = "Change Airlock Setting"
+	set name = "Изменить настройки Airlock"
 	set category = "Object"
 	set src in usr
 

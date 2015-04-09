@@ -29,7 +29,7 @@
 	item_state = "card-id"
 
 /obj/item/weapon/card/data/verb/label(t as text)
-	set name = "Label Disk"
+	set name = "Пометить доску"
 	set category = "Object"
 	set src in usr
 

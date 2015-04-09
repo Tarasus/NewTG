@@ -529,7 +529,7 @@ obj/structure/cable/proc/avail()
 		name = "cable coil"
 
 /obj/item/stack/cable_coil/verb/make_restraint()
-	set name = "Make Cable Restraints"
+	set name = "сделать фиксаторы из кабеля"
 	set category = "Object"
 	var/mob/M = usr
 

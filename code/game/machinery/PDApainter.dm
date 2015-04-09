@@ -78,7 +78,7 @@
 
 
 /obj/machinery/pdapainter/verb/ejectpda()
-	set name = "Eject PDA"
+	set name = "Вытащить ПДА"
 	set category = "Object"
 	set src in oview(1)
 

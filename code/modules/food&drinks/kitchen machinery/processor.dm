@@ -160,7 +160,7 @@
 
 /obj/machinery/processor/verb/eject()
 	set category = "Object"
-	set name = "Eject Contents"
+	set name = "Извлечь содержимое"
 	set src in oview(1)
 
 	if(usr.stat || !usr.canmove || usr.restrained())

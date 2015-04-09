@@ -316,3 +316,10 @@
 	icon_state = "coatminer"
 	allowed = list(/obj/item/weapon/pickaxe,/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/toy,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/lighter)
 	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/kebab
+	name = "kebab suit"
+	icon_state = "kebab"
+	item_state = "w_suit"
+	allowed = list(/obj/item/weapon/reagent_containers/food/snacks/kebab)
+	armor = list(melee = 15, bullet = 5, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)

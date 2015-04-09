@@ -164,7 +164,7 @@ var/global/list/pipeID2State = list(
 
 /obj/item/pipe/verb/rotate()
 	set category = "Object"
-	set name = "Rotate Pipe"
+	set name = "Вращать трубу"
 	set src in view(1)
 
 	if ( usr.stat || usr.restrained() || !usr.canmove )
@@ -178,7 +178,7 @@ var/global/list/pipeID2State = list(
 
 /obj/item/pipe/verb/flip()
 	set category = "Object"
-	set name = "Flip Pipe"
+	set name = "Постучать по трубе"
 	set src in view(1)
 
 	if ( usr.stat || usr.restrained() || !usr.canmove )

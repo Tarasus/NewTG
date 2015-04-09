@@ -89,7 +89,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 
 /obj/structure/particle_accelerator/verb/rotate()
-	set name = "Rotate Clockwise"
+	set name = "Повернуть по часовой"
 	set category = "Object"
 	set src in oview(1)
 
@@ -102,7 +102,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 	return 1
 
 /obj/structure/particle_accelerator/verb/rotateccw()
-	set name = "Rotate Counter Clockwise"
+	set name = "Повернуть против часовой"
 	set category = "Object"
 	set src in oview(1)
 
@@ -265,7 +265,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 
 /obj/machinery/particle_accelerator/verb/rotate()
-	set name = "Rotate Clockwise"
+	set name = "Повернуть по часовой"
 	set category = "Object"
 	set src in oview(1)
 
@@ -278,7 +278,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 	return 1
 
 /obj/machinery/particle_accelerator/verb/rotateccw()
-	set name = "Rotate Counter-Clockwise"
+	set name = "Повернуть против часовой"
 	set category = "Object"
 	set src in oview(1)
 

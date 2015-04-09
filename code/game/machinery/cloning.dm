@@ -286,7 +286,7 @@
 	return 1
 
 /obj/machinery/clonepod/verb/eject()
-	set name = "Eject Cloner"
+	set name = "Вытащить из клонера"
 	set category = "Object"
 	set src in oview(1)
 
