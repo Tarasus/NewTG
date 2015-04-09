@@ -92,90 +92,6 @@ macro "borghotkeymode"
 		command = "a-intent left"
 		is-disabled = false
 	elem 
-		name = "A+REP"
-		command = ".west"
-		is-disabled = false
-	elem 
-		name = "CTRL+A+REP"
-		command = ".west"
-		is-disabled = false
-	elem 
-		name = "D+REP"
-		command = ".east"
-		is-disabled = false
-	elem 
-		name = "CTRL+D+REP"
-		command = ".east"
-		is-disabled = false
-	elem 
-		name = "F"
-		command = "a-intent left"
-		is-disabled = false
-	elem 
-		name = "CTRL+F"
-		command = "a-intent left"
-		is-disabled = false
-	elem 
-		name = "G"
-		command = "a-intent right"
-		is-disabled = false
-	elem 
-		name = "CTRL+G"
-		command = "a-intent right"
-		is-disabled = false
-	elem 
-		name = "Q"
-		command = "unequip-module"
-		is-disabled = false
-	elem 
-		name = "CTRL+Q"
-		command = "unequip-module"
-		is-disabled = false
-	elem "s_key"
-		name = "S+REP"
-		command = ".south"
-		is-disabled = false
-	elem 
-		name = "CTRL+S+REP"
-		command = ".south"
-		is-disabled = false
-	elem 
-		name = "T"
-		command = "say"
-		is-disabled = false
-	elem "w_key"
-		name = "W+REP"
-		command = ".north"
-		is-disabled = false
-	elem 
-		name = "CTRL+W+REP"
-		command = ".north"
-		is-disabled = false
-	elem 
-		name = "X"
-		command = ".northeast"
-		is-disabled = false
-	elem 
-		name = "CTRL+X"
-		command = ".northeast"
-		is-disabled = false
-	elem 
-		name = "Y"
-		command = "Activate-Held-Object"
-		is-disabled = false
-	elem 
-		name = "CTRL+Y"
-		command = "Activate-Held-Object"
-		is-disabled = false
-	elem 
-		name = "Z"
-		command = "Activate-Held-Object"
-		is-disabled = false
-	elem 
-		name = "CTRL+Z"
-		command = "Activate-Held-Object"
-		is-disabled = false
-	elem 
 		name = "F1"
 		command = "adminhelp"
 		is-disabled = false
@@ -184,12 +100,24 @@ macro "borghotkeymode"
 		command = ".options"
 		is-disabled = false
 	elem 
+		name = "F2"
+		command = "me"
+		is-disabled = false
+	elem 
 		name = "F2+REP"
 		command = ".screenshot auto"
 		is-disabled = false
 	elem 
 		name = "SHIFT+F2+REP"
 		command = ".screenshot"
+		is-disabled = false
+	elem 
+		name = "F3"
+		command = "say"
+		is-disabled = false
+	elem 
+		name = "F4"
+		command = "OOC"
 		is-disabled = false
 	elem 
 		name = "F5"
@@ -294,54 +222,6 @@ macro "macro"
 		command = "a-intent harm"
 		is-disabled = false
 	elem 
-		name = "CTRL+A+REP"
-		command = ".west"
-		is-disabled = false
-	elem 
-		name = "CTRL+D+REP"
-		command = ".east"
-		is-disabled = false
-	elem 
-		name = "CTRL+E"
-		command = "quick-equip"
-		is-disabled = false
-	elem 
-		name = "CTRL+F"
-		command = "a-intent left"
-		is-disabled = false
-	elem 
-		name = "CTRL+G"
-		command = "a-intent right"
-		is-disabled = false
-	elem 
-		name = "CTRL+Q"
-		command = ".northwest"
-		is-disabled = false
-	elem 
-		name = "CTRL+R"
-		command = ".southwest"
-		is-disabled = false
-	elem 
-		name = "CTRL+S+REP"
-		command = ".south"
-		is-disabled = false
-	elem 
-		name = "CTRL+W+REP"
-		command = ".north"
-		is-disabled = false
-	elem 
-		name = "CTRL+X"
-		command = ".northeast"
-		is-disabled = false
-	elem 
-		name = "CTRL+Y"
-		command = "Activate-Held-Object"
-		is-disabled = false
-	elem 
-		name = "CTRL+Z"
-		command = "Activate-Held-Object"
-		is-disabled = false
-	elem 
 		name = "F1"
 		command = "adminhelp"
 		is-disabled = false
@@ -350,12 +230,24 @@ macro "macro"
 		command = ".options"
 		is-disabled = false
 	elem 
+		name = "F2"
+		command = "me"
+		is-disabled = false
+	elem 
 		name = "F2+REP"
 		command = ".screenshot auto"
 		is-disabled = false
 	elem 
 		name = "SHIFT+F2+REP"
 		command = ".screenshot"
+		is-disabled = false
+	elem 
+		name = "F3"
+		command = "say"
+		is-disabled = false
+	elem 
+		name = "F4"
+		command = "OOC"
 		is-disabled = false
 	elem 
 		name = "F5"
@@ -476,114 +368,6 @@ macro "hotkeymode"
 		command = "a-intent harm"
 		is-disabled = false
 	elem 
-		name = "A+REP"
-		command = ".west"
-		is-disabled = false
-	elem 
-		name = "CTRL+A+REP"
-		command = ".west"
-		is-disabled = false
-	elem 
-		name = "D+REP"
-		command = ".east"
-		is-disabled = false
-	elem 
-		name = "CTRL+D+REP"
-		command = ".east"
-		is-disabled = false
-	elem 
-		name = "E"
-		command = "quick-equip"
-		is-disabled = false
-	elem 
-		name = "CTRL+E"
-		command = "quick-equip"
-		is-disabled = false
-	elem 
-		name = "F"
-		command = "a-intent left"
-		is-disabled = false
-	elem 
-		name = "CTRL+F"
-		command = "a-intent left"
-		is-disabled = false
-	elem 
-		name = "G"
-		command = "a-intent right"
-		is-disabled = false
-	elem 
-		name = "CTRL+G"
-		command = "a-intent right"
-		is-disabled = false
- 	elem 
-		name = "M"
-		command = "me"
-		is-disabled = false
-	elem 
-		name = "O"
-		command = "ooc"
-		is-disabled = false
-	elem 
-		name = "Q"
-		command = ".northwest"
-		is-disabled = false
-	elem 
-		name = "CTRL+Q"
-		command = ".northwest"
-		is-disabled = false
-	elem 
-		name = "R"
-		command = ".southwest"
-		is-disabled = false
-	elem 
-		name = "CTRL+R"
-		command = ".southwest"
-		is-disabled = false
-	elem "s_key"
-		name = "S+REP"
-		command = ".south"
-		is-disabled = false
-	elem 
-		name = "CTRL+S+REP"
-		command = ".south"
-		is-disabled = false
-	elem 
-		name = "T"
-		command = "say"
-		is-disabled = false
-	elem "w_key"
-		name = "W+REP"
-		command = ".north"
-		is-disabled = false
-	elem 
-		name = "CTRL+W+REP"
-		command = ".north"
-		is-disabled = false
-	elem 
-		name = "X"
-		command = ".northeast"
-		is-disabled = false
-	elem 
-		name = "CTRL+X"
-		command = ".northeast"
-		is-disabled = false
-	elem 
-		name = "Y"
-		command = "Activate-Held-Object"
-		is-disabled = false
-	elem 
-		name = "CTRL+Y"
-		command = "Activate-Held-Object"
-		is-disabled = false
-	elem 
-		name = "Z"
-		command = "Activate-Held-Object"
-		is-disabled = false
-	elem 
-		name = "CTRL+Z"
-		command = "Activate-Held-Object"
-		is-disabled = false
-	elem 
 		name = "F1"
 		command = "adminhelp"
 		is-disabled = false
@@ -592,12 +376,24 @@ macro "hotkeymode"
 		command = ".options"
 		is-disabled = false
 	elem 
+		name = "F2"
+		command = "me"
+		is-disabled = false
+	elem 
 		name = "F2+REP"
 		command = ".screenshot auto"
 		is-disabled = false
 	elem 
 		name = "SHIFT+F2+REP"
 		command = ".screenshot"
+		is-disabled = false
+	elem 
+		name = "F3"
+		command = "say"
+		is-disabled = false
+	elem 
+		name = "F4"
+		command = "OOC"
 		is-disabled = false
 	elem 
 		name = "F5"
@@ -698,46 +494,6 @@ macro "borgmacro"
 		command = "a-intent left"
 		is-disabled = false
 	elem 
-		name = "CTRL+A+REP"
-		command = ".west"
-		is-disabled = false
-	elem 
-		name = "CTRL+D+REP"
-		command = ".east"
-		is-disabled = false
-	elem 
-		name = "CTRL+F"
-		command = "a-intent left"
-		is-disabled = false
-	elem 
-		name = "CTRL+G"
-		command = "a-intent right"
-		is-disabled = false
-	elem 
-		name = "CTRL+Q"
-		command = "unequip-module"
-		is-disabled = false
-	elem 
-		name = "CTRL+S+REP"
-		command = ".south"
-		is-disabled = false
-	elem 
-		name = "CTRL+W+REP"
-		command = ".north"
-		is-disabled = false
-	elem 
-		name = "CTRL+X"
-		command = ".northeast"
-		is-disabled = false
-	elem 
-		name = "CTRL+Y"
-		command = "Activate-Held-Object"
-		is-disabled = false
-	elem 
-		name = "CTRL+Z"
-		command = "Activate-Held-Object"
-		is-disabled = false
-	elem 
 		name = "F1"
 		command = "adminhelp"
 		is-disabled = false
@@ -746,12 +502,24 @@ macro "borgmacro"
 		command = ".options"
 		is-disabled = false
 	elem 
+		name = "F2"
+		command = "me"
+		is-disabled = false
+	elem 
 		name = "F2+REP"
 		command = ".screenshot auto"
 		is-disabled = false
 	elem 
 		name = "SHIFT+F2+REP"
 		command = ".screenshot"
+		is-disabled = false
+	elem 
+		name = "F3"
+		command = "say"
+		is-disabled = false
+	elem 
+		name = "F4"
+		command = "ooc"
 		is-disabled = false
 	elem 
 		name = "F5"
@@ -1698,6 +1466,8 @@ window "mapwindow"
 		on-size = ""
 		icon-size = 0
 		text-mode = false
+		letterbox = true
+		zoom = 0
 		on-show = ".winset\"mainwindow.mainvsplit.left=mapwindow\""
 		on-hide = ".winset\"mainwindow.mainvsplit.left=\""
 		style = ""
@@ -2226,4 +1996,6 @@ window "infowindow"
 		on-show = ".winset\"rpane.infob.is-visible=true;rpane.browseb.is-visible=true?rpane.infob.pos=130,0:rpane.infob.pos=65,0 rpane.textb.is-visible=true rpane.infob.is-checked=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=infowindow\""
 		on-hide = ".winset\"rpane.infob.is-visible=false;rpane.browseb.is-visible=true?rpane.browseb.is-checked=true rpane.rpanewindow.left=browserwindow:rpane.textb.is-visible=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=\""
 		on-tab = ""
+		prefix-color = none
+		suffix-color = none
 
