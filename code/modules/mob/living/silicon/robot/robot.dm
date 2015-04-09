@@ -927,7 +927,7 @@
 		src.verbs -= /mob/living/silicon/robot/proc/ResetSecurityCodes
 
 /mob/living/silicon/robot/mode()
-	set name = "Активировать удерживаемый предмет"
+	set name = "Использовать предмет"
 	set category = "IC"
 	set src = usr
 

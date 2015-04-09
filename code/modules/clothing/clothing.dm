@@ -270,7 +270,7 @@ atom/proc/generate_female_clothing(index,t_color,icon,type)
 	female_clothing_icons[index] = female_clothing_icon
 
 /obj/item/clothing/under/verb/toggle()
-	set name = "Отрегулировать датчики"
+	set name = "Переключить датчики"
 	set category = "Предмет"
 	set src in usr
 	var/mob/M = usr

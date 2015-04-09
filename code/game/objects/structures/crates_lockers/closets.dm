@@ -265,7 +265,7 @@
 /obj/structure/closet/verb/verb_toggleopen()
 	set src in oview(1)
 	set category = "Предмет"
-	set name = "Открыть"
+	set name = "Открыть/Закрыть"
 
 	if(!usr.canmove || usr.stat || usr.restrained())
 		return
