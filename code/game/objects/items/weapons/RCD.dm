@@ -32,7 +32,7 @@ RCD
 
 /obj/item/weapon/rcd/verb/change_airlock_setting()
 	set name = "Изменить настройки Airlock"
-	set category = "Object"
+	set category = "Предмет"
 	set src in usr
 
 	var airlockcat = input(usr, "Select whether the airlock is solid or glass.") in list("Solid", "Glass")

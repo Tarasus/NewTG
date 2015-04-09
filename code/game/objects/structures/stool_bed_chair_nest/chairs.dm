@@ -57,8 +57,8 @@
 		buckled_mob.dir = dir
 
 /obj/structure/stool/bed/chair/verb/rotate()
-	set name = "Rotate Chair"
-	set category = "Object"
+	set name = "Вращать стул"
+	set category = "Предмет"
 	set src in oview(1)
 
 	if(config.ghost_interaction)

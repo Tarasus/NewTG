@@ -174,7 +174,7 @@
 
 /obj/item/device/flashlight/lamp/verb/toggle_light()
 	set name = "Переключить фонарь"
-	set category = "Object"
+	set category = "Предмет"
 	set src in oview(1)
 
 	if(!usr.stat)

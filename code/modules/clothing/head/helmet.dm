@@ -225,8 +225,8 @@ obj/item/clothing/head/helmet/bluetaghelm
 	return
 
 /obj/item/clothing/head/helmet/proc/toggle_helmlight()
-	set name = "Toggle Helmetlight"
-	set category = "Object"
+	set name = "Сменить режим фонарика в шлеме"
+	set category = "Предмет"
 	set desc = "Click to toggle your helmet's attached flashlight."
 
 	if(!F)

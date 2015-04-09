@@ -91,7 +91,7 @@
 // flip and rotate verbs
 /obj/structure/disposalconstruct/verb/rotate()
 	set name = "Повернуть трубу"
-	set category = "Object"
+	set category = "Предмет"
 	set src in view(1)
 
 	if(usr.stat || !usr.canmove || usr.restrained())
@@ -106,7 +106,7 @@
 
 /obj/structure/disposalconstruct/verb/flip()
 	set name = "Тряснуть трубу"
-	set category = "Object"
+	set category = "Предмет"
 	set src in view(1)
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return

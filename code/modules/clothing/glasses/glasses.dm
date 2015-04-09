@@ -144,8 +144,8 @@
 
 
 /obj/item/clothing/glasses/welding/verb/toggle()
-	set category = "Object"
-	set name = "Adjust welding goggles"
+	set category = "Предмет"
+	set name = "Отрегулировать сварочные очки"
 	set src in usr
 
 	weldingvisortoggle()

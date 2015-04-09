@@ -24,7 +24,7 @@
 
 /obj/machinery/power/emitter/verb/rotate()
 	set name = "Повернуть"
-	set category = "Object"
+	set category = "Предмет"
 	set src in oview(1)
 
 	if(usr.stat || !usr.canmove || usr.restrained())

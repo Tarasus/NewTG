@@ -76,7 +76,7 @@
 
 /obj/item/device/taperecorder/verb/ejectverb()
 	set name = "Извлечь ленту"
-	set category = "Object"
+	set category = "Предмет"
 
 	if(!can_use(usr))
 		return
@@ -104,7 +104,7 @@
 
 /obj/item/device/taperecorder/verb/record()
 	set name = "Начать запись"
-	set category = "Object"
+	set category = "Предмет"
 
 	if(!can_use(usr))
 		return
@@ -141,7 +141,7 @@
 
 /obj/item/device/taperecorder/verb/stop()
 	set name = "Стоп"
-	set category = "Object"
+	set category = "Предмет"
 
 	if(!can_use(usr))
 		return
@@ -161,7 +161,7 @@
 
 /obj/item/device/taperecorder/verb/play()
 	set name = "Воспроизвести ленту"
-	set category = "Object"
+	set category = "Предмет"
 
 	if(!can_use(usr))
 		return
@@ -216,7 +216,7 @@
 
 /obj/item/device/taperecorder/verb/print_transcript()
 	set name = "Распечатать стенограмму"
-	set category = "Object"
+	set category = "Предмет"
 
 	if(!can_use(usr))
 		return

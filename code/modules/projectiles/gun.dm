@@ -267,7 +267,7 @@
 
 /obj/item/weapon/gun/proc/toggle_gunlight()
 	set name = "Переключить фонарик оружия"
-	set category = "Object"
+	set category = "Предмет"
 	set desc = "Click to toggle your weapon's attached flashlight."
 
 	if(!F)

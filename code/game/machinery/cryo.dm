@@ -90,7 +90,7 @@
 /obj/machinery/atmospherics/unary/cryo_cell/verb/move_eject()
 	set name = "Вытащить из Крио Камеры"
 	set desc = "Begin the release sequence inside the cryo tube."
-	set category = "Object"
+	set category = "Предмет"
 	set src in oview(1)
 	if(usr == occupant || contents.Find(usr))	//If the user is inside the tube...
 		if(usr.stat == DEAD)	//and he's not dead....

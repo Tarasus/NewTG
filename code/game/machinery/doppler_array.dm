@@ -34,7 +34,7 @@ var/list/doppler_arrays = list()
 
 /obj/machinery/doppler_array/verb/rotate()
 	set name = "Rotate Tachyon-doppler Dish"
-	set category = "Object"
+	set category = "Предмет"
 	set src in oview(1)
 
 	if(!usr || !isturf(usr.loc))
