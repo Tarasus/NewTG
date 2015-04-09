@@ -16,8 +16,8 @@
 	var/initial_bin_rating = 1
 	var/min_health = 25
 	var/list/injection_chems = list() //list of injectable chems except ephedrine, coz ephedrine is always avalible
-	var/list/possible_chems = list(list("morphine", "salbutamol", "salglu_solution"),
-								   list("morphine", "salbutamol", "salglu_solution", "oculine"),
+	var/list/possible_chems = list(list("morphine", "salbutamol", "salglu_solution","charcoal"),
+								   list("morphine", "salbutamol", "salglu_solution", "oculine", "charcoal"),
 								   list("morphine", "salbutamol", "salglu_solution", "oculine", "charcoal", "mutadone", "mannitol", "pen_acid"))
 /obj/machinery/sleeper/New()
 	..()
@@ -194,8 +194,6 @@
 			inject_chem(usr, href_list["inject"])
 		else
 			usr << "<span class='notice'>ERROR: Subject is not in stable condition for auto-injection.</span>"
-	else
-		usr << "<span class='notice'>ERROR: Subject cannot metabolise chemicals.</span>"
 	updateUsrDialog()
 	add_fingerprint(usr)
 
