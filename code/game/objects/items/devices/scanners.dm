@@ -212,7 +212,7 @@ MASS SPECTROMETER
 
 /obj/item/device/healthanalyzer/verb/toggle_mode()
 	set name = "Переключить Детализацию"
-	set category = "Предмет"
+	set category = "Object"
 
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return

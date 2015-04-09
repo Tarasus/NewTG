@@ -1,6 +1,6 @@
 /proc/possess(obj/O as obj in world)
-	set name = "Овладеть объектом"
-	set category = "Предмет"
+	set name = "Possess Obj"
+	set category = "Object"
 
 	if(istype(O,/obj/singularity))
 		if(config.forbid_singulo_possession)
@@ -27,8 +27,8 @@
 	feedback_add_details("admin_verb","PO") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /proc/release(obj/O as obj in world)
-	set name = "Отпустить объект"
-	set category = "Предмет"
+	set name = "Release Obj"
+	set category = "Object"
 	//usr.loc = get_turf(usr)
 
 	if(usr.control_object && usr.name_archive) //if you have a name archived and if you are actually relassing an object

@@ -25,7 +25,7 @@
 
 /obj/machinery/washing_machine/verb/start()
 	set name = "Начать стирку"
-	set category = "Предмет"
+	set category = "Object"
 	set src in oview(1)
 
 	if(usr.stat || usr.restrained() || !usr.canmove)
@@ -167,7 +167,7 @@
 
 /obj/machinery/washing_machine/verb/climb_out()
 	set name = "Выбраться"
-	set category = "Предмет"
+	set category = "Object"
 	set src in usr.loc
 
 	sleep(20)

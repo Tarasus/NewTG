@@ -306,8 +306,8 @@
 	update_nearby_icons()
 
 /obj/structure/window/verb/rotate()
-	set name = "Повернуть окно против часовой"
-	set category = "Предмет"
+	set name = "Rotate Window Counter-Clockwise"
+	set category = "Object"
 	set src in oview(1)
 
 	if(usr.stat || !usr.canmove || usr.restrained())
@@ -326,8 +326,8 @@
 
 
 /obj/structure/window/verb/revrotate()
-	set name = "Повернуть окно по часовой"
-	set category = "Предмет"
+	set name = "Rotate Window Clockwise"
+	set category = "Object"
 	set src in oview(1)
 
 	if(usr.stat || !usr.canmove || usr.restrained())

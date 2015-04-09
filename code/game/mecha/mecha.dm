@@ -1064,7 +1064,7 @@ obj/mecha/proc/can_use(mob/user)
 
 /*
 /obj/mecha/verb/force_eject()
-	set category = "Предмет"
+	set category = "Object"
 	set name = "Force Eject"
 	set src in view(5)
 	src.go_out()

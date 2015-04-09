@@ -530,7 +530,7 @@ obj/structure/cable/proc/avail()
 
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "сделать фиксаторы из кабеля"
-	set category = "Предмет"
+	set category = "Object"
 	var/mob/M = usr
 
 	if(ishuman(M) && !M.restrained() && !M.stat && M.canmove)

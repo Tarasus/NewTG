@@ -18,8 +18,8 @@
 
 
 /obj/item/weapon/tank/jetpack/verb/toggle_rockets()
-	set name = "Переключить стабилизацию джетпака"
-	set category = "Предмет"
+	set name = "Toggle Jetpack Stabilization"
+	set category = "Object"
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return
 	src.stabilization_on = !( src.stabilization_on )
@@ -28,8 +28,8 @@
 
 
 /obj/item/weapon/tank/jetpack/verb/toggle()
-	set name = "Переключить джетпак"
-	set category = "Предмет"
+	set name = "Toggle Jetpack"
+	set category = "Object"
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return
 	on = !on

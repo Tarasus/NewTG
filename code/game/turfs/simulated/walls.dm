@@ -1,6 +1,6 @@
 /turf/simulated/wall
 	name = "wall"
-	desc = "It's a wall."
+	desc = "A huge chunk of metal used to separate rooms."
 	icon = 'icons/turf/walls.dmi'
 	var/mineral = "metal"
 	opacity = 1

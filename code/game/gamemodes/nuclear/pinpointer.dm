@@ -95,7 +95,7 @@
 
 
 /obj/item/weapon/pinpointer/advpinpointer/verb/toggle_mode()
-	set category = "Предмет"
+	set category = "Object"
 	set name = "Переключить режим указателя"
 	set src in view(1)
 

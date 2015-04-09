@@ -23,8 +23,8 @@
 	toggle_mister()
 
 /obj/item/weapon/watertank/verb/toggle_mister()
-	set name = "Перключить Mister"
-	set category = "Предмет"
+	set name = "Toggle Mister"
+	set category = "Object"
 	if (usr.get_item_by_slot(slot_back) != src)
 		usr << "<span class='notice'>The watertank needs to be on your back to use.</span>"
 		return

@@ -90,7 +90,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 /obj/structure/particle_accelerator/verb/rotate()
 	set name = "Повернуть по часовой"
-	set category = "Предмет"
+	set category = "Object"
 	set src in oview(1)
 
 	if(usr.stat || !usr.canmove || usr.restrained())
@@ -103,7 +103,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 /obj/structure/particle_accelerator/verb/rotateccw()
 	set name = "Повернуть против часовой"
-	set category = "Предмет"
+	set category = "Object"
 	set src in oview(1)
 
 	if(usr.stat || !usr.canmove || usr.restrained())
@@ -266,7 +266,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 /obj/machinery/particle_accelerator/verb/rotate()
 	set name = "Повернуть по часовой"
-	set category = "Предмет"
+	set category = "Object"
 	set src in oview(1)
 
 	if(usr.stat || !usr.canmove || usr.restrained())
@@ -279,7 +279,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 
 /obj/machinery/particle_accelerator/verb/rotateccw()
 	set name = "Повернуть против часовой"
-	set category = "Предмет"
+	set category = "Object"
 	set src in oview(1)
 
 	if(usr.stat || !usr.canmove || usr.restrained())

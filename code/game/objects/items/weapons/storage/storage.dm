@@ -368,8 +368,8 @@
 	return attack_hand(user)
 
 /obj/item/weapon/storage/verb/toggle_gathering_mode()
-	set name = "Переключить режим получения данных"
-	set category = "Предмет"
+	set name = "Switch Gathering Method"
+	set category = "Object"
 
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return
@@ -385,8 +385,8 @@
 
 // Empty all the contents onto the current turf
 /obj/item/weapon/storage/verb/quick_empty()
-	set name = "Вытащить содержимое"
-	set category = "Предмет"
+	set name = "Empty Contents"
+	set category = "Object"
 
 	if((!ishuman(usr) && (loc != usr)) || usr.stat || usr.restrained() ||!usr.canmove)
 		return

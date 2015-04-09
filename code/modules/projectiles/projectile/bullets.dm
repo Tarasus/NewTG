@@ -6,6 +6,7 @@
 	nodamage = 0
 	flag = "bullet"
 
+
 /obj/item/projectile/bullet/weakbullet //beanbag, heavy stamina damage
 	damage = 5
 	stamina = 80

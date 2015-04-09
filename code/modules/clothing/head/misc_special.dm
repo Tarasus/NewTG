@@ -33,8 +33,8 @@
 
 
 /obj/item/clothing/head/welding/verb/toggle()
-	set category = "Предмет"
-	set name = "Отрегулировать сварочную маску"
+	set category = "Object"
+	set name = "Adjust welding helmet"
 	set src in usr
 
 	weldingvisortoggle()

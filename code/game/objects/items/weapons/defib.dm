@@ -153,7 +153,7 @@
 
 /obj/item/weapon/defibrillator/proc/toggle_paddles()
 	set name = "Переключить поверхность"
-	set category = "Предмет"
+	set category = "Object"
 	on = !on
 
 	var/mob/living/carbon/human/user = usr

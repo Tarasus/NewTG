@@ -355,7 +355,7 @@ var/list/slot_equipment_priority = list( \
 //overriden here and in /mob/dead/observer for different point span classes and sanity checks
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Показать на"
-	set category = "Предмет"
+	set category = "Object"
 
 	if(!src || !isturf(src.loc) || !(A in view(src.loc)))
 		return 0
@@ -412,7 +412,7 @@ var/list/slot_equipment_priority = list( \
 
 /mob/verb/mode()
 	set name = "Активировать удерживаемый предмет"
-	set category = "Предмет"
+	set category = "Object"
 	set src = usr
 
 	if(istype(loc,/obj/mecha)) return

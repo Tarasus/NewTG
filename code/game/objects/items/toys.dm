@@ -887,7 +887,7 @@ obj/item/toy/cards/singlecard/examine(mob/user)
 
 obj/item/toy/cards/singlecard/verb/Flip()
 	set name = "Flip Card"
-	set category = "Предмет"
+	set category = "Object"
 	set src in range(1)
 	if(usr.stat || !ishuman(usr) || !usr.canmove || usr.restrained())
 		return

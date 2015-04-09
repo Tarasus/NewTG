@@ -14,7 +14,7 @@
 
 /obj/item/weapon/reagent_containers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "настроить объем трансфера"
-	set category = "Предмет"
+	set category = "Object"
 	set src in range(0)
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return

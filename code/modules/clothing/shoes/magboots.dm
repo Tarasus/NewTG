@@ -11,8 +11,8 @@
 
 
 /obj/item/clothing/shoes/magboots/verb/toggle()
-	set name = "Активировать Magboots"
-	set category = "Предмет"
+	set name = "Toggle Magboots"
+	set category = "Object"
 	set src in usr
 	if(!can_use(usr))
 		return

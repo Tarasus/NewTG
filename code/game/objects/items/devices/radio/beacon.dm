@@ -15,7 +15,7 @@
 
 /obj/item/device/radio/beacon/verb/alter_signal(t as text)
 	set name = "Изменить сигнал маяка"
-	set category = "Предмет"
+	set category = "Object"
 	set src in usr
 
 	if ((usr.canmove && !( usr.restrained() )))

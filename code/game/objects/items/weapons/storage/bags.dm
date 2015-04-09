@@ -112,8 +112,8 @@
 	icon_state = "portaseeder"
 
 /obj/item/weapon/storage/bag/plants/portaseeder/verb/dissolve_contents()
-	set name = "Активировать экстратор семян"
-	set category = "Предмет"
+	set name = "Activate Seed Extraction"
+	set category = "Object"
 	set desc = "Activate to convert your plants into plantable seeds."
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return

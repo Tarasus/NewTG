@@ -300,8 +300,8 @@ obj/structure/windoor_assembly/Destroy()
 
 //Rotates the windoor assembly clockwise
 /obj/structure/windoor_assembly/verb/revrotate()
-	set name = "Повернуть Windoor Assembly"
-	set category = "Предмет"
+	set name = "Rotate Windoor Assembly"
+	set category = "Object"
 	set src in oview(1)
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return
@@ -322,8 +322,8 @@ obj/structure/windoor_assembly/Destroy()
 
 //Flips the windoor assembly, determines whather the door opens to the left or the right
 /obj/structure/windoor_assembly/verb/flip()
-	set name = "Развернуть Windoor Assembly"
-	set category = "Предмет"
+	set name = "Flip Windoor Assembly"
+	set category = "Object"
 	set src in oview(1)
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return
