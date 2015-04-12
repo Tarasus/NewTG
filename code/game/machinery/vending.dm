@@ -948,3 +948,16 @@
 	premium = list(/obj/item/clothing/under/suit_jacket/checkered=1,/obj/item/clothing/head/mailman=1,/obj/item/clothing/under/rank/mailman=1,/obj/item/clothing/suit/jacket/leather=1,/obj/item/clothing/under/pants/mustangjeans=1)
 	refill_canister = /obj/item/weapon/vending_refill/clothing
 
+
+/obj/machinery/vending/lathing
+	name = "SupplyLathe Vend" //renamed to make the slogan rhyme
+	desc = "A lathing machine for supply items."
+	icon = 'icons/exs_for_me.dmi'
+	icon_state = "supply vend"
+	product_slogans = null
+	vend_delay = 50
+	vend_reply = "Please, wait. Supply Lathe in processing."
+	products = list()
+	contraband = list()
+	premium = list()
+	refill_canister = null

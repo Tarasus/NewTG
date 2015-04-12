@@ -57,7 +57,7 @@
 	default_horns_style = "First"
 	roundstart = 1
 	specflags = list(EYECOLOR,LIPS, HAIR, HBLACK, HORNS)
-	attack_verb = "ударил"
+	attack_verb = "punch"
 /*
  PLANTPEOPLE
 */
@@ -68,7 +68,7 @@
 	id = "plant"
 	default_color = "59CE00"
 	specflags = list(MUTCOLORS,EYECOLOR)
-	attack_verb = "ударил"
+	attack_verb = "punch"
 	attack_sound = 'sound/weapons/slice.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	burnmod = 1.25
