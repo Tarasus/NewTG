@@ -72,7 +72,7 @@ var/next_mob_id = 0
 	if(stat == UNCONSCIOUS || sleeping > 0)
 		src << "<I>... You can almost hear someone talking ...</I>"
 	else
-		src << msg
+		src << sanitize_russian(msg)
 	return
 
 // Show a message to all mobs who sees the src mob and the src mob itself
