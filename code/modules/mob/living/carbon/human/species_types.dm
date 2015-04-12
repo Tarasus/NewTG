@@ -54,6 +54,7 @@
 	say_mod = "говорит"
 	default_color = "FFFAFA"
 	default_hair_color = "000000"
+	default_horns_style = "First"
 	roundstart = 1
 	specflags = list(EYECOLOR,LIPS, HAIR, HBLACK, HORNS)
 	attack_verb = "ударил"

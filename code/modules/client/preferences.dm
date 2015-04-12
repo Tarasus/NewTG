@@ -91,7 +91,6 @@ datum/preferences
 	var/unlock_content = 0
 
 /datum/preferences/New(client/C)
-	horns_style = "First"
 	blood_type = random_blood_type()
 	ooccolor = normal_ooc_colour
 	if(istype(C))
@@ -740,6 +739,7 @@ datum/preferences
 							if(!config.mutant_colors || mutant_color == "#000")
 								mutant_color = pref_species.default_color
 								hair_color = pref_species.default_hair_color
+								horns_style = pref_species.default_horns_style
 
 					if("mutant_color")
 						if(!config.mutant_colors)
@@ -895,6 +895,8 @@ datum/preferences
 		character.gender = gender
 		character.age = age
 		character.blood_type = blood_type
+
+		character.horns_style = horns_style //sets horns style from preferences setup //*NEW*//
 
 		character.eye_color = eye_color
 		character.hair_color = hair_color

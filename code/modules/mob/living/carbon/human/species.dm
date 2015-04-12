@@ -4,7 +4,7 @@
 #define BODY_BEHIND_LAYER		25
 #define BODY_LAYER				24
 #define BODY_ADJ_LAYER			23
-#define HORNS_LAYER				10
+#define HORNS_LAYER				8
 #define HAIR_LAYER				9
 #define BODY_FRONT_LAYER		2
 
@@ -36,6 +36,7 @@
 	var/roundstart = 0	// can this mob be chosen at roundstart? (assuming the config option is checked?)
 	var/default_color = "#FFF"	// if alien colors are disabled, this is the color that will be used by that race
 	var/default_hair_color = "FFF"
+	var/default_horns_style = null // standart horns pick
 
 	var/eyes = "eyes"	// which eyes the race uses. at the moment, the only types of eyes are "eyes" (regular eyes) and "jelleyes" (three eyes)
 	var/sexes = 1		// whether or not the race has sexual characteristics. at the moment this is only 0 for skeletons and shadows
@@ -195,6 +196,11 @@
 		var/image/img_eyes_s = image("icon" = 'icons/mob/human_face.dmi', "icon_state" = "[eyes]_s", "layer" = -BODY_LAYER)
 		img_eyes_s.color = "#" + H.eye_color
 		standing	+= img_eyes_s
+
+	// HORNS //*NEW*// Showeble Hornses [OHHH YEEEEEES~~~]
+	if(H.horns_style && HORNS in specflags)
+		var/datum/sprite_accessory/horns/Q = horns_list[H.horns_style]
+		standing	+= image("icon" = 'icons/mob/horns.dmi', "icon_state" = "[Q.icon_state]", "layer" = -HORNS_LAYER)
 
 	//Underwear, Undershirts & Socks
 	if(H.underwear)

@@ -214,7 +214,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	be_random_name	= sanitize_integer(be_random_name, 0, 1, initial(be_random_name))
 	be_random_body	= sanitize_integer(be_random_body, 0, 1, initial(be_random_body))
 	gender			= sanitize_gender(gender)
-	horns_style		= sanitize_inlist(horns_style)
+	horns_style		= sanitize_inlist(horns_style, horns_list)
 	if(gender == MALE)
 		hair_style			= sanitize_inlist(hair_style, hair_styles_male_list)
 		facial_hair_style			= sanitize_inlist(facial_hair_style, facial_hair_styles_male_list)
