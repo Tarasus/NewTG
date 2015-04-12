@@ -36,14 +36,40 @@
 			index = findtext(t, char)
 	return t
 
+
 //Removes a few problematic characters
-/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#"))
+/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#","ÿ"="&#255;","ץ"="&#165;"))//ץ הכÿ ה‎באדא. ןמעמל ףיה¸ע
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)
 		while(index)
 			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+1)
-			index = findtext(t, char, index+1)
+			index = findtext(t, char)
 	return t
+//	return strip_html_simple(t)
+
+/proc/sanitize_to_default(var/msg)
+	return sanitize_simple(msg, YA_DEFAULT)
+
+/proc/sanitize_to_text(var/msg)
+	return sanitize_simple(msg, YA_TEXT)
+
+/proc/sanitize_to_html(var/msg)
+	return sanitize_simple(msg, YA_HTML)
+
+
+
+
+proc/sanitize_PDA(var/msg)
+	var/index = findtext(msg, "ÿ")
+	while(index)
+		msg = copytext(msg, 1, index) + "&#1103;" + copytext(msg, index+1)
+		index = findtext(msg, "ÿ")
+	index = findtext(msg, "&#255;")
+	while(index)
+		msg = copytext(msg, 1, index) + "&#1103;" + copytext(msg, index+1)
+		index = findtext(msg, "&#255;")
+	return msg
+
 
 //Runs byond's sanitization proc along-side sanitize_simple
 /proc/sanitize(var/t,var/list/repl_chars = null)
