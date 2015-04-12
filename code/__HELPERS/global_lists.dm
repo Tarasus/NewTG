@@ -13,6 +13,8 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/undershirt, undershirt_list, undershirt_m, undershirt_f)
 	//socks
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/socks, socks_list, socks_m, socks_f)
+	//horns
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/horns, horns_list)
 
 	//Species
 	for(var/spath in typesof(/datum/species))

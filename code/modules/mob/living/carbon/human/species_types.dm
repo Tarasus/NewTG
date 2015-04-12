@@ -24,14 +24,14 @@
 
 /datum/species/lizard
 	// Reptilian humanoids with scaled skin and tails.
-	name = "Lizardperson"
+	name = "Lizard"
 	id = "lizard"
 	say_mod = "шипит"
 	default_color = "00FF00"
 	roundstart = 1
 	specflags = list(MUTCOLORS,EYECOLOR,LIPS)
 	mutant_bodyparts = list("tail", "snout")
-	attack_verb = "режет"
+	attack_verb = "порезал"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	meat = /obj/item/weapon/reagent_containers/food/snacks/meat/human/mutant/lizard
@@ -43,6 +43,20 @@
 
 	return message
 
+/*
+ TROLLS
+*/
+
+/datum/species/troll
+		//trolls
+	name = "Troll"
+	id = "troll"
+	say_mod = "говорит"
+	default_color = "FFFAFA"
+	default_hair_color = "000000"
+	roundstart = 1
+	specflags = list(EYECOLOR,LIPS, HAIR, HBLACK, HORNS)
+	attack_verb = "ударил"
 /*
  PLANTPEOPLE
 */

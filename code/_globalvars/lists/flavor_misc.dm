@@ -10,6 +10,8 @@ var/global/list/facial_hair_styles_female_list = list()	//stores only hair names
 var/global/list/underwear_list = list()		//stores /datum/sprite_accessory/underwear indexed by name
 var/global/list/underwear_m = list()	//stores only underwear name
 var/global/list/underwear_f = list()	//stores only underwear name
+	//horns
+var/global/list/horns_list = list()		//*NEW*// stores horns styles
 	//Undershirts
 var/global/list/undershirt_list = list() 	//stores /datum/sprite_accessory/undershirt indexed by name
 var/global/list/undershirt_m = list()	 //stores only undershirt name
