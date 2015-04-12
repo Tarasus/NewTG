@@ -100,7 +100,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(stat == DEAD)
 		ghostize(1)
 	else
-		var/response = alert(src, "Вы -сельезно- хотите стать призраком?\n(Вы живы. Если вы призрак во времЯ; того, какогда еще живы, то больше не сможете играть в этом раунде! Решение нельзЯ; изменить, выбирайте с умом!!)","Вы точно хотите этого?","Призрак","Оставайтесь в теле")
+		var/response = alert(src, "Вы -сельезно- хотите стать призраком?\n(Вы живы. Если вы призрак во врем&#255; того, какогда еще живы, то больше не сможете играть в этом раунде! Решение нельз&#255; изменить, выбирайте с умом!!)","Вы точно хотите этого?","Призрак","Оставайтесь в теле")
 		if(response != "Ghost")	return	//didn't want to ghost after-all
 		resting = 1
 		ghostize(0)						//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3

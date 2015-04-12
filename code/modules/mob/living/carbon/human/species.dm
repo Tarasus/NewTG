@@ -66,7 +66,7 @@
 	// species flags. these can be found in flags.dm
 	var/list/specflags = list()
 
-	var/attack_verb = "punch"	// punch-specific attack verb
+	var/attack_verb = "ударил кулаком"	// punch-specific attack verb
 	var/sound/attack_sound = 'sound/weapons/punch1.ogg'
 	var/sound/miss_sound = 'sound/weapons/punchmiss.ogg'
 
