@@ -108,6 +108,7 @@
 	bonus_reagents = list("vitamin" = 1)
 	list_reagents = list("nutriment" = 8, "vitamin" = 1)
 	filling_color = "#D2691E"
+	no_bite = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/soylentgreen
 	name = "\improper Soylent Green"
@@ -117,6 +118,7 @@
 	bonus_reagents = list("vitamin" = 1)
 	list_reagents = list("nutriment" = 10, "vitamin" = 1)
 	filling_color = "#9ACD32"
+	no_bite = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/soylenviridians
 	name = "\improper Soylent Virdians"
@@ -126,6 +128,7 @@
 	bonus_reagents = list("vitamin" = 1)
 	list_reagents = list("nutriment" = 10, "vitamin" = 1)
 	filling_color = "#9ACD32"
+	no_bite = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/rofflewaffles
 	name = "roffle waffles"
@@ -136,6 +139,7 @@
 	bonus_reagents = list("vitamin" = 2)
 	list_reagents = list("nutriment" = 8, "mushroomhallucinogen" = 2, "vitamin" = 2)
 	filling_color = "#00BFFF"
+	no_bite = 1
 
 ////////////////////////////////////////////OTHER////////////////////////////////////////////
 

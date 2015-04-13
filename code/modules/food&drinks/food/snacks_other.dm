@@ -83,6 +83,7 @@
 	bonus_reagents = list("nutriment" = 1, "vitamin" = 2)
 	list_reagents = list("nutriment" = 6)
 	filling_color = "#D2B48C"
+	no_bite = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/fries
 	name = "space fries"
