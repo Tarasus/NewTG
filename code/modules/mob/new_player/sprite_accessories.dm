@@ -1046,3 +1046,14 @@
 	name = "Pantyhose"
 	icon_state = "pantyhose"
 	gender = FEMALE
+
+//////////////////////////////////////
+//////////////[HORNS]/////////////////
+//////////////////////////////////////
+/datum/sprite_accessory/horns
+	icon = 'icons/mob/horns.dmi'
+
+/datum/sprite_accessory/horns/one
+	name = "First"
+	icon_state = "1"
+	gender = NEUTER

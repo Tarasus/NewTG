@@ -80,6 +80,11 @@
 		facial_s.Blend("#[facial_hair_color]", ICON_MULTIPLY)
 		eyes_s.Blend(facial_s, ICON_OVERLAY)
 
+	S = horns_list[horns_style]	//*NEW*// SHOW this FUKKEN horns
+	if(S && (HORNS in pref_species.specflags))
+		var/icon/horns_s = new/icon("icon" = S.icon, "icon_state" = "[S.icon_state]")
+		eyes_s.Blend(horns_s, ICON_OVERLAY)
+
 	var/list/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	var/icon_state_string = "[pref_species.id]_"
 
