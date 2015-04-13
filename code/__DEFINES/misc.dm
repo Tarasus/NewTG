@@ -113,3 +113,8 @@
 #define PEN_FONT "Verdana"
 #define CRAYON_FONT "Comic Sans MS"
 #define SIGNFONT "Times New Roman"
+
+
+#define YA_DEFAULT 	list("&#255;" = "ÿ", "&#1103;" = "ÿ")
+#define YA_TEXT		list("ÿ" = "&#255;", "&#1103;" = "&#255;")
+#define YA_HTML		list("ÿ" = "&#1103;","&#255;" = "&#1103;")

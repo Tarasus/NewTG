@@ -776,24 +776,33 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 /obj/item/device/pda/proc/create_message(var/mob/living/U = usr, var/obj/item/device/pda/P)
 
-	var/t = msg_input(U)
 
-	if (!t)
+	var/t = input(U, "Please enter message", name, null) as text
+	t = copytext(sanitize_PDA(t), 1, MAX_MESSAGE_LEN)
+	if (!t || !istype(P))
+		return
+	if (!in_range(src, U) && loc != U)
+		return
+
+	if (isnull(P)|| !isnull(P.gc_destroyed) || P.toff || toff)
 		return
 
 	if (last_text && world.time < last_text + 5)
 		return
 
-	if (isnull(P) || P.toff || !istype(P))
+	if(!can_use(U))
 		return
 
 	last_text = world.time
+	// check if telecomms I/O route 1459 is stable
+	//var/telecomms_intact = telecomms_process(P.owner, owner, t)
 	var/obj/machinery/message_server/useMS = null
 	if(message_servers)
 		for (var/obj/machinery/message_server/MS in message_servers)
 		//PDAs are now dependant on the Message Server.
 			if(MS.active)
 				useMS = MS
+				break
 
 	var/datum/signal/signal = src.telecomms_process()
 
