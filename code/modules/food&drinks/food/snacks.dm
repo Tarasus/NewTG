@@ -1,4 +1,9 @@
 /obj/item/weapon/reagent_containers/food/snacks
+
+	//*NEW*// biting overlay
+	var/icon/bited_outline = icon('icons/obj/food.dmi', "bited")
+	var/no_bite = null
+
 	name = "snack"
 	desc = "yummy"
 	icon = 'icons/obj/food.dmi'
@@ -51,6 +56,7 @@
 		M.unEquip(src)	//so icons update :[
 		qdel(src)
 		return 0
+
 	if(istype(M, /mob/living/carbon))
 		if(!canconsume(M, user))
 			return 0
@@ -113,6 +119,12 @@
 						reagents.trans_to(M, reagents.total_volume)
 					bitecount++
 					On_Consume()
+						//*NEW*// bitting food OVERLAY
+					if(src.no_bite == null)
+						var/icon/I = new('icons/obj/food.dmi', src.icon_state)
+						I.Blend(src.bited_outline, ICON_OVERLAY, (32/src.bitesize)*src.bitecount*-1, 0)
+						I.SwapColor(rgb(255, 0, 220, 255), rgb(0, 0, 0, 0))
+						src.icon = I
 			return 1
 
 	return 0

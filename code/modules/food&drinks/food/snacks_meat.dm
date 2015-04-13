@@ -38,6 +38,14 @@
 	bitesize = 1
 	filling_color = "#CD853F"
 
+/obj/item/weapon/reagent_containers/food/snacks/salo
+	name = "salo"
+	desc = "A SAAAAAA-A-A-ALO."
+	icon_state = "SALO"
+	bonus_reagents = list("nutriment" = 10, "vitamin" = 5)
+	list_reagents = list("nutriment" = 5)
+	bitesize = 3
+
 /obj/item/weapon/reagent_containers/food/snacks/fishandchips
 	name = "fish and chips"
 	desc = "I do say so myself chap."

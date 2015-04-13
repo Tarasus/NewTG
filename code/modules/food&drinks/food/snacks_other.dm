@@ -70,6 +70,7 @@
 	list_reagents = list("nutriment" = 2)
 	bitesize = 0.1 //this snack is supposed to be eating during looooong time. And this it not dinner food! --rastaf0
 	filling_color = "#FFEFD5"
+	no_bite = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/popcorn/New()
 	..()

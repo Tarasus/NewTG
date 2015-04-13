@@ -63,3 +63,4 @@
 	trash = /obj/item/trash/syndi_cakes
 	list_reagents = list("nutriment" = 4, "doctorsdelight" = 5)
 	filling_color = "#F5F5DC"
+	no_bite = 1
