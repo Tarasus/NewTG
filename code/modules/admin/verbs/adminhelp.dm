@@ -29,6 +29,10 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 	if(!msg)	return
 	var/original_msg = msg
 
+	//russian_sanitaze
+	sanitize(msg)
+	sanitize_russian(msg)
+
 	//explode the input msg into a list
 	var/list/msglist = text2list(msg, " ")
 
@@ -94,7 +98,9 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 			X << 'sound/effects/adminhelp.ogg'
 		X << msg
 
-
+	//russian sanitaze for PM
+	sanitize(original_msg)
+	sanitize_russian(original_msg)
 	//show it to the person adminhelping too
 	src << "<span class='adminnotice'>PM to-<b>Admins</b>: [original_msg]</span>"
 
