@@ -572,7 +572,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				var/n = stripped_multiline_input(U, "Please enter message", name, note)
 				if (in_range(src, U) && loc == U)
 					if (mode == 1 && n)
-						note = n
+						note = sanitize_uni(n)
 						notehtml = parsepencode(n, U, SIGNFONT)
 						notescanned = 0
 				else
@@ -778,7 +778,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 
 	var/t = input(U, "Please enter message", name, null) as text
-	t = copytext(sanitize_PDA(t), 1, MAX_MESSAGE_LEN)
+	t = copytext(sanitize_uni(t), 1, MAX_MESSAGE_LEN)
 	if (!t || !istype(P))
 		return
 	if (!in_range(src, U) && loc != U)

@@ -19,8 +19,8 @@
 	var/syndies_didnt_escape = 0 //Used for tracking if the syndies got the shuttle off of the z-level
 
 datum/game_mode/nuclear/announce()
-	world << sanitize_to_text("<B>Текущий игровой режим - Ядерная Угроза!</B>")
-	world << sanitize_to_text("<B>Оперативные агенты [syndicate_name()] собираются напасть на станцию! Не дайте им преуспеть</B>")
+	world << sanitize_uni("<B>Текущий игровой режим - Ядерная Угроза!</B>")
+	world << sanitize_uni("<B>Оперативные агенты [syndicate_name()] собираются напасть на станцию! Не дайте им преуспеть</B>")
 //	world << "A nuclear explosive was being transported by Nanotrasen to a military base. The transport ship mysteriously lost contact with Space Traffic Control (STC). About that time a strange disk was discovered around [station_name()]. It was identified by Nanotrasen as a nuclear auth. disk and now Syndicate Operatives have arrived to retake the disk and detonate SS13! Also, most likely Syndicate star ships are in the vicinity so take care not to lose the disk!\n<B>Syndicate</B>: Reclaim the disk and detonate the nuclear bomb anywhere on SS13.\n<B>Personnel</B>: Hold the disk and <B>escape with the disk</B> on the shuttle!"
 
 /datum/game_mode/nuclear/pre_setup()
@@ -147,10 +147,10 @@ datum/game_mode/nuclear/announce()
 
 /datum/game_mode/proc/greet_syndicate(var/datum/mind/syndicate, var/you_are=1)
 	if (you_are)
-		syndicate.current <<  sanitize_to_text("<span class='info'>Вы оперативный агент [syndicate_name()]!</span>")
+		syndicate.current <<  sanitize_uni("<span class='info'>Вы оперативный агент [syndicate_name()]!</span>")
 	var/obj_count = 1
 	for(var/datum/objective/objective in syndicate.objectives)
-		syndicate.current << sanitize_to_text("<B>Задание #[obj_count]</B>: [objective.explanation_text]")
+		syndicate.current << sanitize_uni("<B>Задание #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++
 	return
 
@@ -219,23 +219,23 @@ datum/game_mode/nuclear/announce()
 
 	if      (!disk_rescued &&  station_was_nuked && !syndies_didnt_escape)
 		feedback_set_details("round_end_result","win - syndicate nuke")
-		world << sanitize_to_text("<FONT size = 3><B>Полная победа Синдиката!</B></FONT>")
-		world << sanitize_to_text("<B>Оперативные агенты [syndicate_name()] уничтожили [station_name()]!</B>")
+		world << sanitize_uni("<FONT size = 3><B>Полная победа Синдиката!</B></FONT>")
+		world << sanitize_uni("<B>Оперативные агенты [syndicate_name()] уничтожили [station_name()]!</B>")
 
 	else if (!disk_rescued &&  station_was_nuked && syndies_didnt_escape)
 		feedback_set_details("round_end_result","halfwin - syndicate nuke - did not evacuate in time")
-		world << sanitize_to_text("<FONT size = 3><B>Плная аннигиляция!</B></FONT>")
-		world << sanitize_to_text("<B>Оперативные агенты [syndicate_name()] уничтожили [station_name()], но не успели улететь и поджарились вместе с персоналом.</B>")
+		world << sanitize_uni("<FONT size = 3><B>Плная аннигиляция!</B></FONT>")
+		world << sanitize_uni("<B>Оперативные агенты [syndicate_name()] уничтожили [station_name()], но не успели улететь и поджарились вместе с персоналом.</B>")
 
 	else if (!disk_rescued && !station_was_nuked && nuke_off_station && !syndies_didnt_escape)
 		feedback_set_details("round_end_result","halfwin - blew wrong station")
-		world << sanitize_to_text("<FONT size = 3><B>Частичная победа персонала</B></FONT>")
-		world << sanitize_to_text("<B>Оперативные агенты  [syndicate_name()] украли диск, но взорвали не ту станцию.</B>")
+		world << sanitize_uni("<FONT size = 3><B>Частичная победа персонала</B></FONT>")
+		world << sanitize_uni("<B>Оперативные агенты  [syndicate_name()] украли диск, но взорвали не ту станцию.</B>")
 
 	else if (!disk_rescued && !station_was_nuked && nuke_off_station && syndies_didnt_escape)
 		feedback_set_details("round_end_result","halfwin - blew wrong station - did not evacuate in time")
-		world << sanitize_to_text("<FONT size = 3><B>[syndicate_name()] получают Премию Дарвина!</B></FONT>")
-		world << sanitize_to_text("<B>Оперативные агенты [syndicate_name()] взорвали не ту станцию и подорвались вместе с ней.</B>")
+		world << sanitize_uni("<FONT size = 3><B>[syndicate_name()] получают Премию Дарвина!</B></FONT>")
+		world << sanitize_uni("<B>Оперативные агенты [syndicate_name()] взорвали не ту станцию и подорвались вместе с ней.</B>")
 
 	else if ( disk_rescued && are_operatives_dead())
 		feedback_set_details("round_end_result","loss - evacuation - disk secured - syndi team dead")
@@ -244,22 +244,22 @@ datum/game_mode/nuclear/announce()
 
 	else if ( disk_rescued )
 		feedback_set_details("round_end_result","loss - evacuation - disk secured")
-		world << sanitize_to_text("<FONT size = 3><B>Частична&#255; победа Синдиката!</B></FONT>")
-		world << sanitize_to_text("<B>Научный персонал не смог сохранить диск, но при этом навал&#255;л люлей оперативным агентам [syndicate_name()]!</B>")
+		world << sanitize_uni("<FONT size = 3><B>Частична&#255; победа Синдиката!</B></FONT>")
+		world << sanitize_uni("<B>Научный персонал не смог сохранить диск, но при этом навал&#255;л люлей оперативным агентам [syndicate_name()]!</B>")
 
 	else if (!disk_rescued && are_operatives_dead())
 		feedback_set_details("round_end_result","loss - evacuation - disk not secured")
-		world << sanitize_to_text("<FONT size = 3><B>Частична&#255; победа Синдиката!</B></FONT>")
-		world << sanitize_to_text("<B>Научный персонал не смог сохранить диск, но при этом перебил большинство оперативных агентов [syndicate_name()]!</B>")
+		world << sanitize_uni("<FONT size = 3><B>Частична&#255; победа Синдиката!</B></FONT>")
+		world << sanitize_uni("<B>Научный персонал не смог сохранить диск, но при этом перебил большинство оперативных агентов [syndicate_name()]!</B>")
 
 	else if (!disk_rescued &&  crew_evacuated)
 		feedback_set_details("round_end_result","halfwin - detonation averted")
-		world << sanitize_to_text("<FONT size = 3><B>Частична&#255; победа Синдиката!</B></FONT>")
-		world << sanitize_to_text("<B>Оперативные агенты [syndicate_name()] смогли удержать украденый диск, но [station_name()] не была взорвана!")
+		world << sanitize_uni("<FONT size = 3><B>Частична&#255; победа Синдиката!</B></FONT>")
+		world << sanitize_uni("<B>Оперативные агенты [syndicate_name()] смогли удержать украденый диск, но [station_name()] не была взорвана!")
 	else if (!disk_rescued && !crew_evacuated)
 		feedback_set_details("round_end_result","halfwin - interrupted")
-		world << sanitize_to_text("<FONT size = 3><B>Ничь&#255;</B></FONT>")
-		world << sanitize_to_text("<B>Раунд был прерван магическим вмешательством третьих лиц!</B>")
+		world << sanitize_uni("<FONT size = 3><B>Ничь&#255;</B></FONT>")
+		world << sanitize_uni("<B>Раунд был прерван магическим вмешательством третьих лиц!</B>")
 
 
 	..()

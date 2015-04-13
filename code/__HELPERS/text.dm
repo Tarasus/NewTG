@@ -53,6 +53,9 @@
 			index = findtext(t, char)
 	return t
 
+/proc/sanitize_to_html(var/msg)
+	return sanitize_simple(msg, YA_HTML)
+
 //Runs byond's sanitization proc along-side sanitize_simple
 /proc/sanitize(var/t,var/list/repl_chars = null)
 	return sanitize_simple(t,repl_chars)
