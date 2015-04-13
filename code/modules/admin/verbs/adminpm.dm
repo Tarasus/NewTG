@@ -36,6 +36,10 @@
 //takes input from cmd_admin_pm_context, cmd_admin_pm_panel or /client/Topic and sends them a PM.
 //Fetching a message if needed. src is the sender and C is the target client
 /client/proc/cmd_admin_pm(whom, msg)
+	//sanitaze
+	sanitize_uni(msg)
+	sanitize(msg)
+
 	if(prefs.muted & MUTE_ADMINHELP)
 		src << "<font color='red'>Error: Admin-PM: You are unable to use admin PM-s (muted).</font>"
 		return
@@ -63,12 +67,8 @@
 	if (src.handle_spam_prevention(msg,MUTE_ADMINHELP))
 		return
 
-	//clean the message if it's not sent by a high-rank admin
-	if(!check_rights(R_SERVER|R_DEBUG,0))
-		msg = sanitize(copytext(msg,1,MAX_MESSAGE_LEN))
-		if(!msg)	return
-
-	msg = emoji_parse(msg)
+	msg = emoji_parse(msg) //it's not fukken usable.
+	msg = sanitize_uni(copytext(msg,1,MAX_MESSAGE_LEN))
 
 	if(C.holder)
 		if(holder)	//both are admins
@@ -98,7 +98,10 @@
 				spawn()	//so we don't hold the caller proc up
 					var/sender = src
 					var/sendername = key
-					var/reply = input(C, msg,"Admin PM from-[sendername]", "") as text|null		//show message and await a reply
+					var/reply = sanitize_uni(input(C, msg,"Admin PM from-[sendername]", "") as text|null)		//show message and await a reply
+						//russian sanitaze for PM x4 *IT'S FUKKEN NEEDED*
+					sanitize(reply)
+					sanitize_russian(reply)
 					if(C && reply)
 						if(sender)
 							C.cmd_admin_pm(sender,reply)										//sender is still about, let's reply to them

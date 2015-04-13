@@ -5,6 +5,8 @@
 	var/hair_color = "000"
 	var/hair_style = "Bald"
 
+	var/horns_style = "Firts" //defines HORNS //*NEW*//
+
 	//Facial hair colour and style
 	var/facial_hair_color = "000"
 	var/facial_hair_style = "Shaved"
