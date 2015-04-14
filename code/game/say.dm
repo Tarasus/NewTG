@@ -16,12 +16,26 @@ var/list/freqtospan = list(
 	"1441" = "dsquadradio"
 	)
 
-/atom/movable/proc/say(message)
+proc/sanitize_russian(var/msg, var/html = 0) //Специально для всего, где не нужно убирать переносы строк и прочее.
+	var/rep
+	if(html)
+		rep = "&#x44F;"
+	else
+		rep = "&#255;"
+	var/index = findtext(msg, "я")
+	while(index)
+		msg = copytext(msg, 1, index) + rep + copytext(msg, index + 1)
+		index = findtext(msg, "я")
+	return msg
+
+/atom/movable/proc/say(message) //>> SAY *MARK*
 	if(!can_speak())
 		return
 	if(message == "" || !message)
 		return
 	var/list/spans = get_spans()
+	sanitize(message)
+	sanitize_russian(message)
 	send_speech(message, 7, src, , spans)
 
 /atom/movable/proc/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans)

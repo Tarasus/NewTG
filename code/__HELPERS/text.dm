@@ -22,7 +22,7 @@
 	return sqlfdbktableprefix + table
 
 /*
- * Text sanitization
+ * Text sanitization 			//спизжено с AniBay
  */
 
 //Simply removes < and > and limits the length of the message
@@ -37,17 +37,28 @@
 	return t
 
 //Removes a few problematic characters
-/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#"))
+/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#","€"="&#255;","<"="(","&lt;"=")"))
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)
 		while(index)
 			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+1)
-			index = findtext(t, char, index+1)
+			index = findtext(t, char)
 	return t
+
+/proc/sanitize_uni(var/t,var/list/repl_chars = list("\n"="#","\t"="#","€"="&#255;","<"="(","&lt;"=")"))
+	for(var/char in repl_chars)
+		var/index = findtext(t, char)
+		while(index)
+			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+1)
+			index = findtext(t, char)
+	return t
+
+/proc/sanitize_to_html(var/msg)
+	return sanitize_simple(msg, YA_HTML)
 
 //Runs byond's sanitization proc along-side sanitize_simple
 /proc/sanitize(var/t,var/list/repl_chars = null)
-	return html_encode(sanitize_simple(t,repl_chars))
+	return sanitize_simple(t,repl_chars)
 
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's html_encode()

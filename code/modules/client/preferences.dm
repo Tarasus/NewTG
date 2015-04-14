@@ -60,6 +60,7 @@ datum/preferences
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	var/mutant_color = "FFF"			//Mutant race skin color
+	var/horns_style = "First"			//*NEW*// Trolls horns style
 
 		//Mob preview
 	var/icon/preview_icon_front = null
@@ -200,8 +201,9 @@ datum/preferences
 
 					dat += "<a href='?_src_=prefs;preference=hair_style;task=input'>[hair_style]</a><BR>"
 					dat += "<a href='?_src_=prefs;preference=previous_hair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hair_style;task=input'>&gt;</a><BR>"
-					dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
-
+					if (HBLACK in pref_species.specflags)
+					else
+						dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
 
 					dat += "</td><td valign='top' width='21%'>"
 
@@ -209,7 +211,9 @@ datum/preferences
 
 					dat += "<a href='?_src_=prefs;preference=facial_hair_style;task=input'>[facial_hair_style]</a><BR>"
 					dat += "<a href='?_src_=prefs;preference=previous_facehair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehair_style;task=input'>&gt;</a><BR>"
-					dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
+					if (HBLACK in pref_species.specflags)
+					else
+						dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
 
 					dat += "</td>"
 
@@ -230,6 +234,16 @@ datum/preferences
 					dat += "<h3>Alien Color</h3>"
 
 					dat += "<span style='border: 1px solid #161616; background-color: #[mutant_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
+
+					dat += "</td>"
+
+				if(HORNS in pref_species.specflags)
+
+					dat += "<td valign='top' width='21%'>"
+
+					dat += "<h3>Horns</h3>"
+
+					dat += "<a href='?_src_=prefs;preference=horns_style;task=input'>[horns_style]</a><BR>"
 
 					dat += "</td>"
 
@@ -724,6 +738,8 @@ datum/preferences
 							pref_species = new newtype()
 							if(!config.mutant_colors || mutant_color == "#000")
 								mutant_color = pref_species.default_color
+								hair_color = pref_species.default_hair_color
+								horns_style = pref_species.default_horns_style
 
 					if("mutant_color")
 						if(!config.mutant_colors)
@@ -753,6 +769,12 @@ datum/preferences
 						var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in backbaglist
 						if(new_backbag)
 							backbag = backbaglist.Find(new_backbag)
+
+					if("horns_style") //*NEW*// Horns Selector
+						var/new_horns
+						new_horns = input(user, "Select a horns style", "Horns Selection") as null|anything in horns_list
+						if(new_horns)
+							horns_style = new_horns
 			else
 				switch(href_list["preference"])
 					if("publicity")
@@ -873,6 +895,8 @@ datum/preferences
 		character.gender = gender
 		character.age = age
 		character.blood_type = blood_type
+
+		character.horns_style = horns_style //sets horns style from preferences setup //*NEW*//
 
 		character.eye_color = eye_color
 		character.hair_color = hair_color
