@@ -5,7 +5,7 @@
 	if(say_disabled)	//This is here to try to identify lag problems
 		usr << "<span class='danger'>Speech is currently admin-disabled.</span>"
 		return
-	usr.say(sanitize_simple(message))
+	usr.say(sanitize_russian(message))
 
 /mob/verb/whisper(message as text)
 	set name = "Whisper"
@@ -20,7 +20,7 @@
 		usr << "<span class='danger'>Speech is currently admin-disabled.</span>"
 		return
 
-	message = trim(copytext(sanitize_simple(message), 1, MAX_MESSAGE_LEN))
+	message = trim(copytext(sanitize_russian(message), 1, MAX_MESSAGE_LEN))
 
 	usr.emote("me",1,message)
 
@@ -39,7 +39,7 @@
 	if(name != real_name)
 		alt_name = " (died as [real_name])"
 
-	message = sanitize_simple(src.say_quote(message))
+	message = sanitize_russian(src.say_quote(message))
 	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span>[alt_name] <span class='message'>[message]</span></span>"
 
 	for(var/mob/M in player_list)
