@@ -174,3 +174,14 @@
 				/obj/item/stack/packageWrap = 5,)
 	tools = list(/obj/item/weapon/screwdriver)
 	time = 200
+
+/*             // NOT USED //
+/datum/table_recipe/samopal
+	name = "Improvised Samopal"
+	result = /obj/item/weapon/gun/projectile/revolver/doublebarrel/samopal(chambered = null)
+	reqs = list(/obj/item/device/assembly/igniter = 1,
+				/obj/item/weaponcrafting/stock = 1,
+				/obj/item/pipe = 2,
+				/obj/item/stack/packageWrap = 10,)
+	tools = list(/obj/item/weapon/screwdriver, /obj/item/weapon/weldingtool)
+	time = 350 */
