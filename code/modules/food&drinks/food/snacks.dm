@@ -1,4 +1,10 @@
 /obj/item/weapon/reagent_containers/food/snacks
+
+	//*NEW*// biting overlay
+	var/icon/bited_outline = icon('icons/obj/food.dmi', "bited")
+	var/no_bite = null
+	var/opened_needs = null
+
 	name = "snack"
 	desc = "yummy"
 	icon = 'icons/obj/food.dmi'
@@ -14,6 +20,8 @@
 	var/potency = null
 	var/dry = 0
 	var/cooked_type = null  //for microwave cooking. path of the resulting item after microwaving
+	var/cooked_skillet = null
+	var/cooked_pan = null
 	var/filling_color = "#FFFFFF" //color to use when added to custom food.
 	var/custom_food_type = null  //for food customizing. path of the custom food to create
 	var/junkiness = 0  //for junk food. used to lower human satiety.
@@ -44,6 +52,15 @@
 
 
 /obj/item/weapon/reagent_containers/food/snacks/attack(mob/M, mob/user, def_zone)
+	//*NEW*// Check for package open
+	var/cont = 0
+	if(opened_needs == null)
+		cont = 1
+	else
+		usr << "<small>First you need to open the package"
+	if(cont == 0)
+		return 0
+
 	if(!eatverb)
 		eatverb = pick("bite","chew","nibble","gnaw","gobble","chomp")
 	if(!reagents.total_volume)						//Shouldn't be needed but it checks to see if it has anything left in it.
@@ -51,6 +68,7 @@
 		M.unEquip(src)	//so icons update :[
 		qdel(src)
 		return 0
+
 	if(istype(M, /mob/living/carbon))
 		if(!canconsume(M, user))
 			return 0
@@ -113,6 +131,13 @@
 						reagents.trans_to(M, reagents.total_volume)
 					bitecount++
 					On_Consume()
+						//*NEW*// bitting food OVERLAY
+					if(src.no_bite == null)
+						var/icon/I = new('icons/obj/food.dmi', src.icon_state)
+						//I.Blend(src.bited_outline, ICON_OVERLAY, (32+(bitecount*(32/bitesize)*-1))*-2, rand(2)) work's is not corrently
+						I.Blend(src.bited_outline, ICON_OVERLAY, 0, rand(2))
+						I.SwapColor(rgb(255, 0, 220, 255), rgb(0, 0, 0, 0))
+						src.icon = I
 			return 1
 
 	return 0
@@ -289,3 +314,11 @@
 		add_fingerprint(user)
 		contents += W
 		return 1 // no afterattack here
+
+//*NEW*// Open snack from vend for eating
+/obj/item/weapon/reagent_containers/food/snacks/attack_self(mob/user)
+	if(opened_needs == 1)
+		usr << "<small>You opened [name]'s package"
+		name = "opened "+ name
+		opened_needs = null
+		icon_state += "_o"

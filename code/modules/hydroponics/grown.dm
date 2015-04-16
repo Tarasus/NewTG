@@ -101,6 +101,7 @@
 	cooked_type = /obj/item/weapon/reagent_containers/food/snacks/popcorn
 	filling_color = "#FFFF00"
 	trash = /obj/item/weapon/grown/corncob
+	no_bite = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/corn/add_juice()
 	if(..())
@@ -751,6 +752,7 @@ obj/item/weapon/reagent_containers/food/snacks/grown/shell/eggy/add_juice()
 	gender = PLURAL
 	icon_state = "soybeans"
 	filling_color = "#F0E68C"
+	no_bite = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/soybeans/add_juice()
 	if(..())
