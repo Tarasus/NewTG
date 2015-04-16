@@ -1,4 +1,5 @@
 /obj/item/weapon/reagent_containers/food/snacks/soup
+	no_bite = 1
 	w_class = 3
 	trash = /obj/item/weapon/reagent_containers/glass/bowl
 	bitesize = 5

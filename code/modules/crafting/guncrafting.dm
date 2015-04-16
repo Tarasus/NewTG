@@ -28,6 +28,17 @@
 		del(src)
 		return
 
+/obj/item/device/assembly/igniter/attackby(obj/item/W as obj, mob/user as mob, params)
+	..()
+	if(istype(W,/obj/item/weaponcrafting/stock))
+		user << "You attach the stock to igniter."
+		var/obj/item/weaponcrafting/isamopalconstruction/I = new /obj/item/weaponcrafting/isamopalconstruction
+		user.unEquip(src)
+		user.put_in_hands(I)
+		del(W)
+		del(src)
+		return
+
 // SHOTGUN //
 
 /obj/item/weaponcrafting/ishotgunconstruction
@@ -81,3 +92,62 @@
 			user << "<span class='warning'>You need at least five feet of wrapping paper to secure the stock.</span>"
 			return
 
+// SAMOPAL //
+
+/obj/item/weaponcrafting/isamopalconstruction
+	name = "slightly conspicuous metal construction"
+	desc = "A stock attached to a igniter."
+	icon = 'icons/exs_for_me.dmi'
+	icon_state = "constr1"
+
+/obj/item/weaponcrafting/isamopalconstruction/attackby(var/obj/item/I, mob/user as mob, params)
+	..()
+	if(istype(I, /obj/item/pipe))
+		var/obj/item/weaponcrafting/isamopalconstruction1/C = new /obj/item/weaponcrafting/isamopalconstruction1
+		user.unEquip(src)
+		user.put_in_hands(C)
+		user << "<span class='notice'>You attach the pipe to construction.</span>"
+		del(I)
+		qdel(src)
+
+/obj/item/weaponcrafting/isamopalconstruction1
+	name = "slightly conspicuous metal construction"
+	desc = "A stock attached to a igniter and one pipe."
+	icon = 'icons/exs_for_me.dmi'
+	icon_state = "constr2"
+
+/obj/item/weaponcrafting/isamopalconstruction1/attackby(var/obj/item/I, mob/user as mob, params)
+	..()
+	if(istype(I, /obj/item/pipe))
+		var/obj/item/weaponcrafting/isamopalconstruction2/C = new /obj/item/weaponcrafting/isamopalconstruction2
+		user.unEquip(src)
+		user.put_in_hands(C)
+		user << "<span class='notice'>You attach the pipe to construction.</span>"
+		del(I)
+		qdel(src)
+
+/obj/item/weaponcrafting/isamopalconstruction2
+	name = "slightly conspicuous metal construction"
+	desc = "A stock attached to a igniter and two pipes."
+	icon = 'icons/exs_for_me.dmi'
+	icon_state = "constr3"
+
+/obj/item/weaponcrafting/isamopalconstruction2/attackby(var/obj/item/I, mob/user as mob, params)
+	..()
+	if(istype(I, /obj/item/stack/packageWrap))
+		var/obj/item/stack/packageWrap/C = I
+		if (C.use(5))
+			var/obj/item/weapon/gun/projectile/revolver/doublebarrel/samopal/W = new /obj/item/weapon/gun/projectile/revolver/doublebarrel/samopal(chambered = null)
+			user.unEquip(src)
+			user.put_in_hands(W)
+			user << "<span class='notice'>You tie the wrapping paper around the stock and the barrel to secure it.</span>"
+			qdel(src)
+		else
+			user << "<span class='warning'>You need at least five feet of wrapping paper to secure the stock.</span>"
+			return
+
+/obj/item/weapon/gun/projectile/revolver/doublebarrel/samopal
+	name = "samopal"
+	icon_state = "constr4"
+	icon = 'icons/exs_for_me.dmi'
+	slot_flags = null

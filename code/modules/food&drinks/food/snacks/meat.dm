@@ -6,9 +6,11 @@
 	bitesize = 3
 	list_reagents = list("nutriment" = 3)
 	cooked_type = /obj/item/weapon/reagent_containers/food/snacks/meatsteak/plain
+	cooked_skillet = /obj/item/weapon/reagent_containers/food/snacks/meatsteak/plain
 	slice_path = /obj/item/weapon/reagent_containers/food/snacks/rawcutlet/plain
 	slices_num = 3
 	filling_color = "#FF0000"
+	no_bite = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/initialize_slice(obj/item/weapon/reagent_containers/food/snacks/rawcutlet/slice, reagents_per_slice)
 	..()

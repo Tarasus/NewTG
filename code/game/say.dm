@@ -107,15 +107,15 @@ proc/sanitize_russian(var/msg, var/html = 0) //Специально для всего, где не нужн
 		else
 			return speaker.say_quote(stars(raw_message), spans)
 	else if(message_langs & MONKEY)
-		return "chimpers."
+		return "кричит."
 	else if(message_langs & ALIEN)
-		return "hisses."
+		return "шипит."
 	else if(message_langs & ROBOT)
-		return "beeps rapidly."
+		return "подает сигнал."
 	else if(message_langs & DRONE)
-		return "chitters."
+		return "подает сигнал."
 	else
-		return "makes a strange sound."
+		return "издает странные звуки."
 
 /proc/get_radio_span(freq)
 	var/returntext = freqtospan["[freq]"]
@@ -130,7 +130,9 @@ proc/sanitize_russian(var/msg, var/html = 0) //Специально для всего, где не нужн
 	return "[copytext("[freq]", 1, 4)].[copytext("[freq]", 4, 5)]"
 
 /proc/attach_spans(input, list/spans)
-	return "[message_spans_start(spans)][input]</span>"
+	var/sayer = sanitize(input)
+	sanitize_russian(sayer)
+	return "[message_spans_start(spans)][sayer]</span>"
 
 /proc/message_spans_start(list/spans)
 	var/output = "<span class='"
