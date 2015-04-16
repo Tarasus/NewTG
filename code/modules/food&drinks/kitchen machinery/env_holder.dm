@@ -3,11 +3,6 @@
 	desc = "Pan. Need for cooker."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "pan"
-	var/content = list()
-
-/obj/item/weapon/pan/examine()
-	..()
-	usr << "<small>Contens: [content]"
 
 /obj/item/weapon/skillet
 	name = "skillet"

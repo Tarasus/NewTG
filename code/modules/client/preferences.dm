@@ -736,10 +736,10 @@ datum/preferences
 						if(result)
 							var/newtype = roundstart_species[result]
 							pref_species = new newtype()
+
 							mutant_color = pref_species.default_color
-							if(!config.mutant_colors || mutant_color == "#000")
-								hair_color = pref_species.default_hair_color
-								horns_style = pref_species.default_horns_style
+							hair_color = pref_species.default_hair_color
+							horns_style = pref_species.default_horns_style
 
 					if("mutant_color")
 						if(!config.mutant_colors)
