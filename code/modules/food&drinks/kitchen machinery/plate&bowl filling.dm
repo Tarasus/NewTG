@@ -3,6 +3,7 @@
 	desc = "Plate. For food."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "plate"
+	w_class = 1.0
 
 /obj/item/weapon/storage/box/platestack
 	name = "box of plates"
@@ -32,4 +33,6 @@
 				user.put_in_r_hand(X)
 			else
 				X.loc = src.loc
+				X.pixel_x = src.pixel_x
+				X.pixel_y = src.pixel_y
 			del (src)
