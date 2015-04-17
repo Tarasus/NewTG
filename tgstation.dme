@@ -1025,6 +1025,7 @@
 #include "code\modules\food&drinks\kitchen machinery\juicer.dm"
 #include "code\modules\food&drinks\kitchen machinery\microwave.dm"
 #include "code\modules\food&drinks\kitchen machinery\monkeyrecycler.dm"
+#include "code\modules\food&drinks\kitchen machinery\plate&bowl filling.dm"
 #include "code\modules\food&drinks\kitchen machinery\processor.dm"
 #include "code\modules\food&drinks\kitchen machinery\smartfridge.dm"
 #include "code\modules\food&drinks\recipes\drinks_recipes.dm"

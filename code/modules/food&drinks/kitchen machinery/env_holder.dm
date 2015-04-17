@@ -70,13 +70,13 @@
 
 /obj/machinery/env_holder/attackby(var/obj/item/O as obj, var/mob/user as mob, params)
 	if(pan_slot == null)
-		if(istype(O, /obj/item/weapon/pan))
+		if(O.name == "pan")
 			pan_slot = /obj/item/weapon/pan
 			updateUsrDialog()
 			update()
 			del(O)
 	if(skillet_slot == null)
-		if(istype(O, /obj/item/weapon/skillet))
+		if(O.name == "skillet")
 			skillet_slot = /obj/item/weapon/skillet
 			updateUsrDialog()
 			update()

@@ -13,24 +13,22 @@
 	var/turn = 0
 	var/efficiency = 1
 	var/cookerpower = 1
-	var/global/max_n_of_items = 5
+	var/global/max_n_of_items = 1
 
 	var/tool = null
 	var/tool_name = null
 	var/contented = list()
 	var/contented_all = 0
 
-	var/process = 0
-	var/time = 60
+	var/process_status = 0
 
 /********************
 *   	Adding		*
 ********************/
 /obj/machinery/cooker/attackby(var/obj/item/O as obj, var/mob/user as mob, params)
-		//tools
 	if(istype(O, /obj/item/weapon/pan))
-		if(tool == null)
-			if(O.name == "pan")
+		if(O.name == "pan")
+			if(tool == null)
 				user.unEquip(O)
 				src.tool = O
 				O.loc = src
@@ -42,9 +40,10 @@
 				user << "<small>Tool not aviable!"
 		else
 			user << "<small>Cooker not aviable!"
+
 	if(istype(O, /obj/item/weapon/skillet))
-		if(tool == null)
-			if(O.name == "skillet")
+		if(O.name == "skillet")
+			if(tool == null)
 				user.unEquip(O)
 				src.tool = O
 				O.loc = src
@@ -65,6 +64,9 @@
 		if (turn)
 			user << "<span class='warning'>[src] is started, you cannot put now.</span>"
 			return 1
+		if (!tool)
+			user << "<span class='warning'>[src] no have tool.</span>"
+			return 1
 		else
 			if(!user.drop_item())
 				user << "<span class='notice'>\the [O] is stuck to your hand, you cannot put it in \the [src]</span>"
@@ -81,12 +83,18 @@
 /********************
 *      Updating		*
 ********************/
-/obj/machinery/cooker/proc/update()
+/obj/machinery/cooker/proc/update() //обновление спрайта плиты
 	icon_state = "cooker"
 	if(tool)
 		icon_state += "_"+tool_name
 	if(turn)
 		icon_state += "_1"
+	src.overlays -= image('icons/obj/kitchen.dmi', "overlay_good")
+	src.overlays -= image('icons/obj/kitchen.dmi', "overlay_burn")
+	if(process_status == 1)
+		src.overlays += image('icons/obj/kitchen.dmi', "overlay_good")
+	if(process_status == 2)
+		src.overlays += image('icons/obj/kitchen.dmi', "overlay_burn")
 /********************
 *     Interface		*
 ********************/
@@ -96,7 +104,6 @@
 
 /obj/machinery/cooker/interact(mob/user as mob)
 	var/dat = "<div class='statusDisplay'>"
-
 	//if no power
 	if(stat & (NOPOWER))
 		dat += "No power"
@@ -106,7 +113,11 @@
 		return
 
 	dat += "Place: "
-	dat += "<A href='?src=\ref[src];action=tool_off'>[tool_name]</A> <BR>"
+	if(tool)
+		var/obj/T = tool //для выделения имяни инструмента
+		dat += "<A href='?src=\ref[src];action=tool_off'>[T.name]</A> <BR>"
+	else
+		dat += "no tool<BR>"
 	dat += "Contents: <BR>"
 		//contents list
 	var/list/items_counts = new
@@ -114,11 +125,7 @@
 		items_counts[O.name]++
 
 	for (var/O in items_counts)
-		var/N = items_counts[O]
-		if(N == 1)
-			dat += "  -[capitalize(O)]</A> <BR>"
-		else
-			dat += "  -[capitalize(O)]: [N]</A> <BR>"
+		dat += "  -[capitalize(O)]</A> <BR>"
 
 	if (items_counts.len==0)
 		dat += "No."
@@ -141,7 +148,7 @@
 	switch(href_list["action"])
 		if ("off")
 			if(turn)
-				process = 0
+				process_status = 0
 				turn = 0
 				update()
 		if ("on")
@@ -161,7 +168,7 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/cooker/proc/dispose_all()
+/obj/machinery/cooker/proc/dispose_all() //вытащить ингридиенты
 	for (var/obj/O in contented)
 		O.loc = src.loc
 	contented_all = 0
@@ -169,7 +176,7 @@
 	usr << "<span class='notice'>You dispose of the cooker contents.</span>"
 	updateUsrDialog()
 
-/obj/machinery/cooker/proc/tool_off()
+/obj/machinery/cooker/proc/tool_off() //вытащить инструмент
 	var/obj/O = tool
 	O.loc = src.loc
 	tool_name = null
@@ -197,61 +204,71 @@
 	cooking(15)
 	if(!turn)
 		return
-	else
-		turn = 0
-		update()
-		updateUsrDialog()
 
 	for(var/obj/item/weapon/reagent_containers/food/snacks/F in contented)
 		var/obj/T = tool
-		//жарка
-		if(tool == /obj/item/weapon/skillet)
+			//жарка
+		if(tool_name  == "skillet")
 			if(F.cooked_skillet)
 				var/obj/item/weapon/reagent_containers/food/snacks/S = new F.cooked_skillet (T)
 				F.initialize_cooked_food(S, efficiency)
-				T.name += "with [S.name]"
+				T.name += " with [S.name]"
 			else
 				new /obj/item/weapon/reagent_containers/food/snacks/badrecipe(T)
-				T.name += "with unknown garbage"
+				T.name += " with burnt mass"
 			qdel(F)
 			//clear contents
 			contented = list()
 			contented_all = 0
-			//eject tool
-			T.loc = src.loc
-			tool = null
-			tool_name = null
 
-		//варка
-		if(tool == /obj/item/weapon/pan)
+			//варка
+		if(tool_name  == "pan")
 			if(F.cooked_pan)
 				var/obj/item/weapon/reagent_containers/food/snacks/S = new F.cooked_pan (T)
 				F.initialize_cooked_food(S, efficiency)
-				T.name += "with [S.name]"
+				T.name += " with [S.name]"
 			else
 				new /obj/item/weapon/reagent_containers/food/snacks/badrecipe(T)
-				T.name += "with unknown garbage"
+				T.name += " with unknown garbage"
 			qdel(F)
 			//clear contents
 			contented = list()
 			contented_all = 0
-			//eject tool
-			T.loc = src.loc
-			tool = null
-			tool_name = null
-
 
 		update()
 		updateUsrDialog()
 
+	process_status = 1
+	update() //overlay
+
+	cooking(20)
+	if(!turn)
+		return
+
+		//испорчено, если долго готовить
+	var/obj/T = tool
+	if(istype(T, /obj/item/weapon/pan))
+		T.contents = null
+		new /obj/item/weapon/reagent_containers/food/snacks/badrecipe(T)
+		T.name = "pan with unknown garbage"
+	if(istype(T, /obj/item/weapon/skillet))
+		T.contents = null
+		new /obj/item/weapon/reagent_containers/food/snacks/badrecipe(T)
+		T.name = "skillet with burnt mass"
+
+	process_status = 2 //for overlay
+
+	update()
+	updateUsrDialog()
+
 	return
 
-/obj/machinery/cooker/proc/cooking(var/seconds as num)
+/obj/machinery/cooker/proc/cooking(var/seconds as num) //как в микроволновке, ммм
 	for (var/i=1 to seconds)
 		if (stat & (NOPOWER))
 			return 0
 		if(!turn)
 			return 0
 		use_power(500)
-		sleep(max(14-2*cookerpower-2*efficiency,2)) // standard power means sleep(10). The higher the power and the better the efficiency, the faster the cooking
+		sleep(max(14-2*cookerpower-2*efficiency,2)) //еффенсити увеличивает скорость готовки
 	return 1

@@ -403,6 +403,42 @@
 					"<span class='danger'>[user] was stunned by \his wet [O]!</span>", \
 					"<span class='userdanger'>[user] was stunned by \his wet [O]!</span>")
 				return
+	///
+	else if(istype(O,/obj/item/trash/plate))
+
+		var/turf/location = user.loc
+		if(!isturf(location)) return
+
+		var/obj/item/I = O
+		if(!I || !istype(I,/obj/item)) return
+
+		usr << "<span class='notice'>You start washing [O.name].</span>"
+		busy = 1
+		sleep(20)
+		busy = 0
+
+		if(user.loc != location) return				//User has moved
+		if(!I) return 								//Item's been destroyed while washing
+		if(user.get_active_hand() != I) return		//Person has switched hands or the item in their hands
+
+		O.clean_blood()
+
+		var/X = new/obj/item/weapon/plate //swap to clean plate. /*NEW*/
+		if(user.l_hand == O)
+			user.unEquip(O)
+			user.put_in_l_hand(X)
+		else if(user.r_hand == O)
+			user.unEquip(O)
+			user.put_in_r_hand(X)
+
+		//log fishing of washing
+		user.visible_message( \
+		"<span class='notice'>[user] washes [I] using [src].</span>", \
+		"<span class='notice'>You wash [I] using [src].</span>")
+
+		del(O) //deleting and return.
+		return
+	///
 
 	var/turf/location = user.loc
 	if(!isturf(location)) return
