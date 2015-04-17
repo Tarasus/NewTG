@@ -18,6 +18,7 @@
 	 "ketchup" = list("ketchup", "ketchup bottle", "You feel more American already."),
 	 "capsaicin" = list("hotsauce", "hotsauce bottle", "You can almost TASTE the stomach ulcers now!"),
 	 "enzyme" = list("enzyme", "universal enzyme bottle", "Used in cooking various dishes"),
+	 "oil" = list("oil", "sunrise oil bottle", "Used in cooking"), /*NEW*/
 	 "soysauce" = list("soysauce", "soy sauce bottle", "A salty soy-based flavoring"),
 	 "frostoil" = list("coldsauce", "coldsauce bottle", "Leaves the tongue numb in it's passage"),
 	 "sodiumchloride" = list("saltshakersmall", "salt shaker", "Salt. From space oceans, presumably"),
@@ -120,6 +121,12 @@
 	desc = "Used in cooking various dishes."
 	icon_state = "enzyme"
 	list_reagents = list("enzyme" = 50)
+
+/obj/item/weapon/reagent_containers/food/condiment/oil
+	name = "sunrise oil"
+	desc = "Used in cooking."
+	icon_state = "oil"
+	list_reagents = list("oil" = 50)
 
 /obj/item/weapon/reagent_containers/food/condiment/sugar
 	name = "sugar bottle"

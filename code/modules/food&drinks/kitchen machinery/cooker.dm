@@ -22,6 +22,8 @@
 
 	var/process_status = 0
 
+	var/oil_amount = 0
+
 /********************
 *   	Adding		*
 ********************/
@@ -78,6 +80,13 @@
 				"<span class='notice'>[user] has added \the [O] to \the [src].</span>", \
 				"<span class='notice'>You add \the [O] to \the [src].</span>")
 
+	if(istype(O, /obj/item/weapon/reagent_containers/food/condiment/oil))
+		if(O.reagents.get_reagent_amount("oil") < 5)
+			O.reagents.remove_reagent("oil", 5)
+			oil_amount += 5
+			usr << "Oil added"
+		else
+			usr << "No oil."
 	updateUsrDialog()
 
 /********************
@@ -129,6 +138,9 @@
 
 	if (items_counts.len==0)
 		dat += "No."
+
+	if(oil_amount)
+		dat += "<BR>Oil: [oil_amount]"
 
 	dat += "</div><BR>"
 

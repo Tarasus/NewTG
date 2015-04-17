@@ -332,6 +332,12 @@ datum/reagent/consumable/enzyme
 	description = "A universal enzyme used in the preperation of certain chemicals and foods."
 	color = "#365E30" // rgb: 54, 94, 48
 
+datum/reagent/consumable/oil /*NEW*/
+	name = "Sunrise Oil"
+	id = "oil"
+	description = "A oil used in the cooking."
+	color = "#FFFF00" // yellow
+
 datum/reagent/consumable/dry_ramen
 	name = "Dry Ramen"
 	id = "dry_ramen"
