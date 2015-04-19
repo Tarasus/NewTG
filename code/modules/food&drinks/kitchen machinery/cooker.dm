@@ -1,3 +1,4 @@
+//Работу масла в кукере еще не добавлял, но масло сделал. Ня.
 /obj/machinery/cooker
 	name = "cooker"
 	desc = "Fry yummy for the crew!"
@@ -22,7 +23,7 @@
 
 	var/process_status = 0
 
-	var/oil_amount = 0
+	//var/oil_amount = 0
 
 /********************
 *   	Adding		*
@@ -79,14 +80,6 @@
 			user.visible_message( \
 				"<span class='notice'>[user] has added \the [O] to \the [src].</span>", \
 				"<span class='notice'>You add \the [O] to \the [src].</span>")
-
-	if(istype(O, /obj/item/weapon/reagent_containers/food/condiment/oil))
-		if(O.reagents.get_reagent_amount("oil") < 5)
-			O.reagents.remove_reagent("oil", 5)
-			oil_amount += 5
-			usr << "Oil added"
-		else
-			usr << "No oil."
 	updateUsrDialog()
 
 /********************
@@ -113,20 +106,13 @@
 
 /obj/machinery/cooker/interact(mob/user as mob)
 	var/dat = "<div class='statusDisplay'>"
-	//if no power
-	if(stat & (NOPOWER))
-		dat += "No power"
-		var/datum/browser/popup = new(user, "cooker", name, 300, 300)
-		popup.set_content(dat)
-		popup.open()
-		return
 
 	dat += "Place: "
 	if(tool)
 		var/obj/T = tool //для выделения имяни инструмента
 		dat += "<A href='?src=\ref[src];action=tool_off'>[T.name]</A> <BR>"
 	else
-		dat += "no tool<BR>"
+		dat += "No.<BR>"
 	dat += "Contents: <BR>"
 		//contents list
 	var/list/items_counts = new
@@ -136,16 +122,21 @@
 	for (var/O in items_counts)
 		dat += "  -[capitalize(O)]</A> <BR>"
 
-	if (items_counts.len==0)
+	/*if (items_counts.len==0)
 		dat += "No."
 
 	if(oil_amount)
-		dat += "<BR>Oil: [oil_amount]"
+		dat += "<BR>Oil: [oil_amount]" */
 
 	dat += "</div><BR>"
 
-	dat += "<A href='?src=\ref[src];action=off'>OFF</A>"
-	dat += "<A href='?src=\ref[src];action=on'>ON</A>"
+	if(stat & (NOPOWER))
+		dat += "No power "
+
+	else
+		dat += "<A href='?src=\ref[src];action=off'>OFF</A>"
+		dat += "<A href='?src=\ref[src];action=on'>ON</A>"
+
 	if(!turn)
 		dat += "<A href='?src=\ref[src];action=dispose'>Eject ingredients</A>"
 
@@ -278,6 +269,9 @@
 /obj/machinery/cooker/proc/cooking(var/seconds as num) //как в микроволновке, ммм
 	for (var/i=1 to seconds)
 		if (stat & (NOPOWER))
+			turn = 0
+			update()
+			updateUsrDialog()
 			return 0
 		if(!turn)
 			return 0

@@ -1,3 +1,9 @@
+/obj/item/weapon/oil_tank
+	name = "oil tank"
+	desc = "Oil Tank. Need for cooker."
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "oiltank"
+
 /obj/item/weapon/pan
 	name = "pan"
 	desc = "Pan. Need for cooker."
