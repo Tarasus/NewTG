@@ -20,6 +20,12 @@
 		if(FEMALE)	return pick(underwear_f)
 		else		return pick(underwear_list)
 
+/proc/random_hornstyle()
+	if(!underwear_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/horns, horns_list)
+	return pick(horns_list)
+		//для рандома рожечек, ня.
+
 /proc/random_undershirt(gender)
 	if(!undershirt_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/undershirt, undershirt_list, undershirt_m, undershirt_f)

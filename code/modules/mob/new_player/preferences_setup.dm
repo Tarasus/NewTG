@@ -11,12 +11,17 @@
 	skin_tone = random_skin_tone()
 	hair_style = random_hair_style(gender)
 	facial_hair_style = random_facial_hair_style(gender)
-	hair_color = random_short_color()
-	facial_hair_color = hair_color
 	eye_color = random_eye_color()
-	pref_species = new /datum/species/human()
+	//pref_species = new /datum/species/human() чтобы раса не сбрасывалась
 	backbag = 2
 	age = rand(AGE_MIN,AGE_MAX)
+	if(istype(pref_species, new /datum/species/human))
+		hair_color = random_short_color()
+		facial_hair_color = hair_color
+	if(istype(pref_species, new /datum/species/troll))
+		horns_style = random_hornstyle()
+	if(istype(pref_species, new /datum/species/lizard))
+		mutant_color = random_short_color()
 
 /datum/preferences/proc/update_preview_icon()		//seriously. This is horrendous.
 	del(preview_icon_front)
