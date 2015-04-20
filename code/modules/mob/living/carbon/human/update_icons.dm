@@ -49,33 +49,33 @@ Please contact me on #coderbus IRC. ~Carnie x
 */
 
 //Human Overlays Indexes/////////
-#define SPECIES_LAYER			26		// mutantrace colors... these are on a seperate layer in order to prvent
-#define BODY_BEHIND_LAYER		25
-#define BODY_LAYER				24		//underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_ADJ_LAYER			23
-#define MUTATIONS_LAYER			22		//Tk headglows etc.
-#define AUGMENTS_LAYER			21
-#define DAMAGE_LAYER			20		//damage indicators (cuts and burns)
-#define UNIFORM_LAYER			19
-#define ID_LAYER				18
-#define SHOES_LAYER				17
-#define GLOVES_LAYER			16
-#define EARS_LAYER				15
-#define SUIT_LAYER				14
-#define GLASSES_LAYER			13
-#define BELT_LAYER				12		//Possible make this an overlay of somethign required to wear a belt?
-#define SUIT_STORE_LAYER		11
-#define BACK_LAYER				10
-#define HAIR_LAYER				9		//TODO: make part of head layer?
-#define FACEMASK_LAYER			8
-#define HEAD_LAYER				7
-#define HANDCUFF_LAYER			6
-#define LEGCUFF_LAYER			5
-#define L_HAND_LAYER			4
-#define R_HAND_LAYER			3		//Having the two hands seperate seems rather silly, merge them together? It'll allow for code to be reused on mobs with arbitarily many hands
-#define BODY_FRONT_LAYER		2
-#define FIRE_LAYER				1		//If you're on fire
-#define HORNS_LAYER				1.5
+#define SPECIES_LAYER			27		// mutantrace colors... these are on a seperate layer in order to prvent
+#define BODY_BEHIND_LAYER		26
+#define BODY_LAYER				25		//underwear, undershirts, socks, eyes, lips(makeup)
+#define BODY_ADJ_LAYER			24
+#define MUTATIONS_LAYER			23		//Tk headglows etc.
+#define AUGMENTS_LAYER			22
+#define DAMAGE_LAYER			21		//damage indicators (cuts and burns)
+#define UNIFORM_LAYER			20
+#define ID_LAYER				19
+#define SHOES_LAYER				18
+#define GLOVES_LAYER			17
+#define EARS_LAYER				16
+#define SUIT_LAYER				15
+#define GLASSES_LAYER			14
+#define BELT_LAYER				13		//Possible make this an overlay of somethign required to wear a belt?
+#define SUIT_STORE_LAYER		12
+#define BACK_LAYER				11
+#define HAIR_LAYER				10		//TODO: make part of head layer?
+#define FACEMASK_LAYER			9
+#define HEAD_LAYER				8
+#define HANDCUFF_LAYER			7
+#define LEGCUFF_LAYER			6
+#define L_HAND_LAYER			5
+#define R_HAND_LAYER			4		//Having the two hands seperate seems rather silly, merge them together? It'll allow for code to be reused on mobs with arbitarily many hands
+#define BODY_FRONT_LAYER		3
+#define FIRE_LAYER				2		//If you're on fire
+#define HORNS_LAYER				1
 #define TOTAL_LAYERS			26		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
 //////////////////////////////////
 
@@ -151,6 +151,17 @@ Please contact me on #coderbus IRC. ~Carnie x
 
 	if(dna)
 		dna.species.handle_hair(src)
+
+//HORNS OVERLAY
+/mob/living/carbon/human/proc/update_horns()
+	//Reset our hair
+	remove_overlay(HORNS_LAYER)
+
+	if((disabilities & HUSK))
+		return
+
+	if(dna)
+		dna.species.handle_horns(src)
 
 /mob/living/carbon/human/proc/update_mutcolor()
 	if(dna && !(disabilities & HUSK))

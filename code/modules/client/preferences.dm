@@ -919,3 +919,4 @@ datum/preferences
 
 		character.update_body()
 		character.update_hair()
+		character.update_horns()

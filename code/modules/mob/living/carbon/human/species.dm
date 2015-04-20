@@ -180,7 +180,26 @@
 	H.apply_overlay(HAIR_LAYER)
 	return
 
+/datum/species/proc/handle_horns(var/mob/living/carbon/human/H)
+
+	H.remove_overlay(HORNS_LAYER)
+
+	var/list/standing	= list()
+
+	// HORNS //*NEW*// Showeble Hornses [OHHH YEEEEEES~~~]
+	if(H.horns_style && HORNS in specflags)
+		var/datum/sprite_accessory/horns/Q = horns_list[H.horns_style]
+		standing	+= image("icon" = 'icons/mob/horns.dmi', "icon_state" = "[Q.icon_state]", "layer" = -HORNS_LAYER)
+
+	if(standing.len)
+		H.overlays_standing[HORNS_LAYER] = standing
+
+	H.apply_overlay(HORNS_LAYER)
+
+	return
+
 /datum/species/proc/handle_body(var/mob/living/carbon/human/H)
+
 	H.remove_overlay(BODY_LAYER)
 
 	var/list/standing	= list()
@@ -196,11 +215,6 @@
 		var/image/img_eyes_s = image("icon" = 'icons/mob/human_face.dmi', "icon_state" = "[eyes]_s", "layer" = -BODY_LAYER)
 		img_eyes_s.color = "#" + H.eye_color
 		standing	+= img_eyes_s
-
-	// HORNS //*NEW*// Showeble Hornses [OHHH YEEEEEES~~~]
-	if(H.horns_style && HORNS in specflags)
-		var/datum/sprite_accessory/horns/Q = horns_list[H.horns_style]
-		standing	+= image("icon" = 'icons/mob/horns.dmi', "icon_state" = "[Q.icon_state]", "layer" = -HORNS_LAYER)
 
 	//Underwear, Undershirts & Socks
 	if(H.underwear)
