@@ -49,13 +49,14 @@ Please contact me on #coderbus IRC. ~Carnie x
 */
 
 //Human Overlays Indexes/////////
-#define SPECIES_LAYER			27		// mutantrace colors... these are on a seperate layer in order to prvent
-#define BODY_BEHIND_LAYER		26
-#define BODY_LAYER				25		//underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_ADJ_LAYER			24
-#define MUTATIONS_LAYER			23		//Tk headglows etc.
-#define AUGMENTS_LAYER			22
-#define DAMAGE_LAYER			21		//damage indicators (cuts and burns)
+#define SPECIES_LAYER			28		// mutantrace colors... these are on a seperate layer in order to prvent
+#define BODY_BEHIND_LAYER		27
+#define BODY_LAYER				26		//underwear, undershirts, socks, eyes, lips(makeup)
+#define BODY_ADJ_LAYER			25
+#define MUTATIONS_LAYER			24		//Tk headglows etc.
+#define AUGMENTS_LAYER			23
+#define DAMAGE_LAYER			22		//damage indicators (cuts and burns)
+#define BHORNS_LAYER			21
 #define UNIFORM_LAYER			20
 #define ID_LAYER				19
 #define SHOES_LAYER				18
@@ -154,7 +155,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 
 //HORNS OVERLAY
 /mob/living/carbon/human/proc/update_horns()
-	//Reset our hair
+
 	remove_overlay(HORNS_LAYER)
 
 	if((disabilities & HUSK))

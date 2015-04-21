@@ -49,6 +49,9 @@ var/list/chatchannels = list(default_ntrc_chatroom.name = default_ntrc_chatroom)
 			else
 				return "BAD_COMMAND"
 
+	sanitize(message)
+	sanitize_russian(message)
+
 	return send_message(client,nick,message)
 
 //the following are helper procs, FOR INTERNAL USE ONLY
@@ -69,6 +72,7 @@ var/list/chatchannels = list(default_ntrc_chatroom.name = default_ntrc_chatroom)
 	logs.Insert(1,"[strip_html_properly(nick)]> [strip_html_properly(message)]")
 	log_chat("[usr]/([usr.ckey]) as [nick] sent to [name]: [message]")
 	events.fireEvent("msg_chat",name,nick,message)
+	sanitize_russian(sanitize(message)) //—¿Õ»“¿¿¿¿…«!
 	return 1
 
 /datum/chatroom/proc/get_auth(client,nick) //check auth

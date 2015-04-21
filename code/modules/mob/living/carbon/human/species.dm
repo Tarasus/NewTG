@@ -4,8 +4,8 @@
 #define BODY_BEHIND_LAYER		25
 #define BODY_LAYER				24
 #define BODY_ADJ_LAYER			23
-#define HORNS_LAYER				8
 #define HAIR_LAYER				9
+#define HORNS_LAYER				6
 #define BODY_FRONT_LAYER		2
 
 #define TINT_IMPAIR 2
@@ -189,6 +189,7 @@
 	// HORNS //*NEW*// Showeble Hornses [OHHH YEEEEEES~~~]
 	if(H.horns_style && HORNS in specflags)
 		var/datum/sprite_accessory/horns/Q = horns_list[H.horns_style]
+
 		standing	+= image("icon" = 'icons/mob/horns.dmi', "icon_state" = "[Q.icon_state]", "layer" = -HORNS_LAYER)
 
 	if(standing.len)

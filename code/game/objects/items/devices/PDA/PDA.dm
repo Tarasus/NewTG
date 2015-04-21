@@ -569,15 +569,15 @@ var/global/list/obj/item/device/pda/PDAs = list()
 //NOTEKEEPER FUNCTIONS===================================
 
 			if ("Edit")
-				var/n = stripped_multiline_input(U, "Please enter message", name, note)
+				var/n = stripped_multiline_input(U, "Пожалуйста, введите сообщение", name, note)
 				if (in_range(src, U) && loc == U)
 					if (mode == 1 && n)
-						note = n
-						notehtml = parsepencode(n, U, SIGNFONT)
+						note = sanitize_russian(sanitize_html_ya(n), 1)
+						notehtml = parsepencode(sanitize_russian(sanitize_html_ya(n), 1), U, SIGNFONT)
 						notescanned = 0
 				else
 					U << browse(null, "window=pda")
-					return
+					return //санитайз примечаний
 
 //MESSENGER FUNCTIONS===================================
 
@@ -588,7 +588,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			if("Clear")//Clears messages
 				tnote = null
 			if("Ringtone")
-				var/t = input(U, "Please enter new ringtone", name, ttone) as text
+				var/t = input(U, "Please enter new ringtone", name, sanitize_russian(sanitize_html(ttone), 1)) as text
 				if (in_range(src, U) && loc == U)
 					if (t)
 						if(src.hidden_uplink && hidden_uplink.check_trigger(U, trim(lowertext(t)), trim(lowertext(lock_code))))
@@ -763,7 +763,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		id = null
 
 /obj/item/device/pda/proc/msg_input(var/mob/living/U = usr)
-	var/t = stripped_input(U, "Please enter message", name, null, MAX_MESSAGE_LEN)
+	var/t = stripped_input(U, "Пожалуйста, введите свое сообщение", name, null, MAX_MESSAGE_LEN)
 	if (!t || toff)
 		return
 	if (!in_range(src, U) && loc != U)
@@ -777,6 +777,11 @@ var/global/list/obj/item/device/pda/PDAs = list()
 /obj/item/device/pda/proc/create_message(var/mob/living/U = usr, var/obj/item/device/pda/P)
 
 	var/t = msg_input(U)
+	var/original_t = t //оригинальный текст
+
+	var/t_sani = sanitize_russian(sanitize_html(original_t), 1) //чтобы "я" хорошо отображалась в истории сообщений.
+
+	var/t_s = sanitize_russian(sanitize_uni(original_t)) //чтобы "я" хорошо отображалась в отправлении/получении сообщений.
 
 	if (!t)
 		return
@@ -810,15 +815,15 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 	if(useMS && useTC) // only send the message if it's stable
 		if(useTC != 2) // Does our recipient have a broadcaster on their level?
-			U << "ERROR: Cannot reach recipient."
+			U << "ОШИБКА: Получатель не найден."
 			return
 		useMS.send_pda_message("[P.owner]","[owner]","[t]")
 
-		tnote += "<i><b>&rarr; To [P.owner]:</b></i><br>[t]<br>"
-		P.tnote += "<i><b>&larr; From <a href='byond://?src=\ref[P];choice=Message;target=\ref[src]'>[owner]</a> ([ownjob]):</b></i><br>[t]<br>"
+		tnote += "<i><b>&rarr; Дл&#x44F; [P.owner]:</b></i><br>[t_sani]<br>"
+		P.tnote += "<i><b>&larr; От <a href='byond://?src=\ref[P];choice=Message;target=\ref[src]'>[owner]</a> ([ownjob]):</b></i><br>[t_sani]<br>"
 		for(var/mob/M in player_list)
 			if(isobserver(M) && M.client && (M.client.prefs.chat_toggles & CHAT_GHOSTPDA))
-				M.show_message("<span class='game say'>PDA Message - <span class='name'>[owner]</span> -> <span class='name'>[P.owner]</span>: <span class='message'>[t]</span></span>")
+				M.show_message("<span class='game say'>ПДА сообщение - <span class='name'>[owner]</span> -> <span class='name'>[P.owner]</span>: <span class='message'>[t_s]</span></span>")
 
 		if (!P.silent)
 			playsound(P.loc, 'sound/machines/twobeep.ogg', 50, 1)
@@ -832,13 +837,13 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			L = get(P, /mob/living/silicon)
 
 		if(L)
-			L << "\icon[P] <b>Message from [src.owner] ([ownjob]), </b>\"[t]\" (<a href='byond://?src=\ref[P];choice=Message;skiprefresh=1;target=\ref[src]'>Reply</a>)"
+			L << "\icon[P] <b>Сообщение от [src.owner] ([ownjob]), </b>\"[t_s]\" (<a href='byond://?src=\ref[P];choice=Message;skiprefresh=1;target=\ref[src]'>Ответить</a>)"
 
-		log_pda("[usr] (PDA: [src.name]) sent \"[t]\" to [P.name]")
+		log_pda("[usr] (PDA: [src.name]) откравлено \"[t_sani]\" дл&#x44F; [P.name]")
 		P.overlays.Cut()
 		P.overlays += image('icons/obj/pda.dmi', "pda-r")
 	else
-		U << "<span class='notice'>ERROR: Server isn't responding.</span>"
+		U << "<span class='notice'>ОШИБКА: Сервер не отвечает.</span>"
 
 /obj/item/device/pda/AltClick()
 	..()
