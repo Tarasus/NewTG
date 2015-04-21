@@ -2,14 +2,14 @@
 Chief Engineer
 */
 /datum/job/chief_engineer
-	title = "Chief Engineer"
+	title = "Главный Инженер"
 	flag = CHIEF
 	department_head = list("Captain")
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = "Капитану"
 	selection_color = "#ffeeaa"
 	req_admin_notify = 1
 	minimal_player_age = 7
@@ -46,14 +46,14 @@ Chief Engineer
 Station Engineer
 */
 /datum/job/engineer
-	title = "Station Engineer"
+	title = "Инженер"
 	flag = ENGINEER
 	department_head = list("Chief Engineer")
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "the chief engineer"
+	supervisors = "Главному Инженеру"
 	selection_color = "#fff5cc"
 
 	default_pda = /obj/item/device/pda/engineering
@@ -79,14 +79,14 @@ Station Engineer
 Atmospheric Technician
 */
 /datum/job/atmos
-	title = "Atmospheric Technician"
+	title = "Атмосферник"
 	flag = ATMOSTECH
 	department_head = list("Chief Engineer")
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the chief engineer"
+	supervisors = "Главному Инженеру"
 	selection_color = "#fff5cc"
 
 	default_pda = /obj/item/device/pda/atmos

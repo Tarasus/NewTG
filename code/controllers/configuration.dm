@@ -111,14 +111,14 @@
 	var/mutant_colors = 1				//can are choose mutant's skin color /*EDITED*/
 
 	var/alert_desc_green = "Все угрозы миновали. Охрана не должна носить оружие на виду, законы вновь работают в полную силу."
-	var/alert_desc_blue_upto = "Станция получила достоверную информацию о возможности вражеской деятельности на станции. Охрана может носить оружие на виду, разрешаются случайные обыски."
-	var/alert_desc_blue_downto = "Непосредственная угроза миновала. Охрана может по-прежнему носить оружие на виду. Случайные обычки все еще разрешены."
-	var/alert_desc_red_upto = "Существует серьезная угроза станции. Охрана может постоянно ходить с оружием. Случайные обыски разрешены и рекомендуются."
-	var/alert_desc_red_downto = "Механизм самоуничтожения деактивирован, но угроза станции еще присутствует. Охрана может постоянно ходить с оружием. Случайные обыски разрешены и рекомендуются."
-	var/alert_desc_delta = "Механизм самоуничтожения активирован. Экипаж обязан исполнять все инструкции данные их главами. Любое нарушение может караться смертью. Это не учебная тревога."
+	var/alert_desc_blue_upto = "Станци&#255; получила достоверную информацию о возможности вражеской де&#255;тельности на станции. Охрана может носить оружие на виду, разрешаютс&#255; случайные обыски."
+	var/alert_desc_blue_downto = "Непосредственна&#255; угроза миновала. Охрана может по-прежнему носить оружие на виду. Случайные обычки все еще разрешены."
+	var/alert_desc_red_upto = "Существует серьезна&#255; угроза станции. Охрана может посто&#255;нно ходить с оружием. Случайные обыски разрешены и рекомендуютс&#255;."
+	var/alert_desc_red_downto = "Механизм самоуничтожени&#255; деактивирован, но угроза станции еще присутствует. Охрана может посто&#255;нно ходить с оружием. Случайные обыски разрешены и рекомендуютс&#255;."
+	var/alert_desc_delta = "Механизм самоуничтожени&#255; активирован. Экипаж об&#255;зан исполн&#255;ть все инструкции данные их главами. Любое нарушение может каратьс&#255; смертью. Это не учебна&#255; тревога."
 
-	var/health_threshold_crit = -5
-	var/health_threshold_dead = -101	//больше дамага, ХА-ХА-ХА!
+	var/health_threshold_crit = -10	//пусть будет больше порог дамага для крита.
+	var/health_threshold_dead = -100
 
 	var/revival_pod_plants = 1
 	var/revival_cloning = 1
@@ -372,17 +372,17 @@
 				if("animal_delay")
 					config.animal_delay				= text2num(value)
 				if("alert_red_upto")
-					config.alert_desc_red_upto		= value
+					config.alert_desc_red_upto		= alert_desc_red_upto
 				if("alert_red_downto")
-					config.alert_desc_red_downto	= value
+					config.alert_desc_red_downto	= alert_desc_red_downto
 				if("alert_blue_downto")
-					config.alert_desc_blue_downto	= value
+					config.alert_desc_blue_downto	= alert_desc_blue_downto
 				if("alert_blue_upto")
-					config.alert_desc_blue_upto		= value
+					config.alert_desc_blue_upto		= alert_desc_blue_upto
 				if("alert_green")
-					config.alert_desc_green			= value
+					config.alert_desc_green			= alert_desc_green
 				if("alert_delta")
-					config.alert_desc_delta			= value
+					config.alert_desc_delta			= alert_desc_delta
 				if("assistants_have_maint_access")
 					config.jobs_have_maint_access	|= ASSISTANTS_HAVE_MAINT_ACCESS
 				if("security_has_maint_access")

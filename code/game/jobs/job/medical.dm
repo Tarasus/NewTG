@@ -2,14 +2,14 @@
 Chief Medical Officer
 */
 /datum/job/cmo
-	title = "Chief Medical Officer"
+	title = "Глава Медицинского Отдела"
 	flag = CMO
 	department_head = list("Captain")
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = "Капитану"
 	selection_color = "#ffddf0"
 	req_admin_notify = 1
 	minimal_player_age = 7
@@ -49,7 +49,7 @@ Medical Doctor
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 3
-	supervisors = "the chief medical officer"
+	supervisors = "Главе Медицинского Отдела"
 	selection_color = "#ffeef0"
 
 	default_pda = /obj/item/device/pda/medical
@@ -71,14 +71,14 @@ Medical Doctor
 Chemist
 */
 /datum/job/chemist
-	title = "Chemist"
+	title = "Химик"
 	flag = CHEMIST
 	department_head = list("Chief Medical Officer")
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the chief medical officer"
+	supervisors = "Главе Медицинского Отдела"
 	selection_color = "#ffeef0"
 
 	default_pda = /obj/item/device/pda/chemist
@@ -96,14 +96,14 @@ Chemist
 Geneticist
 */
 /datum/job/geneticist
-	title = "Geneticist"
+	title = "Генетик"
 	flag = GENETICIST
 	department_head = list("Chief Medical Officer", "Research Director")
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the chief medical officer and research director"
+	supervisors = "Главе Медицинского Отдела и Директору Исследований"
 	selection_color = "#ffeef0"
 
 	default_pda = /obj/item/device/pda/geneticist
@@ -122,14 +122,14 @@ Geneticist
 Virologist
 */
 /datum/job/virologist
-	title = "Virologist"
+	title = "Вирусолог"
 	flag = VIROLOGIST
 	department_head = list("Chief Medical Officer")
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the chief medical officer"
+	supervisors = "Главе Медицинского Отдела"
 	selection_color = "#ffeef0"
 
 	default_pda = /obj/item/device/pda/viro

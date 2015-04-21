@@ -99,7 +99,7 @@
 	update_info()
 	var/mob/living/carbon/M = usr
 	if(burning)
-		M << "<span class='danger'>Попытка взять горющую бумагу выглядит достаточно глупо.</span>"
+		M << "<span class='danger'>Попытка вз&#255;ть горющую бумагу выгл&#255;дит достаточно глупо.</span>"
 		return //Doesn't make any sense to pick up a burning paper
 	else //Probably isn't necessary but it's safer
 		..()

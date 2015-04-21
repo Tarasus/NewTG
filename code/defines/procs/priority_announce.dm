@@ -16,7 +16,7 @@
 		news_network.SubmitArticle(text_sani, "Captain's Announcement", "Station Announcements", null)
 
 	else
-		announcement += "<h1 class='alert'>[command_name()] Обновлене</h1>"
+		announcement += "<h1 class='alert'>[command_name()] Обновление</h1>"
 		if (title && length(title) > 0)
 			announcement += "<br><h2 class='alert'>[html_encode(title)]</h2>"
 		if(title == "")

@@ -105,7 +105,7 @@
 	update()
 
 /obj/structure/disposalconstruct/verb/flip()
-	set name = "Тряснуть трубу"
+	set name = "Развернуть трубу"
 	set category = "Предмет"
 	set src in view(1)
 	if(usr.stat || !usr.canmove || usr.restrained())

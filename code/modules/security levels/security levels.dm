@@ -21,16 +21,16 @@
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_DELTA && level != security_level)
 		switch(level)
 			if(SEC_LEVEL_GREEN)
-				minor_announce(config.alert_desc_green, "Внимание! Уровень безопасности понижен до зеленого:")
+				minor_announce(config.alert_desc_green, "Внимание! Уровень опасности понижен до зеленого:")
 				security_level = SEC_LEVEL_GREEN
 				for(var/obj/machinery/firealarm/FA in world)
 					if(FA.z == ZLEVEL_STATION)
 						FA.update_icon()
 			if(SEC_LEVEL_BLUE)
 				if(security_level < SEC_LEVEL_BLUE)
-					minor_announce(config.alert_desc_blue_upto, "Внимание! Уровень безопасности повышен до синего:",1)
+					minor_announce(config.alert_desc_blue_upto, "Внимание! Уровень опасности повышен до синего:",1)
 				else
-					minor_announce(config.alert_desc_blue_downto, "Внимание! Уровень безопасности понижен до синего:")
+					minor_announce(config.alert_desc_blue_downto, "Внимание! Уровень опасности понижен до синего:")
 				security_level = SEC_LEVEL_BLUE
 				for(var/obj/machinery/firealarm/FA in world)
 					if(FA.z == ZLEVEL_STATION)
@@ -51,7 +51,7 @@
 					if(FA.z == ZLEVEL_STATION)
 						FA.update_icon()
 			if(SEC_LEVEL_DELTA)
-				minor_announce(config.alert_desc_delta, "Внимание! Уровень безопасности Дельта достигнут!",1)
+				minor_announce(config.alert_desc_delta, "Внимание! Уровень опасности Дельта достигнут!",1)
 				security_level = SEC_LEVEL_DELTA
 				for(var/obj/machinery/firealarm/FA in world)
 					if(FA.z == ZLEVEL_STATION)

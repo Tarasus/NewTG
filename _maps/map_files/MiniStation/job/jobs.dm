@@ -6,7 +6,7 @@
 
 /datum/job/New()
 	..()
-	supervisors = "the captain and the head of personnel"
+	supervisors = "Капитану и Главе Персонала"
 
 /datum/job/assistant // Here so assistant appears on the top of the select job list.
 
@@ -14,11 +14,11 @@
 
 /datum/job/captain/New()
 	..()
-	supervisors = "Nanotrasen and Central Command"
+	supervisors = "Нанотрейзен и Центральному Командованию"
 
 /datum/job/hop/New()
 	..()
-	supervisors = "the captain and Central Command"
+	supervisors = "Капитану и Центральному Командованию"
 
 /datum/job/hop/get_access()
 	return get_all_accesses()
@@ -71,7 +71,7 @@
 
 /datum/job/detective/New()
 	..()
-	supervisors = "no one but yourself"
+	supervisors = "никому кроме себ&#255; самого"
 	access = list(access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_court, access_engine)
 	minimal_access = list(access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_court)
 

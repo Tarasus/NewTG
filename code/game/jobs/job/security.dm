@@ -8,14 +8,14 @@
 Head of Security
 */
 /datum/job/hos
-	title = "Head of Security"
+	title = "Глава Службы Безопасности"
 	flag = HOS
 	department_head = list("Captain")
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = "Капитану"
 	selection_color = "#ffdddd"
 	req_admin_notify = 1
 	minimal_player_age = 14
@@ -59,14 +59,14 @@ Head of Security
 Warden
 */
 /datum/job/warden
-	title = "Warden"
+	title = "Надзиратель"
 	flag = WARDEN
 	department_head = list("Head of Security")
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of security"
+	supervisors = "Главе Службы Безопасности"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 
@@ -109,14 +109,14 @@ Warden
 Detective
 */
 /datum/job/detective
-	title = "Detective"
+	title = "Детектив"
 	flag = DETECTIVE
 	department_head = list("Head of Security")
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of security"
+	supervisors = "Главе Службы Безопасности"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 
@@ -156,14 +156,14 @@ Detective
 Security Officer
 */
 /datum/job/officer
-	title = "Security Officer"
+	title = "Офицер Службы Безопасности"
 	flag = OFFICER
 	department_head = list("Head of Security")
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
 	spawn_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
-	supervisors = "the head of security, and the head of your assigned department (if applicable)"
+	supervisors = "Главе Службы Безопасности, и главе назначенного Вам отдела (применимо)"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	var/list/dep_access = null

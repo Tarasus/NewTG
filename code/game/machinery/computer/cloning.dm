@@ -261,7 +261,7 @@
 				active_record = null
 				src.temp = "<font class='bad'>Record Corrupt</font>"
 			else
-				src.menu = 3 //чтобы не ху€чило (“≈—“) +string here
+				src.menu = 3
 		else
 			src.temp = "Record missing."
 
