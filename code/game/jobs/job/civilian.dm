@@ -9,7 +9,7 @@ Clown
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "Главе Персонала"
 	selection_color = "#dddddd"
 
 	default_pda = /obj/item/device/pda/clown
@@ -51,7 +51,7 @@ Mime
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "Главе Персонала"
 	selection_color = "#dddddd"
 
 	default_pda = /obj/item/device/pda/mime
@@ -95,7 +95,7 @@ Librarian
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "Главе Персонала"
 	selection_color = "#dddddd"
 
 	default_pda = /obj/item/device/pda/librarian
@@ -121,7 +121,7 @@ Lawyer
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the head of personnel"
+	supervisors = "Главе Персонала"
 	selection_color = "#dddddd"
 	var/global/lawyers = 0 //Counts lawyer amount
 

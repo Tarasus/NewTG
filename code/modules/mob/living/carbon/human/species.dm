@@ -4,8 +4,8 @@
 #define BODY_BEHIND_LAYER		25
 #define BODY_LAYER				24
 #define BODY_ADJ_LAYER			23
-#define HORNS_LAYER				8
 #define HAIR_LAYER				9
+#define HORNS_LAYER				6
 #define BODY_FRONT_LAYER		2
 
 #define TINT_IMPAIR 2
@@ -35,7 +35,7 @@
 	var/name = null		// this is the fluff name. these will be left generic (such as 'Lizardperson' for the lizard race) so servers can change them to whatever
 	var/roundstart = 0	// can this mob be chosen at roundstart? (assuming the config option is checked?)
 	var/default_color = "#FFF"	// if alien colors are disabled, this is the color that will be used by that race
-	var/default_hair_color = "FFF"
+	var/default_hair_color = "#000000"
 	var/default_horns_style = null // standart horns pick
 
 	var/eyes = "eyes"	// which eyes the race uses. at the moment, the only types of eyes are "eyes" (regular eyes) and "jelleyes" (three eyes)
@@ -180,7 +180,27 @@
 	H.apply_overlay(HAIR_LAYER)
 	return
 
+/datum/species/proc/handle_horns(var/mob/living/carbon/human/H)
+
+	H.remove_overlay(HORNS_LAYER)
+
+	var/list/standing	= list()
+
+	// HORNS //*NEW*// Showeble Hornses [OHHH YEEEEEES~~~]
+	if(H.horns_style && HORNS in specflags)
+		var/datum/sprite_accessory/horns/Q = horns_list[H.horns_style]
+
+		standing	+= image("icon" = 'icons/mob/horns.dmi', "icon_state" = "[Q.icon_state]", "layer" = -HORNS_LAYER)
+
+	if(standing.len)
+		H.overlays_standing[HORNS_LAYER] = standing
+
+	H.apply_overlay(HORNS_LAYER)
+
+	return
+
 /datum/species/proc/handle_body(var/mob/living/carbon/human/H)
+
 	H.remove_overlay(BODY_LAYER)
 
 	var/list/standing	= list()
@@ -196,11 +216,6 @@
 		var/image/img_eyes_s = image("icon" = 'icons/mob/human_face.dmi', "icon_state" = "[eyes]_s", "layer" = -BODY_LAYER)
 		img_eyes_s.color = "#" + H.eye_color
 		standing	+= img_eyes_s
-
-	// HORNS //*NEW*// Showeble Hornses [OHHH YEEEEEES~~~]
-	if(H.horns_style && HORNS in specflags)
-		var/datum/sprite_accessory/horns/Q = horns_list[H.horns_style]
-		standing	+= image("icon" = 'icons/mob/horns.dmi', "icon_state" = "[Q.icon_state]", "layer" = -HORNS_LAYER)
 
 	//Underwear, Undershirts & Socks
 	if(H.underwear)

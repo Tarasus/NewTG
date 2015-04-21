@@ -16,7 +16,7 @@
 				entry += " - Играет за [C.mob.real_name]"
 				switch(C.mob.stat)
 					if(UNCONSCIOUS)
-						entry += " - <font color='darkgray'><b>Без сознания</b></font>"
+						entry += " - <font color='darkgray'><b>Без сознани&#255;</b></font>"
 					if(DEAD)
 						if(isobserver(C.mob))
 							var/mob/dead/observer/O = C.mob

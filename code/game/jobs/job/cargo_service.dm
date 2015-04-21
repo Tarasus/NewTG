@@ -9,7 +9,7 @@ Quartermaster
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "Главе Персонала"
 	selection_color = "#d7b088"
 
 	default_pda = /obj/item/device/pda/quartermaster
@@ -35,7 +35,7 @@ Cargo Technician
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the quartermaster and the head of personnel"
+	supervisors = "Квартмейстеру и Главе Персонала"
 	selection_color = "#dcba97"
 
 	default_pda = /obj/item/device/pda/cargo
@@ -59,7 +59,7 @@ Shaft Miner
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the quartermaster and the head of personnel"
+	supervisors = "Квартмейстеру и Главе Персонала"
 	selection_color = "#dcba97"
 
 	default_pda = /obj/item/device/pda/shaftminer
@@ -97,7 +97,7 @@ Bartender
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "Главе Персонала"
 	selection_color = "#bbe291"
 
 	default_pda = /obj/item/device/pda/bar
@@ -148,7 +148,7 @@ Cook
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "Главе Персонала"
 	selection_color = "#bbe291"
 	var/global/cooks = 0 //Counts cooks amount
 
@@ -182,7 +182,7 @@ Botanist
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the head of personnel"
+	supervisors = "Главе Персонала"
 	selection_color = "#bbe291"
 
 	default_pda = /obj/item/device/pda/botanist
@@ -209,7 +209,7 @@ Janitor
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "Главе Персонала"
 	selection_color = "#bbe291"
 	var/global/janitors = 0
 

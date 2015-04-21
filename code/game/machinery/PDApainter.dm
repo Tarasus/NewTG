@@ -74,7 +74,7 @@
 		ejectpda()
 
 	else
-		user << "<span class='notice'>The [src] is empty.</span>"
+		user << "<span class='notice'>[src] пуст.</span>"
 
 
 /obj/machinery/pdapainter/verb/ejectpda()
@@ -90,7 +90,7 @@
 		storedpda = null
 		update_icon()
 	else
-		usr << "<span class='notice'>The [src] is empty.</span>"
+		usr << "<span class='notice'>[src] пуст.</span>"
 
 
 /obj/machinery/pdapainter/power_change()

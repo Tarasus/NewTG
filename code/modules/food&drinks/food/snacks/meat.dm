@@ -177,6 +177,7 @@
 	bonus_reagents = list("nutriment" = 2, "vitamin" = 1)
 	trash = /obj/item/trash/plate
 	filling_color = "#B22222"
+	no_bite = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/meatsteak/plain
 

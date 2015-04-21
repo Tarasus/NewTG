@@ -61,8 +61,8 @@ var/datum/subsystem/ticker/ticker
 	switch(current_state)
 		if(GAME_STATE_STARTUP)
 			timeLeft = config.lobby_countdown * 10
-			world << "<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>"
-			world << "Please, setup your character and select ready. Game will start in [config.lobby_countdown] seconds"
+			world << "<B><FONT color='blue'>Приветствуем в лобби!</FONT></B>"
+			world << "Пожалуйста, настройте своего персонажа и приготовтесь. Игра начнетс&#255; в течении [config.lobby_countdown] секунд"
 			current_state = GAME_STATE_PREGAME
 
 		if(GAME_STATE_PREGAME)
@@ -187,7 +187,7 @@ var/datum/subsystem/ticker/ticker
 	master_controller.roundHasStarted()
 
 
-	world << "<FONT color='blue'><B>Welcome to [station_name()], enjoy your stay!</B></FONT>"
+	world << "<FONT color='blue'><B>Добро пожаловать на [station_name()]!</B></FONT>"
 	world << sound('sound/AI/welcome.ogg') // Skie
 	//Holiday Round-start stuff	~Carn
 	if(SSevent.holiday)

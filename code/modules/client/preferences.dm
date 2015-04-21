@@ -205,15 +205,19 @@ datum/preferences
 					else
 						dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
 
-					dat += "</td><td valign='top' width='21%'>"
 
-					dat += "<h3>Facial Hair Style</h3>"
-
-					dat += "<a href='?_src_=prefs;preference=facial_hair_style;task=input'>[facial_hair_style]</a><BR>"
-					dat += "<a href='?_src_=prefs;preference=previous_facehair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehair_style;task=input'>&gt;</a><BR>"
-					if (HBLACK in pref_species.specflags)
+					if(HORNS in pref_species.specflags)
 					else
-						dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
+
+						dat += "</td><td valign='top' width='21%'>"
+
+						dat += "<h3>Facial Hair Style</h3>"
+
+						dat += "<a href='?_src_=prefs;preference=facial_hair_style;task=input'>[facial_hair_style]</a><BR>"
+						dat += "<a href='?_src_=prefs;preference=previous_facehair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehair_style;task=input'>&gt;</a><BR>"
+						if (HBLACK in pref_species.specflags)
+						else
+							dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
 
 					dat += "</td>"
 
@@ -915,3 +919,4 @@ datum/preferences
 
 		character.update_body()
 		character.update_hair()
+		character.update_horns()

@@ -37,7 +37,7 @@
 	return t
 
 //Removes a few problematic characters
-/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#","я"="&#255;","<"="(","&lt;"=")"))
+/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#","я"="&#255;","<"="(","&lt;"=")")) //убрано, чтобы попробовать. мне кажется, что это вызывает баг.
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)
 		while(index)
@@ -53,8 +53,26 @@
 			index = findtext(t, char)
 	return t
 
+<<<<<<< HEAD
 /proc/sanitize_to_html(var/msg)
 	return sanitize_simple(msg, YA_HTML)
+=======
+/proc/sanitize_html(var/t,var/list/repl_chars = list("\n"="#","\t"="#","я"="&#x44F;","<"="(","&lt;"=")"))
+	for(var/char in repl_chars)
+		var/index = findtext(t, char)
+		while(index)
+			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+1)
+			index = findtext(t, char)
+	return t
+
+/proc/sanitize_html_ya(var/t,var/list/repl_chars = list("я"="&#x44F;"))
+	for(var/char in repl_chars)
+		var/index = findtext(t, char)
+		while(index)
+			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+1)
+			index = findtext(t, char)
+	return t
+>>>>>>> fd26bed2bc4aca9f7b62582c1f0115128e0830d3
 
 //Runs byond's sanitization proc along-side sanitize_simple
 /proc/sanitize(var/t,var/list/repl_chars = null)
