@@ -36,7 +36,7 @@
 	var/del_new_on_log = 1				// del's new players if they log before they spawn in
 	var/allow_Metadata = 0				// Metadata is supported.
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
-	var/fps = 30							//*FIX*// временно повысил FPS
+	var/fps = 20							//*FIX*// временно повысил FPS
 	var/Tickcomp = 0
 	var/allow_holidays = 0				//toggles whether holiday-specific content should be used
 
@@ -110,15 +110,15 @@
 	var/mutant_races = 1				//players can choose their mutant race before joining the game
 	var/mutant_colors = 1				//can are choose mutant's skin color /*EDITED*/
 
-	var/alert_desc_green = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
-	var/alert_desc_blue_upto = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted."
-	var/alert_desc_blue_downto = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
-	var/alert_desc_red_upto = "There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
-	var/alert_desc_red_downto = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
-	var/alert_desc_delta = "The station's self-destruct mechanism has been engaged. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
+	var/alert_desc_green = "Все угрозы миновали. Охрана не должна носить оружие на виду, законы вновь работают в полную силу."
+	var/alert_desc_blue_upto = "Станция получила достоверную информацию о возможности вражеской деятельности на станции. Охрана может носить оружие на виду, разрешаются случайные обыски."
+	var/alert_desc_blue_downto = "Непосредственная угроза миновала. Охрана может по-прежнему носить оружие на виду. Случайные обычки все еще разрешены."
+	var/alert_desc_red_upto = "Существует серьезная угроза станции. Охрана может постоянно ходить с оружием. Случайные обыски разрешены и рекомендуются."
+	var/alert_desc_red_downto = "Механизм самоуничтожения деактивирован, но угроза станции еще присутствует. Охрана может постоянно ходить с оружием. Случайные обыски разрешены и рекомендуются."
+	var/alert_desc_delta = "Механизм самоуничтожения активирован. Экипаж обязан исполнять все инструкции данные их главами. Любое нарушение может караться смертью. Это не учебная тревога."
 
-	var/health_threshold_crit = 0
-	var/health_threshold_dead = -100
+	var/health_threshold_crit = -5
+	var/health_threshold_dead = -101	//больше дамага, ХА-ХА-ХА!
 
 	var/revival_pod_plants = 1
 	var/revival_cloning = 1

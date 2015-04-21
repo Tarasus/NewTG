@@ -45,7 +45,7 @@ Captain
 	L.implanted = 1
 	H.sec_hud_set_implants()
 
-	minor_announce("Captain [H.real_name] on deck!")
+	minor_announce("Капитан [H.real_name] на палубе!")
 
 /datum/job/captain/get_access()
 	return get_all_accesses()
