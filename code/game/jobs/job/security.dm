@@ -8,7 +8,7 @@
 Head of Security
 */
 /datum/job/hos
-	title = "Глава Службы Безопасности"
+	title = "Head of Security"
 	flag = HOS
 	department_head = list("Captain")
 	department_flag = ENGSEC
@@ -59,7 +59,7 @@ Head of Security
 Warden
 */
 /datum/job/warden
-	title = "Надзиратель"
+	title = "Warden"
 	flag = WARDEN
 	department_head = list("Head of Security")
 	department_flag = ENGSEC
@@ -109,7 +109,7 @@ Warden
 Detective
 */
 /datum/job/detective
-	title = "Детектив"
+	title = "Detective"
 	flag = DETECTIVE
 	department_head = list("Head of Security")
 	department_flag = ENGSEC
@@ -156,7 +156,7 @@ Detective
 Security Officer
 */
 /datum/job/officer
-	title = "Офицер Службы Безопасности"
+	title = "Security Officer"
 	flag = OFFICER
 	department_head = list("Head of Security")
 	department_flag = ENGSEC

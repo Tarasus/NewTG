@@ -2,7 +2,7 @@
 Research Director
 */
 /datum/job/rd
-	title = "Директор Исследований"
+	title = "Research Director"
 	flag = RD
 	department_head = list("Captain")
 	department_flag = MEDSCI
@@ -44,7 +44,7 @@ Research Director
 Scientist
 */
 /datum/job/scientist
-	title = "Ученый"
+	title = "Scientist"
 	flag = SCIENTIST
 	department_head = list("Research Director")
 	department_flag = MEDSCI
@@ -69,7 +69,7 @@ Scientist
 Roboticist
 */
 /datum/job/roboticist
-	title = "Роботехник"
+	title = "Roboticist"
 	flag = ROBOTICIST
 	department_head = list("Research Director")
 	department_flag = MEDSCI

@@ -2,7 +2,7 @@
 Captain
 */
 /datum/job/captain
-	title = "Капитан"
+	title = "Captain"
 	flag = CAPTAIN
 	department_head = list("Centcom")
 	department_flag = ENGSEC
@@ -54,7 +54,7 @@ Captain
 Head of Personnel
 */
 /datum/job/hop
-	title = "Глава Персонала"
+	title = "Head of Personnel"
 	flag = HOP
 	department_head = list("Captain")
 	department_flag = CIVILIAN

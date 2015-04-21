@@ -2,7 +2,7 @@
 Chief Medical Officer
 */
 /datum/job/cmo
-	title = "Глава Медицинского Отдела"
+	title = "Chief Medical Officer"
 	flag = CMO
 	department_head = list("Captain")
 	department_flag = MEDSCI
@@ -71,7 +71,7 @@ Medical Doctor
 Chemist
 */
 /datum/job/chemist
-	title = "Химик"
+	title = "Chemist"
 	flag = CHEMIST
 	department_head = list("Chief Medical Officer")
 	department_flag = MEDSCI
@@ -96,7 +96,7 @@ Chemist
 Geneticist
 */
 /datum/job/geneticist
-	title = "Генетик"
+	title = "Geneticist"
 	flag = GENETICIST
 	department_head = list("Chief Medical Officer", "Research Director")
 	department_flag = MEDSCI
@@ -122,7 +122,7 @@ Geneticist
 Virologist
 */
 /datum/job/virologist
-	title = "Вирусолог"
+	title = "Virologist"
 	flag = VIROLOGIST
 	department_head = list("Chief Medical Officer")
 	department_flag = MEDSCI

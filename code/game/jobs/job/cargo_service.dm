@@ -2,7 +2,7 @@
 Quartermaster
 */
 /datum/job/qm
-	title = "Квартмейстер"
+	title = "Quartermaster"
 	flag = QUARTERMASTER
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
@@ -28,7 +28,7 @@ Quartermaster
 Cargo Technician
 */
 /datum/job/cargo_tech
-	title = "Грузчик"
+	title = "Cargo Technician"
 	flag = CARGOTECH
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
@@ -52,7 +52,7 @@ Cargo Technician
 Shaft Miner
 */
 /datum/job/mining
-	title = "Шахтер"
+	title = "Shaft Miner"
 	flag = MINER
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
@@ -90,7 +90,7 @@ Shaft Miner
 Bartender
 */
 /datum/job/bartender
-	title = "Бармен"
+	title = "Bartender"
 	flag = BARTENDER
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
@@ -141,7 +141,7 @@ Bartender
 Cook
 */
 /datum/job/cook
-	title = "Повар"
+	title = "Cook"
 	flag = COOK
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
@@ -175,7 +175,7 @@ Cook
 Botanist
 */
 /datum/job/hydro
-	title = "Ботаник"
+	title = "Botanist"
 	flag = BOTANIST
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
@@ -202,7 +202,7 @@ Botanist
 Janitor
 */
 /datum/job/janitor
-	title = "Уборщик"
+	title = "Janitor"
 	flag = JANITOR
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN

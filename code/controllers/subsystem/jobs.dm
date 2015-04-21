@@ -321,6 +321,7 @@ var/datum/subsystem/job/SSjob
 		AssignRole(player, "Assistant")
 	return 1
 
+/proc/ranged_R(var/t)	//процедура для перевода названия ПРОФЕССИИ
 //Gives the player the stuff he should have with his rank
 /datum/subsystem/job/proc/EquipRank(mob/living/H, rank, joined_late=0)
 	var/datum/job/job = GetJob(rank)
@@ -349,6 +350,7 @@ var/datum/subsystem/job/SSjob
 			H = new_mob
 		job.apply_fingerprints(H)
 
+	var/rank_rus = ranged_R(rank)
 	H << "<b>Вы [rank].</b>"
 	H << "<b>Как [rank] Вы подчин&#255;етесь [job.supervisors]. Это может изменитьс&#255; при определенных услови&#255;х.</b>"
 	H << "<b>Чтобы говорить по определенному радиоканналу отдела, используйте кнопку :h . Чтобы увидеть остальные посмотрите на свое радио.</b>"

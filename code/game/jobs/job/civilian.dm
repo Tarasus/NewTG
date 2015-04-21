@@ -2,7 +2,7 @@
 Clown
 */
 /datum/job/clown
-	title = "Клоун"
+	title = "Clown"
 	flag = CLOWN
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
@@ -44,7 +44,7 @@ Clown
 Mime
 */
 /datum/job/mime
-	title = "Мим"
+	title = "Mime"
 	flag = MIME
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
@@ -88,7 +88,7 @@ Mime
 Librarian
 */
 /datum/job/librarian
-	title = "Библиотекарь"
+	title = "Librarian"
 	flag = LIBRARIAN
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN
@@ -114,7 +114,7 @@ Librarian
 Lawyer
 */
 /datum/job/lawyer
-	title = "Адвокат"
+	title = "Lawyer"
 	flag = LAWYER
 	department_head = list("Head of Personnel")
 	department_flag = CIVILIAN

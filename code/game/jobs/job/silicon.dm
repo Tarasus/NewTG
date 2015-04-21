@@ -2,7 +2,7 @@
 AI
 */
 /datum/job/ai
-	title = "ָָ"
+	title = "AI"
 	flag = AI
 	department_flag = ENGSEC
 	faction = "Station"
@@ -25,7 +25,7 @@ AI
 Cyborg
 */
 /datum/job/cyborg
-	title = "Êטבמנד"
+	title = "Cyborg"
 	flag = CYBORG
 	department_flag = ENGSEC
 	faction = "Station"
