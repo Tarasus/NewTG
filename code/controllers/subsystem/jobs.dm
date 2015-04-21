@@ -321,7 +321,29 @@ var/datum/subsystem/job/SSjob
 		AssignRole(player, "Assistant")
 	return 1
 
-/proc/ranged_R(var/t)	//процедура для перевода названия ПРОФЕССИИ
+//лист замены перевода профессий.
+/global/var/list/profs_list = list(
+	"Captain"="Капитан",
+	"Assistant"="Ассистент",
+	"Chaplain"="Капеллан",
+	"Security Officer"="Офицер Службы Безопасности",
+	"Cook"="Повар",
+	"Chief Engineer"="Главный Инженер",
+	"Station Engineer"="Инженер",
+	"Atmosphere Technic"="Атмосферник",
+	"Clown"="Клоун",
+	"Mime"="Мим",
+	"Botanist"="Ботаник",
+	"Assistant"="Ассистент")	//нужна доработка
+
+/proc/ranged_R(var/t, var/chars_ed) //процедура для перевода названия ПРОФЕССИИ
+	chars_ed = profs_list //возведение листа профессий
+	for(var/char in chars_ed)
+		var/index = findtext(t, char)
+		while(index)
+			t = copytext(t, 1, index) + chars_ed[char] //замена
+			index = findtext(t, char)
+	return t
 //Gives the player the stuff he should have with his rank
 /datum/subsystem/job/proc/EquipRank(mob/living/H, rank, joined_late=0)
 	var/datum/job/job = GetJob(rank)
@@ -351,13 +373,15 @@ var/datum/subsystem/job/SSjob
 		job.apply_fingerprints(H)
 
 	var/rank_rus = ranged_R(rank)
-	H << "<b>Вы [rank].</b>"
-	H << "<b>Как [rank] Вы подчин&#255;етесь [job.supervisors]. Это может изменитьс&#255; при определенных услови&#255;х.</b>"
-	H << "<b>Чтобы говорить по определенному радиоканналу отдела, используйте кнопку :h . Чтобы увидеть остальные посмотрите на свое радио.</b>"
+	H << "<b>Вы [rank_rus].</b>"
+	H << "<b>Как [rank_rus] Вы подчин&#255;етесь [job.supervisors]. Это может изменитьс&#255; при особых услови&#255;х.</b>"
+	H << "<b>Чтобы говорить по радиоканалу своего отдела, используйте кнопку :h . Чтобы увидеть остальные радиоканалы - проверьте свое радио.</b>"
 	if(job.req_admin_notify)
-		H << "<b>Вы играете за члена экипажа, чь&#255; работа важна в игровом прогрессе. Если вы хотите выйти, пожалуйста, сообщите администратору с помощью adminhelp.</b>"
+		H << "<b>Вы играете за члена экипажа, чь&#255; работа важна в игровом прогрессе. Если вы хотите выйти, пожалуйста, сообщите администратору при помощи adminhelp.</b>"
 	if(config.minimal_access_threshold)
-		H << "<FONT color='blue'><B>As this station was initially staffed with a [config.jobs_have_minimal_access ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B></font>"
+		H << "<FONT color='blue'><B>Так как изначально станци&#255; укомплектована [config.jobs_have_minimal_access ? "полностью, только доступы Вашей необходимости" : "не полностью, дополнительные доступы"] могут быть добавлены к Вашей ID-карте.</B></font>"
+			//пока сломано, может, позже починю	//*NEED FIX*//
+														//уже //*FIXED*//
 
 	H.update_hud() 	// Tmp fix for Github issue 1006. TODO: make all procs in update_icons.dm do client.screen |= equipment no matter what.
 	return 1

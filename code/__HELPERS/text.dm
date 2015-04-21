@@ -37,7 +37,7 @@
 	return t
 
 //Removes a few problematic characters
-/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#",/*"я"="&#255;"*/,"<"="(","&lt;"=")")) //убрано, чтобы попробовать. мне кажется, что это вызывает баг.
+/proc/sanitize_simple(var/t,var/list/repl_chars = list("\n"="#","\t"="#","я"="&#255;","<"="(","&lt;"=")")) //убрано, чтобы попробовать. мне кажется, что это вызывает баг.
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)
 		while(index)
