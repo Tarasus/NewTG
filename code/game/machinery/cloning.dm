@@ -190,7 +190,6 @@
 	H.set_cloned_appearance()
 
 	H.update_horns()
-	//H.create_organs()
 
 	H.suiciding = 0
 	src.attempting = 0

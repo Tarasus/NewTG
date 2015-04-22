@@ -25,4 +25,3 @@
 	H.update_body()
 	H.update_hair()
 	H.update_horns()
-	//H.create_organs()
