@@ -51,7 +51,7 @@ Scientist
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 3
-	supervisors = "Директору Исследований"
+	supervisors = "Главе Отдела Исследований"
 	selection_color = "#ffeeff"
 
 	default_pda = /obj/item/device/pda/toxins
@@ -76,7 +76,7 @@ Roboticist
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "Директору Исследований"
+	supervisors = "Главе Отдела Исследований"
 	selection_color = "#ffeeff"
 
 	default_pda = /obj/item/device/pda/roboticist

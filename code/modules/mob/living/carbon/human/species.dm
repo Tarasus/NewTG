@@ -75,6 +75,30 @@
 	///////////
 	// PROCS //
 	///////////
+				//////////////////////////
+				//		EPXEREMENTAL	//
+				//////////////////////////	//[BAYSTATION 12 BASED]
+/datum/species/proc/create_organs(var/mob/living/carbon/human/H)	//создание органов
+	//это базовые человеческие конечности
+	H.organs = list()
+	H.organs_by_name["head"] = new/datum/organ/external/head(H.organs_by_name["chest"])
+	H.organs_by_name["l_arm"] = new/datum/organ/external/l_arm(H.organs_by_name["chest"])
+	H.organs_by_name["r_arm"] = new/datum/organ/external/r_arm(H.organs_by_name["chest"])
+	H.organs_by_name["r_leg"] = new/datum/organ/external/r_leg(H.organs_by_name["groin"])
+	H.organs_by_name["l_leg"] = new/datum/organ/external/l_leg(H.organs_by_name["groin"])
+
+	/*
+	H.internal_organs = list()
+	H.internal_organs_by_name["heart"] = new/datum/organ/internal/heart(H)
+	H.internal_organs_by_name["brain"] = new/datum/organ/internal/brain(H)
+	H.internal_organs_by_name["eyes"] = new/datum/organ/internal/eyes(H) */ ///////пока без них обойдемся, разобраться бы с теми, что повыше сначала.
+
+	for(var/name in H.organs_by_name)
+		H.organs += H.organs_by_name[name]
+
+	for(var/datum/organ/external/O in H.organs)
+		O.owner = H	//присуждение
+
 
 /datum/species/proc/update_base_icon_state(var/mob/living/carbon/human/H)
 	if(H.disabilities & HUSK)

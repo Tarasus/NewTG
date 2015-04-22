@@ -35,7 +35,7 @@ Cargo Technician
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "Квартмейстеру и Главе Персонала"
+	supervisors = "Завхозу и Главе Персонала"
 	selection_color = "#dcba97"
 
 	default_pda = /obj/item/device/pda/cargo
@@ -59,7 +59,7 @@ Shaft Miner
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "Квартмейстеру и Главе Персонала"
+	supervisors = "Завхозу и Главе Персонала"
 	selection_color = "#dcba97"
 
 	default_pda = /obj/item/device/pda/shaftminer

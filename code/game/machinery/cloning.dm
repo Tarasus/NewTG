@@ -184,11 +184,13 @@
 	H << "<span class='notice'><b>Consciousness slowly creeps over you as your body regenerates.</b><br><i>So this is what cloning feels like?</i></span>"
 
 	H.horns_style = horns_style
-	H.update_horns()
 	hardset_dna(H, ui, se, null, null, mrace, mcolor)
 	H.faction |= factions
 
 	H.set_cloned_appearance()
+
+	H.update_horns()
+	//H.create_organs()
 
 	H.suiciding = 0
 	src.attempting = 0

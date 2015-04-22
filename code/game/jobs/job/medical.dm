@@ -49,7 +49,7 @@ Medical Doctor
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 3
-	supervisors = "Главе Медицинского Отдела"
+	supervisors = "Главврачу"
 	selection_color = "#ffeef0"
 
 	default_pda = /obj/item/device/pda/medical
@@ -78,7 +78,7 @@ Chemist
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "Главе Медицинского Отдела"
+	supervisors = "Главврачу"
 	selection_color = "#ffeef0"
 
 	default_pda = /obj/item/device/pda/chemist
@@ -103,7 +103,7 @@ Geneticist
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "Главе Медицинского Отдела и Директору Исследований"
+	supervisors = "Главврачу и Главе Отдела Исследований"
 	selection_color = "#ffeef0"
 
 	default_pda = /obj/item/device/pda/geneticist
@@ -129,7 +129,7 @@ Virologist
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Главе Медицинского Отдела"
+	supervisors = "Главврачу"
 	selection_color = "#ffeef0"
 
 	default_pda = /obj/item/device/pda/viro

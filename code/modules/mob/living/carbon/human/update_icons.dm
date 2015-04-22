@@ -141,6 +141,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 
 //HAIR OVERLAY
 /mob/living/carbon/human/proc/update_hair()
+	update_horns() //на всякей
 	//Reset our hair
 	remove_overlay(HAIR_LAYER)
 
@@ -174,6 +175,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 
 
 /mob/living/carbon/human/proc/update_body()
+	update_horns()	//на всякей
 	remove_overlay(BODY_LAYER)
 
 	if(dna)
@@ -252,6 +254,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 	update_hud()
 	// Mutantrace colors
 	update_mutcolor()
+	update_horns()
 
 /* --------------------------------------- */
 //vvvvvv UPDATE_INV PROCS vvvvvv
