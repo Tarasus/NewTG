@@ -62,6 +62,7 @@
 	if(.)
 		update_hair()
 		update_body()
+		update_horns()
 
 /mob/living/carbon/proc/Drain()
 	ChangeToHusk()

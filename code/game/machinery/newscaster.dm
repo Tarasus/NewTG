@@ -1074,7 +1074,7 @@ obj/item/weapon/newspaper/attackby(obj/item/weapon/W as obj, mob/user as mob, pa
 
 /obj/machinery/newscaster/proc/newsAlert(channel)   //This isn't Agouri's work, for it is ugly and vile.
 	if(channel) 									//Who the fuck uses spawn(600) anyway, jesus christ
-		say("Breaking news from [channel]!")
+		say("Срочные новости от [channel]!")
 		src.alert = 1
 		src.update_icon()
 		spawn(300)

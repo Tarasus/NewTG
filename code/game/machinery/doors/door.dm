@@ -19,12 +19,24 @@
 	var/emergency = 0 // Emergency access override
 	var/sub_door = 0 // 1 if it's meant to go under another door.
 
+	//Multi-tile doors
+	dir = EAST
+	var/width = 1
+
 /obj/machinery/door/New()
 	..()
 	if(density)
 		layer = 3.1 //Above most items if closed
 	else
 		layer = 2.7 //Under all objects if opened. 2.7 due to tables being at 2.6
+	if(width > 1)
+		if(dir in list(EAST, WEST))
+			bound_width = width * world.icon_size
+			bound_height = world.icon_size
+		else
+			bound_width = world.icon_size
+			bound_height = width * world.icon_size
+
 	update_freelook_sight()
 	air_update_turf(1)
 	airlocks += src

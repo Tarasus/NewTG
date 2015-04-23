@@ -332,10 +332,10 @@ var/global/list/obj/item/device/pda/PDAs = list()
 						dat += "</ul>"
 					else	dat += "</ul>"
 					if(cartridge.access_quartermaster)
-						dat += "<h4>Квартмейстерские Функции</h4>"
+						dat += "<h4>Функции Завхоза</h4>"
 						dat += "<ul>"
 						dat += "<li><a href='byond://?src=\ref[src];choice=47'><img src=pda_crate.png> Отчеты Поставок</A></li>"
-						dat += "<li><a href='byond://?src=\ref[src];choice=48'><img src=pda_mule.png> Управлением Ботом Доставки</A></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=48'><img src=pda_mule.png> Управлением Роботом Доставки</A></li>"
 						dat += "</ul>"
 				dat += "</ul>"
 

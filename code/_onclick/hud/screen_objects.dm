@@ -130,7 +130,7 @@
 				icon_state = "internal0"
 			else
 				if(!istype(C.wear_mask, /obj/item/clothing/mask))
-					C << "<span class='notice'>You are not wearing a mask.</span>"
+					C << "<span class='notice'>На вас нет маски.</span>"
 					return 1
 				else
 					if(istype(C.l_hand, /obj/item/weapon/tank))
@@ -162,7 +162,7 @@
 					if(C.internal)
 						icon_state = "internal1"
 					else
-						C << "<span class='notice'>You don't have an oxygen tank.</span>"
+						C << "<span class='notice'>У вас нет баллона с воздухом.</span>"
 
 /obj/screen/mov_intent
 	name = "run/walk toggle"

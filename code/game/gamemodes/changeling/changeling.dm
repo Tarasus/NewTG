@@ -36,8 +36,8 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 	var/const/changeling_amount = 4 //hard limit on changelings if scaling is turned off
 
 /datum/game_mode/changeling/announce()
-	world << "<b>The current game mode is - Changeling!</b>"
-	world << "<b>There are alien changelings on the station. Do not let the changelings succeed!</b>"
+	world << "<b>Текущий режим - Генокрад!</b>"
+	world << "<b>На станцию пробрались злобные генокрады. Не позвольте им достичь своих грязных целей!</b>"
 
 /datum/game_mode/changeling/pre_setup()
 

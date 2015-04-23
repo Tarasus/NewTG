@@ -322,7 +322,7 @@ var/datum/subsystem/job/SSjob
 	return 1
 
 //лист замены перевода профессий.
-/global/var/list/profs_list = list(
+var/global/list/profs_list = list(
 	"Captain"="Капитан",
 	"Assistant"="Ассистент",
 	"Chaplain"="Капеллан",
@@ -330,11 +330,29 @@ var/datum/subsystem/job/SSjob
 	"Cook"="Повар",
 	"Chief Engineer"="Главный Инженер",
 	"Station Engineer"="Инженер",
-	"Atmosphere Technic"="Атмосферник",
+	"Atmospheric Technician"="Атмосферный Техник",
 	"Clown"="Клоун",
 	"Mime"="Мим",
 	"Botanist"="Ботаник",
-	"Assistant"="Ассистент")	//нужна доработка
+	"Medical Doctor"="Медик",
+	"Cargo Technician"="Грузчик",
+	"Head of Personnel"="Глава Персонала",
+	"Head of Security"="Глава Службы Безопасности",
+	"Warden"="Надзиратель",
+	"Detective"="Детектив",
+	"Lawyer"="Адвокат",
+	"Quartermaster"="Завхоз",
+	"Scientist"="Ученый",
+	"Shaft Miner"="Шахтер",
+	"Chemist"="Химик",
+	"Janitor"="Уборщик",
+	"Geneticist"="Генетик",
+	"Virologist"="Вирусолог",
+	"Roboticist"="Роботист",
+	"Bartender"="Бармен",
+	"Research Director"="Глава Отдела Исследований",
+	"Chief Medical Officer"="Главврач",
+	)	//нужна доработка и тесты //|""="",| загатовочка
 
 /proc/ranged_R(var/t, var/chars_ed) //процедура для перевода названия ПРОФЕССИИ
 	chars_ed = profs_list //возведение листа профессий
@@ -372,9 +390,9 @@ var/datum/subsystem/job/SSjob
 			H = new_mob
 		job.apply_fingerprints(H)
 
-	var/rank_rus = ranged_R(rank)
+	var/rank_rus = ranged_R(rank)	//возведение перевода
 	H << "<b>Вы [rank_rus].</b>"
-	H << "<b>Как [rank_rus] Вы подчин&#255;етесь [job.supervisors]. Это может изменитьс&#255; при особых услови&#255;х.</b>"
+	H << "<b>Как [rank_rus] вы подчин&#255;етесь [job.supervisors]. Это может изменитьс&#255; при особых услови&#255;х.</b>"
 	H << "<b>Чтобы говорить по радиоканалу своего отдела, используйте кнопку :h . Чтобы увидеть остальные радиоканалы - проверьте свое радио.</b>"
 	if(job.req_admin_notify)
 		H << "<b>Вы играете за члена экипажа, чь&#255; работа важна в игровом прогрессе. Если вы хотите выйти, пожалуйста, сообщите администратору при помощи adminhelp.</b>"

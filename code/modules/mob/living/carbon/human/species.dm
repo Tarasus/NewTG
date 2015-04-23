@@ -75,7 +75,6 @@
 	///////////
 	// PROCS //
 	///////////
-
 /datum/species/proc/update_base_icon_state(var/mob/living/carbon/human/H)
 	if(H.disabilities & HUSK)
 		H.remove_overlay(SPECIES_LAYER) // races lose their color
