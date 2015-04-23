@@ -371,7 +371,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		var/newname
 
 		for(var/i=1,i<=3,i++)	//we get 3 attempts to pick a suitable name.
-			newname = input(src,"You are a [role]. Would you like to change your name to something else?", "Name change",oldname) as text
+			newname = input(src,"Вы [role]. Не желаете ли вы сменить имя?", "Измененное имя",oldname) as text
 			if((world.time-time_passed)>300)
 				return	//took too long
 			newname = reject_bad_name(newname,allow_numbers)	//returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
@@ -384,7 +384,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 					break
 			if(newname)
 				break	//That's a suitable name!
-			src << "Sorry, that [role]-name wasn't appropriate, please try another. It's possibly too long/short, has bad characters or is already taken."
+			src << "Простите, данное [role]-им&#255; не подходит, попробуйте другое. Веро&#255;тно, оно слишком короткое/длинное, содержит запрещенные символы или уже зан&#255;то."
 
 		if(!newname)	//we'll stick with the oldname then
 			return
@@ -1267,33 +1267,33 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			var/turf/T = locate(final_x, final_y, AM.z)
 			if(T)
 				return T
-				
+
 //Finds the distance between two atoms, in pixels
 /proc/getPixelDistance(var/atom/A, var/atom/B)
 	if(!istype(A)||!istype(B))
 		return 0
-	
+
 	var/_x1 = A.x
 	var/_x2 = B.x
 	var/_y1 = A.y
 	var/_y2 = B.y
-	
+
 	//Ensure _x1 is bigger, simplicity
 	if(_x2 > _x1)
 		var/tx = _x1
 		_x1 = _x2
 		_x2 = tx
-	
+
 	//Ensure _y1 is bigger, simplicity
 	if(_y2 > _y1)
 		var/ty = _y1
 		_y1 = _y2
 		_y2 = ty
-	
+
 	//DY/DX
 	var/dx = _x1 - _x2 + A.pixel_x + B.pixel_x
 	var/dy = _y1 - _y2 + A.pixel_y + B.pixel_y
-	
+
 	//Distance check
 	if(dx == 0 && dy == 0) //No distance, don't bother calculating
 		return 0
