@@ -791,7 +791,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	var/t_s = sanitize_russian(sanitize_uni(original_t)) //чтобы "я" хорошо отображалась в отправлении/получении сообщений.
 
 
-	var/t = input(U, "Please enter message", name, null) as text
+	t = input(U, "Please enter message", name, null) as text
 	t = copytext(sanitize_uni(t), 1, MAX_MESSAGE_LEN)
 	if (!t || !istype(P))
 		return
