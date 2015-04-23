@@ -28,6 +28,6 @@ z7 = empty space
 
 #elif !defined(MAP_OVERRIDE)
 
-	#warn a map has already been included, ignoring /tg/station 2.
+	#warn a map has already been included, ignoring HooferStation 2.
 
 #endif
