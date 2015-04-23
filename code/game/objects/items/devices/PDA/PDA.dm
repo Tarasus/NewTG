@@ -479,7 +479,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 		switch(href_list["choice"])
 
-//BASIC FUNCTIONS===================================
+//BASIC FUNCTIONS
 
 			if("Close")//Self explanatory
 				U.unset_machine()
@@ -512,7 +512,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 						cartridge.radio.hostpda = null
 					cartridge = null
 
-//MENU FUNCTIONS===================================
+//MENU FUNCTIONS
 
 			if("0")//Hub
 				mode = 0
@@ -530,7 +530,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				mode = 5
 
 
-//MAIN FUNCTIONS===================================
+//MAIN FUNCTIONS
 
 			if("Light")
 				if(fon)
@@ -566,25 +566,25 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				else if((!isnull(cartridge)) && (cartridge.access_atmos))
 					scanmode = 5
 
-//NOTEKEEPER FUNCTIONS===================================
+//NOTEKEEPER FUNCTIONS
 
 			if ("Edit")
 				var/n = stripped_multiline_input(U, "ѕожалуйста, введите сообщение", name, note)
 				if (in_range(src, U) && loc == U)
 					if (mode == 1 && n)
-<<<<<<< HEAD
+
 						note = sanitize_uni(n)
 						notehtml = parsepencode(n, U, SIGNFONT)
-=======
+
 						note = sanitize_russian(sanitize_html_ya(n), 1)
 						notehtml = parsepencode(sanitize_russian(sanitize_html_ya(n), 1), U, SIGNFONT)
->>>>>>> fd26bed2bc4aca9f7b62582c1f0115128e0830d3
+
 						notescanned = 0
 				else
 					U << browse(null, "window=pda")
 					return //санитайз примечаний
 
-//MESSENGER FUNCTIONS===================================
+//MESSENGER FUNCTIONS
 
 			if("Toggle Messenger")
 				toff = !toff
@@ -639,7 +639,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 					return
 
 
-//CHATROOM FUNCTIONS====================================
+//CHATROOM FUNCTIONS=
 
 			if("Set Nick")
 				var/n = trim(stripped_input(U, "Please enter nickname", name, nick, 9))
@@ -673,7 +673,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 
 
-//SYNDICATE FUNCTIONS===================================
+//SYNDICATE FUNCTIONS
 
 			if("Toggle Door")
 				if(cartridge && cartridge.access_remote_door)
@@ -719,7 +719,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 					U << browse(null, "window=pda")
 					return
 
-//pAI FUNCTIONS===================================
+//pAI FUNCTIONS
 			if("pai")
 				switch(href_list["option"])
 					if("1")		// Configure pAI device
@@ -729,7 +729,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 						if(T)
 							pai.loc = T
 
-//LINK FUNCTIONS===================================
+//LINK FUNCTIONS
 
 			else//Cartridge menu linking
 				mode = text2num(href_list["choice"])
@@ -741,7 +741,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		U << browse(null, "window=pda")
 		return
 
-//EXTRA FUNCTIONS===================================
+//EXTRA FUNCTIONS
 
 	if (mode == 2||mode == 21)//To clear message overlays.
 		overlays.Cut()
@@ -781,15 +781,15 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 /obj/item/device/pda/proc/create_message(var/mob/living/U = usr, var/obj/item/device/pda/P)
 
-<<<<<<< HEAD
-=======
+
+
 	var/t = msg_input(U)
 	var/original_t = t //оригинальный текст
 
 	var/t_sani = sanitize_russian(sanitize_html(original_t), 1) //чтобы "€" хорошо отображалась в истории сообщений.
 
 	var/t_s = sanitize_russian(sanitize_uni(original_t)) //чтобы "€" хорошо отображалась в отправлении/получении сообщений.
->>>>>>> fd26bed2bc4aca9f7b62582c1f0115128e0830d3
+
 
 	var/t = input(U, "Please enter message", name, null) as text
 	t = copytext(sanitize_uni(t), 1, MAX_MESSAGE_LEN)

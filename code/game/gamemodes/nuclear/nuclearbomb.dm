@@ -242,7 +242,7 @@ This is here to make the tiles around the station mininuke change when it's arme
 
 
 
-//==========DAT FUKKEN DISK===============
+//===DAT FUKKEN DISK=
 /obj/item/weapon/disk/nuclear
 	name = "nuclear authentication disk"
 	desc = "Better keep this safe."

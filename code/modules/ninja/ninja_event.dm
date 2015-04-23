@@ -162,7 +162,7 @@ Contents:
 	success_spawn = 1
 
 
-//=======//NINJA CREATION PROCS//=======//
+////NINJA CREATION PROCS////
 
 /proc/create_space_ninja(spawn_loc)
 	var/mob/living/carbon/human/new_ninja = new(spawn_loc)

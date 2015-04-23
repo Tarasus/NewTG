@@ -182,7 +182,7 @@
 	//Setting the can>resize etc to 0 remove them from the drag bar but still allows the window to be draggable.
 	display_to << browse(dat,"window=spideros;size=400x444;border=1;can_resize=1;can_close=0;can_minimize=0")
 
-//=======//SPIDEROS TOPIC PROC//=======//
+////SPIDEROS TOPIC PROC////
 
 /obj/item/clothing/suit/space/space_ninja/Topic(href, href_list)
 	..()

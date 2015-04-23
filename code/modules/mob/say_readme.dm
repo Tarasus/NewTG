@@ -1,6 +1,6 @@
-/*=============================================================
-======================MIAUW'S SAY REWRITE======================
-===============================================================
+/*=====
+=MIAUW'S SAY REWRITE=
+
 
 This is a basic explanation of how say() works. Read this if you don't understand something.
 
@@ -14,7 +14,7 @@ If you came here to see how to use saycode, all you will ever really need to cal
 To have things react when other things speak around them, add the HEAR flag to their flags variable and
 override their Hear() proc.
 
-=======================PROCS & VARIABLES=======================
+==PROCS & VARIABLES==
 	Here follows a list of say()-related procs and variables.
 global procs
 	get_radio_span(freq)
@@ -32,13 +32,13 @@ global procs
 
 	get_hear(range, atom/source)
 		Like view(), but ignores luminosity.
-	
+
 	message_spans_start(spans)
 		Turns each element of spans into a span class.
-	
+
 	message_spans_end(length)
 		Returns lenght times "</span>"
-	
+
 	attach_spans(input, spans)
 		Attaches span classes around input.
 
@@ -51,7 +51,7 @@ global procs
 		Bitmask variable.
 		What languages this object speaks/understands. If the languages of the speaker don't match the languages
 		of the hearer, the message will be modified in the hearer's lang_treat().
-	
+
 	verb_say/verb_ask/verb_exclaim/verb_yell
 		These determine what the verb is for their respective action. Used in say_quote().
 
@@ -62,7 +62,7 @@ global procs
 	Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, spans)
 		This proc handles hearing. What it does varies. For mobs, it treats the message with hearer-specific things
 		like language and deafness, then outputs it to the hearer.
-		
+
 		IMPORTANT NOTE: If radio_freq is not null, the code will assume that the speaker is virtual! (more info on this in the Radios section below)
 
 	send_speech(message, range, source, bubble_type, spans)
@@ -76,7 +76,7 @@ global procs
 
 	say_quote(input, spans)
 		Adds a verb and quotes to a message. Also attaches span classes to a message. Verbs are determined by verb_say/verb_ask/verb_yell variables. Called on the speaker.
-	
+
 	get_spans(input, spans)
 		Returns the list of spans that are always applied to messages of this atom.
 		Always return ..() | + youroutput when overriding this proc!
@@ -145,7 +145,7 @@ global procs
 		Return 0 if no radio was spoken into.
 		IMPORTANT: remember to call ..() and check for ..()'s return value properly!
 
-============================RADIOS=============================
+RADIOS=
 
 I did not want to interfere with radios too much, but I sort of had to.
 For future generations, here is how radio code works:
