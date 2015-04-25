@@ -15,7 +15,7 @@ z7 = empty space
 
 #if !defined(MAP_FILE)
 
-        #include "map_files\TgStation\tgstation.2.1.3.dmm"
+        #include "map_files\TgStation\TGHoofer_v1.dmm"
         #include "map_files\generic\z2.dmm"
         #include "map_files\generic\z3.dmm"
         #include "map_files\generic\z4.dmm"
@@ -23,8 +23,8 @@ z7 = empty space
         #include "map_files\generic\z6.dmm"
         #include "map_files\generic\z7.dmm"
 
-        #define MAP_FILE "tgstation.2.1.3.dmm"
-        #define MAP_NAME "TGstation 2"
+        #define MAP_FILE "TGHoofer_v1.dmm"
+        #define MAP_NAME "TGHoofer"
 
 #elif !defined(MAP_OVERRIDE)
 
