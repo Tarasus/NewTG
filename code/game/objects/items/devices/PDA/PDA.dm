@@ -378,9 +378,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			if (2)
 				dat += "<h4><img src=pda_mail.png> КосмическийПосыльный V3.9.6</h4>"
 				dat += "<a href='byond://?src=\ref[src];choice=Toggle Ringer'><img src=pda_bell.png> Сигнал: [silent == 1 ? "Выключен" : "Включен"]</a> | "
-				dat += "<a href='byond://?src=\ref[src];choice=Toggle Messenger'><img src=pda_mail.png> Отправить / Получить: [toff == 1 ? "Выключен" : "Включен"]</a> | "
+				dat += "<a href='byond://?src=\ref[src];choice=Toggle Messenger'><img src=pda_mail.png> Сообщения: [toff == 1 ? "Выключены" : "Включены"]</a> | "
 				dat += "<a href='byond://?src=\ref[src];choice=Ringtone'><img src=pda_bell.png> Установить Сигнал</a> | "
-				dat += "<a href='byond://?src=\ref[src];choice=21'><img src=pda_mail.png> Сообщение</a><br>"
+				dat += "<a href='byond://?src=\ref[src];choice=21'><img src=pda_mail.png> История</a><br>"
 
 				if (istype(cartridge, /obj/item/weapon/cartridge/syndicate))
 					dat += "<b>[cartridge:shock_charges] осталось зар&#x44F;дов детонации.</b><HR>"

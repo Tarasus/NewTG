@@ -90,7 +90,7 @@ var/list/blob_nodes = list()
 /datum/game_mode/blob/announce()
 	world << "<B>Текущий режим - <font color='green'>Блоб</font>!</B>"
 	world << "<B>Опасный организм пожирает станцию!</B>"
-	world << "Вы должны убить его свед&#255; ущерб станции к минимуму."
+	world << "Вы должны уничтожить его свед&#255; ущерб станции к минимуму."
 
 
 /datum/game_mode/blob/proc/greet_blob(var/datum/mind/blob)

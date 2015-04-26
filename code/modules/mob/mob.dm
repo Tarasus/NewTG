@@ -535,14 +535,14 @@ var/list/slot_equipment_priority = list( \
 		winset(src, "rpane.changelogb", "background-color=none;font-style=;")
 
 /mob/verb/observe()
-	set name = "Observe"
+	set name = "Наблюдать"
 	set category = "OOC"
 	var/is_admin = 0
 
 	if(check_rights_for(client,R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
-		usr << "<span class='notice'>You must be observing to use this!</span>"
+		usr << "<span class='notice'>Для этого вы должны быть наблюдающим!</span>"
 		return
 
 	if(is_admin && stat == DEAD)
@@ -618,7 +618,7 @@ var/list/slot_equipment_priority = list( \
 				client.adminobs = 0
 
 /mob/verb/cancel_camera()
-	set name = "Cancel Camera View"
+	set name = "Прекратить слежение"
 	set category = "OOC"
 	reset_view(null)
 	unset_machine()
