@@ -212,7 +212,7 @@
 		var/obj_count = 1
 		for(var/datum/objective/objective in objectives)
 			output += "<br><B>Цель #[obj_count++]</B>: [objective.explanation_text]"
-			usr << "<br><B>Цель #[obj_count++]</B>: [objective.explanation_text]"	//для теста выявления ДЕРЬМА
+			//usr << "<br><B>Цель #[obj_count++]</B>: [objective.explanation_text]"	//для теста выявления ДЕРЬМА
 	//usr << "[output]"	//тест ***ПОКА ВЫКЛЮЧЕН
 
 	if(window)

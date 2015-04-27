@@ -255,8 +255,8 @@ var/list/possible_changeling_IDs = list("Альфа","Бета","Гамма","Дельта","Эпсилон
 /datum/changeling/New(var/gender=FEMALE)
 	..()
 	var/honorific
-	if(gender == FEMALE)	honorific = "Миссис "
-	else					honorific = "Мистер "
+	if(gender == FEMALE)	honorific = "Миссис"
+	else					honorific = "Мистер"
 	if(possible_changeling_IDs.len)
 		changelingID = pick(possible_changeling_IDs)
 		possible_changeling_IDs -= changelingID
