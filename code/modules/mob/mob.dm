@@ -339,7 +339,7 @@ var/list/slot_equipment_priority = list( \
 
 //mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
 /mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
-	set name = "Examine"
+	set name = "Осмотреть"
 	set category = "IC"
 
 	if(is_blind(src))
@@ -401,7 +401,7 @@ var/list/slot_equipment_priority = list( \
 
 /mob/verb/stop_pulling()
 
-	set name = "Stop Pulling"
+	set name = "Прекратить тащить"
 	set category = "IC"
 
 	if(pulling)
@@ -441,7 +441,7 @@ var/list/slot_equipment_priority = list( \
 */
 
 /mob/verb/memory()
-	set name = "Notes"
+	set name = "Заметки"
 	set category = "IC"
 	if(mind)
 		mind.show_memory(src)
@@ -449,11 +449,11 @@ var/list/slot_equipment_priority = list( \
 		src << "The game appears to have misplaced your mind datum, so we can't show you your notes."
 
 /mob/verb/add_memory(msg as message)
-	set name = "Add Note"
+	set name = "Добавить заметку"
 	set category = "IC"
 
 	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
-	msg = sanitize(msg)
+	msg = sanitize_without_ya(msg)	//чтобы не мешало "Я"
 
 	if(mind)
 		mind.store_memory(msg)
@@ -464,7 +464,7 @@ var/list/slot_equipment_priority = list( \
 	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
 
 	if (sane)
-		msg = sanitize(msg)
+		msg = sanitize_without_ya(msg)
 
 	if (length(memory) == 0)
 		memory += msg

@@ -11,6 +11,7 @@
 	var/verb_ask = "спрашивает"
 	var/verb_exclaim = "восклицает"
 	var/verb_yell = "кричит"
+	var/emoci = "говорит"
 	var/inertia_dir = 0
 	var/pass_flags = 0
 	glide_size = 8

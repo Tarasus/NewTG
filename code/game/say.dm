@@ -28,15 +28,18 @@ proc/sanitize_russian(var/msg, var/html = 0) //Няшная процедурка для возведения 
 		index = findtext(msg, "я")
 	return msg
 
-/atom/movable/proc/say(message) //>> SAY *MARK*
+/atom/movable/proc/say(message, emote, type) //>> SAY *MARK*
 	if(!can_speak())
 		return
 	if(message == "" || !message)
 		return
 	var/list/spans = get_spans()
+	if(emote)
+		type = 1
+		emoci = emote
 	sanitize(message)
 	sanitize_russian(message)
-	send_speech(message, 7, src, , spans)
+	send_speech(message, 7, src, , spans, type)
 
 /atom/movable/proc/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans)
 	return
@@ -44,8 +47,9 @@ proc/sanitize_russian(var/msg, var/html = 0) //Няшная процедурка для возведения 
 /atom/movable/proc/can_speak()
 	return 1
 
-/atom/movable/proc/send_speech(message, range = 7, obj/source = src, bubble_type, list/spans)
-	var/rendered = compose_message(src, languages, message, , spans)
+/atom/movable/proc/send_speech(message, range = 7, obj/source = src, bubble_type, list/spans, type)
+	var/rendered = compose_message(src, languages, message, , spans, type)
+	usr << "[rendered]"
 	for(var/atom/movable/AM in get_hearers_in_view(range, src))
 		AM.Hear(rendered, src, languages, message, , spans)
 
@@ -53,7 +57,7 @@ proc/sanitize_russian(var/msg, var/html = 0) //Няшная процедурка для возведения 
 /atom/movable/proc/get_spans()
 	return list()
 
-/atom/movable/proc/compose_message(atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans)
+/atom/movable/proc/compose_message(atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, type)
 	//This proc uses text() because it is faster than appending strings. Thanks BYOND.
 	//Basic span
 	var/spanpart1 = "<span class='[radio_freq ? get_radio_span(radio_freq) : "game say"]'>"
@@ -66,7 +70,7 @@ proc/sanitize_russian(var/msg, var/html = 0) //Няшная процедурка для возведения 
 	//End name span.
 	var/endspanpart = "</span>"
 	//Message
-	var/messagepart = " <span class='message'>[lang_treat(speaker, message_langs, raw_message, spans)]</span></span>"
+	var/messagepart = " <span class='message'>[lang_treat(speaker, message_langs, raw_message, spans, type)]</span></span>"
 
 	return "[spanpart1][spanpart2][freqpart][compose_track_href(speaker, message_langs, raw_message, radio_freq)][namepart][compose_job(speaker, message_langs, raw_message, radio_freq)][endspanpart][messagepart]"
 
@@ -76,7 +80,9 @@ proc/sanitize_russian(var/msg, var/html = 0) //Няшная процедурка для возведения 
 /atom/movable/proc/compose_job(atom/movable/speaker, message_langs, raw_message, radio_freq)
 	return ""
 
-/atom/movable/proc/say_quote(input, list/spans)
+/atom/movable/proc/say_quote(input, list/spans, type)
+	if(type)
+		return "[emoci], \"[input]\""
 	if(!input)
 		return "says, \"...\""	//not the best solution, but it will stop a large number of runtimes. The cause is somewhere in the Tcomms code
 	var/ending = copytext(input, length(input))
@@ -91,21 +97,21 @@ proc/sanitize_russian(var/msg, var/html = 0) //Няшная процедурка для возведения 
 
 	return "[verb_say], \"[input]\""
 
-/atom/movable/proc/lang_treat(atom/movable/speaker, message_langs, raw_message, list/spans)
+/atom/movable/proc/lang_treat(atom/movable/speaker, message_langs, raw_message, list/spans, type)
 	if(languages & message_langs)
 		var/atom/movable/AM = speaker.GetSource()
 		if(AM) //Basically means "if the speaker is virtual"
-			if(AM.verb_say != speaker.verb_say || AM.verb_ask != speaker.verb_ask || AM.verb_exclaim != speaker.verb_exclaim || AM.verb_yell != speaker.verb_yell) //If the saymod was changed
-				return speaker.say_quote(raw_message, spans)
-			return AM.say_quote(raw_message, spans)
+			if(AM.verb_say != speaker.verb_say || AM.verb_ask != speaker.verb_ask || AM.verb_exclaim != speaker.verb_exclaim || AM.verb_yell != speaker.verb_yell || AM.emoci != speaker.emoci) //If the saymod was changed
+				return speaker.say_quote(raw_message, spans, type)
+			return AM.say_quote(raw_message, spans, type)
 		else
-			return speaker.say_quote(raw_message, spans)
+			return speaker.say_quote(raw_message, spans, type)
 	else if(message_langs & HUMAN)
 		var/atom/movable/AM = speaker.GetSource()
 		if(AM)
-			return AM.say_quote(stars(raw_message), spans)
+			return AM.say_quote(stars(raw_message), spans, type)
 		else
-			return speaker.say_quote(stars(raw_message), spans)
+			return speaker.say_quote(stars(raw_message), spans, type)
 	else if(message_langs & MONKEY)
 		return "кричит."
 	else if(message_langs & ALIEN)

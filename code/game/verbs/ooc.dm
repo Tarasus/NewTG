@@ -1,4 +1,4 @@
-/client/verb/ooc(msg as text)
+/client/verb/OOC(msg as text)	//ХМММ
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
 
@@ -11,7 +11,10 @@
 		src << "Гости не могут использовать OOC."
 		return
 
-	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
+	//msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)	//мне кажется, что OOC-verb был сломан вот здесь
+	usr << "[msg]"
+	msg = sanitize_russian(sanitize_uni(msg))	//перестроил под новые санитайзы
+	usr << "[msg]"
 	if(!msg)	return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
@@ -26,7 +29,7 @@
 			usr << "<span class='danger'>OOC дл&#255; мёртвых мобов выключен.</span>"
 			return
 		if(prefs.muted & MUTE_OOC)
-			src << "<span class='danger'>Ты не можешь использовать OOC (muted).</span>"
+			src << "<span class='danger'>Вы не можеште использовать OOC (мут).</span>"
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return

@@ -150,7 +150,7 @@
 		syndicate.current << "<span class='notice'>You are a [syndicate_name()] agent!</span>"
 	var/obj_count = 1
 	for(var/datum/objective/objective in syndicate.objectives)
-		syndicate.current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
+		syndicate.current << sanitize("<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++
 	return
 

@@ -119,7 +119,7 @@
 	if (you_are)
 		rev_mind.current << "<span class='userdanger'>You are a member of the revolutionaries' leadership!</span>"
 	for(var/datum/objective/objective in rev_mind.objectives)
-		rev_mind.current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
+		rev_mind.current << sanitize("<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		rev_mind.special_role = "Head Revolutionary"
 		obj_count++
 

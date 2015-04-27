@@ -1,6 +1,6 @@
 /mob/verb/pray(msg as text)
 	set category = "IC"
-	set name = "Pray"
+	set name = "Молиться"
 
 	if(say_disabled)	//This is here to try to identify lag problems
 		usr << "<span class='danger'>Speech is currently admin-disabled.</span>"

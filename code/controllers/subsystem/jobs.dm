@@ -321,47 +321,6 @@ var/datum/subsystem/job/SSjob
 		AssignRole(player, "Assistant")
 	return 1
 
-//лист замены перевода профессий.
-var/global/list/profs_list = list(
-	"Captain"="Капитан",
-	"Assistant"="Ассистент",
-	"Chaplain"="Капеллан",
-	"Security Officer"="Офицер Службы Безопасности",
-	"Cook"="Повар",
-	"Chief Engineer"="Главный Инженер",
-	"Station Engineer"="Инженер",
-	"Atmospheric Technician"="Атмосферный Техник",
-	"Clown"="Клоун",
-	"Mime"="Мим",
-	"Botanist"="Ботаник",
-	"Medical Doctor"="Медик",
-	"Cargo Technician"="Грузчик",
-	"Head of Personnel"="Глава Персонала",
-	"Head of Security"="Глава Службы Безопасности",
-	"Warden"="Надзиратель",
-	"Detective"="Детектив",
-	"Lawyer"="Адвокат",
-	"Quartermaster"="Завхоз",
-	"Scientist"="Ученый",
-	"Shaft Miner"="Шахтер",
-	"Chemist"="Химик",
-	"Janitor"="Уборщик",
-	"Geneticist"="Генетик",
-	"Virologist"="Вирусолог",
-	"Roboticist"="Роботист",
-	"Bartender"="Бармен",
-	"Research Director"="Глава Отдела Исследований",
-	"Chief Medical Officer"="Главврач",
-	)	//нужна доработка и тесты //|""="",| загатовочка
-
-/proc/ranged_R(var/t, var/chars_ed) //процедура для перевода названия ПРОФЕССИИ
-	chars_ed = profs_list //возведение листа профессий
-	for(var/char in chars_ed)
-		var/index = findtext(t, char)
-		while(index)
-			t = copytext(t, 1, index) + chars_ed[char] //замена
-			index = findtext(t, char)
-	return t
 //Gives the player the stuff he should have with his rank
 /datum/subsystem/job/proc/EquipRank(mob/living/H, rank, joined_late=0)
 	var/datum/job/job = GetJob(rank)

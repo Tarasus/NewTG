@@ -53,6 +53,22 @@
 			index = findtext(t, char)
 	return t
 
+/proc/sanitize_ya(var/t,var/list/repl_chars = list("ÿ"="&#255;"))
+	for(var/char in repl_chars)
+		var/index = findtext(t, char)
+		while(index)
+			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+1)
+			index = findtext(t, char)
+	return t
+
+/proc/sanitize_without_ya(var/t,var/list/repl_chars = list("\n"="#","\t"="#","<"="(","&lt;"=")"))
+	for(var/char in repl_chars)
+		var/index = findtext(t, char)
+		while(index)
+			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+1)
+			index = findtext(t, char)
+	return t
+
 /proc/sanitize_html(var/t,var/list/repl_chars = list("\n"="#","\t"="#","ÿ"="&#x44F;","<"="(","&lt;"=")"))
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)

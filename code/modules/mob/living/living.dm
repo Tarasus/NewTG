@@ -315,7 +315,7 @@ Sorry Giacom. Please don't be mad :(
 // MOB PROCS //END
 
 /mob/living/proc/mob_sleep()
-	set name = "Sleep"
+	set name = "Заснуть"
 	set category = "IC"
 
 	if(usr.sleeping)
@@ -328,11 +328,11 @@ Sorry Giacom. Please don't be mad :(
 /mob/proc/get_contents()
 
 /mob/living/proc/lay_down()
-	set name = "Rest"
+	set name = "Лечь"
 	set category = "IC"
 
 	resting = !resting
-	src << "<span class='notice'>You are now [resting ? "resting" : "getting up"].</span>"
+	src << "<span class='notice'>Сейчас вы [resting ? "ложитесь" : "поднимаетесь"].</span>"
 
 //Recursive function to find everything a mob is holding.
 /mob/living/get_contents(var/obj/item/weapon/storage/Storage = null)
@@ -649,7 +649,7 @@ Sorry Giacom. Please don't be mad :(
 				C << "<span class='warning'>You fail to remove [I]!</span>"
 
 /mob/living/verb/resist()
-	set name = "Resist"
+	set name = "Сопротивляться"
 	set category = "IC"
 
 	if(!isliving(usr) || usr.next_move > world.time)

@@ -201,7 +201,7 @@ proc/isorgan(A)
 		else
 			t = text("[]*", t)
 		p++
-	return sanitize(t)
+	return sanitize_without_ya(t)
 
 proc/slur(n)
 	var/phrase = html_decode(n)
@@ -248,7 +248,7 @@ proc/slur(n)
 						n_letter = text("[n_letter]-[n_letter]")
 		t = text("[t][n_letter]")//since the above is ran through for each letter, the text just adds up back to the original word.
 		p++//for each letter p is increased to find where the next letter will be.
-	return copytext(sanitize(t),1,MAX_MESSAGE_LEN)
+	return copytext(sanitize_without_ya(t),1,MAX_MESSAGE_LEN)
 
 /proc/derpspeech(message, stuttering)
 	message = replacetext(message, " am ", " ")

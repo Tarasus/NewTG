@@ -204,21 +204,27 @@
 /datum/mind/proc/show_memory(mob/recipient, window=1)
 	if(!recipient)
 		recipient = current
-	var/output = "<B>Воспоминани&#255; [current.real_name]:</B><br>"
+	var/output = "<B>Воспоминания [current.real_name]:</B><br>"
 	output += memory
 
 	if(objectives.len)
-		output += "<B>Objectives:</B>"
+		output += "<B>Цели:</B>"
 		var/obj_count = 1
 		for(var/datum/objective/objective in objectives)
-			output += "<br><B>Objective #[obj_count++]</B>: [objective.explanation_text]"
+			output += "<br><B>Цель #[obj_count++]</B>: [objective.explanation_text]"
+			usr << "<br><B>Цель #[obj_count++]</B>: [objective.explanation_text]"	//для теста выявления ДЕРЬМА
+	//usr << "[output]"	//тест ***ПОКА ВЫКЛЮЧЕН
 
-	if(window)	recipient << browse(output,"window=memory")
-	else		recipient << "<i>[output]</i>"
+	if(window)
+		output = sanitize_html_ya(output)	//для менюшек
+		recipient << browse(output,"window=memory")	//теперь санитайз "я" добрался и до воспоминаний
+	else
+		output = sanitize_russian(sanitize_ya(output))	//для тех мест, где они отображаются в логах.
+		recipient << "<i>[output]</i>"
 
 /datum/mind/proc/edit_memory()
 	if(!ticker || !ticker.mode)
-		alert("Not before round-start!", "Alert")
+		alert("Не перед раундом!", "Alert")
 		return
 
 	var/out = "<B>[name]</B>[(current&&(current.real_name!=name))?" (as [current.real_name])":""]<br>"

@@ -103,7 +103,7 @@
 	if (you_are)
 		boss_mind.current << "<FONT size=3 color=red><B>You are a [(boss_mind in A_bosses) ? gang_name("A") : gang_name("B")] Gang Boss!</B></FONT>"
 	for(var/datum/objective/objective in boss_mind.objectives)
-		boss_mind.current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
+		boss_mind.current << sanitize("<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++
 
 ///////////////////////////////////////////////////////////////////////////

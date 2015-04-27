@@ -1,6 +1,8 @@
 /datum/game_mode
 	// this includes admin-appointed traitors and multitraitors. Easy!
 	var/traitor_name = "traitor"
+	var/traitor_name_r = "предатель"
+	var/traitor_name_rs = "предателями"
 	var/list/datum/mind/traitors = list()
 
 	var/datum/mind/exchange_red
@@ -175,10 +177,10 @@
 
 
 /datum/game_mode/proc/greet_traitor(var/datum/mind/traitor)
-	traitor.current << "<B><font size=3 color=red>Вы [traitor_name].</font></B>"
+	traitor.current << "<B><font size=3 color=red>Вы [traitor_name_r].</font></B>"
 	var/obj_count = 1
 	for(var/datum/objective/objective in traitor.objectives)
-		traitor.current << "<B>Цель #[obj_count]</B>: [objective.explanation_text]"
+		traitor.current << sanitize_ya(sanitize_russian("<B>Цель #[obj_count]</B>: [objective.explanation_text]"))
 		obj_count++
 	return
 
@@ -200,10 +202,10 @@
 	traitor_mob << "<B>Кодова&#255; фраза</B>: <span class='danger'>[syndicate_code_phrase]</span>"
 	traitor_mob << "<B>Ответ на фразу</B>: <span class='danger'>[syndicate_code_response]</span>"
 
-	traitor_mob.mind.store_memory("<b>Кодова&#255; фраза</b>: [syndicate_code_phrase]")
+	traitor_mob.mind.store_memory("<b>Кодовая фраза</b>: [syndicate_code_phrase]")
 	traitor_mob.mind.store_memory("<b>Ответ на фразу</b>: [syndicate_code_response]")
 
-	traitor_mob << "Используйте кодовые слова в предусмотренном пор&#255;дке во врем&#255; обычных разговоров, чтобы вычислить других агентов. Однако, соблюдайте осторожность, ведь враг, может быть, кем угодно."
+	traitor_mob << "Используйте кодовые слова в предусмотренном пор&#255;дке во врем&#255; обычных разговоров, чтобы вычислить других агентов. Однако соблюдайте осторожность, ведь враг, может быть кем угодно."
 
 
 /datum/game_mode/proc/add_law_zero(mob/living/silicon/ai/killer)
@@ -219,7 +221,7 @@
 
 /datum/game_mode/proc/auto_declare_completion_traitor()
 	if(traitors.len)
-		var/text = "<br><font size=3><b>[traitor_name] был:</b></font>"
+		var/text = "<br><font size=3><b>[traitor_name_rs] были:</b></font>"
 		for(var/datum/mind/traitor in traitors)
 			var/traitorwin = 1
 
@@ -313,7 +315,7 @@
 			target_radio.hidden_uplink = T
 			T.uplink_owner = "[traitor_mob.key]"
 			target_radio.traitor_frequency = freq
-			traitor_mob << "Синдикат хитро замаскировал аплинк под [R.name] [loc]. Просто наберите частоту [format_frequency(freq)] чтобы получить доступ к темной стороне."
+			traitor_mob << "Синдикат хитро замаскировал аплинк под [R.name][loc]. Просто наберите частоту [format_frequency(freq)] чтобы получить доступ к темной стороне."
 			traitor_mob.mind.store_memory("<B>Радио частота:</B> [format_frequency(freq)] ([R.name] [loc]).")
 		else if (istype(R, /obj/item/device/pda))
 			// generate a passcode if the uplink is hidden in a PDA
@@ -325,8 +327,8 @@
 			var/obj/item/device/pda/P = R
 			P.lock_code = pda_pass
 
-			traitor_mob << "Синдикат хитро замаскировал аплинк под [R.name] [loc].  Просто наберите код \"[pda_pass]\" в выборе сигнала сообщений, чтобы получить доступ к темной стороне вашего ПДА."
-			traitor_mob.mind.store_memory("<B>Uplink Passcode:</B> [pda_pass] ([R.name] [loc]).")
+			traitor_mob << "Синдикат хитро замаскировал аплинк под ваш ПДА. Просто наберите код \"[pda_pass]\" в выборе сигнала сообщений, чтобы получить доступ к темной стороне вашего ПДА."
+			traitor_mob.mind.store_memory("<B>Код Аплинка:</B> [pda_pass] ([R.name] [loc]).")
 	if(!safety)//If they are not a rev. Can be added on to.
 		give_codewords(traitor_mob)
 
