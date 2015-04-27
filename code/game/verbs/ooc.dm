@@ -2,6 +2,8 @@
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
 
+	if(!msg)
+		msg as text
 	if(say_disabled)	//This is here to try to identify lag problems
 		usr << "<span class='danger'>OOC выключен админом.</span>"
 		return
@@ -12,9 +14,7 @@
 		return
 
 	//msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)	//мне кажется, что OOC-verb был сломан вот здесь
-	usr << "[msg]"
 	msg = sanitize_russian(sanitize_uni(msg))	//перестроил под новые санитайзы
-	usr << "[msg]"
 	if(!msg)	return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))

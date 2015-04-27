@@ -8,12 +8,13 @@
 	usr.say(message) //>>Start of MESSAGE PROCESSING *MARK*
 
 /mob/verb/say_emocional_verb(message as text, emosi as text)	//эмоциональные фразы. //*NEW*//
-	set name = "ESay"
+	set name = "eSay"
 	set category = "IC"
 	if(say_disabled)	//This is here to try to identify lag problems
 		usr << "<span class='danger'>Speech is currently admin-disabled.</span>"
 		return
-	usr.say(message, emosi, 1) //>>Start of MESSAGE PROCESSING *MARK*
+	message = trim(copytext(sanitize(emosi+ ", &#34;[message]&#34;"), 1, MAX_MESSAGE_LEN))
+	usr.emote("esay",1,message)
 
 /mob/verb/whisper(message as text)
 	set name = "Whisper"
