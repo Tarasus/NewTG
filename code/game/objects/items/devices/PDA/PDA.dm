@@ -282,7 +282,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	else
 		switch (mode)
 			if (0)
-				dat += "<h2>PERSONAL DATA ASSISTANT v.1.2.6/Ortus.Station</h2>"
+				dat += "<h2>PERSONAL DATA ASSISTANT v.1.2.6/ХУЁРТУС.Station</h2>"
 				dat += "Владелец: [owner], [ownjob]<br>"
 				dat += text("ID: <A href='?src=\ref[src];choice=Authenticate'>[id ? "[id.registered_name], [id.assignment]" : "----------"]")
 				dat += text("<br><A href='?src=\ref[src];choice=UpdateInfo'>[id ? "Update PDA Info" : ""]</A><br><br>")
@@ -451,7 +451,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 			if (5)
 				new_ntrc_msg = 0
-				dat += "<h4><img src=pda_chatroom.png> Сеть Св&#x44F;зи Nanotrasen V1.2.6/Ortus Station</h4>"
+				dat += "<h4><img src=pda_chatroom.png> Сеть Св&#x44F;зи Nanotrasen V1.2.6/ХУЁРТУС Station</h4>"
 
 				dat += "<a href='byond://?src=\ref[src];choice=Set Nick'>[nick]</a> | "
 				dat += "<a href='byond://?src=\ref[src];choice=Set Channel'>[chat_channel]</a> | "
