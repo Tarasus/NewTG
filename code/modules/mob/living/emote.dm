@@ -253,7 +253,7 @@
 
 		if ("esay")
 			m_type = 2	//чтобы слышать eSay можно было не всегда и не везде
-			message = "<B>[src]</B> [message]"
+			//message = "<B>[src]</B> [message]"
 
 		else
 			src << "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>"

@@ -32,7 +32,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	var/lock_code = "" // Lockcode to unlock uplink
 	var/honkamt = 0 //How many honks left when infected with honk.exe
 	var/mimeamt = 0 //How many silence left when infected with mime.exe
-	var/note = "Congratulations, your station has chosen the Thinktronic 5230 Personal Data Assistant!" //Current note in the notepad function
+	var/note = "Поздравляем с получением вашего собственного ПДА! Пожалуйста, ознакомтесь с функионалом и инструкцией на задней крышке корпуса." //Current note in the notepad function
 	var/notehtml = ""
 	var/notescanned = 0 // True if what is in the notekeeper was from a paper.
 	var/cart = "" //A place to stick cartridge menu information
@@ -264,7 +264,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 	setup_chatrooms()
 
-	var/dat = "<html><head><title>Personal Data Assistant</title></head><body bgcolor=\"#CDC1C5\"><style>a, a:link, a:visited, a:active, a:hover { color: #1C1C1C; }img {border-style:none;}</style>"
+	var/dat = "<html><head><title>Personal Data Assistant</title></head><style>a, a:link, a:visited, a:active, a:hoverimg {border-style:none;}</style>"
 
 	dat += "<a href='byond://?src=\ref[src];choice=Close'><img src=pda_exit.png> Закрыть</a>"
 
@@ -464,8 +464,15 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				dat += cart
 
 	dat += "</body></html>"
+	dat = r_html(dat)	//чтобы работало все четко.
+	/*
 	user << browse(dat, "window=pda;size=365x444;border=1;can_resize=1;can_close=0;can_minimize=0")
-	onclose(user, "pda", src)
+	onclose(user, "pda", src) */
+	//СТАРЫЙ ОПЕН
+	var/datum/browser/popup = new(user, "PDA", "<div align='center'>[r_html("ПДА")]</div>", 400, 444)
+	popup.set_content(dat)
+	popup.open(0)
+	//НОВЫЙ СТИЛЬ
 
 /obj/item/device/pda/Topic(href, href_list)
 	..()

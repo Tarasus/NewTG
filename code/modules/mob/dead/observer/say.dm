@@ -8,7 +8,7 @@
 
 	if (src.client)
 		if(src.client.prefs.muted & MUTE_DEADCHAT)
-			src << "<span class='danger'>You cannot talk in deadchat (muted).</span>"
+			src << "<span class='danger'>¬ы не можете говорить в чате мертвых (мут).</span>"
 			return
 
 		if (src.client.handle_spam_prevention(message,MUTE_DEADCHAT))

@@ -70,7 +70,7 @@ var/next_mob_id = 0
 					return
 	// Added voice muffling for Issue 41.
 	if(stat == UNCONSCIOUS || sleeping > 0)
-		src << "<I>... You can almost hear someone talking ...</I>"
+		src << "<I>... Âû סכûרטעו קüט-עמ דמכמסא ...</I>"
 	else
 		src << msg
 	return
