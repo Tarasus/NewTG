@@ -48,3 +48,4 @@ Here is a list of the permissions and their numbers (this may be out of date, se
 	access_disposal_units = 30
 	access_hydroponics = 35
 	access_manufacturing = 36
+	access_journalist = 37

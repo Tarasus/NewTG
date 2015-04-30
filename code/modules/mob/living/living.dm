@@ -523,7 +523,7 @@ Sorry Giacom. Please don't be mad :(
 						if (prob(75))
 							var/obj/item/weapon/grab/G = pick(M.grabbed_by)
 							if (istype(G, /obj/item/weapon/grab))
-								visible_message("<span class='danger'>[src] has pulled [G.affecting] from [G.assailant]'s grip.</span>")
+								visible_message("<span class='danger'>[src] вытащил [G.affecting] от захвата [G.assailant].</span>")
 								qdel(G)
 						else
 							ok = 0
@@ -587,10 +587,10 @@ Sorry Giacom. Please don't be mad :(
 /mob/living/proc/cuff_break(obj/item/weapon/restraints/I, mob/living/carbon/C)
 
 	if(C.dna.check_mutation(HULK))
-		C.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
+		C.say(pick(";АРРРГХ!", ";АРРРРРРГГГГ!", ";ГВААААААРРР!", "НННГГГГГГ!", ";АААААААГРХ!" ))
 
-	C.visible_message("<span class='danger'>[C] manages to break [I]!</span>")
-	C << "<span class='notice'>You successfully break [I].</span>"
+	C.visible_message("<span class='danger'>[C] ломает [I]!</span>")
+	C << "<span class='notice'>Вы успешно ломаете [I].</span>"
 	qdel(I)
 
 	if(C.handcuffed)
@@ -614,25 +614,25 @@ Sorry Giacom. Please don't be mad :(
 	displaytime = breakouttime / 600
 
 	if(isalienadult(C) || C.dna.check_mutation(HULK))
-		C.visible_message("<span class='warning'>[C] is trying to break [I]!</span>")
-		C << "<span class='notice'>You attempt to break [I]. (This will take around 5 seconds and you need to stand still.)</span>"
+		C.visible_message("<span class='warning'>[C] пытается сломать [I]!</span>")
+		C << "<span class='notice'>Вы пытаетесь сломать [I]. (Это займет 5 секунд, стойте на месте.)</span>"
 		spawn(0)
 			if(do_after(C, 50))
 				if(!I || C.buckled)
 					return
 				cuff_break(I, C)
 			else
-				C << "<span class='warning'>You fail to break [I]!</span>"
+				C << "<span class='warning'>У вас не получилось сломать [I]!</span>"
 	else
 
-		C.visible_message("<span class='warning'>[C] attempts to remove [I]!</span>")
-		C << "<span class='notice'>You attempt to remove [I]. (This will take around [displaytime] minutes and you need to stand still.)</span>"
+		C.visible_message("<span class='warning'>[C] пытается избавиться от [I]!</span>")
+		C << "<span class='notice'>Вы пытаетесь избавиться от [I]. (Это займет около [displaytime] минут, стойте на месте.)</span>"
 		spawn(0)
 			if(do_after(C, breakouttime, 10))
 				if(!I || C.buckled)
 					return
-				C.visible_message("<span class='danger'>[C] manages to remove [I]!</span>")
-				C << "<span class='notice'>You successfully remove [I].</span>"
+				C.visible_message("<span class='danger'>[C] избавился от [I]!</span>")
+				C << "<span class='notice'>Вы избавились от [I].</span>"
 
 				if(C.handcuffed)
 					C.handcuffed.loc = C.loc
@@ -646,7 +646,7 @@ Sorry Giacom. Please don't be mad :(
 					C.legcuffed = null
 					C.update_inv_legcuffed(0)
 			else
-				C << "<span class='warning'>You fail to remove [I]!</span>"
+				C << "<span class='warning'>Вам не удалось избавиться от [I]!</span>"
 
 /mob/living/verb/resist()
 	set name = "Сопротивляться"
@@ -671,15 +671,15 @@ Sorry Giacom. Please don't be mad :(
 			else
 				if(G.state == GRAB_AGGRESSIVE)
 					if(prob(25))
-						L.visible_message("<span class='warning'>[L] has broken free of [G.assailant]'s grip!</span>")
+						L.visible_message("<span class='warning'>[L] оттолкнул [G.assailant] и освободился от захвата!</span>")
 						qdel(G)
 				else
 					if(G.state == GRAB_NECK)
 						if(prob(5))
-							L.visible_message("<span class='warning'>[L] has broken free of [G.assailant]'s headlock!</span>")
+							L.visible_message("<span class='warning'>[L] оттолкнул [G.assailant] и освободился от удушающего захвата!</span>")
 							qdel(G)
 		if(resisting)
-			L.visible_message("<span class='warning'>[L] resists!</span>")
+			L.visible_message("<span class='warning'>[L] сопротивляется!</span>")
 			return
 
 	//unbuckling yourself
@@ -689,17 +689,17 @@ Sorry Giacom. Please don't be mad :(
 			if(C.handcuffed)
 				C.changeNext_move(CLICK_CD_BREAKOUT)
 				C.last_special = world.time + CLICK_CD_BREAKOUT
-				C.visible_message("<span class='warning'>[C] attempts to unbuckle themself!</span>", \
-							"<span class='notice'>You attempt to unbuckle yourself. (This will take around one minute and you need to stay still.)</span>")
+				C.visible_message("<span class='warning'>[C] пытается встать!</span>", \
+							"<span class='notice'>Вы пытаетесь встать. (Это займет минуту, не двигайтесь.)</span>")
 				spawn(0)
 					if(do_after(usr, 600))
 						if(!C.buckled)
 							return
-						C.visible_message("<span class='danger'>[C] manages to unbuckle themself!</span>", \
-											"<span class='notice'>You successfully unbuckle yourself.</span>")
+						C.visible_message("<span class='danger'>[C] удачно встает!</span>", \
+											"<span class='notice'>Вы успешно встали.</span>")
 						C.buckled.user_unbuckle_mob(C,C)
 					else
-						C << "<span class='warning'>You fail to unbuckle yourself!</span>"
+						C << "<span class='warning'>Вы не смогли встать!</span>"
 			else
 				L.buckled.user_unbuckle_mob(L,L)
 		else
@@ -718,12 +718,12 @@ Sorry Giacom. Please don't be mad :(
 			CM.fire_stacks -= 5
 			CM.Weaken(3,1)
 			CM.spin(32,2)
-			CM.visible_message("<span class='danger'>[CM] rolls on the floor, trying to put themselves out!</span>", \
-				"<span class='notice'>You stop, drop, and roll!</span>")
+			CM.visible_message("<span class='danger'>[CM] катаеткя по полу, пытаясь потушить себя!</span>", \
+				"<span class='notice'>Вы остановились, упали, и начали кататься!</span>")
 			sleep(30)
 			if(fire_stacks <= 0)
-				CM.visible_message("<span class='danger'>[CM] has successfully extinguished themselves!</span>", \
-					"<span class='notice'>You extinguish yourself.</span>")
+				CM.visible_message("<span class='danger'>[CM] сбил с себя огонь!</span>", \
+					"<span class='notice'>вы сбили с себя огонь.</span>")
 				ExtinguishMob()
 			return
 		if(CM.canmove && (CM.last_special <= world.time))

@@ -31,7 +31,8 @@ var/global/list/profs_list = list(
 	"Chief Medical Officer"="Главврач",
 	"AI"="ИИ",
 	"Cyborg"="Киборг",
-	"Librarian"="Библиотекарь"
+	"Librarian"="Библиотекарь",
+	"Journalist"="Журналист"
 	)	//работает, проверено //|""="",| загатовочка
 
 /proc/ranged_R(var/t, var/type, var/chars_ed) //процедура для перевода названия ПРОФЕССИИ
@@ -53,7 +54,7 @@ var/global/list/locs_list = list(
 	"Room"="Комната",	//тест
 	)	//нужна РЕАЛИЗАЦИЯ и тесты //|""="",| загатовочка
 
-//лист замены перевода названия комнат/отсеков
+//лист замены перевода антагонистов в творительном падеже
 var/global/list/antag_list_s = list(
 	"traitor"="предателем",
 	"wizard"="волшебником",

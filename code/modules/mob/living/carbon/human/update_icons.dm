@@ -175,6 +175,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 
 
 /mob/living/carbon/human/proc/update_body()
+	update_mutcolor()
 	update_horns()	//на всякей
 	remove_overlay(BODY_LAYER)
 

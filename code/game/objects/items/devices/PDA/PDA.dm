@@ -72,6 +72,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	default_cartridge = /obj/item/weapon/cartridge/detective
 	icon_state = "pda-detective"
 
+/obj/item/device/pda/journalist
+	icon_state = "pda-detective"
+
 /obj/item/device/pda/warden
 	default_cartridge = /obj/item/weapon/cartridge/security
 	icon_state = "pda-warden"
@@ -283,7 +286,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		switch (mode)
 			if (0)
 				dat += "<h2>PERSONAL DATA ASSISTANT v.1.2.6</h2>"
-				dat += "Владелец: [owner], [ownjob]<br>"
+				dat += "Владелец: [owner], [ranged_R(ownjob)]<br>"	//чтобы профессия была на русске.
 				dat += text("ID: <A href='?src=\ref[src];choice=Authenticate'>[id ? "[id.registered_name], [id.assignment]" : "----------"]")
 				dat += text("<br><A href='?src=\ref[src];choice=UpdateInfo'>[id ? "Update PDA Info" : ""]</A><br><br>")
 
