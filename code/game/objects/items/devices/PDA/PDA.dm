@@ -32,7 +32,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	var/lock_code = "" // Lockcode to unlock uplink
 	var/honkamt = 0 //How many honks left when infected with honk.exe
 	var/mimeamt = 0 //How many silence left when infected with mime.exe
-	var/note = "Congratulations, your station has chosen the Thinktronic 5230 Personal Data Assistant!" //Current note in the notepad function
+	var/note = "Поздравляем с получением вашего собственного ПДА! Пожалуйста, ознакомтесь с функионалом и инструкцией на задней крышке корпуса." //Current note in the notepad function
 	var/notehtml = ""
 	var/notescanned = 0 // True if what is in the notekeeper was from a paper.
 	var/cart = "" //A place to stick cartridge menu information
@@ -70,6 +70,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 /obj/item/device/pda/detective
 	default_cartridge = /obj/item/weapon/cartridge/detective
+	icon_state = "pda-detective"
+
+/obj/item/device/pda/journalist
 	icon_state = "pda-detective"
 
 /obj/item/device/pda/warden
@@ -264,7 +267,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 	setup_chatrooms()
 
-	var/dat = "<html><head><title>Personal Data Assistant</title></head><body bgcolor=\"#CDC1C5\"><style>a, a:link, a:visited, a:active, a:hover { color: #1C1C1C; }img {border-style:none;}</style>"
+	var/dat = "<html><head><title>Personal Data Assistant</title></head><style>a, a:link, a:visited, a:active, a:hoverimg {border-style:none;}</style>"
 
 	dat += "<a href='byond://?src=\ref[src];choice=Close'><img src=pda_exit.png> Закрыть</a>"
 
@@ -282,8 +285,13 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	else
 		switch (mode)
 			if (0)
+<<<<<<< HEAD
 				dat += "<h2>PERSONAL DATA ASSISTANT v.1.2.6/ХУЁРТУС.Station</h2>"
 				dat += "Владелец: [owner], [ownjob]<br>"
+=======
+				dat += "<h2>PERSONAL DATA ASSISTANT v.1.2.6</h2>"
+				dat += "Владелец: [owner], [ranged_R(ownjob)]<br>"	//чтобы профессия была на русске.
+>>>>>>> 4b1f982e09847ecb4ad6a703bfa4a4988655b912
 				dat += text("ID: <A href='?src=\ref[src];choice=Authenticate'>[id ? "[id.registered_name], [id.assignment]" : "----------"]")
 				dat += text("<br><A href='?src=\ref[src];choice=UpdateInfo'>[id ? "Update PDA Info" : ""]</A><br><br>")
 
@@ -378,9 +386,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			if (2)
 				dat += "<h4><img src=pda_mail.png> КосмическийПосыльный V3.9.6</h4>"
 				dat += "<a href='byond://?src=\ref[src];choice=Toggle Ringer'><img src=pda_bell.png> Сигнал: [silent == 1 ? "Выключен" : "Включен"]</a> | "
-				dat += "<a href='byond://?src=\ref[src];choice=Toggle Messenger'><img src=pda_mail.png> Отправить / Получить: [toff == 1 ? "Выключен" : "Включен"]</a> | "
+				dat += "<a href='byond://?src=\ref[src];choice=Toggle Messenger'><img src=pda_mail.png> Сообщени&#x44F;: [toff == 1 ? "Выключены" : "Включены"]</a> | "
 				dat += "<a href='byond://?src=\ref[src];choice=Ringtone'><img src=pda_bell.png> Установить Сигнал</a> | "
-				dat += "<a href='byond://?src=\ref[src];choice=21'><img src=pda_mail.png> Сообщение</a><br>"
+				dat += "<a href='byond://?src=\ref[src];choice=21'><img src=pda_mail.png> Истори&#x44F;</a><br>"
 
 				if (istype(cartridge, /obj/item/weapon/cartridge/syndicate))
 					dat += "<b>[cartridge:shock_charges] осталось зар&#x44F;дов детонации.</b><HR>"
@@ -464,8 +472,15 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				dat += cart
 
 	dat += "</body></html>"
+	dat = r_html(dat)	//чтобы работало все четко.
+	/*
 	user << browse(dat, "window=pda;size=365x444;border=1;can_resize=1;can_close=0;can_minimize=0")
-	onclose(user, "pda", src)
+	onclose(user, "pda", src) */
+	//СТАРЫЙ ОПЕН
+	var/datum/browser/popup = new(user, "PDA", "<div align='center'>[r_html("ПДА")]</div>", 400, 444)
+	popup.set_content(dat)
+	popup.open(0)
+	//НОВЫЙ СТИЛЬ
 
 /obj/item/device/pda/Topic(href, href_list)
 	..()

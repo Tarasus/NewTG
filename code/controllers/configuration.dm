@@ -159,6 +159,8 @@
 
 	var/aggressive_changelog = 0
 
+	var/achivki_mode_on = 1	//контролирует возможность функции АЧЕИВЕК
+
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for(var/T in L)

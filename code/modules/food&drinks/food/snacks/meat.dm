@@ -29,7 +29,7 @@
 
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/human
-	name = "-meat"
+	name = "meat"
 	var/subjectname = ""
 	var/subjectjob = null
 	cooked_type = /obj/item/weapon/reagent_containers/food/snacks/meatsteak/plain/human

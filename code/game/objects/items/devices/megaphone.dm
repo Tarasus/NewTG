@@ -34,12 +34,12 @@
 	if ((src.loc == user && user.stat == 0))
 		if(emagged)
 			if(insults)
-				user.audible_message("<B>[user]</B> broadcasts, <FONT size=3>\"[pick(insultmsg)]\"</FONT>", null, 1) // 2 stands for hearable message
+				user.audible_message("<B>[user]</B> דמגמנטע ג לודאפמם, <FONT size=3>\"[pick(insultmsg)]\"</FONT>", null, 1) // 2 stands for hearable message
 				insults--
 			else
-				user << "<span class='warning'>*BZZZZzzzzzt*</span>"
+				user << "<span class='warning'>*ֱבבבבחחחחחחחַ*</span>"
 		else
-			user.audible_message("<B>[user]</B> broadcasts, <FONT size=3>\"[message]\"</FONT>", null, 1) // 2 stands for hearable message
+			user.audible_message("<B>[user]</B> דמגמנטע ג לודאפמם, <FONT size=3>\"[message]\"</FONT>", null, 1) // 2 stands for hearable message
 
 		playsound(loc, 'sound/items/megaphone.ogg', 100, 0, 1)
 		spamcheck = world.time + 50

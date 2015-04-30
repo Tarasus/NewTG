@@ -180,7 +180,6 @@
 	return
 
 /datum/species/proc/handle_horns(var/mob/living/carbon/human/H)
-
 	H.remove_overlay(HORNS_LAYER)
 
 	var/list/standing	= list()
@@ -199,7 +198,6 @@
 	return
 
 /datum/species/proc/handle_body(var/mob/living/carbon/human/H)
-
 	H.remove_overlay(BODY_LAYER)
 
 	var/list/standing	= list()

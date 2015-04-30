@@ -28,12 +28,13 @@ proc/sanitize_russian(var/msg, var/html = 0) //Няшная процедурка для возведения 
 		index = findtext(msg, "я")
 	return msg
 
-/atom/movable/proc/say(message) //>> SAY *MARK*
+/atom/movable/proc/say(message, emote) //>> SAY *MARK*
 	if(!can_speak())
 		return
 	if(message == "" || !message)
 		return
 	var/list/spans = get_spans()
+
 	sanitize(message)
 	sanitize_russian(message)
 	send_speech(message, 7, src, , spans)

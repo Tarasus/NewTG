@@ -20,8 +20,8 @@
 
 
 /datum/game_mode/malfunction/announce()
-	world << "<B>The current game mode is - AI Malfunction!</B>"
-	world << "<B>The AI on the station has malfunctioned and must be destroyed.</B>"
+	world << "<B>Текущий режим - Сбой ИИ!</B>"
+	world << "<B>ИИ на станции дал сбой и должен уничтожить станцию.</B>"
 
 /datum/game_mode/malfunction/can_start()
 	//Triumvirate?

@@ -47,6 +47,17 @@
 	item_color = "greydet"
 
 /*
+ * Journalist
+ */
+/obj/item/clothing/under/rank/journalist
+	name = "journalist suit"
+	desc = "Someone who wears this means business."
+	icon_state = "detective"
+	item_state = "det"
+	item_color = "detective"
+	strip_delay = 50
+
+/*
  * Head of Security
  */
 /obj/item/clothing/under/rank/head_of_security

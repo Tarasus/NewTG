@@ -28,13 +28,13 @@
 		var/mob/living/carbon/C = usr
 		C.toggle_throw_mode()
 	else
-		usr << "<span class='danger'>This mob type cannot throw items.</span>"
+		usr << "<span class='danger'>Вы не можете выбрасывать вещи.</span>"
 	return
 
 
 /client/Northwest()
 	if(!usr.get_active_hand())
-		usr << "<span class='warning'>You have nothing to drop in your hand!</span>"
+		usr << "<span class='warning'>В ваших руках нит ничего, что вы могли бы выбросить!</span>"
 		return
 	usr.drop_item()
 
@@ -43,13 +43,13 @@
 	set hidden = 1
 
 	if(!usr.pulling)
-		usr << "<span class='notice'>You are not pulling anything.</span>"
+		usr << "<span class='notice'>Вы ничего не тащите.</span>"
 		return
 	usr.stop_pulling()
 
 /client/verb/swap_hand()
 	set category = "IC"
-	set name = "Swap hands"
+	set name = "Сменить руки"
 
 	if(mob)
 		mob.swap_hand()
@@ -141,7 +141,7 @@
 			for(var/mob/M in range(mob, 1))
 				if(M.pulling == mob)
 					if(!M.incapacitated() && mob.Adjacent(M))
-						src << "<span class='notice'>You're restrained! You can't move!</span>"
+						src << "<span class='notice'>Вы задержаны! Двигаться не получиться!</span>"
 						move_delay += 10
 						return 0
 					else

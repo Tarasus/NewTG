@@ -10,7 +10,7 @@
 	..()
 	var/datum/changeling/changeling=user.mind.changeling
 	changeling.changeling_speak = 1
-	user << "<i><font color=#800080>Use say \":g message\" to communicate with the other changelings.</font></i>"
+	//user << "<i><font color=#800080>Use say \":g message\" to communicate with the other changelings.</font></i>" почему-то эта строчка появляется вместе с той, где уже есть текст с этим же смыслом.
 	var/obj/effect/proc_holder/changeling/hivemind_upload/S1 = new
 	if(!changeling.has_sting(S1))
 		changeling.purchasedpowers+=S1

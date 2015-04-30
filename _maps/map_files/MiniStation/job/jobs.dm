@@ -75,6 +75,12 @@
 	access = list(access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_court, access_engine)
 	minimal_access = list(access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_court)
 
+/datum/job/journalist/New()
+	..()
+	supervisors = "никому кроме себ&#255; самого"
+	access = list(access_journalist)
+	minimal_access = list(access_journalist)
+
 /datum/job/officer/New()
 	..()
 	total_positions = 4

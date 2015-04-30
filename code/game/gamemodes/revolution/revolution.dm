@@ -29,8 +29,8 @@
 //Announces the game type//
 ///////////////////////////
 /datum/game_mode/revolution/announce()
-	world << "<B>The current game mode is - Revolution!</B>"
-	world << "<B>Some crewmembers are attempting to start a revolution!<BR>\nRevolutionaries - Kill the Captain, HoP, HoS, CE, RD and CMO. Convert other crewmembers (excluding the heads of staff, and security officers) to your cause by flashing them. Protect your leaders.<BR>\nPersonnel - Protect the heads of staff. Kill the leaders of the revolution, and brainwash the other revolutionaries (by beating them in the head).</B>"
+	world << "<B>Текущий режим - Революци&#255;!</B>"
+	world << "<B>Некоторые члены экипажа хот&#255;т начать революционное движение дл&#255; свержени&#255; управлени&#255; станции!<BR>\nЦели революции - Убить Капитана, ХоПа, ХоСа, СЕ, РД и СМО. Преобразуйте других (за исключением глав и сотрудников службы безопасности) с помощью флешек. Защищайте Ваших лидеров.<BR>\nПерсонал - Защищайте глав. Убейте лидеров революции, и промойте мозги другим революционерам.</B>"
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -119,7 +119,7 @@
 	if (you_are)
 		rev_mind.current << "<span class='userdanger'>You are a member of the revolutionaries' leadership!</span>"
 	for(var/datum/objective/objective in rev_mind.objectives)
-		rev_mind.current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
+		rev_mind.current << sanitize("<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		rev_mind.special_role = "Head Revolutionary"
 		obj_count++
 

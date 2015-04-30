@@ -16,8 +16,8 @@
 	var/list/late_joining_list = list()
 
 /datum/game_mode/traitor/double_agents/announce()
-	world << "<B>The current game mode is - Double Agents!</B>"
-	world << "<B>There are double agents killing eachother! Do not let them succeed!</B>"
+	world << "<B>Текущий режим - Двойной Агент!</B>"
+	world << "<B>На станции есть двойные агенты, пытающиес&#255; устранить друг друга! Не позвол&#255;йте им добитьс&#255; успеха!</B>"
 
 /datum/game_mode/traitor/double_agents/post_setup()
 	var/i = 0

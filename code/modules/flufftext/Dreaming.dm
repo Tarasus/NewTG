@@ -1,12 +1,12 @@
 mob/living/carbon/proc/dream()
 	dreaming = 1
 	var/list/dreams = list(
-		"an ID card","a bottle","a familiar face","a crewmember","a toolbox","a security officer","the captain",
-		"voices from all around","deep space","a doctor","the engine","a traitor","an ally","darkness",
-		"light","a scientist","a monkey","a catastrophe","a loved one","a gun","warmth","freezing","the sun",
-		"a hat","the Luna","a ruined station","a planet","plasma","air","the medical bay","the bridge","blinking lights",
-		"a blue light","an abandoned laboratory","Nanotrasen","The Syndicate","blood","healing","power","respect",
-		"riches","space","a crash","happiness","pride","a fall","water","flames","ice","melons","flying"
+		"»ƒ карта","бутылка","лица","экипаж","инструменты","офицер","капитан",
+		"голоса вокруг вас","глубокий космос","доктор","двигатель","предатель","вселенна€","тьма",
+		"свет","ученый","обезь€на","катастрофа","любовь","ствол","блевотина","заморозка","солнце",
+		"шл€па","Ћуна","руины станции","планеты","плазма","воздуз","медицинский отдел","мостик","ослепл€ющие лампы",
+		"синий свет","лаборатори€","Ќано“рейзен","—индикат","кровь","лечение","сила","уважение",
+		"богатсво","космос","крушение","счастье","ста€","падение","вода","огонь","лед","арбуз","полет"
 		)
 	spawn(0)
 		for(var/i = rand(1,4),i > 0, i--)

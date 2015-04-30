@@ -119,11 +119,11 @@ datum/preferences
 		user << browse_rsc(preview_icon_side, "previewicon2.png")
 		var/dat = "<center>"
 
-		dat += "<a href='?_src_=prefs;preference=tab;tab=0' [current_tab == 0 ? "class='linkOn'" : ""]>Character Settings</a> "
-		dat += "<a href='?_src_=prefs;preference=tab;tab=1' [current_tab == 1 ? "class='linkOn'" : ""]>Game Preferences</a>"
+		dat += r_html("<a href='?_src_=prefs;preference=tab;tab=0' [current_tab == 0 ? "class='linkOn'" : ""]>Настройка Персонажа</a> ")
+		dat += r_html("<a href='?_src_=prefs;preference=tab;tab=1' [current_tab == 1 ? "class='linkOn'" : ""]>Игровые Настройки</a>")
 
 		if(!path)
-			dat += "<div class='notice'>Please create an account to save your preferences</div>"
+			dat += r_html("<div class='notice'>Пожалуйста, создайте аккаунт, чтобы получить возможность сохранять.</div>")
 
 		dat += "</center>"
 
@@ -144,20 +144,20 @@ datum/preferences
 							dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;num=[i];' [i == default_slot ? "class='linkOn'" : ""]>[name]</a> "
 						dat += "</center>"
 
-				dat += "<center><h2>Occupation Choices</h2>"
-				dat += "<a href='?_src_=prefs;preference=job;task=menu'>Set Occupation Preferences</a><br></center>"
-				dat += "<h2>Identity</h2>"
+				dat += r_html("<center><h2>Род занятий</h2>")
+				dat += r_html("<a href='?_src_=prefs;preference=job;task=menu'>Выбрать род занятий</a><br></center>")
+				dat += r_html("<h2>Личность</h2>")
 				dat += "<table width='100%'><tr><td width='75%' valign='top'>"
 				if(appearance_isbanned(user))
 					dat += "<b>You are banned from using custom names and appearances. You can continue to adjust your characters, but you will be randomised once you join the game.</b><br>"
-				dat += "<a href='?_src_=prefs;preference=name;task=random'>Random Name</A> "
-				dat += "<a href='?_src_=prefs;preference=name'>Always Random Name: [be_random_name ? "Yes" : "No"]</a><BR>"
+				dat += r_html("<a href='?_src_=prefs;preference=name;task=random'>Случайное имя</A> ")
+				dat += r_html("<a href='?_src_=prefs;preference=name'>Всегда случайное имя: [be_random_name ? "Да" : "Нет"]</a><BR>")
 
-				dat += "<b>Name:</b> "
+				dat += r_html("<b>Имя:</b> ")
 				dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a><BR>"
 
-				dat += "<b>Gender:</b> <a href='?_src_=prefs;preference=gender'>[gender == MALE ? "Male" : "Female"]</a><BR>"
-				dat += "<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
+				dat += r_html("<b>Пол:</b> <a href='?_src_=prefs;preference=gender'>[gender == MALE ? "Мужской" : "Женский"]</a><BR>")
+				dat += r_html("<b>Возраст:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>")
 
 
 				dat += "</td><td valign='center'>"
@@ -166,28 +166,28 @@ datum/preferences
 
 				dat += "</td></tr></table>"
 
-				dat += "<h2>Body</h2>"
-				dat += "<a href='?_src_=prefs;preference=all;task=random'>Random Body</A> "
-				dat += "<a href='?_src_=prefs;preference=all'>Always Random Body: [be_random_body ? "Yes" : "No"]</A><br>"
+				dat += r_html("<h2>Тело</h2>")
+				dat += r_html("<a href='?_src_=prefs;preference=all;task=random'>Случайное тело</A> ")
+				dat += r_html("<a href='?_src_=prefs;preference=all'>Всегда случайное тело: [be_random_body ? "Да" : "Нет"]</A><br>")
 
 				dat += "<table width='100%'><tr><td width='24%' valign='top'>"
 
 				if(config.mutant_races)
-					dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
+					dat += r_html("<b>Раса:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>")
 				else
-					dat += "<b>Species:</b> Human<BR>"
+					dat += r_html("<b>Раса:</b> Человек<BR>")
 
-				dat += "<b>Blood Type:</b> [blood_type]<BR>"
-				dat += "<b>Underwear:</b><BR><a href ='?_src_=prefs;preference=underwear;task=input'>[underwear]</a><BR>"
-				dat += "<b>Undershirt:</b><BR><a href ='?_src_=prefs;preference=undershirt;task=input'>[undershirt]</a><BR>"
-				dat += "<b>Socks:</b><BR><a href ='?_src_=prefs;preference=socks;task=input'>[socks]</a><BR>"
-				dat += "<b>Backpack:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[backbaglist[backbag]]</a><BR>"
+				dat += r_html("<b>Группа крови:</b> [blood_type]<BR>")
+				dat += r_html("<b>Нижнее белье:</b><BR><a href ='?_src_=prefs;preference=underwear;task=input'>[underwear]</a><BR>")
+				dat += r_html("<b>Одежда:</b><BR><a href ='?_src_=prefs;preference=undershirt;task=input'>[undershirt]</a><BR>")
+				dat += r_html("<b>Носки:</b><BR><a href ='?_src_=prefs;preference=socks;task=input'>[socks]</a><BR>")
+				dat += r_html("<b>Рюкзак:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[backbaglist[backbag]]</a><BR>")
 
 				if(pref_species.use_skintones)
 
 					dat += "</td><td valign='top' width='21%'>"
 
-					dat += "<h3>Skin Tone</h3>"
+					dat += "<h3>Цвет кожи</h3>"
 
 					dat += "<a href='?_src_=prefs;preference=s_tone;task=input'>[skin_tone]</a><BR>"
 
@@ -197,13 +197,13 @@ datum/preferences
 
 					dat += "<td valign='top' width='21%'>"
 
-					dat += "<h3>Hair Style</h3>"
+					dat += "<h3>Волосы</h3>"
 
 					dat += "<a href='?_src_=prefs;preference=hair_style;task=input'>[hair_style]</a><BR>"
 					dat += "<a href='?_src_=prefs;preference=previous_hair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hair_style;task=input'>&gt;</a><BR>"
 					if (HBLACK in pref_species.specflags)
 					else
-						dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
+						dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Изменить</a><BR>"
 
 
 					if(HORNS in pref_species.specflags)
@@ -211,13 +211,13 @@ datum/preferences
 
 						dat += "</td><td valign='top' width='21%'>"
 
-						dat += "<h3>Facial Hair Style</h3>"
+						dat += "<h3>Борода</h3>"
 
 						dat += "<a href='?_src_=prefs;preference=facial_hair_style;task=input'>[facial_hair_style]</a><BR>"
 						dat += "<a href='?_src_=prefs;preference=previous_facehair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehair_style;task=input'>&gt;</a><BR>"
 						if (HBLACK in pref_species.specflags)
 						else
-							dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
+							dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Изменить</a><BR>"
 
 					dat += "</td>"
 
@@ -225,9 +225,9 @@ datum/preferences
 
 					dat += "<td valign='top' width='21%'>"
 
-					dat += "<h3>Eye Color</h3>"
+					dat += "<h3>Цвет глаз</h3>"
 
-					dat += "<span style='border: 1px solid #161616; background-color: #[eye_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=eyes;task=input'>Change</a><BR>"
+					dat += "<span style='border: 1px solid #161616; background-color: #[eye_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=eyes;task=input'>Изменить</a><BR>"
 
 					dat += "</td>"
 
@@ -235,9 +235,9 @@ datum/preferences
 
 					dat += "<td valign='top' width='21%'>"
 
-					dat += "<h3>Alien Color</h3>"
+					dat += "<h3>Цвет кожи</h3>"
 
-					dat += "<span style='border: 1px solid #161616; background-color: #[mutant_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
+					dat += "<span style='border: 1px solid #161616; background-color: #[mutant_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Изменить</a><BR>"
 
 					dat += "</td>"
 
@@ -245,7 +245,7 @@ datum/preferences
 
 					dat += "<td valign='top' width='21%'>"
 
-					dat += "<h3>Horns</h3>"
+					dat += "<h3>Рога</h3>"
 
 					dat += "<a href='?_src_=prefs;preference=horns_style;task=input'>[horns_style]</a><BR>"
 
@@ -256,46 +256,46 @@ datum/preferences
 
 			if (1) // Game Preferences
 				dat += "<table><tr><td width='340px' height='300px' valign='top'>"
-				dat += "<h2>General Settings</h2>"
-				dat += "<b>UI Style:</b> <a href='?_src_=prefs;preference=ui'>[UI_style]</a><br>"
-				dat += "<b>Play admin midis:</b> <a href='?_src_=prefs;preference=hear_midis'>[(toggles & SOUND_MIDI) ? "Yes" : "No"]</a><br>"
-				dat += "<b>Play lobby music:</b> <a href='?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? "Yes" : "No"]</a><br>"
-				dat += "<b>Ghost ears:</b> <a href='?_src_=prefs;preference=ghost_ears'>[(chat_toggles & CHAT_GHOSTEARS) ? "Nearest Creatures" : "All Speech"]</a><br>"
-				dat += "<b>Ghost sight:</b> <a href='?_src_=prefs;preference=ghost_sight'>[(chat_toggles & CHAT_GHOSTSIGHT) ? "Nearest Creatures" : "All Emotes"]</a><br>"
-				dat += "<b>Ghost whispers:</b> <a href='?_src_=prefs;preference=ghost_whispers'>[(chat_toggles & CHAT_GHOSTWHISPER) ? "Nearest Creatures" : "All Speech"]</a><br>"
-				dat += "<b>Ghost radio:</b> <a href='?_src=prefs;preference=ghost_radio'>[(chat_toggles & CHAT_GHOSTRADIO) ? "Yes" : "No"]</a><br>"
-				dat += "<b>Ghost pda:</b> <a href='?_src=prefs;preference=ghost_pda'>[(chat_toggles & CHAT_GHOSTPDA) ? "Nearest Creatures" : "All Messages"]</a><br>"
-				dat += "<b>Pull requests:</b> <a href='?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? "Yes" : "No"]</a><br>"
-				dat += "<b>Midround Antagonist:</b> <a href='?_src_=prefs;preference=allow_midround_antag'>[(toggles & MIDROUND_ANTAG) ? "Yes" : "No"]</a><br>"
+				dat += "<h2>Основные настройки</h2>"
+				dat += "<b>Стиль интерфейса:</b> <a href='?_src_=prefs;preference=ui'>[UI_style]</a><br>"
+				dat += "<b>Админская музыка:</b> <a href='?_src_=prefs;preference=hear_midis'>[(toggles & SOUND_MIDI) ? "Да" : "Нет"]</a><br>"
+				dat += "<b>Музыка в Лобби:</b> <a href='?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? "Да" : "Нет"]</a><br>"
+				dat += "<b>Призрак слышит:</b> <a href='?_src_=prefs;preference=ghost_ears'>[(chat_toggles & CHAT_GHOSTEARS) ? "Только видимое" : "Все"]</a><br>"
+				dat += "<b>Призрак видит:</b> <a href='?_src_=prefs;preference=ghost_sight'>[(chat_toggles & CHAT_GHOSTSIGHT) ? "Только видимое" : "Все"]</a><br>"
+				dat += "<b>Видимость гостчата:</b> <a href='?_src_=prefs;preference=ghost_whispers'>[(chat_toggles & CHAT_GHOSTWHISPER) ? "Только видимое" : "Все"]</a><br>"
+				dat += "<b>Призрак слышит радио:</b> <a href='?_src=prefs;preference=ghost_radio'>[(chat_toggles & CHAT_GHOSTRADIO) ? "Да" : "Нет"]</a><br>"
+				dat += "<b>Призрак читает переписки:</b> <a href='?_src=prefs;preference=ghost_pda'>[(chat_toggles & CHAT_GHOSTPDA) ? "Только видимые" : "Все"]</a><br>"
+				dat += "<b>Pull requests:</b> <a href='?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? "Да" : "Нет"]</a><br>"
+				dat += "<b>Антагонист:</b> <a href='?_src_=prefs;preference=allow_midround_antag'>[(toggles & MIDROUND_ANTAG) ? "Да" : "Нет"]</a><br>"
 				if(config.allow_Metadata)
-					dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Edit </a><br>"
+					dat += "<b>OOC записи:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Изменить </a><br>"
 
 				if(user.client)
 					if(user.client.holder)
-						dat += "<b>Adminhelp Sound:</b> "
-						dat += "<a href='?_src_=prefs;preference=hear_adminhelps'>[(toggles & SOUND_ADMINHELP)?"On":"Off"]</a><br>"
+						dat += "<b>Звуки админхелпа:</b> "
+						dat += "<a href='?_src_=prefs;preference=hear_adminhelps'>[(toggles & SOUND_ADMINHELP)?"Включены":"Выключены"]</a><br>"
 
 					if(unlock_content || check_rights_for(user.client, R_ADMIN))
-						dat += "<b>OOC:</b> <span style='border: 1px solid #161616; background-color: [ooccolor];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=ooccolor;task=input'>Change</a><br>"
+						dat += "<b>OOC:</b> <span style='border: 1px solid #161616; background-color: [ooccolor];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=ooccolor;task=input'>Изменить</a><br>"
 
 					if(unlock_content)
-						dat += "<b>BYOND Membership Publicity:</b> <a href='?_src_=prefs;preference=publicity'>[(toggles & MEMBER_PUBLIC) ? "Public" : "Hidden"]</a><br>"
-						dat += "<b>Ghost Form:</b> <a href='?_src_=prefs;task=input;preference=ghostform'>[ghost_form]</a><br>"
+						dat += "<b>BYOND приватность:</b> <a href='?_src_=prefs;preference=publicity'>[(toggles & MEMBER_PUBLIC) ? "Публично" : "Скрытно"]</a><br>"
+						dat += "<b>Форма призрака:</b> <a href='?_src_=prefs;task=input;preference=ghostform'>[ghost_form]</a><br>"
 
 
 				dat += "</td><td width='300px' height='300px' valign='top'>"
 
-				dat += "<h2>Antagonist Settings</h2>"
+				dat += "<h2>Настройка ролей</h2>"
 
 				if(jobban_isbanned(user, "Syndicate"))
-					dat += "<font color=red><b>You are banned from antagonist roles.</b></font>"
+					dat += "<font color=red><b>Вам запретили играть ролью.</b></font>"
 					src.be_special = 0
 
 				else
 					var/n = 0
 					for (var/i in special_roles)
 						if(jobban_isbanned(user, i))
-							dat += "<b>Be [i]:</b> <font color=red><b>\[BANNED]</b></font><br>"
+							dat += "<b>[i]:</b> <font color=red><b>\[ЗАБАНЕН]</b></font><br>"
 						else
 							var/days_remaining = null
 							if(config.use_age_restriction_for_jobs && ispath(special_roles[i])) //If it's a game mode antag, check if the player meets the minimum age
@@ -304,23 +304,24 @@ datum/preferences
 								days_remaining = temp_mode.get_remaining_days(user.client)
 
 							if(days_remaining)
-								dat += "<b>Be [i]:</b> <font color=red> \[IN [days_remaining] DAYS]</font><br>"
+								dat += "<b>[i]:</b> <font color=red> ждать [days_remaining] ДНЕЙ]</font><br>"
 							else
-								dat += "<b>Be [i]:</b> <a href='?_src_=prefs;preference=be_special;num=[n]'>[src.be_special&(1<<n) ? "Yes" : "No"]</a><br>"
-						n++
+								dat += "<b>Быть [ranged_R(i, "antag_s")]:</b> <a href='?_src_=prefs;preference=be_special;num=[n]'>[src.be_special&(1<<n) ? "Да" : "Нет"]</a><br>"
+						n++										//сделан перевод ролей в тровительном падеже. просто чтобы было все кошерно.
 				dat += "</td></tr></table>"
 
 		dat += "<hr><center>"
 
 		if(!IsGuestKey(user.key))
-			dat += "<a href='?_src_=prefs;preference=load'>Undo</a> "
-			dat += "<a href='?_src_=prefs;preference=save'>Save Setup</a> "
+			dat += "<a href='?_src_=prefs;preference=load'>Откатить</a> "
+			dat += "<a href='?_src_=prefs;preference=save'>Сохранить</a> "
 
-		dat += "<a href='?_src_=prefs;preference=reset_all'>Reset Setup</a>"
+		dat += "<a href='?_src_=prefs;preference=reset_all'>Вернуть</a>"
 		dat += "</center>"
 
+		dat = r_html(dat)	//полный санитайз интерфейса для того, чтобы РУССКЕЙ ПОДЕРЖИВАЛСЯ
 		//user << browse(dat, "window=preferences;size=560x560")
-		var/datum/browser/popup = new(user, "preferences", "<div align='center'>Character Setup</div>", 640, 680)
+		var/datum/browser/popup = new(user, "preferences", "<div align='center'>[r_html("Настройки")]</div>", 640, 680)
 		popup.set_content(dat)
 		popup.open(0)
 
@@ -335,9 +336,9 @@ datum/preferences
 		var/width = widthPerColumn
 
 		var/HTML = "<center>"
-		HTML += "<b>Choose occupation chances</b><br>"
-		HTML += "<div align='center'>Left-click to raise an occupation preference, right-click to lower it.<br></div>"
-		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
+		HTML += "<b>Выберите шансы</b><br>"
+		HTML += "<div align='center'>Кликните левой клавишей мыши чтобы повысить шанс, правой чтобы понизить.<br></div>"
+		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Завершить настройку</a></center><br>" // Easier to press up here.
 		HTML += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?_src_=prefs;preference=job;task=setJobLevel;level=' + level + ';text=' + encodeURIComponent(rank); return false; }</script>"
 		HTML += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
 		HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
@@ -363,22 +364,22 @@ datum/preferences
 			var/rank = job.title
 			lastJob = job
 			if(jobban_isbanned(user, rank))
-				HTML += "<font color=red>[rank]</font></td><td><font color=red><b> \[BANNED\]</b></font></td></tr>"
+				HTML += "<font color=red>[ranged_R(rank)]</font></td><td><font color=red><b> \[БАН\]</b></font></td></tr>"
 				continue
 			if(!job.player_old_enough(user.client))
 				var/available_in_days = job.available_in_days(user.client)
-				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[IN [(available_in_days)] DAYS\]</font></td></tr>"
+				HTML += "<font color=red>[ranged_R(rank)]</font></td><td><font color=red> \[[(available_in_days)] ДНЕЙ\]</font></td></tr>"
 				continue
 			if((job_civilian_low & ASSISTANT) && (rank != "Assistant") && !jobban_isbanned(user, "Assistant"))
-				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
+				HTML += "<font color=orange>[ranged_R(rank)]</font></td><td></td></tr>"
 				continue
 			if(config.enforce_human_authority && (rank in command_positions) && user.client.prefs.pref_species.id != "human")
-				HTML += "<font color=red>[rank]</font></td><td><font color=red><b> \[NON-HUMAN\]</b></font></td></tr>"
+				HTML += "<font color=red>[ranged_R(rank)]</font></td><td><font color=red><b> \[НЕ ЧЕЛОВЕК\]</b></font></td></tr>"
 				continue
 			if((rank in command_positions) || (rank == "AI"))//Bold head jobs
-				HTML += "<b><span class='dark'>[rank]</span></b>"
+				HTML += "<b><span class='dark'>[ranged_R(rank)]</span></b>"
 			else
-				HTML += "<span class='dark'>[rank]</span>"
+				HTML += "<span class='dark'>[ranged_R(rank)]</span>"
 
 			HTML += "</td><td width='40%'>"
 
@@ -388,22 +389,22 @@ datum/preferences
 			var/prefLowerLevel = -1 // level to assign on right click
 
 			if(GetJobDepartment(job, 1) & job.flag)
-				prefLevelLabel = "High"
+				prefLevelLabel = "Высокий"
 				prefLevelColor = "slateblue"
 				prefUpperLevel = 4
 				prefLowerLevel = 2
 			else if(GetJobDepartment(job, 2) & job.flag)
-				prefLevelLabel = "Medium"
+				prefLevelLabel = "Средний"
 				prefLevelColor = "green"
 				prefUpperLevel = 1
 				prefLowerLevel = 3
 			else if(GetJobDepartment(job, 3) & job.flag)
-				prefLevelLabel = "Low"
+				prefLevelLabel = "Низкий"
 				prefLevelColor = "orange"
 				prefUpperLevel = 2
 				prefLowerLevel = 4
 			else
-				prefLevelLabel = "NEVER"
+				prefLevelLabel = "НИКОГДА"
 				prefLevelColor = "red"
 				prefUpperLevel = 3
 				prefLowerLevel = 1
@@ -413,9 +414,9 @@ datum/preferences
 
 			if(rank == "Assistant")//Assistant is special
 				if(job_civilian_low & ASSISTANT)
-					HTML += "<font color=green>Yes</font>"
+					HTML += "<font color=green>Да</font>"
 				else
-					HTML += "<font color=red>No</font>"
+					HTML += "<font color=red>Нет</font>"
 				HTML += "</a></td></tr>"
 				continue
 
@@ -429,12 +430,14 @@ datum/preferences
 
 		HTML += "</center></table>"
 
-		HTML += "<center><br><a href='?_src_=prefs;preference=job;task=random'>[userandomjob ? "Get random job if preferences unavailable" : "Be an Assistant if preference unavailable"]</a></center>"
-		HTML += "<center><a href='?_src_=prefs;preference=job;task=reset'>Reset Preferences</a></center>"
+		HTML += "<center><br><a href='?_src_=prefs;preference=job;task=random'>[userandomjob ? "Получать случайную работу, если нет нужной" : "Быть ассистентом, если нет нужной работы"]</a></center>"
+		HTML += "<center><a href='?_src_=prefs;preference=job;task=reset'>Сбросить</a></center>"
+
+		HTML = r_html(HTML)	//чтобы русский был как нада
 
 		user << browse(null, "window=preferences")
 		//user << browse(HTML, "window=mob_occupation;size=[width]x[height]")
-		var/datum/browser/popup = new(user, "mob_occupation", "<div align='center'>Occupation Preferences</div>", width, height)
+		var/datum/browser/popup = new(user, "mob_occupation", "<div align='center'>[r_html("Шансы получения профессий")]</div>", width, height)
 		popup.set_window_options("can_close=0")
 		popup.set_content(HTML)
 		popup.open(0)
@@ -920,3 +923,4 @@ datum/preferences
 		character.update_body()
 		character.update_hair()
 		character.update_horns()
+		character.update_mutcolor()

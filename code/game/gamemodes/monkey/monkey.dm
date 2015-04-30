@@ -44,7 +44,7 @@
 
 
 /datum/game_mode/monkey/announce()
-	world << "<B>The current game mode is - Monkey!</B>"
+	world << "<B>Текущий режим - Обезь&#255;на!</B>"
 	world << "<B>One or more crewmembers have been infected with Jungle Fever! Crew: Contain the outbreak. None of the infected monkeys may escape alive to Centcom. \
 				Monkeys: Ensure that your kind lives on! Rise up against your captors!</B>"
 

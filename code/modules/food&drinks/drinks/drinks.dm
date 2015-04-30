@@ -204,6 +204,12 @@
 	icon_state = "flask"
 	volume = 60
 
+/obj/item/weapon/reagent_containers/food/drinks/flask/barmens
+	name = "flask"
+	desc = "Basic NT flask"
+	icon_state = "bflask"
+	volume = 50
+
 /obj/item/weapon/reagent_containers/food/drinks/flask/det
 	name = "detective's flask"
 	desc = "The detective's only true friend."

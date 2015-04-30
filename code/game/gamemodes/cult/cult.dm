@@ -44,8 +44,8 @@
 
 
 /datum/game_mode/cult/announce()
-	world << "<B>The current game mode is - Cult!</B>"
-	world << "<B>Some crewmembers are attempting to start a cult!<BR>\nCultists - complete your objectives. Convert crewmembers to your cause by using the convert rune. Remember - there is no you, there is only the cult.<BR>\nPersonnel - Do not let the cult succeed in its mission. Brainwashing them with the chaplain's bible reverts them to whatever Centcom-allowed faith they had.</B>"
+	world << "<B>Текущий режим - Культ!</B>"
+	world << "<B>Некоторые члены экипажа пытаются организовать культ!<BR>\nКультисты должны выполнить свои цели. Вербуйте экипаж с помощью рун. Помни - тебя не существует, существует только культ.<BR>\nПерсонал - не допускайте выполнение целей культа. Промывание их мозга с помощью библии вернет их подчинению ЦентКомма.</B>"
 
 
 /datum/game_mode/cult/pre_setup()

@@ -145,3 +145,33 @@ Lawyer
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), slot_shoes)
 	H.equip_to_slot_or_del(new /obj/item/weapon/storage/briefcase(H), slot_l_hand)
 	H.equip_to_slot_or_del(new /obj/item/device/laser_pointer(H), slot_l_store)
+
+/*
+Journalist
+*/
+/datum/job/journalist
+	title = "Journalist"
+	flag = JOURNALIST
+	department_head = list("Head of Personnel")
+	department_flag = CIVILIAN
+	faction = "Station"
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "Главе Персонала"
+	selection_color = "#dddddd"
+	var/global/journalists = 0 //Counts journalists amount
+
+	default_pda = /obj/item/device/pda/journalist
+	access = list(access_journalist)
+	minimal_access = list(access_journalist)
+
+/datum/job/journalist/equip_items(var/mob/living/carbon/human/H)
+	journalists += 1
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/journalist(H), slot_w_uniform)	//нужен фикс его
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sneakers/black(H), slot_shoes)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/journalist(H), slot_head)	//и его
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/color/black(H), slot_gloves)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/journalist(H), slot_wear_suit)
+	H.equip_to_slot_or_del(new /obj/item/device/camera(H), slot_l_store)
+	H.equip_to_slot_or_del(new /obj/item/weapon/folder/white(H), slot_r_store)
