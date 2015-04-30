@@ -4,7 +4,7 @@
 var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","alien","as")
 
 /client/verb/adminhelp(msg as text)
-	set category = "Admin"
+	set category = "Админ"
 	set name = "Adminhelp"
 
 	if(say_disabled)	//This is here to try to identify lag problems

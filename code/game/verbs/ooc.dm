@@ -1,11 +1,12 @@
 /mob/verb/looc(mess as text)
 	set name = "LOOC"
 	set category = "OOC"
-
+	mess = copytext(sanitize(mess), 1, MAX_MESSAGE_LEN)
+	mess = sanitize_russian(sanitize_uni(mess))	//санитайз
 	for(var/mob/C in view(16))	//мобы в видимости
-		C << "<font color='#E6E6FA'><span class='ooc'><span class='prefix'>LOOC:</span> [src.name]: <span class='message'>[mess]</span></span></font>"
-	src << "<font color='#E6E6FA'><span class='ooc'><span class='prefix'>LOOC:</span> [src.name]:</EM> <span class='message'>[mess]</span></span></font>"
-			//для себя тоже, ммм
+		C << sanitize_html_ya("<html><body><font color='#4682B4'><span class='ooc'><span class='prefix'><img src='icons/pda_icons/looc.png'></span> [src.name]: <span class='message'>[mess]</span></span></font></body></html>")
+	log_admin(sanitize_html_ya("<html><body><font color='#4682B4'><span class='ooc'><span class='prefix'><img src='icons/pda_icons/looc.png'></span> [src.name]: <span class='message'>[mess]</span></span></font></body></html>"))
+			//для себя тоже, ммм	//не нужно, ибо дублируются.	//последняя строка, чтобы админы могли следить за ЛООЦ. ибо нехуй.
 
 /client/verb/ooc(mess as text)	//ХМММ
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
@@ -65,19 +66,22 @@
 			if(holder)
 				if(!holder.fakekey || C.holder)
 					if(check_rights_for(src, R_ADMIN))
-						C << "<font color=[config.allow_admin_ooccolor ? prefs.ooccolor :"#b82e00" ]><b><span class='prefix'>OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[mess]</span></b></font>"
+						C << sanitize_html_ya("<html><body><font color=[config.allow_admin_ooccolor ? prefs.ooccolor :"#b82e00" ]><b><span class='prefix'><img src='icons/pda_icons/admin_ooc.png'></span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[mess]</span></b></font></body></html>")
 					else
-						C << "<span class='adminobserverooc'><span class='prefix'>OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[mess]</span></span>"
+						C << sanitize_html_ya("<html><body><span class='adminobserverooc'><span class='prefix'><img src='icons/pda_icons/ooc.png'></span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[mess]</span></span></body></html>")
 				else
-					C << "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message'>[mess]</span></span></font>"
+					C << sanitize_html_ya("<html><body><font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'><img src='icons/pda_icons/ooc.png'></span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message'>[mess]</span></span></font></body></html>")
 			else
-				C << "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message'>[mess]</span></span></font>"
+				C << sanitize_html_ya("<html><body><font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'><img src='icons/pda_icons/ooc.png'></span> <EM>[keyname]:</EM> <span class='message'>[mess]</span></span></font></body></html>")
 
-/proc/check_debug_OOC(var/t,var/list/repl_chars = "&#34;") //убрано, чтобы попробовать. мне кажется, что это вызывает баг.
+/proc/check_debug_OOC(var/t,var/list/repl_chars = "&quot;") //убрано, чтобы попробовать. мне кажется, что это вызывает баг.
 	var/counts = 0
 	for(var/char in repl_chars)
-		counts++
-	return counts
+		var/index = findtext(t, char)
+		while(index)
+			counts++
+	//world << "test|[counts]"	//проверка на скобочки. работает хуева
+	return counts	//нужно доделать это хуету
 
 /proc/toggle_ooc()
 	ooc_allowed = !( ooc_allowed )

@@ -282,7 +282,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	else
 		switch (mode)
 			if (0)
-				dat += "<h2>PERSONAL DATA ASSISTANT v.1.2.6/Ortus.Station</h2>"
+				dat += "<h2>PERSONAL DATA ASSISTANT v.1.2.6</h2>"
 				dat += "Владелец: [owner], [ownjob]<br>"
 				dat += text("ID: <A href='?src=\ref[src];choice=Authenticate'>[id ? "[id.registered_name], [id.assignment]" : "----------"]")
 				dat += text("<br><A href='?src=\ref[src];choice=UpdateInfo'>[id ? "Update PDA Info" : ""]</A><br><br>")

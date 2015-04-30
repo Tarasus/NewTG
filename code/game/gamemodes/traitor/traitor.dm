@@ -328,7 +328,7 @@
 			P.lock_code = pda_pass
 
 			traitor_mob << "Синдикат хитро замаскировал аплинк под ваш ПДА. Просто наберите код \"[pda_pass]\" в выборе сигнала сообщений, чтобы получить доступ к темной стороне вашего ПДА."
-			traitor_mob.mind.store_memory("<B>Код Аплинка:</B> [pda_pass] ([R.name] [loc]).")
+			traitor_mob.mind.store_memory("<B>Код Аплинка:</B> [pda_pass] ([ranged_R(R.name)] [ranged_R(loc)])")
 	if(!safety)//If they are not a rev. Can be added on to.
 		give_codewords(traitor_mob)
 

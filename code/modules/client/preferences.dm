@@ -336,9 +336,9 @@ datum/preferences
 		var/width = widthPerColumn
 
 		var/HTML = "<center>"
-		HTML += "<b>Choose occupation chances</b><br>"
-		HTML += "<div align='center'>Left-click to raise an occupation preference, right-click to lower it.<br></div>"
-		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
+		HTML += "<b>Выберите шансы</b><br>"
+		HTML += "<div align='center'>Кликните левой клавишей мыши чтобы повысить шанс, правой чтобы понизить.<br></div>"
+		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Завершить настройку</a></center><br>" // Easier to press up here.
 		HTML += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?_src_=prefs;preference=job;task=setJobLevel;level=' + level + ';text=' + encodeURIComponent(rank); return false; }</script>"
 		HTML += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
 		HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
@@ -364,22 +364,22 @@ datum/preferences
 			var/rank = job.title
 			lastJob = job
 			if(jobban_isbanned(user, rank))
-				HTML += "<font color=red>[rank]</font></td><td><font color=red><b> \[BANNED\]</b></font></td></tr>"
+				HTML += "<font color=red>[ranged_R(rank)]</font></td><td><font color=red><b> \[БАН\]</b></font></td></tr>"
 				continue
 			if(!job.player_old_enough(user.client))
 				var/available_in_days = job.available_in_days(user.client)
-				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[IN [(available_in_days)] DAYS\]</font></td></tr>"
+				HTML += "<font color=red>[ranged_R(rank)]</font></td><td><font color=red> \[[(available_in_days)] ДНЕЙ\]</font></td></tr>"
 				continue
 			if((job_civilian_low & ASSISTANT) && (rank != "Assistant") && !jobban_isbanned(user, "Assistant"))
-				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
+				HTML += "<font color=orange>[ranged_R(rank)]</font></td><td></td></tr>"
 				continue
 			if(config.enforce_human_authority && (rank in command_positions) && user.client.prefs.pref_species.id != "human")
-				HTML += "<font color=red>[rank]</font></td><td><font color=red><b> \[NON-HUMAN\]</b></font></td></tr>"
+				HTML += "<font color=red>[ranged_R(rank)]</font></td><td><font color=red><b> \[НЕ ЧЕЛОВЕК\]</b></font></td></tr>"
 				continue
 			if((rank in command_positions) || (rank == "AI"))//Bold head jobs
-				HTML += "<b><span class='dark'>[rank]</span></b>"
+				HTML += "<b><span class='dark'>[ranged_R(rank)]</span></b>"
 			else
-				HTML += "<span class='dark'>[rank]</span>"
+				HTML += "<span class='dark'>[ranged_R(rank)]</span>"
 
 			HTML += "</td><td width='40%'>"
 
@@ -389,22 +389,22 @@ datum/preferences
 			var/prefLowerLevel = -1 // level to assign on right click
 
 			if(GetJobDepartment(job, 1) & job.flag)
-				prefLevelLabel = "High"
+				prefLevelLabel = "Высокий"
 				prefLevelColor = "slateblue"
 				prefUpperLevel = 4
 				prefLowerLevel = 2
 			else if(GetJobDepartment(job, 2) & job.flag)
-				prefLevelLabel = "Medium"
+				prefLevelLabel = "Средний"
 				prefLevelColor = "green"
 				prefUpperLevel = 1
 				prefLowerLevel = 3
 			else if(GetJobDepartment(job, 3) & job.flag)
-				prefLevelLabel = "Low"
+				prefLevelLabel = "Низкий"
 				prefLevelColor = "orange"
 				prefUpperLevel = 2
 				prefLowerLevel = 4
 			else
-				prefLevelLabel = "NEVER"
+				prefLevelLabel = "НИКОГДА"
 				prefLevelColor = "red"
 				prefUpperLevel = 3
 				prefLowerLevel = 1
@@ -414,9 +414,9 @@ datum/preferences
 
 			if(rank == "Assistant")//Assistant is special
 				if(job_civilian_low & ASSISTANT)
-					HTML += "<font color=green>Yes</font>"
+					HTML += "<font color=green>Да</font>"
 				else
-					HTML += "<font color=red>No</font>"
+					HTML += "<font color=red>Нет</font>"
 				HTML += "</a></td></tr>"
 				continue
 
@@ -430,12 +430,14 @@ datum/preferences
 
 		HTML += "</center></table>"
 
-		HTML += "<center><br><a href='?_src_=prefs;preference=job;task=random'>[userandomjob ? "Get random job if preferences unavailable" : "Be an Assistant if preference unavailable"]</a></center>"
-		HTML += "<center><a href='?_src_=prefs;preference=job;task=reset'>Reset Preferences</a></center>"
+		HTML += "<center><br><a href='?_src_=prefs;preference=job;task=random'>[userandomjob ? "Получать случайную работу, если нет нужной" : "Быть ассистентом, если нет нужной работы"]</a></center>"
+		HTML += "<center><a href='?_src_=prefs;preference=job;task=reset'>Сбросить</a></center>"
+
+		HTML = r_html(HTML)	//чтобы русский был как нада
 
 		user << browse(null, "window=preferences")
 		//user << browse(HTML, "window=mob_occupation;size=[width]x[height]")
-		var/datum/browser/popup = new(user, "mob_occupation", "<div align='center'>Occupation Preferences</div>", width, height)
+		var/datum/browser/popup = new(user, "mob_occupation", "<div align='center'>[r_html("Шансы получения профессий")]</div>", width, height)
 		popup.set_window_options("can_close=0")
 		popup.set_content(HTML)
 		popup.open(0)

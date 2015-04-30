@@ -29,6 +29,9 @@ var/global/list/profs_list = list(
 	"Bartender"="Бармен",
 	"Research Director"="Глава Отдела Исследований",
 	"Chief Medical Officer"="Главврач",
+	"AI"="ИИ",
+	"Cyborg"="Киборг",
+	"Librarian"="Библиотекарь"
 	)	//работает, проверено //|""="",| загатовочка
 
 /proc/ranged_R(var/t, var/type, var/chars_ed) //процедура для перевода названия ПРОФЕССИИ

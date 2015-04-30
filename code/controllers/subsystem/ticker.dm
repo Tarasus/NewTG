@@ -135,7 +135,7 @@ var/datum/subsystem/ticker/ticker
 
 		if(!mode)
 			if(!runnable_modes.len)
-				world << "<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby."
+				world << "<B>Не хватает готовых к игре.</B> Возвращение в Лобби."
 				return 0
 			mode = pickweight(runnable_modes)
 

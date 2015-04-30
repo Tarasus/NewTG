@@ -98,7 +98,7 @@
 
 	if(href_list["observe"])
 
-		if(alert(src,"Are you sure you wish to observe? You will not be able to play this round!","Player Setup","Yes","No") == "Yes")
+		if(alert(src,"Вы правда хотите быть наблюдателем? Вы не сможете сыграть в этом раунде!","Player Setup","Да","Нет") == "Да")
 			if(!client)	return 1
 			var/mob/dead/observer/observer = new()
 
@@ -108,7 +108,7 @@
 			observer.started_as_observer = 1
 			close_spawn_windows()
 			var/obj/O = locate("landmark*Observer-Start")
-			src << "<span class='notice'>Now teleporting.</span>"
+			src << "<span class='notice'>Телепортация!</span>"
 			observer.loc = O.loc
 			if(client.prefs.be_random_name)
 				client.prefs.real_name = random_name(gender)
