@@ -23,8 +23,8 @@
 //Announces the game type//
 ///////////////////////////
 /datum/game_mode/gang/announce()
-	world << "<B>The current game mode is - Gang War!</B>"
-	world << "<B>A violent turf war has erupted on the station!<BR>Gangsters -  Take over the station by recruiting gangsters and killing the rival gang's boss! <BR>Crew - Identify and stop the mob bosses without killing either of them!</B>"
+	world << "<B>Текущий режим - Война Гангстеров!</B>"
+	world << "<B>Борьба за территорию быстро разраслась!<BR>Гангстеры -  Возьмите контроль над станцией привлечением бандитов и убейте босса конкурирующей банды! <BR>Экипаж - вычислить и остановить боссов без их убийства!</B>"
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -103,7 +103,7 @@
 	if (you_are)
 		boss_mind.current << "<FONT size=3 color=red><B>You are a [(boss_mind in A_bosses) ? gang_name("A") : gang_name("B")] Gang Boss!</B></FONT>"
 	for(var/datum/objective/objective in boss_mind.objectives)
-		boss_mind.current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
+		boss_mind.current << sanitize("<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++
 
 ///////////////////////////////////////////////////////////////////////////

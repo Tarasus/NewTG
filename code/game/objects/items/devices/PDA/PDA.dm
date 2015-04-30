@@ -32,7 +32,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	var/lock_code = "" // Lockcode to unlock uplink
 	var/honkamt = 0 //How many honks left when infected with honk.exe
 	var/mimeamt = 0 //How many silence left when infected with mime.exe
-	var/note = "Congratulations, your station has chosen the Thinktronic 5230 Personal Data Assistant!" //Current note in the notepad function
+	var/note = "Поздравляем с получением вашего собственного ПДА! Пожалуйста, ознакомтесь с функионалом и инструкцией на задней крышке корпуса." //Current note in the notepad function
 	var/notehtml = ""
 	var/notescanned = 0 // True if what is in the notekeeper was from a paper.
 	var/cart = "" //A place to stick cartridge menu information
@@ -70,6 +70,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 /obj/item/device/pda/detective
 	default_cartridge = /obj/item/weapon/cartridge/detective
+	icon_state = "pda-detective"
+
+/obj/item/device/pda/journalist
 	icon_state = "pda-detective"
 
 /obj/item/device/pda/warden
@@ -264,26 +267,26 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 	setup_chatrooms()
 
-	var/dat = "<html><head><title>Personal Data Assistant</title></head><body bgcolor=\"#808000\"><style>a, a:link, a:visited, a:active, a:hover { color: #000000; }img {border-style:none;}</style>"
+	var/dat = "<html><head><title>Personal Data Assistant</title></head><style>a, a:link, a:visited, a:active, a:hoverimg {border-style:none;}</style>"
 
-	dat += "<a href='byond://?src=\ref[src];choice=Close'><img src=pda_exit.png> Close</a>"
+	dat += "<a href='byond://?src=\ref[src];choice=Close'><img src=pda_exit.png> Закрыть</a>"
 
 	if ((!isnull(cartridge)) && (mode == 0))
-		dat += " | <a href='byond://?src=\ref[src];choice=Eject'><img src=pda_eject.png> Eject [cartridge]</a>"
+		dat += " | <a href='byond://?src=\ref[src];choice=Eject'><img src=pda_eject.png> Достать [cartridge]</a>"
 	if (mode && !noreturn)
-		dat += " | <a href='byond://?src=\ref[src];choice=Return'><img src=pda_menu.png> Return</a>"
-	dat += " | <a href='byond://?src=\ref[src];choice=Refresh'><img src=pda_refresh.png> Refresh</a>"
+		dat += " | <a href='byond://?src=\ref[src];choice=Return'><img src=pda_menu.png> Назад</a>"
+	dat += " | <a href='byond://?src=\ref[src];choice=Refresh'><img src=pda_refresh.png> Обновить</a>"
 
 	dat += "<br>"
 
 	if (!owner)
-		dat += "Warning: No owner information entered.  Please swipe card.<br><br>"
-		dat += "<a href='byond://?src=\ref[src];choice=Refresh'><img src=pda_refresh.png> Retry</a>"
+		dat += "Внимание: Нет информации о владельце. Пожалуйста, проведите картой.<br><br>"
+		dat += "<a href='byond://?src=\ref[src];choice=Refresh'><img src=pda_refresh.png> Повторить</a>"
 	else
 		switch (mode)
 			if (0)
-				dat += "<h2>PERSONAL DATA ASSISTANT v.1.2</h2>"
-				dat += "Owner: [owner], [ownjob]<br>"
+				dat += "<h2>PERSONAL DATA ASSISTANT v.1.2.6</h2>"
+				dat += "Владелец: [owner], [ranged_R(ownjob)]<br>"	//чтобы профессия была на русске.
 				dat += text("ID: <A href='?src=\ref[src];choice=Authenticate'>[id ? "[id.registered_name], [id.assignment]" : "----------"]")
 				dat += text("<br><A href='?src=\ref[src];choice=UpdateInfo'>[id ? "Update PDA Info" : ""]</A><br><br>")
 
@@ -292,104 +295,104 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 				dat += "<br><br>"
 
-				dat += "<h4>General Functions</h4>"
+				dat += "<h4>Основные Функции</h4>"
 				dat += "<ul>"
-				dat += "<li><a href='byond://?src=\ref[src];choice=1'><img src=pda_notes.png> Notekeeper</a></li>"
-				dat += "<li><a href='byond://?src=\ref[src];choice=2'><img src=pda_mail.png> Messenger</a></li>"
-				dat += "<li><a href='byond://?src=\ref[src];choice=5'><img src=pda_chatroom.png> Nanotrasen Relay Chat</a> ([new_ntrc_msg] unread)</li>"
+				dat += "<li><a href='byond://?src=\ref[src];choice=1'><img src=pda_notes.png> Записи</a></li>"
+				dat += "<li><a href='byond://?src=\ref[src];choice=2'><img src=pda_mail.png> Св&#x44F;зь</a></li>"
+				dat += "<li><a href='byond://?src=\ref[src];choice=5'><img src=pda_chatroom.png> NT чат</a> ([new_ntrc_msg] unread)</li>"
 
 				if (cartridge)
 					if (cartridge.access_clown)
-						dat += "<li><a href='byond://?src=\ref[src];choice=Honk'><img src=pda_honk.png> Honk Synthesizer</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=Honk'><img src=pda_honk.png> Синтезатор Гудка</a></li>"
 					if (cartridge.access_manifest)
-						dat += "<li><a href='byond://?src=\ref[src];choice=41'><img src=pda_notes.png> View Crew Manifest</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=41'><img src=pda_notes.png> Список Экипажа</a></li>"
 					if(cartridge.access_status_display)
-						dat += "<li><a href='byond://?src=\ref[src];choice=42'><img src=pda_status.png> Set Status Display</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=42'><img src=pda_status.png> Статус</a></li>"
 					dat += "</ul>"
 					if (cartridge.access_engine)
-						dat += "<h4>Engineering Functions</h4>"
+						dat += "<h4>Инженерные Функции</h4>"
 						dat += "<ul>"
-						dat += "<li><a href='byond://?src=\ref[src];choice=43'><img src=pda_power.png> Power Monitor</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=43'><img src=pda_power.png> Монитор Питани&#x44F;</a></li>"
 						if(istype(cartridge.radio, /obj/item/radio/integrated/floorbot))
-							dat += "<li><a href='byond://?src=\ref[src];choice=51'><img src=pda_floorbot.png> Floorbot Access</a></li>"
+							dat += "<li><a href='byond://?src=\ref[src];choice=51'><img src=pda_floorbot.png> Floorbot - Доступ</a></li>"
 						dat += "</ul>"
 					if (cartridge.access_medical)
-						dat += "<h4>Medical Functions</h4>"
+						dat += "<h4>Медицинские Функции</h4>"
 						dat += "<ul>"
-						dat += "<li><a href='byond://?src=\ref[src];choice=44'><img src=pda_medical.png> Medical Records</a></li>"
-						dat += "<li><a href='byond://?src=\ref[src];choice=Medical Scan'><img src=pda_scanner.png> [scanmode == 1 ? "Disable" : "Enable"] Medical Scanner</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=44'><img src=pda_medical.png> Медицинские Записи</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=Medical Scan'><img src=pda_scanner.png> [scanmode == 1 ? "Отключить" : "Включить"] Медицинский Сканер</a></li>"
 					if(istype(cartridge.radio, /obj/item/radio/integrated/medbot))
-						dat += "<li><a href='byond://?src=\ref[src];choice=52'><img src=pda_medbot.png> Medibot Access</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=52'><img src=pda_medbot.png> Medibot - Доступ</a></li>"
 						dat += "</ul>"
 					else
 						dat += "</ul>"
 					if (cartridge.access_security)
-						dat += "<h4>Security Functions</h4>"
+						dat += "<h4>Охранные Функции</h4>"
 						dat += "<ul>"
-						dat += "<li><a href='byond://?src=\ref[src];choice=45'><img src=pda_cuffs.png> Security Records</A></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=45'><img src=pda_cuffs.png> Записи Службы Безопасности</A></li>"
 					if(istype(cartridge.radio, /obj/item/radio/integrated/beepsky))
-						dat += "<li><a href='byond://?src=\ref[src];choice=46'><img src=pda_cuffs.png> Security Bot Access</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=46'><img src=pda_cuffs.png> Security Bot - Доступ</a></li>"
 						dat += "</ul>"
 					else	dat += "</ul>"
 					if(cartridge.access_quartermaster)
-						dat += "<h4>Quartermaster Functions:</h4>"
+						dat += "<h4>Функции Завхоза</h4>"
 						dat += "<ul>"
-						dat += "<li><a href='byond://?src=\ref[src];choice=47'><img src=pda_crate.png> Supply Records</A></li>"
-						dat += "<li><a href='byond://?src=\ref[src];choice=48'><img src=pda_mule.png> Delivery Bot Control</A></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=47'><img src=pda_crate.png> Отчеты Поставок</A></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=48'><img src=pda_mule.png> Управлением Роботом Доставки</A></li>"
 						dat += "</ul>"
 				dat += "</ul>"
 
-				dat += "<h4>Utilities</h4>"
+				dat += "<h4>Утилиты</h4>"
 				dat += "<ul>"
 				if (cartridge)
 					if (cartridge.access_janitor)
-						dat += "<li><a href='byond://?src=\ref[src];choice=49'><img src=pda_bucket.png> Custodial Locator</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=49'><img src=pda_bucket.png> Локаци&#x44F; Швабры</a></li>"
 						if(istype(cartridge.radio, /obj/item/radio/integrated/cleanbot))
-							dat += "<li><a href='byond://?src=\ref[src];choice=50'><img src=pda_cleanbot.png> Cleanbot Access</a></li>"
+							dat += "<li><a href='byond://?src=\ref[src];choice=50'><img src=pda_cleanbot.png> Cleanbot - Доступ</a></li>"
 					if (istype(cartridge.radio, /obj/item/radio/integrated/signal))
-						dat += "<li><a href='byond://?src=\ref[src];choice=40'><img src=pda_signaler.png> Signaler System</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=40'><img src=pda_signaler.png> Система Сигнализации</a></li>"
 					if (cartridge.access_newscaster)
-						dat += "<li><a href='byond://?src=\ref[src];choice=53'><img src=pda_notes.png> Newscaster Access </a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=53'><img src=pda_notes.png> Newscaster - Доступ </a></li>"
 					if (cartridge.access_reagent_scanner)
-						dat += "<li><a href='byond://?src=\ref[src];choice=Reagent Scan'><img src=pda_reagent.png> [scanmode == 3 ? "Disable" : "Enable"] Reagent Scanner</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=Reagent Scan'><img src=pda_reagent.png> [scanmode == 3 ? "Выключить" : "Включить"] Сканер Содержимого</a></li>"
 					if (cartridge.access_engine)
-						dat += "<li><a href='byond://?src=\ref[src];choice=Halogen Counter'><img src=pda_reagent.png> [scanmode == 4 ? "Disable" : "Enable"] Halogen Counter</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=Halogen Counter'><img src=pda_reagent.png> [scanmode == 4 ? "Выключить" : "Включить"] Галогенный Счетчик</a></li>"
 					if (cartridge.access_atmos)
-						dat += "<li><a href='byond://?src=\ref[src];choice=Gas Scan'><img src=pda_reagent.png> [scanmode == 5 ? "Disable" : "Enable"] Gas Scanner</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=Gas Scan'><img src=pda_reagent.png> [scanmode == 5 ? "Выключить" : "Включить"] Сканер Газов</a></li>"
 					if (cartridge.access_remote_door)
-						dat += "<li><a href='byond://?src=\ref[src];choice=Toggle Door'><img src=pda_rdoor.png> Toggle Remote Door</a></li>"
-				dat += "<li><a href='byond://?src=\ref[src];choice=3'><img src=pda_atmos.png> Atmospheric Scan</a></li>"
-				dat += "<li><a href='byond://?src=\ref[src];choice=Light'><img src=pda_flashlight.png> [fon ? "Disable" : "Enable"] Flashlight</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=Toggle Door'><img src=pda_rdoor.png> Дистанционное Переключение Дверей</a></li>"
+				dat += "<li><a href='byond://?src=\ref[src];choice=3'><img src=pda_atmos.png> Сканировать Атмосферу</a></li>"
+				dat += "<li><a href='byond://?src=\ref[src];choice=Light'><img src=pda_flashlight.png> [fon ? "Выключить" : "Включить"] Фонарик</a></li>"
 				if (pai)
 					if(pai.loc != src)
 						pai = null
 					else
-						dat += "<li><a href='byond://?src=\ref[src];choice=pai;option=1'>pAI Device Configuration</a></li>"
-						dat += "<li><a href='byond://?src=\ref[src];choice=pai;option=2'>Eject pAI Device</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=pai;option=1'>pAI Девайс Конфигурации</a></li>"
+						dat += "<li><a href='byond://?src=\ref[src];choice=pai;option=2'>Достать pAI Девайс</a></li>"
 				dat += "</ul>"
 
 			if (1)
-				dat += "<h4><img src=pda_notes.png> Notekeeper V2.2</h4>"
-				dat += "<a href='byond://?src=\ref[src];choice=Edit'>Edit</a><br>"
+				dat += "<h4><img src=pda_notes.png> Блонкнот V2.2</h4>"
+				dat += "<a href='byond://?src=\ref[src];choice=Edit'>Редактировать</a><br>"
 				if(notescanned)
-					dat += "(This is a scanned image, editing it may cause some text formatting to change.)<br>"
+					dat += "(Это отсканированное сообщение, некоторые его изменени&#x44F; могут привести к нежелаемым последстви&#x44F;м.)<br>"
 				dat += "<HR><font face=\"[PEN_FONT]\">[(!notehtml ? note : notehtml)]</font>"
 
 			if (2)
-				dat += "<h4><img src=pda_mail.png> SpaceMessenger V3.9.6</h4>"
-				dat += "<a href='byond://?src=\ref[src];choice=Toggle Ringer'><img src=pda_bell.png> Ringer: [silent == 1 ? "Off" : "On"]</a> | "
-				dat += "<a href='byond://?src=\ref[src];choice=Toggle Messenger'><img src=pda_mail.png> Send / Receive: [toff == 1 ? "Off" : "On"]</a> | "
-				dat += "<a href='byond://?src=\ref[src];choice=Ringtone'><img src=pda_bell.png> Set Ringtone</a> | "
-				dat += "<a href='byond://?src=\ref[src];choice=21'><img src=pda_mail.png> Messages</a><br>"
+				dat += "<h4><img src=pda_mail.png> КосмическийПосыльный V3.9.6</h4>"
+				dat += "<a href='byond://?src=\ref[src];choice=Toggle Ringer'><img src=pda_bell.png> Сигнал: [silent == 1 ? "Выключен" : "Включен"]</a> | "
+				dat += "<a href='byond://?src=\ref[src];choice=Toggle Messenger'><img src=pda_mail.png> Сообщени&#x44F;: [toff == 1 ? "Выключены" : "Включены"]</a> | "
+				dat += "<a href='byond://?src=\ref[src];choice=Ringtone'><img src=pda_bell.png> Установить Сигнал</a> | "
+				dat += "<a href='byond://?src=\ref[src];choice=21'><img src=pda_mail.png> Истори&#x44F;</a><br>"
 
 				if (istype(cartridge, /obj/item/weapon/cartridge/syndicate))
-					dat += "<b>[cartridge:shock_charges] detonation charges left.</b><HR>"
+					dat += "<b>[cartridge:shock_charges] осталось зар&#x44F;дов детонации.</b><HR>"
 				if (istype(cartridge, /obj/item/weapon/cartridge/clown))
-					dat += "<b>[cartridge:honk_charges] viral files left.</b><HR>"
+					dat += "<b>[cartridge:honk_charges] зараженных файлов осталось.</b><HR>"
 				if (istype(cartridge, /obj/item/weapon/cartridge/mime))
-					dat += "<b>[cartridge:mime_charges] viral files left.</b><HR>"
+					dat += "<b>[cartridge:mime_charges] зараженных файлов осталось.</b><HR>"
 
-				dat += "<h4><img src=pda_menu.png> Detected PDAs</h4>"
+				dat += "<h4><img src=pda_menu.png> Обнаруженные ПДА</h4>"
 
 				dat += "<ul>"
 
@@ -400,39 +403,39 @@ var/global/list/obj/item/device/pda/PDAs = list()
 						if (P == src)	continue
 						dat += "<li><a href='byond://?src=\ref[src];choice=Message;target=\ref[P]'>[P]</a>"
 						if (istype(cartridge, /obj/item/weapon/cartridge/syndicate) && P.detonate)
-							dat += " (<a href='byond://?src=\ref[src];choice=Detonate;target=\ref[P]'><img src=pda_boom.png>*Detonate*</a>)"
+							dat += " (<a href='byond://?src=\ref[src];choice=Detonate;target=\ref[P]'><img src=pda_boom.png>*Подорвать*</a>)"
 						if (istype(cartridge, /obj/item/weapon/cartridge/clown))
-							dat += " (<a href='byond://?src=\ref[src];choice=Send Honk;target=\ref[P]'><img src=pda_honk.png>*Send Virus*</a>)"
+							dat += " (<a href='byond://?src=\ref[src];choice=Send Honk;target=\ref[P]'><img src=pda_honk.png>*Отправить Вирус*</a>)"
 						if (istype(cartridge, /obj/item/weapon/cartridge/mime))
-							dat += " (<a href='byond://?src=\ref[src];choice=Send Silence;target=\ref[P]'>*Send Virus*</a>)"
+							dat += " (<a href='byond://?src=\ref[src];choice=Send Silence;target=\ref[P]'>*Отправить Вирус*</a>)"
 						dat += "</li>"
 						count++
 				dat += "</ul>"
 				if (count == 0)
-					dat += "None detected.<br>"
+					dat += "Ничего не обнаружено.<br>"
 
 			if(21)
-				dat += "<h4><img src=pda_mail.png> SpaceMessenger V3.9.6</h4>"
-				dat += "<a href='byond://?src=\ref[src];choice=Clear'><img src=pda_blank.png> Clear Messages</a>"
+				dat += "<h4><img src=pda_mail.png> КосмическийПосыльный V3.9.6</h4>"
+				dat += "<a href='byond://?src=\ref[src];choice=Clear'><img src=pda_blank.png> Очистить историю сообщений</a>"
 
-				dat += "<h4><img src=pda_mail.png> Messages</h4>"
+				dat += "<h4><img src=pda_mail.png> Сообщени&#x44F;</h4>"
 
 				dat += tnote
 				dat += "<br>"
 
 			if (3)
-				dat += "<h4><img src=pda_atmos.png> Atmospheric Readings</h4>"
+				dat += "<h4><img src=pda_atmos.png> Результат Сканировани&#x44F; Атмосферы</h4>"
 
 				var/turf/T = get_turf(user.loc)
 				if (isnull(T))
-					dat += "Unable to obtain a reading.<br>"
+					dat += "Не удалось получить показани&#x44F;.<br>"
 				else
 					var/datum/gas_mixture/environment = T.return_air()
 
 					var/pressure = environment.return_pressure()
 					var/total_moles = environment.total_moles()
 
-					dat += "Air Pressure: [round(pressure,0.1)] kPa<br>"
+					dat += "Давление воздуха: [round(pressure,0.1)] кПа<br>"
 
 					if (total_moles)
 						var/o2_level = environment.oxygen/total_moles
@@ -440,23 +443,23 @@ var/global/list/obj/item/device/pda/PDAs = list()
 						var/co2_level = environment.carbon_dioxide/total_moles
 						var/plasma_level = environment.toxins/total_moles
 						var/unknown_level =  1-(o2_level+n2_level+co2_level+plasma_level)
-						dat += "Nitrogen: [round(n2_level*100)]%<br>"
-						dat += "Oxygen: [round(o2_level*100)]%<br>"
-						dat += "Carbon Dioxide: [round(co2_level*100)]%<br>"
-						dat += "Plasma: [round(plasma_level*100)]%<br>"
+						dat += "Азот: [round(n2_level*100)]%<br>"
+						dat += "Кислород: [round(o2_level*100)]%<br>"
+						dat += "Углекислый Газ: [round(co2_level*100)]%<br>"
+						dat += "Плазма: [round(plasma_level*100)]%<br>"
 						if(unknown_level > 0.01)
-							dat += "OTHER: [round(unknown_level)]%<br>"
-					dat += "Temperature: [round(environment.temperature-T0C)]&deg;C<br>"
+							dat += "Другое: [round(unknown_level)]%<br>"
+					dat += "Температура: [round(environment.temperature-T0C)]&deg;C<br>"
 				dat += "<br>"
 
 			if (5)
 				new_ntrc_msg = 0
-				dat += "<h4><img src=pda_chatroom.png> Nanotrasen Relay Chat Network V1.2</h4>"
+				dat += "<h4><img src=pda_chatroom.png> Сеть Св&#x44F;зи Nanotrasen V1.2.6/Ortus Station</h4>"
 
 				dat += "<a href='byond://?src=\ref[src];choice=Set Nick'>[nick]</a> | "
 				dat += "<a href='byond://?src=\ref[src];choice=Set Channel'>[chat_channel]</a> | "
-				dat += "<a href='byond://?src=\ref[src];choice=NTRC Message'>Write message</a> | "
-				dat += "<a href='byond://?src=\ref[src];choice=NTRC Help'>Help</a><br><HR>"
+				dat += "<a href='byond://?src=\ref[src];choice=NTRC Message'>Написать сообщение</a> | "
+				dat += "<a href='byond://?src=\ref[src];choice=NTRC Help'>Помощь</a><br><HR>"
 				if(chat_channel)
 					dat += ntrclog[chat_channel]
 
@@ -464,8 +467,15 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				dat += cart
 
 	dat += "</body></html>"
-	user << browse(dat, "window=pda;size=400x444;border=1;can_resize=1;can_close=0;can_minimize=0")
-	onclose(user, "pda", src)
+	dat = r_html(dat)	//чтобы работало все четко.
+	/*
+	user << browse(dat, "window=pda;size=365x444;border=1;can_resize=1;can_close=0;can_minimize=0")
+	onclose(user, "pda", src) */
+	//СТАРЫЙ ОПЕН
+	var/datum/browser/popup = new(user, "PDA", "<div align='center'>[r_html("ПДА")]</div>", 400, 444)
+	popup.set_content(dat)
+	popup.open(0)
+	//НОВЫЙ СТИЛЬ
 
 /obj/item/device/pda/Topic(href, href_list)
 	..()
@@ -569,15 +579,20 @@ var/global/list/obj/item/device/pda/PDAs = list()
 //NOTEKEEPER FUNCTIONS===================================
 
 			if ("Edit")
-				var/n = stripped_multiline_input(U, "Please enter message", name, note)
+				var/n = stripped_multiline_input(U, "Пожалуйста, введите сообщение", name, note)
 				if (in_range(src, U) && loc == U)
 					if (mode == 1 && n)
+<<<<<<< HEAD
 						note = sanitize_uni(n)
 						notehtml = parsepencode(n, U, SIGNFONT)
+=======
+						note = sanitize_russian(sanitize_html_ya(n), 1)
+						notehtml = parsepencode(sanitize_russian(sanitize_html_ya(n), 1), U, SIGNFONT)
+>>>>>>> 4b1f982e09847ecb4ad6a703bfa4a4988655b912
 						notescanned = 0
 				else
 					U << browse(null, "window=pda")
-					return
+					return //санитайз примечаний
 
 //MESSENGER FUNCTIONS===================================
 
@@ -588,7 +603,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			if("Clear")//Clears messages
 				tnote = null
 			if("Ringtone")
-				var/t = input(U, "Please enter new ringtone", name, ttone) as text
+				var/t = input(U, "Please enter new ringtone", name, sanitize_russian(sanitize_html(ttone), 1)) as text
 				if (in_range(src, U) && loc == U)
 					if (t)
 						if(src.hidden_uplink && hidden_uplink.check_trigger(U, trim(lowertext(t)), trim(lowertext(lock_code))))
@@ -763,7 +778,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		id = null
 
 /obj/item/device/pda/proc/msg_input(var/mob/living/U = usr)
-	var/t = stripped_input(U, "Please enter message", name, null, MAX_MESSAGE_LEN)
+	var/t = stripped_input(U, "Пожалуйста, введите свое сообщение", name, null, MAX_MESSAGE_LEN)
 	if (!t || toff)
 		return
 	if (!in_range(src, U) && loc != U)
@@ -776,6 +791,15 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 /obj/item/device/pda/proc/create_message(var/mob/living/U = usr, var/obj/item/device/pda/P)
 
+<<<<<<< HEAD
+=======
+	var/t = msg_input(U)
+	var/original_t = t //оригинальный текст
+
+	var/t_sani = sanitize_russian(sanitize_html(original_t), 1) //чтобы "я" хорошо отображалась в истории сообщений.
+
+	var/t_s = sanitize_russian(sanitize_uni(original_t)) //чтобы "я" хорошо отображалась в отправлении/получении сообщений.
+>>>>>>> 4b1f982e09847ecb4ad6a703bfa4a4988655b912
 
 	var/t = input(U, "Please enter message", name, null) as text
 	t = copytext(sanitize_uni(t), 1, MAX_MESSAGE_LEN)
@@ -819,15 +843,15 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 	if(useMS && useTC) // only send the message if it's stable
 		if(useTC != 2) // Does our recipient have a broadcaster on their level?
-			U << "ERROR: Cannot reach recipient."
+			U << "ОШИБКА: Получатель не найден."
 			return
 		useMS.send_pda_message("[P.owner]","[owner]","[t]")
 
-		tnote += "<i><b>&rarr; To [P.owner]:</b></i><br>[t]<br>"
-		P.tnote += "<i><b>&larr; From <a href='byond://?src=\ref[P];choice=Message;target=\ref[src]'>[owner]</a> ([ownjob]):</b></i><br>[t]<br>"
+		tnote += "<i><b>&rarr; Дл&#x44F; [P.owner]:</b></i><br>[t_sani]<br>"
+		P.tnote += "<i><b>&larr; От <a href='byond://?src=\ref[P];choice=Message;target=\ref[src]'>[owner]</a> ([ownjob]):</b></i><br>[t_sani]<br>"
 		for(var/mob/M in player_list)
 			if(isobserver(M) && M.client && (M.client.prefs.chat_toggles & CHAT_GHOSTPDA))
-				M.show_message("<span class='game say'>PDA Message - <span class='name'>[owner]</span> -> <span class='name'>[P.owner]</span>: <span class='message'>[t]</span></span>")
+				M.show_message("<span class='game say'>ПДА сообщение - <span class='name'>[owner]</span> -> <span class='name'>[P.owner]</span>: <span class='message'>[t_s]</span></span>")
 
 		if (!P.silent)
 			playsound(P.loc, 'sound/machines/twobeep.ogg', 50, 1)
@@ -841,13 +865,13 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			L = get(P, /mob/living/silicon)
 
 		if(L)
-			L << "\icon[P] <b>Message from [src.owner] ([ownjob]), </b>\"[t]\" (<a href='byond://?src=\ref[P];choice=Message;skiprefresh=1;target=\ref[src]'>Reply</a>)"
+			L << "\icon[P] <b>Сообщение от [src.owner] ([ownjob]), </b>\"[t_s]\" (<a href='byond://?src=\ref[P];choice=Message;skiprefresh=1;target=\ref[src]'>Ответить</a>)"
 
-		log_pda("[usr] (PDA: [src.name]) sent \"[t]\" to [P.name]")
+		log_pda("[usr] (PDA: [src.name]) откравлено \"[t_sani]\" дл&#x44F; [P.name]")
 		P.overlays.Cut()
 		P.overlays += image('icons/obj/pda.dmi', "pda-r")
 	else
-		U << "<span class='notice'>ERROR: Server isn't responding.</span>"
+		U << "<span class='notice'>ОШИБКА: Сервер не отвечает.</span>"
 
 /obj/item/device/pda/AltClick()
 	..()

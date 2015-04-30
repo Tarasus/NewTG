@@ -349,13 +349,16 @@ var/datum/subsystem/job/SSjob
 			H = new_mob
 		job.apply_fingerprints(H)
 
-	H << "<b>You are the [rank].</b>"
-	H << "<b>As the [rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>"
-	H << "<b>To speak on your departments radio, use the :h button. To see others, look closely at your headset.</b>"
+	var/rank_rus = ranged_R(rank)	//возведение перевода
+	H << "<b>Вы [rank_rus].</b>"
+	H << "<b>Как [rank_rus] вы подчин&#255;етесь [job.supervisors]. Это может изменитьс&#255; при особых услови&#255;х.</b>"
+	H << "<b>Чтобы говорить по радиоканалу своего отдела, используйте кнопку :h . Чтобы увидеть остальные радиоканалы - проверьте свое радио.</b>"
 	if(job.req_admin_notify)
-		H << "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>"
+		H << "<b>Вы играете за члена экипажа, чь&#255; работа важна в игровом прогрессе. Если вы хотите выйти, пожалуйста, сообщите администратору при помощи adminhelp.</b>"
 	if(config.minimal_access_threshold)
-		H << "<FONT color='blue'><B>As this station was initially staffed with a [config.jobs_have_minimal_access ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B></font>"
+		H << "<FONT color='blue'><B>Так как изначально станци&#255; укомплектована [config.jobs_have_minimal_access ? "полностью, только доступы Вашей необходимости" : "не полностью, дополнительные доступы"] могут быть добавлены к Вашей ID-карте.</B></font>"
+			//пока сломано, может, позже починю	//*NEED FIX*//
+														//уже //*FIXED*//
 
 	H.update_hud() 	// Tmp fix for Github issue 1006. TODO: make all procs in update_icons.dm do client.screen |= equipment no matter what.
 	return 1

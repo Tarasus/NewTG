@@ -1,6 +1,8 @@
 /datum/game_mode
 	// this includes admin-appointed traitors and multitraitors. Easy!
 	var/traitor_name = "traitor"
+	var/traitor_name_r = "предатель"
+	var/traitor_name_rs = "предателями"
 	var/list/datum/mind/traitors = list()
 
 	var/datum/mind/exchange_red
@@ -22,8 +24,8 @@
 
 
 /datum/game_mode/traitor/announce()
-	world << "<B>The current game mode is - Traitor!</B>"
-	world << "<B>There are syndicate traitors on the station. Do not let the traitors succeed!</B>"
+	world << "<B>Текущий режим - Предатель!</B>"
+	world << "<B>На станции есть продажные псы Синдиката. Не позвол&#255;йте им добитьс&#255; своих гр&#255;зных целей!</B>"
 
 
 /datum/game_mode/traitor/pre_setup()
@@ -175,10 +177,10 @@
 
 
 /datum/game_mode/proc/greet_traitor(var/datum/mind/traitor)
-	traitor.current << "<B><font size=3 color=red>You are the [traitor_name].</font></B>"
+	traitor.current << "<B><font size=3 color=red>Вы [traitor_name_r].</font></B>"
 	var/obj_count = 1
 	for(var/datum/objective/objective in traitor.objectives)
-		traitor.current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
+		traitor.current << sanitize_ya(sanitize_russian("<B>Цель #[obj_count]</B>: [objective.explanation_text]"))
 		obj_count++
 	return
 
@@ -196,30 +198,30 @@
 	return//Traitors will be checked as part of check_extra_completion. Leaving this here as a reminder.
 
 /proc/give_codewords(mob/living/traitor_mob)
-	traitor_mob << "<U><B>The Syndicate provided you with the following information on how to identify their agents:</B></U>"
-	traitor_mob << "<B>Code Phrase</B>: <span class='danger'>[syndicate_code_phrase]</span>"
-	traitor_mob << "<B>Code Response</B>: <span class='danger'>[syndicate_code_response]</span>"
+	traitor_mob << "<U><B>Синдикат снабжает своих агентов некоторой информацией:</B></U>"
+	traitor_mob << "<B>Кодова&#255; фраза</B>: <span class='danger'>[syndicate_code_phrase]</span>"
+	traitor_mob << "<B>Ответ на фразу</B>: <span class='danger'>[syndicate_code_response]</span>"
 
-	traitor_mob.mind.store_memory("<b>Code Phrase</b>: [syndicate_code_phrase]")
-	traitor_mob.mind.store_memory("<b>Code Response</b>: [syndicate_code_response]")
+	traitor_mob.mind.store_memory("<b>Кодовая фраза</b>: [syndicate_code_phrase]")
+	traitor_mob.mind.store_memory("<b>Ответ на фразу</b>: [syndicate_code_response]")
 
-	traitor_mob << "Use the code words in the order provided, during regular conversation, to identify other agents. Proceed with caution, however, as everyone is a potential foe."
+	traitor_mob << "Используйте кодовые слова в предусмотренном пор&#255;дке во врем&#255; обычных разговоров, чтобы вычислить других агентов. Однако соблюдайте осторожность, ведь враг, может быть кем угодно."
 
 
 /datum/game_mode/proc/add_law_zero(mob/living/silicon/ai/killer)
-	var/law = "Accomplish your objectives at all costs."
-	var/law_borg = "Accomplish your AI's objectives at all costs."
-	killer << "<b>Your laws have been changed!</b>"
+	var/law = "Выполн&#255;ть свои цели любой ценой"
+	var/law_borg = "Выполн&#255;ть свои цели Искуственного Интеллекста любой ценой."
+	killer << "<b>Ващи законы были изменены!</b>"
 	killer.set_zeroth_law(law, law_borg)
-	killer << "New law: 0. [law]"
+	killer << "Новый закон: 0. [law]"
 	give_codewords(killer)
 	killer.set_syndie_radio()
-	killer << "Your radio has been upgraded! Use :t to speak on an encrypted channel with Syndicate Agents!"
+	killer << "Ваше радио получило улучшение! Используйте <b> :t </b> чтобы говорить с Агентами Синдиката!"
 
 
 /datum/game_mode/proc/auto_declare_completion_traitor()
 	if(traitors.len)
-		var/text = "<br><font size=3><b>The [traitor_name]s were:</b></font>"
+		var/text = "<br><font size=3><b>[traitor_name_rs] были:</b></font>"
 		for(var/datum/mind/traitor in traitors)
 			var/traitorwin = 1
 
@@ -239,10 +241,10 @@
 				var/count = 1
 				for(var/datum/objective/objective in traitor.objectives)
 					if(objective.check_completion())
-						objectives += "<br><B>Objective #[count]</B>: [objective.explanation_text] <font color='green'><B>Success!</B></font>"
+						objectives += "<br><B>Цель #[count]</B>: [objective.explanation_text] <font color='green'><B>Выполнена!</B></font>"
 						feedback_add_details("traitor_objective","[objective.type]|SUCCESS")
 					else
-						objectives += "<br><B>Objective #[count]</B>: [objective.explanation_text] <font color='red'>Fail.</font>"
+						objectives += "<br><B>Цель #[count]</B>: [objective.explanation_text] <font color='red'>Провалена.</font>"
 						feedback_add_details("traitor_objective","[objective.type]|FAIL")
 						traitorwin = 0
 					count++
@@ -262,16 +264,16 @@
 
 
 			if(traitorwin)
-				text += "<br><font color='green'><B>The [special_role_text] was successful!</B></font>"
+				text += "<br><font color='green'><B>[special_role_text] был успешен!</B></font>"
 				feedback_add_details("traitor_success","SUCCESS")
 			else
-				text += "<br><font color='red'><B>The [special_role_text] has failed!</B></font>"
+				text += "<br><font color='red'><B>[special_role_text] провалилс&#255;!</B></font>"
 				feedback_add_details("traitor_success","FAIL")
 
 			text += "<br>"
 
-		text += "<br><b>The code phrases were:</b> <font color='red'>[syndicate_code_phrase]</font><br>\
-		<b>The code responses were:</b> <font color='red'>[syndicate_code_response]</font><br>"
+		text += "<br><b>Кодова&#255; фраза была:</b> <font color='red'>[syndicate_code_phrase]</font><br>\
+		<b>Ответ на кодовую фразу был:</b> <font color='red'>[syndicate_code_response]</font><br>"
 		world << text
 
 	return 1
@@ -283,7 +285,7 @@
 	. = 1
 	if (traitor_mob.mind)
 		if (traitor_mob.mind.assigned_role == "Clown")
-			traitor_mob << "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself."
+			traitor_mob << "Ваше обучение позволило Вам преодолеть вашу клоунскую натуру, что позвол&#255;ет использовать оружие без вреда дл&#255; себ&#255;."
 			traitor_mob.dna.remove_mutation(CLOWNMUT)
 
 	// find a radio! toolbox(es), backpack, belt, headset
@@ -293,7 +295,7 @@
 		R = locate(/obj/item/device/radio) in traitor_mob.contents
 
 	if (!R)
-		traitor_mob << "Unfortunately, the Syndicate wasn't able to get you a radio."
+		traitor_mob << "К сожалению, Синдикат не вручил Вам радио."
 		. = 0
 	else
 		if (istype(R, /obj/item/device/radio))
@@ -313,8 +315,8 @@
 			target_radio.hidden_uplink = T
 			T.uplink_owner = "[traitor_mob.key]"
 			target_radio.traitor_frequency = freq
-			traitor_mob << "The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name] [loc]. Simply dial the frequency [format_frequency(freq)] to unlock its hidden features."
-			traitor_mob.mind.store_memory("<B>Radio Freq:</B> [format_frequency(freq)] ([R.name] [loc]).")
+			traitor_mob << "Синдикат хитро замаскировал аплинк под [R.name][loc]. Просто наберите частоту [format_frequency(freq)] чтобы получить доступ к темной стороне."
+			traitor_mob.mind.store_memory("<B>Радио частота:</B> [format_frequency(freq)] ([R.name] [loc]).")
 		else if (istype(R, /obj/item/device/pda))
 			// generate a passcode if the uplink is hidden in a PDA
 			var/pda_pass = "[rand(100,999)] [pick("Alpha","Bravo","Delta","Omega")]"
@@ -325,8 +327,8 @@
 			var/obj/item/device/pda/P = R
 			P.lock_code = pda_pass
 
-			traitor_mob << "The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name] [loc]. Simply enter the code \"[pda_pass]\" into the ringtone select to unlock its hidden features."
-			traitor_mob.mind.store_memory("<B>Uplink Passcode:</B> [pda_pass] ([R.name] [loc]).")
+			traitor_mob << "Синдикат хитро замаскировал аплинк под ваш ПДА. Просто наберите код \"[pda_pass]\" в выборе сигнала сообщений, чтобы получить доступ к темной стороне вашего ПДА."
+			traitor_mob.mind.store_memory("<B>Код Аплинка:</B> [pda_pass] ([ranged_R(R.name)] [ranged_R(loc)])")
 	if(!safety)//If they are not a rev. Can be added on to.
 		give_codewords(traitor_mob)
 

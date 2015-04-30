@@ -230,3 +230,8 @@
 /obj/structure/flora/rock/pile/New()
 	..()
 	icon_state = "rockpile[rand(1,5)]"
+
+/obj/structure/flora/pottedplant
+	name = "potted plant"
+	icon = 'icons/obj/plants.dmi'
+	icon_state = "plant-26"

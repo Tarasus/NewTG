@@ -280,9 +280,13 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 
 	if(href_list["sendAnnouncement"])
 		if(!announcementConsole)	return
+<<<<<<< HEAD
 		message = sanitize_uni(message)
 		minor_announce(message, "[department] Announcement:")
 		message = sanitize_uni(message)
+=======
+		minor_announce(message, "[department] Объявление:")
+>>>>>>> 4b1f982e09847ecb4ad6a703bfa4a4988655b912
 		news_network.SubmitArticle(message, department, "Station Announcements", null)
 		log_say("[key_name(usr)] has made a station announcement: [message]")
 		message_admins("[key_name_admin(usr)] has made a station announcement.")

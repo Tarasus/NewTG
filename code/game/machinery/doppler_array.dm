@@ -7,7 +7,7 @@ var/list/doppler_arrays = list()
 	icon_state = "tdoppler"
 	density = 1
 	anchored = 1
-	verb_say = "states coldly"
+	verb_say = "холодно констатирует"
 
 /obj/machinery/doppler_array/New()
 	..()

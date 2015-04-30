@@ -9,7 +9,7 @@ Research Director
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = "Капитану"
 	selection_color = "#ffddff"
 	req_admin_notify = 1
 	minimal_player_age = 7
@@ -51,7 +51,7 @@ Scientist
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 3
-	supervisors = "the research director"
+	supervisors = "Главе Отдела Исследований"
 	selection_color = "#ffeeff"
 
 	default_pda = /obj/item/device/pda/toxins
@@ -76,7 +76,7 @@ Roboticist
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "research director"
+	supervisors = "Главе Отдела Исследований"
 	selection_color = "#ffeeff"
 
 	default_pda = /obj/item/device/pda/roboticist

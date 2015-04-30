@@ -7,9 +7,9 @@
 	origin_tech = "magnets=1"
 	flags = HEAR
 	attachable = 1
-	verb_say = "beeps"
-	verb_ask = "beeps"
-	verb_exclaim = "beeps"
+	verb_say = "гудит"
+	verb_ask = "гудит"
+	verb_exclaim = "гудит"
 	var/listening = 0
 	var/recorded = "" //the activation message
 

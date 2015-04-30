@@ -18,10 +18,17 @@
 	var/nuke_off_station = 0 //Used for tracking if the syndies actually haul the nuke to the station
 	var/syndies_didnt_escape = 0 //Used for tracking if the syndies got the shuttle off of the z-level
 
+<<<<<<< HEAD
 datum/game_mode/nuclear/announce()
 	world << sanitize_uni("<B>Текущий игровой режим - Ядерная Угроза!</B>")
 	world << sanitize_uni("<B>Оперативные агенты [syndicate_name()] собираются напасть на станцию! Не дайте им преуспеть</B>")
 //	world << "A nuclear explosive was being transported by Nanotrasen to a military base. The transport ship mysteriously lost contact with Space Traffic Control (STC). About that time a strange disk was discovered around [station_name()]. It was identified by Nanotrasen as a nuclear auth. disk and now Syndicate Operatives have arrived to retake the disk and detonate SS13! Also, most likely Syndicate star ships are in the vicinity so take care not to lose the disk!\n<B>Syndicate</B>: Reclaim the disk and detonate the nuclear bomb anywhere on SS13.\n<B>Personnel</B>: Hold the disk and <B>escape with the disk</B> on the shuttle!"
+=======
+/datum/game_mode/nuclear/announce()
+	world << "<B>Текущий режим - &#255;дерна&#255; Угроза!</B>"
+	world << "<B>Оперативники [syndicate_name()] приближаютс&#255; к [station_name()]!</B>"
+	world << "НаноТрейзен отправили &#255;дерную бомбу на свою военную базу. Неожиданно, транспортный корабль потер&#255;л сз&#255;вь с Управлением Космического Движени&#255; (УКД). В это врем&#255; странный диск был обнаружен около [station_name()]. Он был опознан как авторизатор &#255;дерного оружи&#255; НаноТрейзен. И теперь, узнавшие об этом Оперативники Синдиката, должны выкрасть этот диск и уничтожить станцию. Кроме того, корабли Синдиката наход&#255;тс&#255; очень близко к станции, будьте осторожны, не потер&#255;йте диск!\n<B>Синдикат</B>: Украдите диск и взорвите бомбу на станции.\n<B>Персонал</B>: Удерживайте диск и <B>убегите с ним</B> на шаттле!"
+>>>>>>> 4b1f982e09847ecb4ad6a703bfa4a4988655b912
 
 /datum/game_mode/nuclear/pre_setup()
 	var/agent_number = 0
@@ -150,7 +157,11 @@ datum/game_mode/nuclear/announce()
 		syndicate.current <<  sanitize_uni("<span class='info'>Вы оперативный агент [syndicate_name()]!</span>")
 	var/obj_count = 1
 	for(var/datum/objective/objective in syndicate.objectives)
+<<<<<<< HEAD
 		syndicate.current << sanitize_uni("<B>Задание #[obj_count]</B>: [objective.explanation_text]")
+=======
+		syndicate.current << sanitize("<B>Objective #[obj_count]</B>: [objective.explanation_text]")
+>>>>>>> 4b1f982e09847ecb4ad6a703bfa4a4988655b912
 		obj_count++
 	return
 

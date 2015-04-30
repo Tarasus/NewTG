@@ -36,7 +36,7 @@
 	var/del_new_on_log = 1				// del's new players if they log before they spawn in
 	var/allow_Metadata = 0				// Metadata is supported.
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
-	var/fps = 10
+	var/fps = 20							//*FIX*// временно повысил FPS
 	var/Tickcomp = 0
 	var/allow_holidays = 0				//toggles whether holiday-specific content should be used
 
@@ -110,14 +110,14 @@
 	var/mutant_races = 1				//players can choose their mutant race before joining the game
 	var/mutant_colors = 1				//can are choose mutant's skin color /*EDITED*/
 
-	var/alert_desc_green = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
-	var/alert_desc_blue_upto = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted."
-	var/alert_desc_blue_downto = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
-	var/alert_desc_red_upto = "There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
-	var/alert_desc_red_downto = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
-	var/alert_desc_delta = "The station's self-destruct mechanism has been engaged. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
+	var/alert_desc_green = "Все угрозы миновали. Охрана не должна носить оружие на виду, законы вновь работают в полную силу."
+	var/alert_desc_blue_upto = "Станци&#255; получила достоверную информацию о возможности вражеской де&#255;тельности на станции. Охрана может носить оружие на виду, разрешаютс&#255; случайные обыски."
+	var/alert_desc_blue_downto = "Непосредственна&#255; угроза миновала. Охрана может по-прежнему носить оружие на виду. Случайные обычки все еще разрешены."
+	var/alert_desc_red_upto = "Существует серьезна&#255; угроза станции. Охрана может посто&#255;нно ходить с оружием. Случайные обыски разрешены и рекомендуютс&#255;."
+	var/alert_desc_red_downto = "Механизм самоуничтожени&#255; деактивирован, но угроза станции еще присутствует. Охрана может посто&#255;нно ходить с оружием. Случайные обыски разрешены и рекомендуютс&#255;."
+	var/alert_desc_delta = "Механизм самоуничтожени&#255; активирован. Экипаж об&#255;зан исполн&#255;ть все инструкции данные их главами. Любое нарушение может каратьс&#255; смертью. Это не учебна&#255; тревога."
 
-	var/health_threshold_crit = 0
+	var/health_threshold_crit = -10	//пусть будет больше порог дамага для крита.
 	var/health_threshold_dead = -100
 
 	var/revival_pod_plants = 1
@@ -158,6 +158,8 @@
 	var/grey_assistants = 0
 
 	var/aggressive_changelog = 0
+
+	var/achivki_mode_on = 1	//контролирует возможность функции АЧЕИВЕК
 
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
@@ -372,17 +374,17 @@
 				if("animal_delay")
 					config.animal_delay				= text2num(value)
 				if("alert_red_upto")
-					config.alert_desc_red_upto		= value
+					config.alert_desc_red_upto		= alert_desc_red_upto
 				if("alert_red_downto")
-					config.alert_desc_red_downto	= value
+					config.alert_desc_red_downto	= alert_desc_red_downto
 				if("alert_blue_downto")
-					config.alert_desc_blue_downto	= value
+					config.alert_desc_blue_downto	= alert_desc_blue_downto
 				if("alert_blue_upto")
-					config.alert_desc_blue_upto		= value
+					config.alert_desc_blue_upto		= alert_desc_blue_upto
 				if("alert_green")
-					config.alert_desc_green			= value
+					config.alert_desc_green			= alert_desc_green
 				if("alert_delta")
-					config.alert_desc_delta			= value
+					config.alert_desc_delta			= alert_desc_delta
 				if("assistants_have_maint_access")
 					config.jobs_have_maint_access	|= ASSISTANTS_HAVE_MAINT_ACCESS
 				if("security_has_maint_access")

@@ -1,4 +1,4 @@
-var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi","Chi","Psi","Omega")
+var/list/possible_changeling_IDs = list("Альфа","Бета","Гамма","Дельта","Эпсилон","Зета","Эта","Зета","Йота","Каппа","Ламбда","Му","Ну","Кси","Омикрон","Пи","Рху","Сигма","Тау","Апсилон","Фи","Чи","Пси","Омега")
 
 /datum/game_mode
 	var/list/datum/mind/changelings = list()
@@ -36,8 +36,8 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 	var/const/changeling_amount = 4 //hard limit on changelings if scaling is turned off
 
 /datum/game_mode/changeling/announce()
-	world << "<b>The current game mode is - Changeling!</b>"
-	world << "<b>There are alien changelings on the station. Do not let the changelings succeed!</b>"
+	world << "<b>Текущий режим - Генокрад!</b>"
+	world << "<b>На станцию пробрались злобные генокрады. Не позвольте им достичь своих гр&#255;зных целей!</b>"
 
 /datum/game_mode/changeling/pre_setup()
 
@@ -154,19 +154,19 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 
 /datum/game_mode/proc/greet_changeling(var/datum/mind/changeling, var/you_are=1)
 	if (you_are)
-		changeling.current << "<span class='boldannounce'>You are [changeling.changeling.changelingID], a changeling! You have absorbed and taken the form of a human.</span>"
-	changeling.current << "<span class='boldannounce'>Use say \":g message\" to communicate with your fellow changelings.</span>"
-	changeling.current << "<b>You must complete the following tasks:</b>"
+		changeling.current << "<span class='boldannounce'>Вы [changeling.changeling.changelingID], генокрад! Вы впитали и прин&#255;ли форму человека.</span>"
+	changeling.current << "<span class='boldannounce'>Используйте преписку \":g\" чтобы общатьс&#255; с вашими сородичами.</span>"
+	changeling.current << "<b>Вы должны выполнить следующие задачи:</b>"
 
 	if (changeling.current.mind)
 		var/mob/living/carbon/human/H = changeling.current
 		if(H.mind.assigned_role == "Clown")
-			H << "You have evolved beyond your clownish nature, allowing you to wield weapons without harming yourself."
+			H << "Вы эволюционировали и избавились от вашей шутовской натуры. Теперь вы можете стрел&#255;ть без ущерба дл&#255; себ&#255;."
 			H.dna.remove_mutation(CLOWNMUT)
 
 	var/obj_count = 1
 	for(var/datum/objective/objective in changeling.objectives)
-		changeling.current << "<b>Objective #[obj_count]</b>: [objective.explanation_text]"
+		changeling.current << sanitize_ya(sanitize_russian("<b>Цель #[obj_count]</b>: [objective.explanation_text]"))
 		obj_count++
 	return
 
@@ -194,7 +194,7 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 
 /datum/game_mode/proc/auto_declare_completion_changeling()
 	if(changelings.len)
-		var/text = "<br><font size=3><b>The changelings were:</b></font>"
+		var/text = "<br><font size=3><b>Генокрадами были:</b></font>"
 		for(var/datum/mind/changeling in changelings)
 			var/changelingwin = 1
 			if(!changeling.current)
@@ -203,26 +203,26 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 			text += printplayer(changeling)
 
 			//Removed sanity if(changeling) because we -want- a runtime to inform us that the changelings list is incorrect and needs to be fixed.
-			text += "<br><b>Changeling ID:</b> [changeling.changeling.changelingID]."
-			text += "<br><b>Genomes Extracted:</b> [changeling.changeling.absorbedcount]"
+			text += "<br><b>Им&#255; генокрада:</b> [changeling.changeling.changelingID]."
+			text += "<br><b>Геномов поглощено:</b> [changeling.changeling.absorbedcount]"
 
 			if(changeling.objectives.len)
 				var/count = 1
 				for(var/datum/objective/objective in changeling.objectives)
 					if(objective.check_completion())
-						text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <font color='green'><b>Success!</b></font>"
+						text += "<br><b>Цель #[count]</b>: [objective.explanation_text] <font color='green'><b>Выполнена!</b></font>"
 						feedback_add_details("changeling_objective","[objective.type]|SUCCESS")
 					else
-						text += "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='danger'>Fail.</span>"
+						text += "<br><b>Цель #[count]</b>: [objective.explanation_text] <span class='danger'>Провалена.</span>"
 						feedback_add_details("changeling_objective","[objective.type]|FAIL")
 						changelingwin = 0
 					count++
 
 			if(changelingwin)
-				text += "<br><font color='green'><b>The changeling was successful!</b></font>"
+				text += "<br><font color='green'><b>Генокрад был успешным!</b></font>"
 				feedback_add_details("changeling_success","SUCCESS")
 			else
-				text += "<br><span class='boldannounce'>The changeling has failed.</span>"
+				text += "<br><span class='boldannounce'>Генокрад провалилс&#255;.</span>"
 				feedback_add_details("changeling_success","FAIL")
 			text += "<br>"
 
@@ -241,7 +241,7 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 	var/chem_recharge_rate = 0.5
 	var/chem_recharge_slowdown = 0
 	var/sting_range = 2
-	var/changelingID = "Changeling"
+	var/changelingID = "Генокрад"
 	var/geneticdamage = 0
 	var/isabsorbing = 0
 	var/geneticpoints = 10
@@ -255,8 +255,8 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 /datum/changeling/New(var/gender=FEMALE)
 	..()
 	var/honorific
-	if(gender == FEMALE)	honorific = "Ms."
-	else					honorific = "Mr."
+	if(gender == FEMALE)	honorific = "Миссис"
+	else					honorific = "Мистер"
 	if(possible_changeling_IDs.len)
 		changelingID = pick(possible_changeling_IDs)
 		possible_changeling_IDs -= changelingID
@@ -289,14 +289,14 @@ var/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","Epsilon"
 	if(!target)
 		return
 	if((target.disabilities & NOCLONE) || (target.disabilities & HUSK))
-		user << "<span class='warning'>DNA of [target] is ruined beyond usability!</span>"
+		user << "<span class='warning'>ДНК [target] разрушена!</span>"
 		return
 	if(!ishuman(target))//Absorbing monkeys is entirely possible, but it can cause issues with transforming. That's what lesser form is for anyway!
-		user << "<span class='warning'>We could gain no benefit from absorbing a lesser creature.</span>"
+		user << "<span class='warning'>Вы не можете получить никакой выгоды с поглащени&#255; такого маленького существа.</span>"
 		return
 	if(has_dna(target.dna))
-		user << "<span class='warning'>We already have this DNA in storage!</span>"
+		user << "<span class='warning'>У вас уже есть такое ДНК!</span>"
 	if(!check_dna_integrity(target))
-		user << "<span class='warning'>[target] is not compatible with our biology.</span>"
+		user << "<span class='warning'>[target] не совместим с вами.</span>"
 		return
 	return 1

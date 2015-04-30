@@ -1,6 +1,18 @@
-/client/verb/ooc(msg as text)
+/mob/verb/looc(mess as text)
+	set name = "LOOC"
+	set category = "OOC"
+	mess = copytext(sanitize(mess), 1, MAX_MESSAGE_LEN)
+	mess = sanitize_russian(sanitize_uni(mess))	//санитайз
+	for(var/mob/C in view(16))	//мобы в видимости
+		C << sanitize_html_ya("<html><body><font color='#4682B4'><span class='ooc'><span class='prefix'><img src='icons/pda_icons/looc.png'></span> [src.name]: <span class='message'>[mess]</span></span></font></body></html>")
+	log_admin(sanitize_html_ya("<html><body><font color='#4682B4'><span class='ooc'><span class='prefix'><img src='icons/pda_icons/looc.png'></span> [src.name]: <span class='message'>[mess]</span></span></font></body></html>"))
+			//для себя тоже, ммм	//не нужно, ибо дублируются.	//последняя строка, чтобы админы могли следить за ЛООЦ. ибо нехуй.
+
+/client/verb/ooc(mess as text)	//ХМММ
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
+	//var/client/U = usr.client	//клиент. на деле он не нужен, но для инпута - да	|временно отключено
+	//usr << "|[mess]|"	//для тестов.
 
 	if(say_disabled)	//This is here to try to identify lag problems
 		usr << "<span class='danger'>OOC выключен админом.</span>"
@@ -11,8 +23,9 @@
 		src << "Гости не могут использовать OOC."
 		return
 
-	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
-	if(!msg)	return
+	mess = copytext(sanitize(mess), 1, MAX_MESSAGE_LEN)	//мне кажется, что OOC-verb был сломан вот здесь	//шучу, он сломан не здесь)0)
+	mess = sanitize_russian(sanitize_uni(mess))	//перестроил под новые санитайзы							в целом вроде починил
+	if(!mess)	return
 
 	if(!(prefs.chat_toggles & CHAT_OOC))
 		src << "<span class='danger'>Вам запретили использовать OOC.</span>"
@@ -26,37 +39,49 @@
 			usr << "<span class='danger'>OOC дл&#255; мёртвых мобов выключен.</span>"
 			return
 		if(prefs.muted & MUTE_OOC)
-			src << "<span class='danger'>Ты не можешь использовать OOC (muted).</span>"
+			src << "<span class='danger'>Вы не можеште использовать OOC (мут).</span>"
 			return
-		if(handle_spam_prevention(msg,MUTE_OOC))
+		if(handle_spam_prevention(mess,MUTE_OOC))
 			return
-		if(findtext(msg, "byond://"))
-			src << "<B>Рекламить другие серверы нехорошо..</B>"
-			log_admin("[key_name(src)] попыталс&#255; прорекламить другой сервер в OOC: [msg]")
-			message_admins("[key_name_admin(src)] попыталс&#255; прорекламить другой сервер в OOC: [msg]")
+		if(findtext(mess, "byond://"))
+			src << "<B>Рекламировать другие серверы нехорошо..</B>"
+			log_admin("[key_name(src)] попыталс&#255; прорекламить другой сервер в OOC: [mess]")
+			message_admins("[key_name_admin(src)] попыталс&#255; прорекламить другой сервер в OOC: [mess]")
 			return
 
-	log_ooc("[mob.name]/[key] : [msg]")
+	log_ooc("[mob.name]/[key] : [mess]")
 
 	var/keyname = key
 	if(prefs.unlock_content)
 		if(prefs.toggles & MEMBER_PUBLIC)
 			keyname = "<font color='[prefs.ooccolor]'><img style='width:9px;height:9px;' class=icon src=\ref['icons/member_content.dmi'] iconstate=blag>[keyname]</font>"
 
-	msg = emoji_parse(msg)
+	mess = emoji_parse(mess)
 
+	var/deb = check_debug_OOC(mess)
+	if(deb == 1)
+		mess = input(src, "Пожалуйста, выберите текст OOC.", "Текст OOC", mess) as message
 	for(var/client/C in clients)
 		if(C.prefs.chat_toggles & CHAT_OOC)
 			if(holder)
 				if(!holder.fakekey || C.holder)
 					if(check_rights_for(src, R_ADMIN))
-						C << "<font color=[config.allow_admin_ooccolor ? prefs.ooccolor :"#b82e00" ]><b><span class='prefix'>OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></b></font>"
+						C << sanitize_html_ya("<html><body><font color=[config.allow_admin_ooccolor ? prefs.ooccolor :"#b82e00" ]><b><span class='prefix'><img src='icons/pda_icons/admin_ooc.png'></span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[mess]</span></b></font></body></html>")
 					else
-						C << "<span class='adminobserverooc'><span class='prefix'>OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></span>"
+						C << sanitize_html_ya("<html><body><span class='adminobserverooc'><span class='prefix'><img src='icons/pda_icons/ooc.png'></span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[mess]</span></span></body></html>")
 				else
-					C << "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message'>[msg]</span></span></font>"
+					C << sanitize_html_ya("<html><body><font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'><img src='icons/pda_icons/ooc.png'></span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message'>[mess]</span></span></font></body></html>")
 			else
-				C << "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message'>[msg]</span></span></font>"
+				C << sanitize_html_ya("<html><body><font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'><img src='icons/pda_icons/ooc.png'></span> <EM>[keyname]:</EM> <span class='message'>[mess]</span></span></font></body></html>")
+
+/proc/check_debug_OOC(var/t,var/list/repl_chars = "&quot;") //убрано, чтобы попробовать. мне кажется, что это вызывает баг.
+	var/counts = 0
+	for(var/char in repl_chars)
+		var/index = findtext(t, char)
+		while(index)
+			counts++
+	//world << "test|[counts]"	//проверка на скобочки. работает хуева
+	return counts	//нужно доделать это хуету
 
 /proc/toggle_ooc()
 	ooc_allowed = !( ooc_allowed )

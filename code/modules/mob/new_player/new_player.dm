@@ -20,19 +20,19 @@
 
 /mob/new_player/proc/new_player_panel()
 
-	var/output = "<center><p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</A></p>"
+	var/output = r_html("<center><p><a href='byond://?src=\ref[src];show_preferences=1'>Настроить персонажа</A></p>")
 
 	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
 		if(ready)
-			output += "<p>\[ <b>Ready</b> | <a href='byond://?src=\ref[src];ready=0'>Not Ready</a> \]</p>"
+			output += r_html("<p>\[ <b>Готов</b> | <a href='byond://?src=\ref[src];ready=0'>Не готов</a> \]</p>")
 		else
-			output += "<p>\[ <a href='byond://?src=\ref[src];ready=1'>Ready</a> | <b>Not Ready</b> \]</p>"
+			output += r_html("<p>\[ <a href='byond://?src=\ref[src];ready=1'>Готов</a> | <b>Не готов</b> \]</p>")
 
 	else
-		output += "<p><a href='byond://?src=\ref[src];manifest=1'>View the Crew Manifest</A></p>"
-		output += "<p><a href='byond://?src=\ref[src];late_join=1'>Join Game!</A></p>"
+		output += r_html("<p><a href='byond://?src=\ref[src];manifest=1'>Экипаж</A></p>")
+		output += r_html("<p><a href='byond://?src=\ref[src];late_join=1'>Присоедениться!</A></p>")
 
-	output += "<p><a href='byond://?src=\ref[src];observe=1'>Observe</A></p>"
+	output += r_html("<p><a href='byond://?src=\ref[src];observe=1'>Наблюдать</A></p>")
 
 	if(!IsGuestKey(src.key))
 		establish_db_connection()
@@ -56,7 +56,7 @@
 	output += "</center>"
 
 	//src << browse(output,"window=playersetup;size=210x240;can_close=0")
-	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 220, 265)
+	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>[r_html("Опции")]</div>", 220, 265)
 	popup.set_window_options("can_close=0")
 	popup.set_content(output)
 	popup.open(0)
@@ -66,14 +66,14 @@
 	..()
 
 	if(statpanel("Lobby"))
-		stat("Game Mode:", (ticker.hide_mode) ? "Secret" : "[master_mode]")
+		stat("Игровой Режим:", (ticker.hide_mode) ? "Секрет" : "[master_mode]")
 
 		if(ticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", (ticker.can_fire) ? "[round(ticker.timeLeft / 10)]s" : "DELAYED")
+			stat("Время до старта:", (ticker.can_fire) ? "[round(ticker.timeLeft / 10)]s" : "ПРИОСТАНОВЛЕНО")
 
-			stat("Players:", "[ticker.totalPlayers]")
+			stat("Игроки:", "[ticker.totalPlayers]")
 			if(client.holder)
-				stat("Players Ready:", "[ticker.totalPlayersReady]")
+				stat("Игроки с готовностью:", "[ticker.totalPlayersReady]")
 
 
 /mob/new_player/Topic(href, href_list[])
@@ -98,7 +98,7 @@
 
 	if(href_list["observe"])
 
-		if(alert(src,"Are you sure you wish to observe? You will not be able to play this round!","Player Setup","Yes","No") == "Yes")
+		if(alert(src,"Вы правда хотите быть наблюдателем? Вы не сможете сыграть в этом раунде!","Player Setup","Да","Нет") == "Да")
 			if(!client)	return 1
 			var/mob/dead/observer/observer = new()
 
@@ -108,7 +108,7 @@
 			observer.started_as_observer = 1
 			close_spawn_windows()
 			var/obj/O = locate("landmark*Observer-Start")
-			src << "<span class='notice'>Now teleporting.</span>"
+			src << "<span class='notice'>Телепортация!</span>"
 			observer.loc = O.loc
 			if(client.prefs.be_random_name)
 				client.prefs.real_name = random_name(gender)

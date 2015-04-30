@@ -1,6 +1,6 @@
 datum/objective
 	var/datum/mind/owner = null			//Who owns the objective.
-	var/explanation_text = "Nothing"	//What that person is supposed to do.
+	var/explanation_text = "Ничего."	//What that person is supposed to do.
 	var/datum/mind/target = null		//If they are focused on a particular person.
 	var/target_amount = 0				//If they are focused on a particular number. Steal objectives have their own counter.
 	var/completed = 0					//currently only used for custom objectives.
@@ -65,7 +65,7 @@ datum/objective/assassinate/check_completion()
 datum/objective/assassinate/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Убить [target.name], по профессии - [!target_role_type ? target.assigned_role : target.special_role]."
+		explanation_text = "Убить [target.name], [!target_role_type ? ranged_R(target.assigned_role) : target.special_role]."
 	else
 		explanation_text = "Свободная цель"
 
@@ -93,9 +93,9 @@ datum/objective/mutiny/check_completion()
 datum/objective/mutiny/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Assassinate or exile [target.name], the [!target_role_type ? target.assigned_role : target.special_role]."
+		explanation_text = "Убить или изгнать [target.name], [!target_role_type ? ranged_R(target.assigned_role) : target.special_role]."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Свободная цель"
 
 
 
@@ -119,9 +119,9 @@ datum/objective/maroon/check_completion()
 
 datum/objective/maroon/update_explanation_text()
 	if(target && target.current)
-		explanation_text = "Prevent [target.name], the [!target_role_type ? target.assigned_role : target.special_role], from escaping alive."
+		explanation_text = "Сделать так, чтобы [target.name], [!target_role_type ? ranged_R(target.assigned_role) : target.special_role], не ушел со станции живым."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Свободная цель"
 
 
 
@@ -151,9 +151,9 @@ datum/objective/debrain/check_completion()
 datum/objective/debrain/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Steal the brain of [target.name], the [!target_role_type ? target.assigned_role : target.special_role]."
+		explanation_text = "Избавить [target.name], [!target_role_type ? ranged_R(target.assigned_role) : target.special_role] от таскания ненужного ему мозга."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Свободная цель"
 
 
 
@@ -179,14 +179,14 @@ datum/objective/protect/check_completion()
 datum/objective/protect/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Protect [target.name], the [!target_role_type ? target.assigned_role : target.special_role]."
+		explanation_text = "Защитить [target.name], [!target_role_type ? ranged_R(target.assigned_role) : target.special_role]."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Свободная цель"
 
 
 
 datum/objective/hijack
-	explanation_text = "Hijack the emergency shuttle by escaping alone."
+	explanation_text = "Захватить шаттл и улететь на нем в одиночку."
 	dangerrating = 25
 	martyr_compatible = 0 //Technically you won't get both anyway.
 
@@ -214,7 +214,7 @@ datum/objective/hijack/check_completion()
 
 
 datum/objective/block
-	explanation_text = "Do not allow any organic lifeforms to escape on the shuttle alive."
+	explanation_text = "Не допустить то, чтобы любая органическая форма жизни покинула станцию на шаттле живой"
 	dangerrating = 25
 	martyr_compatible = 1
 
@@ -238,7 +238,7 @@ datum/objective/block/check_completion()
 
 
 datum/objective/escape
-	explanation_text = "Escape on the shuttle or an escape pod alive and without being in custody."
+	explanation_text = "Выбраться со станции на шаттле или спасательном поде живым и не в заключении."
 	dangerrating = 5
 
 datum/objective/escape/check_completion()
@@ -274,18 +274,18 @@ datum/objective/escape/escape_with_identity/find_target()
 datum/objective/escape/escape_with_identity/update_explanation_text()
 	if(target && target.current)
 		target_real_name = target.current.real_name
-		explanation_text = "Escape on the shuttle or an escape pod with the identity of [target_real_name], the [target.assigned_role]"
+		explanation_text = "Выбраться со станции на шаттле или спасательном поде с [target_real_name], [ranged_R(target.assigned_role)]"
 		var/mob/living/carbon/human/H
 		if(ishuman(target.current))
 			H = target.current
 		if(H && H.get_id_name() != target_real_name)
 			target_missing_id = 1
 		else
-			explanation_text += " while wearing their identification card"
+			explanation_text += " при наличии своего удостоверении личности"
 		explanation_text += "." //Proper punctuation is important!
 
 	else
-		explanation_text = "Free Objective."
+		explanation_text = "Свободная цель."
 
 datum/objective/escape/escape_with_identity/check_completion()
 	if(!target_real_name)
@@ -301,7 +301,7 @@ datum/objective/escape/escape_with_identity/check_completion()
 
 
 datum/objective/survive
-	explanation_text = "Stay alive until the end."
+	explanation_text = "Оставаться в живых до конца."
 	dangerrating = 3
 
 datum/objective/survive/check_completion()
@@ -313,7 +313,7 @@ datum/objective/survive/check_completion()
 
 
 datum/objective/martyr
-	explanation_text = "Die a glorious death."
+	explanation_text = "Умереть славной смертью."
 	dangerrating = 1
 
 datum/objective/martyr/check_completion()
@@ -325,7 +325,7 @@ datum/objective/martyr/check_completion()
 
 
 datum/objective/nuclear
-	explanation_text = "Destroy the station with a nuclear device."
+	explanation_text = "Уничтожить станцию с помощью ядерного устройства."
 	martyr_compatible = 1
 
 
@@ -356,11 +356,11 @@ datum/objective/steal/proc/set_target(var/datum/objective_item/item)
 		targetinfo = item
 
 		steal_target = targetinfo.targetitem
-		explanation_text = "Steal [targetinfo.name]."
+		explanation_text = "Украсть [targetinfo.name]."
 		dangerrating = targetinfo.difficulty
 		return steal_target
 	else
-		explanation_text = "Free objective"
+		explanation_text = "Свободная цель."
 		return
 
 datum/objective/steal/proc/select_target() //For admins setting objectives manually.
@@ -377,7 +377,7 @@ datum/objective/steal/proc/select_target() //For admins setting objectives manua
 		custom_name = stripped_input("Enter target name:", "Objective target", custom_name)
 		if (!custom_name) return
 		steal_target = custom_target
-		explanation_text = "Steal [custom_name]."
+		explanation_text = "Украсть [custom_name]."
 
 	else
 		set_target(new_target)
@@ -432,7 +432,7 @@ datum/objective/steal/exchange/update_explanation_text()
 	if(target && target.current)
 		explanation_text = "Acquire [targetinfo.name] held by [target.name], the [target.assigned_role] and syndicate agent"
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Свободная цель."
 
 
 datum/objective/steal/exchange/backstab
@@ -443,7 +443,7 @@ datum/objective/steal/exchange/backstab/set_faction(var/faction)
 		targetinfo = new/datum/objective_item/unique/docs_red
 	else if(faction == "blue")
 		targetinfo = new/datum/objective_item/unique/docs_blue
-	explanation_text = "Do not give up or lose [targetinfo.name]."
+	explanation_text = "Не потерять [targetinfo.name]."
 	steal_target = targetinfo.targetitem
 
 
@@ -452,7 +452,7 @@ datum/objective/download
 
 datum/objective/download/proc/gen_amount_goal()
 	target_amount = rand(10,20)
-	explanation_text = "Download [target_amount] research level\s."
+	explanation_text = "Загрузить [target_amount] уровней исследований."
 	return target_amount
 
 datum/objective/download/check_completion()//NINJACODE
@@ -488,7 +488,7 @@ datum/objective/capture
 
 datum/objective/capture/proc/gen_amount_goal()
 		target_amount = rand(5,10)
-		explanation_text = "Accumulate [target_amount] capture point\s. It is better if they remain relatively unharmed."
+		explanation_text = "Накопить [target_amount] capture point\s. It is better if they remain relatively unharmed."
 		return target_amount
 
 datum/objective/capture/check_completion()//Basically runs through all the mobs in the area to determine how much they are worth.
@@ -540,7 +540,7 @@ datum/objective/absorb/proc/gen_amount_goal(var/lowbound = 4, var/highbound = 6)
 					n_p ++
 		target_amount = min(target_amount, n_p)
 
-	explanation_text = "Extract [target_amount] compatible genome\s."
+	explanation_text = "Поглотить [target_amount] геномов."
 	return target_amount
 
 datum/objective/absorb/check_completion()
@@ -572,6 +572,6 @@ datum/objective/destroy/check_completion()
 datum/objective/destroy/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Destroy [target.name], the experimental AI."
+		explanation_text = "Уничтожить [target.name], эксперементальный ИИ."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Свободная цель."

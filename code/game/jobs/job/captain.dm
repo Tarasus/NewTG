@@ -9,7 +9,7 @@ Captain
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Nanotrasen officials and Space law"
+	supervisors = "Представител&#255;м Нанотрейзен и Космическому Закону"
 	selection_color = "#ccccff"
 	req_admin_notify = 1
 	minimal_player_age = 14
@@ -45,7 +45,7 @@ Captain
 	L.implanted = 1
 	H.sec_hud_set_implants()
 
-	minor_announce("Captain [H.real_name] on deck!")
+	minor_announce("Капитан [H.real_name] на палубе!")
 
 /datum/job/captain/get_access()
 	return get_all_accesses()
@@ -61,7 +61,7 @@ Head of Personnel
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = "Капитану"
 	selection_color = "#ddddff"
 	req_admin_notify = 1
 	minimal_player_age = 10

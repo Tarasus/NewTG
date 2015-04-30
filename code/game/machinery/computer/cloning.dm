@@ -371,6 +371,7 @@
 	var/datum/data/record/R = new()
 	if(subject.dna.species)
 		R.fields["mrace"] = subject.dna.species.type
+		R.fields["horns_style"] = subject.horns_style
 	else
 		R.fields["mrace"] = /datum/species/human
 	R.fields["ckey"] = subject.ckey
@@ -382,7 +383,6 @@
 	R.fields["blood_type"] = subject.dna.blood_type
 	R.fields["mcolor"] = subject.dna.mutant_color
 	R.fields["factions"] = subject.faction
-	R.fields["horns_style"] = subject.horns_style
 	//Add an implant if needed
 	var/obj/item/weapon/implant/health/imp = locate(/obj/item/weapon/implant/health, subject)
 	if(!imp)

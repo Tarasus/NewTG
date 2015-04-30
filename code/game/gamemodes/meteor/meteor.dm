@@ -7,8 +7,8 @@
 
 
 /datum/game_mode/meteor/announce()
-	world << "<B>The current game mode is - Meteor!</B>"
-	world << "<B>The space station has been stuck in a major meteor shower. You must escape from the station or at least live.</B>"
+	world << "<B>Текущий режим - Метеор!</B>"
+	world << "<B>Космическа&#255; станци&#255; попала в крупный метеоритный дождь. Вы должны сбежать со станции или хот&#255; бы выжить.</B>"
 
 
 /datum/game_mode/meteor/post_setup()

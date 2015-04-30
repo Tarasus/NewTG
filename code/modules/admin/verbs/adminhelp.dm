@@ -4,7 +4,7 @@
 var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","alien","as")
 
 /client/verb/adminhelp(msg as text)
-	set category = "Admin"
+	set category = "Админ"
 	set name = "Adminhelp"
 
 	if(say_disabled)	//This is here to try to identify lag problems
@@ -20,18 +20,14 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 
 	//remove out adminhelp verb temporarily to prevent spamming of admins.
 	src.verbs -= /client/verb/adminhelp
-	spawn(1200)
+	spawn(50)
 		src.verbs += /client/verb/adminhelp	// 2 minute cool-down for adminhelps
 
 	//clean the input msg
 	if(!msg)	return
 	msg = sanitize(copytext(msg,1,MAX_MESSAGE_LEN))
 	if(!msg)	return
-	var/original_msg = msg
-
-	//russian_sanitaze
-	sanitize(msg)
-	sanitize_russian(msg)
+	var/original_msg = sanitize_russian(sanitize(msg))
 
 	//explode the input msg into a list
 	var/list/msglist = text2list(msg, " ")
@@ -88,8 +84,12 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 
 	if(!mob)	return						//this doesn't happen
 
+	//russian sanitaze for PM
+	sanitize(original_msg)
+	sanitize_russian(original_msg)
+
 	var/ref_mob = "\ref[mob]"
-	msg = "<span class='adminnotice'><b><font color=red>HELP: </font>[key_name(src, 1)] (<A HREF='?_src_=holder;adminmoreinfo=[ref_mob]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) (<A HREF='?_src_=holder;adminplayerobservejump=[ref_mob]'>JMP</A>) (<A HREF='?_src_=holder;traitor=[ref_mob]'>TP</A>) [ai_found ? " (<A HREF='?_src_=holder;adminchecklaws=[ref_mob]'>CL</A>)" : ""]:</b> [msg]</span>"
+	msg = "<span class='adminnotice'><b><font color=red>HELP: </font>[key_name(src, 1)] (<A HREF='?_src_=holder;adminmoreinfo=[ref_mob]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) (<A HREF='?_src_=holder;adminplayerobservejump=[ref_mob]'>JMP</A>) (<A HREF='?_src_=holder;traitor=[ref_mob]'>TP</A>) [ai_found ? " (<A HREF='?_src_=holder;adminchecklaws=[ref_mob]'>CL</A>)" : ""]:</b> [original_msg]</span>"
 
 	//send this msg to all admins
 
@@ -98,9 +98,6 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 			X << 'sound/effects/adminhelp.ogg'
 		X << msg
 
-	//russian sanitaze for PM
-	sanitize(original_msg)
-	sanitize_russian(original_msg)
 	//show it to the person adminhelping too
 	src << "<span class='adminnotice'>PM to-<b>Admins</b>: [original_msg]</span>"
 

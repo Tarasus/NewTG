@@ -46,6 +46,12 @@
 	icon_state = "detective"
 	armor = list(melee = 50, bullet = 5, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
 
+//Journalist
+/obj/item/clothing/head/journalist
+	name = "journalist's hat"
+	desc = "Hat. Bad."
+	icon_state = "journalist"
+
 //Mime
 /obj/item/clothing/head/beret
 	name = "beret"

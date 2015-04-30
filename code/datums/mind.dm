@@ -204,21 +204,27 @@
 /datum/mind/proc/show_memory(mob/recipient, window=1)
 	if(!recipient)
 		recipient = current
-	var/output = "<B>[current.real_name]'s Memories:</B><br>"
+	var/output = "<B>Воспоминания [current.real_name]:</B><br>"
 	output += memory
 
 	if(objectives.len)
-		output += "<B>Objectives:</B>"
+		output += "<B>Цели:</B>"
 		var/obj_count = 1
 		for(var/datum/objective/objective in objectives)
-			output += "<br><B>Objective #[obj_count++]</B>: [objective.explanation_text]"
+			output += "<br><B>Цель #[obj_count++]</B>: [objective.explanation_text]"
+			//usr << "<br><B>Цель #[obj_count++]</B>: [objective.explanation_text]"	//для теста выявления ДЕРЬМА
+	//usr << "[output]"	//тест ***ПОКА ВЫКЛЮЧЕН
 
-	if(window)	recipient << browse(output,"window=memory")
-	else		recipient << "<i>[output]</i>"
+	if(window)
+		output = sanitize_html_ya(output)	//для менюшек
+		recipient << browse(output,"window=memory")	//теперь санитайз "я" добрался и до воспоминаний
+	else
+		output = sanitize_russian(sanitize_ya(output))	//для тех мест, где они отображаются в логах.
+		recipient << "<i>[output]</i>"
 
 /datum/mind/proc/edit_memory()
 	if(!ticker || !ticker.mode)
-		alert("Not before round-start!", "Alert")
+		alert("Не перед раундом!", "Alert")
 		return
 
 	var/out = "<B>[name]</B>[(current&&(current.real_name!=name))?" (as [current.real_name])":""]<br>"
@@ -728,8 +734,8 @@
 		switch(href_list["revolution"])
 			if("clear")
 				remove_rev()
-				current << "<span class='userdanger'>You have been brainwashed! You are no longer a revolutionary!</span>"
-				message_admins("[key_name_admin(usr)] has de-rev'ed [current].")
+				current << "<span class='userdanger'>Вам промыли мозги! Вы больше не поддерживаете революцию!</span>"
+				message_admins("[key_name_admin(usr)] был  [current].")
 				log_admin("[key_name(usr)] has de-rev'ed [current].")
 			if("rev")
 				if(src in ticker.mode.head_revolutionaries)
@@ -743,14 +749,14 @@
 				ticker.mode.revolutionaries += src
 				ticker.mode.update_rev_icons_added(src)
 				special_role = "Revolutionary"
-				message_admins("[key_name_admin(usr)] has rev'ed [current].")
-				log_admin("[key_name(usr)] has rev'ed [current].")
+				message_admins("[key_name_admin(usr)] был завербован в ревалюцию [current].")
+				log_admin("[key_name(usr)] был завербован в ревалюцию [current].")
 
 			if("headrev")
 				if(src in ticker.mode.revolutionaries)
 					ticker.mode.revolutionaries -= src
 					ticker.mode.update_rev_icons_removed(src)
-					current << "<span class='userdanger'>You have proved your devotion to revoltion! Yea are a head revolutionary now!</span>"
+					current << "<span class='userdanger'>Вы доказали свою преданность идеалам революции, теперь вы ее глава!</span>"
 				else if(!(src in ticker.mode.head_revolutionaries))
 					current << "<span class='userdanger'>You are a member of the revolutionaries' leadership now!</span>"
 				else
@@ -763,7 +769,7 @@
 							var/datum/objective/mutiny/rev_obj = new
 							rev_obj.owner = src
 							rev_obj.target = O.target
-							rev_obj.explanation_text = "Assassinate [O.target.name], the [O.target.assigned_role]."
+							rev_obj.explanation_text = "Убейте [O.target.name], [O.target.assigned_role]."
 							objectives += rev_obj
 						ticker.mode.greet_revolutionary(src,0)
 				ticker.mode.head_revolutionaries += src

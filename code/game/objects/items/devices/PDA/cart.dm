@@ -368,8 +368,8 @@ Code:
 <a href='byond://?src=\ref[src];choice=Signal Code;scode=5'>+</a><br>"}
 		if (41) //crew manifest
 
-			menu = "<h4><img src=pda_notes.png> Crew Manifest</h4>"
-			menu += "Entries cannot be modified from this terminal.<br><br>"
+			menu = "<h4><img src=pda_notes.png> Список Экипажа</h4>"
+			menu += "Записи не могут быть изменены здесь.<br><br>"
 			if(data_core.general)
 				for (var/datum/data/record/t in sortRecord(data_core.general))
 					menu += "[t.fields["name"]] - [t.fields["rank"]]<br>"
@@ -377,20 +377,20 @@ Code:
 
 
 		if (42) //status displays
-			menu = "<h4><img src=pda_status.png> Station Status Display Interlink</h4>"
+			menu = "<h4><img src=pda_status.png> Управление Статусом Станции</h4>"
 
-			menu += "\[ <A HREF='?src=\ref[src];choice=Status;statdisp=blank'>Clear</A> \]<BR>"
-			menu += "\[ <A HREF='?src=\ref[src];choice=Status;statdisp=shuttle'>Shuttle ETA</A> \]<BR>"
-			menu += "\[ <A HREF='?src=\ref[src];choice=Status;statdisp=message'>Message</A> \]"
-			menu += "<ul><li> Line 1: <A HREF='?src=\ref[src];choice=Status;statdisp=setmsg1'>[ message1 ? message1 : "(none)"]</A>"
-			menu += "<li> Line 2: <A HREF='?src=\ref[src];choice=Status;statdisp=setmsg2'>[ message2 ? message2 : "(none)"]</A></ul><br>"
-			menu += "\[ Alert: <A HREF='?src=\ref[src];choice=Status;statdisp=alert;alert=default'>None</A> |"
-			menu += " <A HREF='?src=\ref[src];choice=Status;statdisp=alert;alert=redalert'>Red Alert</A> |"
-			menu += " <A HREF='?src=\ref[src];choice=Status;statdisp=alert;alert=lockdown'>Lockdown</A> |"
-			menu += " <A HREF='?src=\ref[src];choice=Status;statdisp=alert;alert=biohazard'>Biohazard</A> \]<BR>"
+			menu += "\[ <A HREF='?src=\ref[src];choice=Status;statdisp=blank'>Очистить</A> \]<BR>"
+			menu += "\[ <A HREF='?src=\ref[src];choice=Status;statdisp=shuttle'>Расчетное врем&#x44F; прибыти&#x44F; шаттла</A> \]<BR>"
+			menu += "\[ <A HREF='?src=\ref[src];choice=Status;statdisp=message'>Сообщение</A> \]"
+			menu += "<ul><li> Лини&#x44F; 1: <A HREF='?src=\ref[src];choice=Status;statdisp=setmsg1'>[ message1 ? message1 : "(нет)"]</A>"
+			menu += "<li> Лини&#x44F; 2: <A HREF='?src=\ref[src];choice=Status;statdisp=setmsg2'>[ message2 ? message2 : "(нет)"]</A></ul><br>"
+			menu += "\[ Alert: <A HREF='?src=\ref[src];choice=Status;statdisp=alert;alert=default'>Нет</A> |"
+			menu += " <A HREF='?src=\ref[src];choice=Status;statdisp=alert;alert=redalert'>Красный Код</A> |"
+			menu += " <A HREF='?src=\ref[src];choice=Status;statdisp=alert;alert=lockdown'>Блокировка</A> |"
+			menu += " <A HREF='?src=\ref[src];choice=Status;statdisp=alert;alert=biohazard'>Биологическа&#x44F; Угроза</A> \]<BR>"
 
 		if (43)
-			menu = "<h4><img src=pda_power.png> Power Monitors - Please select one</h4><BR>"
+			menu = "<h4><img src=pda_power.png> Монитор Питани&#x44F; - Пожалуйста, выберите одно</h4><BR>"
 			powmonitor = null
 			powermonitors = list()
 			var/powercount = 0
@@ -404,7 +404,7 @@ Code:
 
 
 			if(!powercount)
-				menu += "<span class='danger'>No connection<BR></span>"
+				menu += "<span class='danger'>Нет подключений<BR></span>"
 			else
 
 				menu += "<FONT SIZE=-1>"
@@ -443,7 +443,7 @@ Code:
 				menu += "</FONT></PRE>"
 
 		if (44) //medical records //This thing only displays a single screen so it's hard to really get the sub-menu stuff working.
-			menu = "<h4><img src=pda_medical.png> Medical Record List</h4>"
+			menu = "<h4><img src=pda_medical.png> Список Медицинских Записей</h4>"
 			if(data_core.general)
 				for(var/datum/data/record/R in sortRecord(data_core.general))
 					menu += "<a href='byond://?src=\ref[src];choice=Medical Records;target=[R.fields["id"]]'>[R.fields["id"]]: [R.fields["name"]]<br>"
@@ -486,7 +486,7 @@ Code:
 
 			menu += "<br>"
 		if (45) //security records
-			menu = "<h4><img src=pda_cuffs.png> Security Record List</h4>"
+			menu = "<h4><img src=pda_cuffs.png> Список Записей Службы Безопасности</h4>"
 			if(data_core.general)
 				for (var/datum/data/record/R in sortRecord(data_core.general))
 					menu += "<a href='byond://?src=\ref[src];choice=Security Records;target=[R.fields["id"]]'>[R.fields["id"]]: [R.fields["name"]]<br>"

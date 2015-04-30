@@ -70,7 +70,7 @@ var/next_mob_id = 0
 					return
 	// Added voice muffling for Issue 41.
 	if(stat == UNCONSCIOUS || sleeping > 0)
-		src << "<I>... You can almost hear someone talking ...</I>"
+		src << "<I>... Вы слышите чьи-то голоса ...</I>"
 	else
 		src << sanitize_russian(msg)
 	return
@@ -339,7 +339,7 @@ var/list/slot_equipment_priority = list( \
 
 //mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
 /mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
-	set name = "Examine"
+	set name = "Осмотреть"
 	set category = "IC"
 
 	if(is_blind(src))
@@ -401,7 +401,7 @@ var/list/slot_equipment_priority = list( \
 
 /mob/verb/stop_pulling()
 
-	set name = "Stop Pulling"
+	set name = "Прекратить тащить"
 	set category = "IC"
 
 	if(pulling)
@@ -441,7 +441,7 @@ var/list/slot_equipment_priority = list( \
 */
 
 /mob/verb/memory()
-	set name = "Notes"
+	set name = "Заметки"
 	set category = "IC"
 	if(mind)
 		mind.show_memory(src)
@@ -449,11 +449,11 @@ var/list/slot_equipment_priority = list( \
 		src << "The game appears to have misplaced your mind datum, so we can't show you your notes."
 
 /mob/verb/add_memory(msg as message)
-	set name = "Add Note"
+	set name = "Добавить заметку"
 	set category = "IC"
 
 	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
-	msg = sanitize(msg)
+	msg = sanitize_without_ya(msg)	//чтобы не мешало "Я"
 
 	if(mind)
 		mind.store_memory(msg)
@@ -464,7 +464,7 @@ var/list/slot_equipment_priority = list( \
 	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
 
 	if (sane)
-		msg = sanitize(msg)
+		msg = sanitize_without_ya(msg)
 
 	if (length(memory) == 0)
 		memory += msg
@@ -535,14 +535,14 @@ var/list/slot_equipment_priority = list( \
 		winset(src, "rpane.changelogb", "background-color=none;font-style=;")
 
 /mob/verb/observe()
-	set name = "Observe"
+	set name = "Наблюдать"
 	set category = "OOC"
 	var/is_admin = 0
 
 	if(check_rights_for(client,R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
-		usr << "<span class='notice'>You must be observing to use this!</span>"
+		usr << "<span class='notice'>Для этого вы должны быть наблюдающим!</span>"
 		return
 
 	if(is_admin && stat == DEAD)
@@ -618,7 +618,7 @@ var/list/slot_equipment_priority = list( \
 				client.adminobs = 0
 
 /mob/verb/cancel_camera()
-	set name = "Cancel Camera View"
+	set name = "Прекратить слежение"
 	set category = "OOC"
 	reset_view(null)
 	unset_machine()

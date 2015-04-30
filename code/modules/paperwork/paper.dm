@@ -44,16 +44,21 @@
 		return
 	icon_state = "paper"
 
+/obj/item/weapon/paper/proc/update_info(mob/user) //обновление структур для нормального отображения "я"
+	info = sanitize_html_ya(info)
+	info_links = sanitize_html_ya(info_links)
+	return
 
 /obj/item/weapon/paper/examine(mob/user)
+	update_info()
 	..()
 	if(in_range(user, src))
 		if( !(ishuman(user) || isobserver(user) || issilicon(user)) )
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=[name]")
+			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(sanitize_russian(info, 1))]<HR>[stamps]</BODY></HTML>", "window=[name]")
 			onclose(user, "[name]")
 		else
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>", "window=[name]")
-			onclose(user, "[name]")
+			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[sanitize_russian(info, 1)]<HR>[stamps]</BODY></HTML>", "window=[name]")
+			onclose(user, "[name]")	//фиксы отображения "я" в бумажечках
 	else
 		user << "<span class='notice'>It is too far away.</span>"
 
@@ -80,6 +85,7 @@
 
 
 /obj/item/weapon/paper/attack_self(mob/user)
+	update_info()
 	user.examinate(src)
 	if(rigged && (SSevent.holiday == "April Fool's Day"))
 		if(spam_flag == 0)
@@ -90,25 +96,27 @@
 
 
 /obj/item/weapon/paper/attack_hand()
+	update_info()
 	var/mob/living/carbon/M = usr
 	if(burning)
-		M << "<span class='danger'>Picking up a burning paper seems awfully stupid.</span>"
+		M << "<span class='danger'>Попытка вз&#255;ть горющую бумагу выгл&#255;дит достаточно глупо.</span>"
 		return //Doesn't make any sense to pick up a burning paper
 	else //Probably isn't necessary but it's safer
 		..()
 
 
 /obj/item/weapon/paper/attack_ai(mob/living/silicon/ai/user)
+	update_info()
 	var/dist
 	if(istype(user) && user.current) //is AI
 		dist = get_dist(src, user.current)
 	else //cyborg or AI not seeing through a camera
 		dist = get_dist(src, user)
 	if(dist < 2)
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>", "window=[name]")
+		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[sanitize_russian(info, 1)]<HR>[stamps]</BODY></HTML>", "window=[name]")
 		onclose(usr, "[name]")
 	else
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=[name]")
+		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(sanitize_russian(info, 1))]<HR>[stamps]</BODY></HTML>", "window=[name]")
 		onclose(usr, "[name]")
 
 
@@ -154,8 +162,9 @@
 	info_links = info
 	var/i = 0
 	for(i=1,i<=fields,i++)
-		addtofield(i, "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
-	info_links = info_links + "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=end'>write</A></font>"
+		addtofield(i, "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=[i]'>писать</A></font>", 1)
+	info_links = info_links + "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=end'>писать</A></font>"
+	update_info()
 
 
 /obj/item/weapon/paper/proc/clearpaper()
@@ -249,7 +258,7 @@
 
 	if(href_list["write"])
 		var/id = href_list["write"]
-		var/t =  stripped_multiline_input("Enter what you want to write:", "Write")
+		var/t =  stripped_multiline_input("Введите то, что хотите написать:", "Write")
 		if(!t)
 			return
 		var/obj/item/i = usr.get_active_hand()	//Check to see if he still got that darn pen, also check if he's using a crayon or pen.
@@ -263,6 +272,7 @@
 			return
 
 		t = parsepencode(t, i, usr, iscrayon) // Encode everything from pencode to html
+		//t = sanitize_html_ya(t)	//чтобы ввелась структура "я"
 
 		if(t != null)	//No input from the user means nothing needs to be added
 			if(id!="end")
@@ -271,7 +281,8 @@
 				info += t // Oh, he wants to edit to the end of the file, let him.
 				updateinfolinks()
 
-			usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY></HTML>", "window=[name]") // Update the window
+			update_info()
+			usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[sanitize_russian(info_links, 1)]<HR>[stamps]</BODY></HTML>", "window=[name]") // Update the window
 			update_icon()
 
 
@@ -286,10 +297,10 @@
 
 	if(istype(P, /obj/item/weapon/pen) || istype(P, /obj/item/toy/crayon))
 		if(user.IsAdvancedToolUser())
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY></HTML>", "window=[name]")
+			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[sanitize_russian(info_links, 1)]<HR>[stamps]</BODY></HTML>", "window=[name]")
 			return
 		else
-			user << "<span class='notice'>You don't know how to read or write.</span>"
+			user << "<span class='notice'>Вы не знаете как это прочесть.</span>"
 			return
 
 	else if(istype(P, /obj/item/weapon/stamp))
@@ -309,7 +320,7 @@
 		stamped += P.type
 		overlays += stampoverlay
 
-		user << "<span class='notice'>You stamp the paper with your rubber stamp.</span>"
+		user << "<span class='notice'>Вы сделали штамп.</span>"
 
 	if(is_hot(P))
 		if(user.disabilities & CLUMSY && prob(10))
@@ -336,12 +347,12 @@
 
 /obj/item/weapon/paper/proc/burn(var/showmsg, var/burntime)
 	if(showmsg)
-		src.visible_message("<span class='warning'>[src] catches on fire!</span>")
+		src.visible_message("<span class='warning'>[src] горит!</span>")
 	burning = 1
 	icon_state = "paper_onfire"
 	info = "[stars(info)]"
 	sleep(burntime) //7 seconds
-	src.visible_message("<span class='danger'>[src] burns away, leaving behind a pile of ashes.</span>")
+	src.visible_message("<span class='danger'>[src] сгорела оставив за собой лишь горстку пепла.</span>")
 	new /obj/effect/decal/cleanable/ash(src.loc)
 	qdel(src)
 

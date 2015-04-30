@@ -37,7 +37,7 @@
 	icon_state = "waffles"
 
 /obj/item/trash/plate
-	name = "plate"
+	name = "dirty plate"
 	icon_state = "plate"
 
 /obj/item/trash/pistachios

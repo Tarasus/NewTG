@@ -93,6 +93,18 @@
 	icon_state = "greydet"
 	item_state = "greydet"
 
+//Journalist
+/obj/item/clothing/suit/journalist
+	name = "journalist's coat"
+	desc = "Coat. Bad."
+	icon_state = "journalist"
+	item_state = "journalist"
+	blood_overlay_type = "coat"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	allowed = list()	//сюда нужна КАМЕРА!
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	heat_protection = CHEST|GROIN|LEGS|ARMS
+
 //Engineering
 /obj/item/clothing/suit/hazardvest
 	name = "hazard vest"

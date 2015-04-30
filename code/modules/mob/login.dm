@@ -24,6 +24,7 @@
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
 
 /mob/Login()
+	client.achievements_add("novice")	//ачивочка "Новичок"
 	player_list |= src
 	update_Login_details()
 	world.update_status()

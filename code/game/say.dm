@@ -16,7 +16,7 @@ var/list/freqtospan = list(
 	"1441" = "dsquadradio"
 	)
 
-proc/sanitize_russian(var/msg, var/html = 0) //—пециально дл€ всего, где не нужно убирать переносы строк и прочее.
+proc/sanitize_russian(var/msg, var/html = 0) //Ќ€шна€ процедурка дл€ возведени€ "€"
 	var/rep
 	if(html)
 		rep = "&#x44F;"
@@ -28,12 +28,13 @@ proc/sanitize_russian(var/msg, var/html = 0) //—пециально дл€ всего, где не нужн
 		index = findtext(msg, "€")
 	return msg
 
-/atom/movable/proc/say(message) //>> SAY *MARK*
+/atom/movable/proc/say(message, emote) //>> SAY *MARK*
 	if(!can_speak())
 		return
 	if(message == "" || !message)
 		return
 	var/list/spans = get_spans()
+
 	sanitize(message)
 	sanitize_russian(message)
 	send_speech(message, 7, src, , spans)

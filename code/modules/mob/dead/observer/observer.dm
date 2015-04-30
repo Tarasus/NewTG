@@ -4,6 +4,7 @@ var/list/image/ghost_darkness_images = list() //this is a list of images for thi
 	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
+	verb_say = "стонет"
 	layer = MOB_LAYER + 1
 	stat = DEAD
 	density = 0
