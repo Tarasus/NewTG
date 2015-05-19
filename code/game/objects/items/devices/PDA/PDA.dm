@@ -285,13 +285,13 @@ var/global/list/obj/item/device/pda/PDAs = list()
 	else
 		switch (mode)
 			if (0)
-<<<<<<< HEAD
+
 				dat += "<h2>PERSONAL DATA ASSISTANT v.1.2.6/ХУЁРТУС.Station</h2>"
 				dat += "Владелец: [owner], [ownjob]<br>"
-=======
+
 				dat += "<h2>PERSONAL DATA ASSISTANT v.1.2.6</h2>"
 				dat += "Владелец: [owner], [ranged_R(ownjob)]<br>"	//чтобы профессия была на русске.
->>>>>>> 4b1f982e09847ecb4ad6a703bfa4a4988655b912
+
 				dat += text("ID: <A href='?src=\ref[src];choice=Authenticate'>[id ? "[id.registered_name], [id.assignment]" : "----------"]")
 				dat += text("<br><A href='?src=\ref[src];choice=UpdateInfo'>[id ? "Update PDA Info" : ""]</A><br><br>")
 

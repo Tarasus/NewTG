@@ -53,11 +53,11 @@
 			index = findtext(t, char)
 	return t
 
-<<<<<<< HEAD
+
 
 /proc/sanitize_to_html(var/msg)
 	return sanitize_simple(msg, YA_HTML)
-=======
+
 /proc/sanitize_ya(var/t,var/list/repl_chars = list("ÿ"="&#255;"))
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)
@@ -81,7 +81,7 @@
 			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+1)
 			index = findtext(t, char)
 	return t
->>>>>>> 4b1f982e09847ecb4ad6a703bfa4a4988655b912
+
 
 /proc/sanitize_html(var/t,var/list/repl_chars = list("\n"="#","\t"="#","ÿ"="&#x44F;","<"="(","&lt;"=")"))
 	for(var/char in repl_chars)

@@ -56,7 +56,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
-#include "_maps\tghoofer.dm"
+#include "_maps\ministation.dm"
 #include "_maps\map_files\TgStation\TGHoofer_v1.dmm"
 #include "code\_compile_options.dm"
 #include "code\hub.dm"
@@ -89,6 +89,7 @@
 #include "code\__HELPERS\names.dm"
 #include "code\__HELPERS\sanitize_values.dm"
 #include "code\__HELPERS\text.dm"
+#include "code\__HELPERS\text_to_russian.dm"
 #include "code\__HELPERS\time.dm"
 #include "code\__HELPERS\type2type.dm"
 #include "code\__HELPERS\unsorted.dm"
