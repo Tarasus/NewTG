@@ -8,7 +8,9 @@
 # NOTE: syntax was changed to allow hyphenation of ranknames, since spaces are stripped.      #
 ###############################################################################################
 Tarasus = Host
-Freedomix = Admin
-FinnTheTurtle = Admin
-SkifchaDJ = Admin
+Freedomix = Moderator
+FinnTheTurtle = Moderator
+SkifchaDJ = Moderator
+Torchwood01 = Moderator
 Assassins22 = Bidlocoder
+
