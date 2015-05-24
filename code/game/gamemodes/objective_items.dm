@@ -48,7 +48,7 @@ datum/objective_item/steal/magboots
 	excludefromjob = list("Chief Engineer")
 
 datum/objective_item/steal/corgimeat
-	name = "кусочик мяса корги"
+	name = "кусочек мяса корги"
 	targetitem = /obj/item/weapon/reagent_containers/food/snacks/meat/corgi
 	difficulty = 5
 	excludefromjob = list("Head of Personnel", "Quartermaster", "Cargo Technician") //>hurting your little buddy ever
@@ -72,7 +72,7 @@ datum/objective_item/steal/nukedisc
 	excludefromjob = list("Captain")
 
 datum/objective_item/steal/ablative
-	name = "абляционный бронежилет"
+	name = "аболяционный бронежилет"
 	targetitem = /obj/item/clothing/suit/armor/laserproof
 	difficulty = 3
 	excludefromjob = list("Head of Security", "Warden")
@@ -84,7 +84,7 @@ datum/objective_item/steal/reactive
 	excludefromjob = list("Research Director")
 
 datum/objective_item/steal/documents
-	name = "любой набор сикретных документов"
+	name = "любой набор секретных документов"
 	targetitem = /obj/item/documents //Any set of secret documents. Doesn't have to be NT's
 	difficulty = 5
 
@@ -207,6 +207,6 @@ datum/objective_item/stack/gold
 	difficulty = 15
 
 datum/objective_item/stack/uranium
-	name = "25 едениц переработанного урана"
+	name = "25 единиц переработанного урана"
 	targetitem = /obj/item/stack/sheet/mineral/uranium
 	difficulty = 10
